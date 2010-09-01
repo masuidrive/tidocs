@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI.OptionDialog</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.UI.OptionDialog 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Option Dialog is created by <a href="Titanium.UI.createOptionDialog.html">Titanium.UI.createOptionDialog</a> and allows you to show a modal dialog of one or more options to the user.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#show-method">show <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="cancel-property"></a>cancel</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>an index to indicate which button should be the cancel button</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="destructive-property"></a>destructive</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the destructive button (indicated by a visual clue in the UI)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="options-property"></a>options</td>
+            <td class='attr-rw'>
+                [array]
+            </td>
+            <td class='attr-desc'>array of button names as strings</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="title-property"></a>title</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the title of the dialog</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#click-event">click</a></td>
+            <td class='attr-desc'>fired when a button in the dialog is clicked</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Simple Options Dialog with 2 Options</div>
+	<div class="code"><p>In this example, we show a simple option dialog.</p>
+<pre><code>var dialog = Titanium.UI.createOptionDialog({
+    title: 'Hello',
+    options: ['Option 1','Option 2'],
+    cancel:1
+});
+dialog.show();
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="show-method">
+        <a name="show-method"></a><b>show</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>cause the dialog to become visible</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="click-event">
+        <a name="click-method"></a><b>click</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when a button in the dialog is clicked</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>cancel</td>
+            <td class='attr-desc'>boolean to indicate if the cancel button was pressed</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>destructive</td>
+            <td class='attr-desc'>boolean to indicate if the destructive button was pressed</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>index</td>
+            <td class='attr-desc'>the button index that was pressed</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

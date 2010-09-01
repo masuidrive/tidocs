@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Media.AudioPlayer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Media.AudioPlayer 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The AudioPlayer object is returned by <a href="Titanium.Media.createAudioPlayer.html">Titanium.Media.createAudioPlayer</a> and is used for streaming audio to the device and low-level control of the audio playback.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#pause-method">pause <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPaused-method">setPaused <span class="params">(paused)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setUrl-method">setUrl <span class="params">(url)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#start-method">start <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#stateDescription-method">stateDescription <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#stop-method">stop <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_BUFFERING-property"></a>STATE_BUFFERING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the buffering from the network state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_INITIALIZED-property"></a>STATE_INITIALIZED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the initialization state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_PAUSED-property"></a>STATE_PAUSED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the paused state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_PLAYING-property"></a>STATE_PLAYING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the playing state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_STARTING-property"></a>STATE_STARTING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the starting playback state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_STOPPED-property"></a>STATE_STOPPED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the stopped state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_STOPPING-property"></a>STATE_STOPPING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the stopping state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_WAITING_FOR_DATA-property"></a>STATE_WAITING_FOR_DATA</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the waiting for audio data from the network state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_WAITING_FOR_QUEUE-property"></a>STATE_WAITING_FOR_QUEUE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>current playback is in the waiting for audio data to fill the queue state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="allowBackground-property"></a>allowBackground</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate if audio should continue playing even if Activity is paused (Android only as of 1.3.0)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="audioSessionMode-property"></a>audioSessionMode</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the default audio session mode to be used for this player. One of Titanium.Media.AUDIO_SESSION_MODE_AMBIENT, Titanium.Media.AUDIO_SESSION_MODE_SOLO_AMBIENT Titanium.Media.AUDIO_SESSION_MODE_PLAYBACK Titanium.Media.AUDIO_SESSION_MODE_RECORD, Titanium.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="bitRate-property"></a>bitRate</td>
+            <td class='attr-rw'>
+                [double]
+            </td>
+            <td class='attr-desc'>bit rate of the current playback stream</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="idle-property"></a>idle</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>returns boolean indicating if the playback is idle</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="paused-property"></a>paused</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>returns boolean indicating if the playback is paused</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="playing-property"></a>playing</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>returns boolean indicating if the playback is streaming audio</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="progress-property"></a>progress</td>
+            <td class='attr-rw'>
+                [double]
+            </td>
+            <td class='attr-desc'>returns the current playback progress. Will return zero if sampleRate has not yet been detected</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="state-property"></a>state</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>returns int for the current state of playback</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="url-property"></a>url</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>returns the url for the current playback</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="waiting-property"></a>waiting</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>returns boolean indicating if the playback is waiting for audio data from the network</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#change-event">change</a></td>
+            <td class='attr-desc'>fired when the state of the playback changes</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#progress-event">progress</a></td>
+            <td class='attr-desc'>fired once per second with the current progress during playback</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="pause-method">
+        <a name="pause-method"></a><b>pause</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>pause playback</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPaused-method">
+        <a name="setPaused-method"></a><b>setPaused</b> <span class="params">(paused)</span>
+      </div>
+      
+      <div class="description">
+        <p>control the playback of the audio</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>paused</td>
+            <td class='attr-rw'>
+              [boolean]
+            </td>
+            <td class='attr-desc'>pass true to pause the current playback temporarily, false to unpause it</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setUrl-method">
+        <a name="setUrl-method"></a><b>setUrl</b> <span class="params">(url)</span>
+      </div>
+      
+      <div class="description">
+        <p>change the url of the audio playback</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>url</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the new url</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="start-method">
+        <a name="start-method"></a><b>start</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>start playback</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stateDescription-method">
+        <a name="stateDescription-method"></a><b>stateDescription</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>convert a state into a textual description suitable for display</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>string</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stop-method">
+        <a name="stop-method"></a><b>stop</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>stop playback</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="change-event">
+        <a name="change-method"></a><b>change</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when the state of the playback changes</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>description</td>
+            <td class='attr-desc'>textual description of the state of playback</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>state</td>
+            <td class='attr-desc'>current state of playback</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="progress-event">
+        <a name="progress-method"></a><b>progress</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired once per second with the current progress during playback</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>progress</td>
+            <td class='attr-desc'>current progress value</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

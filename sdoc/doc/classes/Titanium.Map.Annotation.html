@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Map.Annotation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Map.Annotation 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>An Annotation object that is created by the method <a href="Titanium.Map.createAnnotation.html">Titanium.Map.createAnnotation</a>. This object gives you low level control over annotations that can be added to a Map View.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="animate-property"></a>animate</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate whether the pin should animate when dropped</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="image-property"></a>image</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>image view for the pin instead of default image.  currently only supported in iphone</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="leftButton-property"></a>leftButton</td>
+            <td class='attr-rw'>
+                [int,string]
+            </td>
+            <td class='attr-desc'>the left button image on the annotation. must either be a button type constant or url</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="leftView-property"></a>leftView</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>a left view that is displayed on the annotation</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="pincolor-property"></a>pincolor</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the pin color as one of Titanium.Map.ANNOTATION_RED, Titanium.Map.ANNOTATION_GREEN or Titanium.Map.ANNOTATION_PURPLE.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="rightButton-property"></a>rightButton</td>
+            <td class='attr-rw'>
+                [int,string]
+            </td>
+            <td class='attr-desc'>the right button image on the annotation. must either be a button type constant or url</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="rightView-property"></a>rightView</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>a right view that is displayed on the annotation</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="subtitle-property"></a>subtitle</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the secondary title of the annotation view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="title-property"></a>title</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the primary title of the annotation view</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

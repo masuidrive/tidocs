@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI.ProgressBar</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.UI.ProgressBar 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>A Progress Bar is created by the method <a href="Titanium.UI.createProgressBar.html">Titanium.UI.createProgressBar</a>.</p>
+    </div>
+    
+
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="color-property"></a>color</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the color of the progress bar text</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="font-property"></a>font</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>the font object for the progress bar text</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="max-property"></a>max</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the maximum value of the progress bar</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="message-property"></a>message</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the progress bar message</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="min-property"></a>min</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the minimum value of the progress bar</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="style-property"></a>style</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the style of the progress bar</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="value-property"></a>value</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the current value of the progress bar</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><p>For iPhone, progress bar styles are constants defined in <a href="Titanium.UI.iPhone.ProgressBarStyle.html">Titanium.UI.iPhone.ProgressBarStyle</a>.</p></div>
+    </table>
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Simple Progress Bar</div>
+	<div class="code"><p>In this example we create a progress bar with the min value of <tt>0</tt> and the max value of <tt>10</tt> and the current value of <tt>0</tt>.  The change the value of the progress bar to cause it to move, we would set the <tt>value</tt> property to a value between <tt>min</tt> and <tt>max</tt>.</p>
+<pre><code>var pb=Titanium.UI.createProgressBar({
+    width:250,
+    min:0,
+    max:10,
+    value:0,
+    color:'#fff',
+    message:'Downloading 0 of 10',
+    font:{fontSize:14, fontWeight:'bold'},
+    style:Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
+});
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

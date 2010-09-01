@@ -1,0 +1,2175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.UI 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The main <a href="Titanium.UI.html">Titanium.UI</a> module.  The UI module is responsible for native user-interface components and interaction inside Titanium.  The goal of the UI module is to provide a native experience along with native performance by compiling Javascript code into their native counterparts as part of the build process. </p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#create2DMatrix-method">create2DMatrix <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#create3DMatrix-method">create3DMatrix <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createActivityIndicator-method">createActivityIndicator <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createAlertDialog-method">createAlertDialog <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createAnimation-method">createAnimation <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createButton-method">createButton <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createButtonBar-method">createButtonBar <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createCoverFlowView-method">createCoverFlowView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createDashboardItem-method">createDashboardItem <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createDashboardView-method">createDashboardView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createEmailDialog-method">createEmailDialog <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createImageView-method">createImageView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createLabel-method">createLabel <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createOptionDialog-method">createOptionDialog <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createPicker-method">createPicker <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createPickerColumn-method">createPickerColumn <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createPickerRow-method">createPickerRow <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createProgressBar-method">createProgressBar <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createScrollView-method">createScrollView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createScrollableView-method">createScrollableView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createSearchBar-method">createSearchBar <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createSlider-method">createSlider <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createSwitch-method">createSwitch <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTab-method">createTab <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTabGroup-method">createTabGroup <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTabbedBar-method">createTabbedBar <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTableView-method">createTableView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTableViewRow-method">createTableViewRow <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTableViewSection-method">createTableViewSection <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTextArea-method">createTextArea <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTextField-method">createTextField <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createToolbar-method">createToolbar <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createView-method">createView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createWebView-method">createWebView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createWindow-method">createWindow <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_IN-property"></a>ANIMATION_CURVE_EASE_IN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>animation curve constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_IN_OUT-property"></a>ANIMATION_CURVE_EASE_IN_OUT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>animation curve constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_OUT-property"></a>ANIMATION_CURVE_EASE_OUT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>animation curve constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_LINEAR-property"></a>ANIMATION_CURVE_LINEAR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>animation curve constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_CLEAR-property"></a>BLEND_MODE_CLEAR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COLOR-property"></a>BLEND_MODE_COLOR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COLOR_BURN-property"></a>BLEND_MODE_COLOR_BURN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COLOR_DODGE-property"></a>BLEND_MODE_COLOR_DODGE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COPY-property"></a>BLEND_MODE_COPY</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DARKEN-property"></a>BLEND_MODE_DARKEN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_ATOP-property"></a>BLEND_MODE_DESTINATION_ATOP</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_IN-property"></a>BLEND_MODE_DESTINATION_IN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_OUT-property"></a>BLEND_MODE_DESTINATION_OUT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_OVER-property"></a>BLEND_MODE_DESTINATION_OVER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DIFFERENCE-property"></a>BLEND_MODE_DIFFERENCE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_EXCLUSION-property"></a>BLEND_MODE_EXCLUSION</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_HARD_LIGHT-property"></a>BLEND_MODE_HARD_LIGHT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_HUE-property"></a>BLEND_MODE_HUE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_LIGHTEN-property"></a>BLEND_MODE_LIGHTEN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_LUMINOSITY-property"></a>BLEND_MODE_LUMINOSITY</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_MULTIPLY-property"></a>BLEND_MODE_MULTIPLY</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_NORMAL-property"></a>BLEND_MODE_NORMAL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_OVERLAY-property"></a>BLEND_MODE_OVERLAY</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_PLUS_DARKER-property"></a>BLEND_MODE_PLUS_DARKER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_PLUS_LIGHTER-property"></a>BLEND_MODE_PLUS_LIGHTER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SATURATION-property"></a>BLEND_MODE_SATURATION</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SCREEN-property"></a>BLEND_MODE_SCREEN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOFT_LIGHT-property"></a>BLEND_MODE_SOFT_LIGHT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOURCE_ATOP-property"></a>BLEND_MODE_SOURCE_ATOP</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOURCE_IN-property"></a>BLEND_MODE_SOURCE_IN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOURCE_OUT-property"></a>BLEND_MODE_SOURCE_OUT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_XOR-property"></a>BLEND_MODE_XOR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>image mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FACE_DOWN-property"></a>FACE_DOWN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>orientation constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FACE_UP-property"></a>FACE_UP</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>orientation constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BORDERSTYLE_BEZEL-property"></a>INPUT_BORDERSTYLE_BEZEL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input border style constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BORDERSTYLE_LINE-property"></a>INPUT_BORDERSTYLE_LINE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input border style constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BORDERSTYLE_NONE-property"></a>INPUT_BORDERSTYLE_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input border style constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BORDERSTYLE_ROUNDED-property"></a>INPUT_BORDERSTYLE_ROUNDED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input border style constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BUTTONMODE_ALWAYS-property"></a>INPUT_BUTTONMODE_ALWAYS</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input button mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BUTTONMODE_NEVER-property"></a>INPUT_BUTTONMODE_NEVER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input button mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BUTTONMODE_ONBLUR-property"></a>INPUT_BUTTONMODE_ONBLUR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input button mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INPUT_BUTTONMODE_ONFOCUS-property"></a>INPUT_BUTTONMODE_ONFOCUS</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>input button mode constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_APPEARANCE_ALERT-property"></a>KEYBOARD_APPEARANCE_ALERT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard appearance constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_APPEARANCE_DEFAULT-property"></a>KEYBOARD_APPEARANCE_DEFAULT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard appearance constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_ASCII-property"></a>KEYBOARD_ASCII</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_DEFAULT-property"></a>KEYBOARD_DEFAULT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_EMAIL-property"></a>KEYBOARD_EMAIL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_NAMEPHONE_PAD-property"></a>KEYBOARD_NAMEPHONE_PAD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_NUMBERS_PUNCTUATION-property"></a>KEYBOARD_NUMBERS_PUNCTUATION</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_NUMBER_PAD-property"></a>KEYBOARD_NUMBER_PAD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_PHONE_PAD-property"></a>KEYBOARD_PHONE_PAD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="KEYBOARD_URL-property"></a>KEYBOARD_URL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield keyboard constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LANDSCAPE_LEFT-property"></a>LANDSCAPE_LEFT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>orientation (home button on left) constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LANDSCAPE_RIGHT-property"></a>LANDSCAPE_RIGHT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>orientation (home button on right) constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="NOTIFICATION_DURATION_LONG-property"></a>NOTIFICATION_DURATION_LONG</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>Duration of the notification</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="NOTIFICATION_DURATION_SHORT-property"></a>NOTIFICATION_DURATION_SHORT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>Duration of the notification</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PICKER_TYPE_COUNT_DOWN_TIMER-property"></a>PICKER_TYPE_COUNT_DOWN_TIMER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>picker type constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PICKER_TYPE_DATE-property"></a>PICKER_TYPE_DATE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>picker type constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PICKER_TYPE_DATE_AND_TIME-property"></a>PICKER_TYPE_DATE_AND_TIME</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>picker type constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PICKER_TYPE_PLAIN-property"></a>PICKER_TYPE_PLAIN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>picker type constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PICKER_TYPE_TIME-property"></a>PICKER_TYPE_TIME</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>picker type constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PORTRAIT-property"></a>PORTRAIT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>orientation (home button on bottom) constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_DEFAULT-property"></a>RETURNKEY_DEFAULT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_DONE-property"></a>RETURNKEY_DONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_EMERGENCY_CALL-property"></a>RETURNKEY_EMERGENCY_CALL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_GO-property"></a>RETURNKEY_GO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_GOOGLE-property"></a>RETURNKEY_GOOGLE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_JOIN-property"></a>RETURNKEY_JOIN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_NEXT-property"></a>RETURNKEY_NEXT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_ROUTE-property"></a>RETURNKEY_ROUTE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_SEARCH-property"></a>RETURNKEY_SEARCH</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_SEND-property"></a>RETURNKEY_SEND</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RETURNKEY_YAHOO-property"></a>RETURNKEY_YAHOO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>textfield return key constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_ALIGNMENT_CENTER-property"></a>TEXT_ALIGNMENT_CENTER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text align constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_ALIGNMENT_LEFT-property"></a>TEXT_ALIGNMENT_LEFT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text align constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_ALIGNMENT_RIGHT-property"></a>TEXT_ALIGNMENT_RIGHT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text align constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_AUTOCAPITALIZATION_ALL-property"></a>TEXT_AUTOCAPITALIZATION_ALL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text capitalization constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_AUTOCAPITALIZATION_NONE-property"></a>TEXT_AUTOCAPITALIZATION_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text capitalization constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_AUTOCAPITALIZATION_SENTENCES-property"></a>TEXT_AUTOCAPITALIZATION_SENTENCES</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text capitalization constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_AUTOCAPITALIZATION_WORDS-property"></a>TEXT_AUTOCAPITALIZATION_WORDS</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text capitalization constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_VERTICAL_ALIGNMENT_BOTTOM-property"></a>TEXT_VERTICAL_ALIGNMENT_BOTTOM</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text vertical align constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_VERTICAL_ALIGNMENT_CENTER-property"></a>TEXT_VERTICAL_ALIGNMENT_CENTER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text vertical align constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_VERTICAL_ALIGNMENT_TOP-property"></a>TEXT_VERTICAL_ALIGNMENT_TOP</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>text vertical align constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="UNKNOWN-property"></a>UNKNOWN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>orientation constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="UPSIDE_PORTRAIT-property"></a>UPSIDE_PORTRAIT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>orientation (home button on top) constant</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><h3 id="design">Design</h3>
+<p>The UI module is broken down into 3 major area:</p>
+<ul>
+<li><strong>Views</strong> - <a href="Titanium.UI.View.html">Views</a> are containers that host visual elements such as controls or other views.  Views can have their properties customized, such as their border color and radius, can fire events such as swipe events or touches, and can optionally contain a hierarchy or other views as children. In Titanium, most views are specialized to perform both a visual function and set of interaction behaviors such as <a href="Titanium.UI.TableView.html">Table View</a> or <a href="Titanium.UI.CoverFlowView.html">Coverflow View</a>.  Views are always named with the suffix <tt>View</tt>.</li>
+<li><strong>Controls</strong> - controls, or sometimes referred as widgets, are visual elements such as <a href="Titanium.UI.Slider.html">sliders</a>, <a href="Titanium.UI.Button.html">buttons</a> and <a href="Titanium.UI.Switch.html">switches</a>. They provide a visual element which has a defined behavior and typical have special configuration and special events.  Controls themselves are views and also inherit a views properties, functions and events.</li>
+<li><strong>Windows</strong> - <a href="Titanium.UI.Window.html">Windows</a> are typically top-level visual constructs that are the main part of your interface. An application will always have at least one window and windows can take different shapes and sizes, can have display and interaction properties such as fullscreen or modal and can be customized, such as changing their opacity or background color. Windows themselves are views and also inherit a views properties, functions and events. There are a few specialization of Windows such as a <a href="Titanium.UI.TabGroup.html">Tab Group</a> which offer additional behavior beyond the basic Window.</li>
+</ul>
+<p>Titanium uses the <a href="http://en.wikipedia.org/wiki/Factory_method_pattern">Factory Pattern</a> for constructing objects and a general naming pattern for APIs.  For example, to construct a <a href="Titanium.UI.AlertDialog.html">Alert Dialog</a>, you call the method <a href="Titanium.UI.createAlertDialog.html">Titanium.UI.createAlertDialog</a>.  To create a <a href="Titanium.UI.TextArea.html">TextArea</a>, you call the method <a href="Titanium.UI.createTextArea.html">Titanium.UI.createTextArea</a>.  Once an object is created, it will be available until it goes out of scope.</p>
+<h3 id="optimizations">Optimizations</h3>
+<p>UI objects are optimized by Titanium to not be realized into the drawing context and placed into the device UI surface until needed.  That means that you can create UI objects, set their properties and add them to their hierarchy without much worry about memory or performance.  When the native drawing surface needs to render a specific view or control, Titanium will automatically create the view as needed.  Additionally, Titanium is optimized to also release memory once the view is no longer needed, on screen or in low memory situations.  However, it's a good idea to help Titanium along in certain cases where you are no longer using objects.  For example, you should call <tt>close</tt> on a <a href="Titanium.UI.Window.html">Window</a> instance when you are no longer using it.  You can safely call <tt>open</tt> on the <a href="Titanium.UI.Window.html">Window</a> again to re-open it.<br>
+</p>
+<h3 id="global_context_and_threading">Global Context and Threading</h3>
+<p>Be careful with the objects that are created in <tt>app.js</tt> but only used once.  Since the <tt>app.js</tt> context is global and generally is not garbage collected until the application exits, you should think about the design of your application as it relates to this fact.  <a href="Titanium.UI.Window.html">Window</a> objects that are opened up with the <tt>url</tt> property to another Javascript file contain a nice way to decompose your application into smaller units.  The other benefit is that when a <a href="Titanium.UI.Window.html">Window</a> is closed, its resources can be immediately cleaned up, saving resources such as memory and CPU.  Additionally, <a href="Titanium.UI.Window.html">Window</a> objects run in a separate Javascript context and Thread. While all UI processing is done on the main UI thread, other processing inside a Window or the <tt>app.js</tt> that does not have UI interaction will run in its own thread.</p>
+<h3 id="portability">Portability</h3>
+<p>Titanium components are designed to be portable across as many platforms as it supports.  However, there are cases where a device either does not support a specific feature or capability or where it support additional functionality.  For cases where the device OS supports capabilities that other platforms do not, we attempt to place those capabilities in a separate namespace, such as <a href="Titanium.UI.iPhone.html">Titanium.UI.iPhone</a>. However, in cases where the control is in a common namespace and support additional features, we continue to place that functionality directly on the object.</p></div>
+    </table>
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="create2DMatrix-method">
+        <a name="create2DMatrix-method"></a><b>create2DMatrix</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.2DMatrix.html">Titanium.UI.2DMatrix</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.2DMatrix</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="create3DMatrix-method">
+        <a name="create3DMatrix-method"></a><b>create3DMatrix</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.3DMatrix.html">Titanium.UI.3DMatrix</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.3DMatrix</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createActivityIndicator-method">
+        <a name="createActivityIndicator-method"></a><b>createActivityIndicator</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.ActivityIndicator.html">Titanium.UI.ActivityIndicator</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.ActivityIndicator</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createAlertDialog-method">
+        <a name="createAlertDialog-method"></a><b>createAlertDialog</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.AlertDialog.html">Titanium.UI.AlertDialog</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.AlertDialog</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createAnimation-method">
+        <a name="createAnimation-method"></a><b>createAnimation</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Animation.html">Titanium.UI.Animation</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Animation</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createButton-method">
+        <a name="createButton-method"></a><b>createButton</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Button.html">Titanium.UI.Button</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Button</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createButtonBar-method">
+        <a name="createButtonBar-method"></a><b>createButtonBar</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.ButtonBar.html">Titanium.UI.ButtonBar</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.ButtonBar</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createCoverFlowView-method">
+        <a name="createCoverFlowView-method"></a><b>createCoverFlowView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.CoverFlowView.html">Titanium.UI.CoverFlowView</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.CoverFlowView</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createDashboardItem-method">
+        <a name="createDashboardItem-method"></a><b>createDashboardItem</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.DashboardItem.html">Titanium.UI.DashboardItem</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.DashboardItem</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createDashboardView-method">
+        <a name="createDashboardView-method"></a><b>createDashboardView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.DashboardView.html">Titanium.UI.DashboardView</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.DashboardView</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createEmailDialog-method">
+        <a name="createEmailDialog-method"></a><b>createEmailDialog</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.EmailDialog.html">Titanium.UI.EmailDialog</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.EmailDialog</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createImageView-method">
+        <a name="createImageView-method"></a><b>createImageView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.ImageView.html">Titanium.UI.ImageView</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.ImageView</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createLabel-method">
+        <a name="createLabel-method"></a><b>createLabel</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Label.html">Titanium.UI.Label</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Label</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createOptionDialog-method">
+        <a name="createOptionDialog-method"></a><b>createOptionDialog</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.OptionDialog.html">Titanium.UI.OptionDialog</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.OptionDialog</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createPicker-method">
+        <a name="createPicker-method"></a><b>createPicker</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Picker.html">Titanium.UI.Picker</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Picker</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createPickerColumn-method">
+        <a name="createPickerColumn-method"></a><b>createPickerColumn</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.PickerColumn.html">Titanium.UI.PickerColumn</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.PickerColumn</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createPickerRow-method">
+        <a name="createPickerRow-method"></a><b>createPickerRow</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.PickerRow.html">Titanium.UI.PickerRow</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.PickerRow</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createProgressBar-method">
+        <a name="createProgressBar-method"></a><b>createProgressBar</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.ProgressBar.html">Titanium.UI.ProgressBar</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.ProgressBar</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createScrollView-method">
+        <a name="createScrollView-method"></a><b>createScrollView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.ScrollView.html">Titanium.UI.ScrollView</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.ScrollView</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createScrollableView-method">
+        <a name="createScrollableView-method"></a><b>createScrollableView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.ScrollableView.html">Titanium.UI.ScrollableView</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.ScrollableView</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createSearchBar-method">
+        <a name="createSearchBar-method"></a><b>createSearchBar</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.SearchBar.html">Titanium.UI.SearchBar</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.SearchBar</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createSlider-method">
+        <a name="createSlider-method"></a><b>createSlider</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Slider.html">Titanium.UI.Slider</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Slider</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createSwitch-method">
+        <a name="createSwitch-method"></a><b>createSwitch</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Switch.html">Titanium.UI.Switch</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Switch</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTab-method">
+        <a name="createTab-method"></a><b>createTab</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Tab.html">Titanium.UI.Tab</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Tab</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTabGroup-method">
+        <a name="createTabGroup-method"></a><b>createTabGroup</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.TabGroup.html">Titanium.UI.TabGroup</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.TabGroup</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTabbedBar-method">
+        <a name="createTabbedBar-method"></a><b>createTabbedBar</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.TabbedBar.html">Titanium.UI.TabbedBar</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.TabbedBar</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTableView-method">
+        <a name="createTableView-method"></a><b>createTableView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.TableView.html">Titanium.UI.TableView</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.TableView</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTableViewRow-method">
+        <a name="createTableViewRow-method"></a><b>createTableViewRow</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.TableViewRow.html">Titanium.UI.TableViewRow</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.TableViewRow</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTableViewSection-method">
+        <a name="createTableViewSection-method"></a><b>createTableViewSection</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.TableViewSection.html">Titanium.UI.TableViewSection</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.TableViewSection</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTextArea-method">
+        <a name="createTextArea-method"></a><b>createTextArea</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.TextArea.html">Titanium.UI.TextArea</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.TextArea</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTextField-method">
+        <a name="createTextField-method"></a><b>createTextField</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.TextField.html">Titanium.UI.TextField</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.TextField</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createToolbar-method">
+        <a name="createToolbar-method"></a><b>createToolbar</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Toolbar.html">Titanium.UI.Toolbar</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Toolbar</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createView-method">
+        <a name="createView-method"></a><b>createView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.View.html">Titanium.UI.View</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.View</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createWebView-method">
+        <a name="createWebView-method"></a><b>createWebView</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.WebView.html">Titanium.UI.WebView</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.WebView</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createWindow-method">
+        <a name="createWindow-method"></a><b>createWindow</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.Window.html">Titanium.UI.Window</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.Window</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

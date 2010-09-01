@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI.iPhone</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.UI.iPhone 
+        </h1>
+	<ul class="files">
+	  <li>iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The iPhone/iPad specific UI capabilities.  All properties, methods and events in this namespace will only work on the Apple iPhone or iPad related devices.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createNavigationGroup-method">createNavigationGroup <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hideStatusBar-method">hideStatusBar <span class="params">(animated, animationStyle)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#showStatusBar-method">showStatusBar <span class="params">(animated, animationStyle)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_PRESENTATION_CURRENT_CONTEXT-property"></a>MODAL_PRESENTATION_CURRENT_CONTEXT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>The view is presented using the same style as its parent window. This is currently only available currently on iPhone/iPad and SDK 3.2+.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_PRESENTATION_FORMSHEET-property"></a>MODAL_PRESENTATION_FORMSHEET</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>The width and height of the presented window are smaller than those of the screen and the view is centered on the screen. If the device is in a landscape orientation and the keyboard is visible, the position of the view is adjusted upward so that the view remains visible. All uncovered areas are dimmed to prevent the user from interacting with them. This is currently only available currently on iPhone/iPad and SDK 3.2+.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_PRESENTATION_FULLSCREEN-property"></a>MODAL_PRESENTATION_FULLSCREEN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>The presented window covers the screen. This is currently only available currently on iPhone/iPad and SDK 3.2+.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_PRESENTATION_PAGESHEET-property"></a>MODAL_PRESENTATION_PAGESHEET</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>The height of the presented window is set to the height of the screen and the view's width is set to the width of the screen in a portrait orientation. Any uncovered areas are dimmed to prevent the user from interacting with them. (In portrait orientations, this option is essentially the same as Titanium.UI.iPhone.MODAL_PRESENTATION_FULLSCREEN). This is currently only available currently on iPhone/iPad and SDK 3.2+.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_TRANSITION_STYLE_COVER_VERTICAL-property"></a>MODAL_TRANSITION_STYLE_COVER_VERTICAL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>When the window is presented, its view slides up from the bottom of the screen. On dismissal, the view slides back down. This is the default transition style. This is currently only available currently on iPhone/iPad.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_TRANSITION_STYLE_CROSS_DISSOLVE-property"></a>MODAL_TRANSITION_STYLE_CROSS_DISSOLVE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>When the window is presented, the current view fades out while the new view fades in at the same time. On dismissal, a similar type of cross-fade is used to return to the original view. This is currently only available currently on iPhone/iPad.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL-property"></a>MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>When the window is presented, the current view initiates a horizontal 3D flip from right-to-left, resulting in the revealing of the new view as if it were on the back of the previous view. On dismissal, the flip occurs from left-to-right, returning to the original view. This is currently only available currently on iPhone/iPad.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODAL_TRANSITION_STYLE_PARTIAL_CURL-property"></a>MODAL_TRANSITION_STYLE_PARTIAL_CURL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>When the window is presented, one corner of the current view curls up to reveal the modal view underneath. On dismissal, the curled up page unfurls itself back on top of the modal view. A modal view presented using this transition is itself prevented from presenting any additional modal views. This transition style is supported only if the window is presenting a Titanium.UI.iPhone.MODAL_PRESENTATION_FULLSCREEN modal presentation style.  This is currently only available currently on iPhone/iPad and SDK 3.2+.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="appBadge-property"></a>appBadge</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>set the application badge for the application's icon in the springboard</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="appSupportsShakeToEdit-property"></a>appSupportsShakeToEdit</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>control whether the shake to edit system wide capability is enabled</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="statusBarHidden-property"></a>statusBarHidden</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>control the status bar visibility</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="statusBarStyle-property"></a>statusBarStyle</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant that controls the status bar color style</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createNavigationGroup-method">
+        <a name="createNavigationGroup-method"></a><b>createNavigationGroup</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.UI.iPhone.NavigationGroup.html">Titanium.UI.iPhone.NavigationGroup</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.iPhone.NavigationGroup</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hideStatusBar-method">
+        <a name="hideStatusBar-method"></a><b>hideStatusBar</b> <span class="params">(animated, animationStyle)</span>
+      </div>
+      
+      <div class="description">
+        <p>convenience method to hide the status bar</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>animated</td>
+            <td class='attr-rw'>
+              [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate if the action should be animated</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>animationStyle</td>
+            <td class='attr-rw'>
+              [int]
+            </td>
+            <td class='attr-desc'>the animation style</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="showStatusBar-method">
+        <a name="showStatusBar-method"></a><b>showStatusBar</b> <span class="params">(animated, animationStyle)</span>
+      </div>
+      
+      <div class="description">
+        <p>convenience method to show the status bar</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>animated</td>
+            <td class='attr-rw'>
+              [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate if the action should be animated</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>animationStyle</td>
+            <td class='attr-rw'>
+              [int]
+            </td>
+            <td class='attr-desc'>the animation style</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

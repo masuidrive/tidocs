@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Network.BonjourService</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Network.BonjourService 
+        </h1>
+	<ul class="files">
+	  <li>iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The BonjourService instance returned either from <a href="Titanium.Network.createBonjourService.html">Titanium.Network.createBonjourService</a> or via the service list from a BonjourBrowser <tt>updatedServices</tt> event.  This object describes a service on the network which is published by Bonjour.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#publish-method">publish <span class="params">(socket)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#resolve-method">resolve <span class="params">(timeout)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#stop-method">stop <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="domain-property"></a>domain</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the domain of the service</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="isLocal-property"></a>isLocal</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>whether or not the service is local to the device</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="name-property"></a>name</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the name of the service</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="socket-property"></a>socket</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>the TCPSocket object that is used to connect to the service</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="type-property"></a>type</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the type of the service</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><p>You can only publish Bonjour services attached to a socket which is currently listening; you cannot publish a service for a remotely connected socket.  If you stop the Bonjour service and wish to close the socket it uses, it is strongly recommended that you stop the service first.  When a window which publishes a Bonjour service is closed, you must stop the service if the associated socket is also to be closed, or if it is no longer necessary to publish.  Unlike other network operations, Bonjour service resolution and publishing is synchronous, so be aware that your code may block while resolution is going on.  In particular, you may wish to display UI elements indicating background activity before beginning resolution.</p></div>
+    </table>
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="publish-method">
+        <a name="publish-method"></a><b>publish</b> <span class="params">(socket)</span>
+      </div>
+      
+      <div class="description">
+        <p>Publish a Bonjour service to the network.  Only works if isLocal is TRUE</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>socket</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>a TCPSocket object to associate with the Bonjour service.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="resolve-method">
+        <a name="resolve-method"></a><b>resolve</b> <span class="params">(timeout)</span>
+      </div>
+      
+      <div class="description">
+        <p>Resolve a Bonjour service from the network.  Must be done before attempting to access the service's socket information, if a remote service.  You cannot resolve a locally published service.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>timeout</td>
+            <td class='attr-rw'>
+              [double]
+            </td>
+            <td class='attr-desc'>the timeout for service resolution, in seconds.  Optional, default is 120s.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stop-method">
+        <a name="stop-method"></a><b>stop</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>Halts publication of a service.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

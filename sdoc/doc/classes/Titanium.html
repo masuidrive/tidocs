@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The top level Titanium module.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#include-method">include <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="userAgent-property"></a>userAgent</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the user-agent string used by Titanium</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="version-property"></a>version</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the version of Titanium that is executing</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><p>Titanium provides a number of built-in objects in the Javascript that are not part of the Titanium namespace.  Specifically, the following are available.</p>
+<h4 id="json">JSON</h4>
+<p>Titanium has a built-in JSON parser with two main functions: <tt>parse</tt> and <tt>stringify</tt>.  <tt>JSON.parse</tt> will safely evaluate a string encoded as Javascript into a Javascript object.  <tt>JSON.stringify</tt> will encode a Javascript object into a string.</p>
+<h4 id="timers">Timers</h4>
+<p>Titanium has built-in support for one-shot and repeating timers with two main functions: <tt>setTimeout</tt> and <tt>setInterval</tt>.  <tt>setTimeout</tt> takes 2 arguments: function and timeout in milliseconds after which the function should be executed and returns a timer handle that can be used to cancel a pending timer with <tt>clearTimeout</tt>.  <tt>setInterval</tt> takes 2 arguments: function and timeout in milliseconds for how often the function should be executed until cancelled and returns a timer handle that can be used to cancel a timer with <tt>clearInterval</tt>.</p>
+<h4 id="alert">Alert</h4>
+<p>Titanium has a built-in convenience function <tt>alert</tt> which can be used as a shortcut to <a href="Titanium.UI.createAlertDialog.html">Titanium.UI.createAlertDialog</a> for creating a message box.  Note that unlike a web browser-based version of <tt>alert</tt>, the method is asynchronous.</p></div>
+    </table>
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="include-method">
+        <a name="include-method"></a><b>include</b> <span class="params">(name)</span>
+      </div>
+      
+      <div class="description">
+        <p>one or more filenames to include as if the Javascript code was written in place.  This is similar to a C <tt>#include</tt> function.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>filename to include</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

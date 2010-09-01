@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Network.HTTPClient</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Network.HTTPClient 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The HttpClient instance returned from <a href="Titanium.Network.createHTTPClient.html">Titanium.Network.createHTTPClient</a>. This object (mostly) implements the XMLHttpRequest specification.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#abort-method">abort <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getResponseHeader-method">getResponseHeader <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#open-method">open <span class="params">(method, url, async)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#send-method">send <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRequestHeader-method">setRequestHeader <span class="params">(name, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTimeout-method">setTimeout <span class="params">(timeout)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DONE-property"></a>DONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the DONE readyState constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="HEADERS_RECEIVED-property"></a>HEADERS_RECEIVED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the HEADERS_RECEIVED readyState constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LOADING-property"></a>LOADING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the LOADING readyState constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="OPENED-property"></a>OPENED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the OPENED readyState constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="UNSENT-property"></a>UNSENT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the UNSET readyState constant</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="connected-property"></a>connected</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate that the response was successful</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="connectionType-property"></a>connectionType</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the connection type, normally either GET or POST.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="location-property"></a>location</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the absolute URL of the request</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ondatastream-property"></a>ondatastream</td>
+            <td class='attr-rw'>
+                [function]
+            </td>
+            <td class='attr-desc'>set this to a function before calling open to cause the function to be called at regular intervals as the request data is being received. the progress property of the event will contain a value from 0.0-1.0 with the progress.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="onerror-property"></a>onerror</td>
+            <td class='attr-rw'>
+                [function]
+            </td>
+            <td class='attr-desc'>set this to a function before calling open to cause the function to be called upon a error response</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="onload-property"></a>onload</td>
+            <td class='attr-rw'>
+                [function]
+            </td>
+            <td class='attr-desc'>set this to a function before calling open to cause the function to be called upon a successful response</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="onreadystatechange-property"></a>onreadystatechange</td>
+            <td class='attr-rw'>
+                [function]
+            </td>
+            <td class='attr-desc'>set this to a function before calling open to cause the function to be called for each readyState change</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="onsendstream-property"></a>onsendstream</td>
+            <td class='attr-rw'>
+                [function]
+            </td>
+            <td class='attr-desc'>set this to a function before calling open to cause the function to be called at regular intervals as the request data is being transmitted. the progress property of the event will contain a value from 0.0-1.0 with the progress.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="readyState-property"></a>readyState</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the readyState value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="responseData-property"></a>responseData</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>the response data as a Blob object.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="responseText-property"></a>responseText</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the response as text or null if an error was received or no data was returned</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="responseXML-property"></a>responseXML</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>the response object as an XML DOMDocument object. returns null if the content type returned by the server was not XML or the content could not be parsed</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="status-property"></a>status</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the response HTTP status code</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="timeout-property"></a>timeout</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>timeout is milliseconds when the connection should be aborted</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="validatesSecureCertificate-property"></a>validatesSecureCertificate</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>set this to control how SSL certification validation is performed on connection.  defaults to false if in simulator or device testing and true if release for distribution mode.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="abort-method">
+        <a name="abort-method"></a><b>abort</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>abort a pending request</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getResponseHeader-method">
+        <a name="getResponseHeader-method"></a><b>getResponseHeader</b> <span class="params">(name)</span>
+      </div>
+      
+      <div class="description">
+        <p>return the response header.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the header name</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>string</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="open-method">
+        <a name="open-method"></a><b>open</b> <span class="params">(method, url, async)</span>
+      </div>
+      
+      <div class="description">
+        <p>open the request and ready the connection</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>method</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the HTTP method</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>url</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the URL for the request</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>async</td>
+            <td class='attr-rw'>
+              [boolean]
+            </td>
+            <td class='attr-desc'>optional property to indicate if asynchronous (default) or not</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="send-method">
+        <a name="send-method"></a><b>send</b> <span class="params">(data)</span>
+      </div>
+      
+      <div class="description">
+        <p>send the request</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>data</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>the data to send in the request. can either be null, dictionary, string, File object or Blob.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRequestHeader-method">
+        <a name="setRequestHeader-method"></a><b>setRequestHeader</b> <span class="params">(name, value)</span>
+      </div>
+      
+      <div class="description">
+        <p>set the request header. Must be called after <tt>open</tt> but before <tt>send</tt>.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the header</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>value</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>value of the header. May be null to clearing out a property, such as X-Requested-With</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTimeout-method">
+        <a name="setTimeout-method"></a><b>setTimeout</b> <span class="params">(timeout)</span>
+      </div>
+      
+      <div class="description">
+        <p>set the request timeout</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>timeout</td>
+            <td class='attr-rw'>
+              [double]
+            </td>
+            <td class='attr-desc'>the timeout in milliseconds</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

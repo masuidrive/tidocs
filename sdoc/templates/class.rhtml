@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title><%= h klass['fullname'] %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="<%= "#{rel_prefix}/css/reset.css" %>" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<%= "#{rel_prefix}/css/main.css" %>" type="text/css" media="screen" />
+    <script src="<%= "#{rel_prefix}/js/jquery-1.3.2.min.js" %>" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= "#{rel_prefix}/js/jquery-effect.js" %>" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= "#{rel_prefix}/js/main.js" %>" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type"><%= h klass['type'].gsub(/\b\w/){ $&.upcase } %></span> 
+            <%= h klass['fullname'] %> 
+        </h1>
+	<ul class="files">
+	  <li><%= h klass['platforms'].map{|s| {'iphone'=>'iPhone', 'ipad'=>'iPad', 'android' => 'Android'}[s] || s }.join(", ") %></li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    <% unless (desc = klass['description']).empty? %>
+    <div class="description">
+        <%= desc %>
+    </div>
+    <% end %>
+
+    <% 
+        list = klass['methods']
+    %>
+    <% unless list.empty? %>
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    <% list.each do |method| %>
+            <ul>
+                <li><a href="#<%= method['name'] %>-method"><%= method['name'] %> <span class="params">(<%=h  method['parameters'].map{|p| p['name']}.join(", ") %>)</span></a></li>
+            </ul>
+    <% end %>
+    <% end %>
+
+    <% unless klass['properties'].empty? %>
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        <% klass['properties'].each do |prop| %>
+        <tr valign='top'>
+            <td class='attr-name'><a name="<%= h prop['name'] %>-property"></a><%= h prop['name'] %></td>
+            <td class='attr-rw'>
+                [<%=h prop['type'] %>]
+            </td>
+            <td class='attr-desc'><%= strip_p(prop['value']) %></td>
+        </tr>
+        <% end %>
+    </table>
+    <% end %>
+
+    <% unless klass['events'].empty? %>
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        <% klass['events'].each do |event| %>
+        <tr valign='top'>
+            <td class='attr-name'><a href="#<%= event['name'] %>-event"><%= h event['name'] %></a></td>
+            <td class='attr-desc'><%= strip_p(event['value']) %></td>
+        </tr>
+        <% end %>
+    </table>
+    <% end %>
+
+    <% unless klass['notes'].nil? || klass['notes']=='' %>
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><%= klass['notes'] %></div>
+    </table>
+    <% end %>
+
+    <% unless klass['examples'].empty? %>
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        <% klass['examples'].each do |example| %>
+	<div class="subsectiontitle"><%=h example['description'] %></div>
+	<div class="code"><%= example['code'] %></div>
+        <% end %>
+    </table>
+    <% end %>
+
+
+    <% unless klass['methods'].empty? %>
+    <div class="sectiontitle">Methods</div>
+    <% klass['methods'].each do |method| %>
+    <div class="method">
+      <div class="title" id="<%= method['name'] %>-method">
+        <a name="<%= method['name'] %>-method"></a><b><%= h method['name'] %></b> <span class="params">(<%= h method['parameters'].map{|p| p['name']}.join(', ') %>)</span>
+      </div>
+      <% unless (description = method['value']).nil? %>
+      <div class="description">
+        <%= description %>
+      </div>
+      <% end %>
+
+      <% unless (params = method['parameters']).empty? %>
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          <% params.each do |param| %>
+          <tr valign='top'>
+            <td class='attr-name'><%= h param['name'] %></td>
+            <td class='attr-rw'>
+              [<%=h param['type'] %>]
+            </td>
+            <td class='attr-desc'><%= strip_p(param['description']) %></td>
+          </tr>
+          <% end %>
+	</table>
+      </div>
+      <% end %>
+      <div class="description">
+	<h4>Return Type</h4>
+	<div><%=h method['returntype'] %></div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+
+
+    <% unless klass['events'].empty? %>
+    <div class="sectiontitle">Events</div>
+    <% klass['events'].each do |event| %>
+    <div class="method">
+      <div class="title" id="<%= event['name'] %>-event">
+        <a name="<%= event['name'] %>-method"></a><b><%= h event['name'] %></b>
+      </div>
+      
+      <% unless (description = event['value']).nil? %>
+      <div class="description">
+        <%= description %>
+      </div>
+      <% end %>
+
+      <% unless (params = event['properties']).nil? %>
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          <% params.each do |name, info| %>
+          <tr valign='top'>
+            <td class='attr-name'><%= h name %></td>
+            <td class='attr-desc'><%= strip_p(info) %></td>
+          </tr>
+          <% end %>
+	</table>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+    <% end %>
+
+
+</div>
+    </div>
+  </body>
+</html>    

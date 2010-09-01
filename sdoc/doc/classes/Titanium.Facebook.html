@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Facebook</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Facebook 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The top level Facebook module.  The Facebook module is used for connecting your application with 
+Facebook through Facebook Connect.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createLoginButton-method">createLoginButton <span class="params">(params, parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#execute-method">execute <span class="params">(method, params, callback, data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hasPermission-method">hasPermission <span class="params">(permission)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isLoggedIn-method">isLoggedIn <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#publishStream-method">publishStream <span class="params">(title, data, target, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#query-method">query <span class="params">(fql, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#requestPermission-method">requestPermission <span class="params">(permission, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="loggedIn-property"></a>loggedIn</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>return true if the user has logged in</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="permissions-property"></a>permissions</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>return a dictionary of permissions with the keys being the name of the permission and the value being a boolean of true if granted, false if not granted</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="session-property"></a>session</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>return the special properties of the session</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="userId-property"></a>userId</td>
+            <td class='attr-rw'>
+                [long]
+            </td>
+            <td class='attr-desc'>the unique user id returned from Facebook. returns 0 if not logged in</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#login-event">login</a></td>
+            <td class='attr-desc'>fired at session login</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#logout-event">logout</a></td>
+            <td class='attr-desc'>fired at session logout</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createLoginButton-method">
+        <a name="createLoginButton-method"></a><b>createLoginButton</b> <span class="params">(params, parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Facebook.LoginButton.html">Titanium.Facebook.LoginButton</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>params</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>the parameters for the request. the following keys are valid: apikey (the application API key), secret (the application API secret or null if using a session proxy), sessionProxy (the URL to the application session proxy), style (the button style - which is either normal or wide).</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Facebook.LoginButton</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="execute-method">
+        <a name="execute-method"></a><b>execute</b> <span class="params">(method, params, callback, data)</span>
+      </div>
+      
+      <div class="description">
+        <p>execute a FB API execute request</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>method</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>method to execute</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>params</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>JSON serializable object or null (if no parameters) to send with the request</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>the callback function to execute upon receiving a response. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed.</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>data</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>the data payload for the request. Must either null, a string or a Blob object.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hasPermission-method">
+        <a name="hasPermission-method"></a><b>hasPermission</b> <span class="params">(permission)</span>
+      </div>
+      
+      <div class="description">
+        <p>checks the existing permission and returns true if the user has granted the requested permission</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>permission</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the permission to check</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>boolean</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isLoggedIn-method">
+        <a name="isLoggedIn-method"></a><b>isLoggedIn</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>return true if the user has logged in</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="publishStream-method">
+        <a name="publishStream-method"></a><b>publishStream</b> <span class="params">(title, data, target, callback)</span>
+      </div>
+      
+      <div class="description">
+        <p>execute a stream request to FB</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>title</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the title of the stream post</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>data</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>the data to include in the post. Must be JSON serializable or null.</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>target</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the target user id to publish the stream or null if the logged in users account</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>the callback function to execute upon receiving a response. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed. the cancel property will be set to true if the user cancelled the dialog.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="query-method">
+        <a name="query-method"></a><b>query</b> <span class="params">(fql, callback)</span>
+      </div>
+      
+      <div class="description">
+        <p>execute a FQL query against the FB API</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>fql</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the FQL query to execute</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>the callback to execute with results once the query is completed. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="requestPermission-method">
+        <a name="requestPermission-method"></a><b>requestPermission</b> <span class="params">(permission, callback)</span>
+      </div>
+      
+      <div class="description">
+        <p>request a special permission from the user</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>permission</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the permission</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>the callback function to execute upon receiving a response. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed. the cancel property will be set to true if the user cancelled the dialog.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="login-event">
+        <a name="login-method"></a><b>login</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired at session login</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>cancel</td>
+            <td class='attr-desc'>true if the user cancelled the request by closing the dialog</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>success</td>
+            <td class='attr-desc'>true if the login was successful</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>error</td>
+            <td class='attr-desc'>error message if success was false</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="logout-event">
+        <a name="logout-method"></a><b>logout</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired at session logout</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>cancel</td>
+            <td class='attr-desc'>true if the user cancelled the request by closing the dialog</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>success</td>
+            <td class='attr-desc'>true if the logout was successful</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>error</td>
+            <td class='attr-desc'>error message if success was false</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

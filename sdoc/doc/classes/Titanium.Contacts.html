@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Contacts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Contacts 
+        </h1>
+	<ul class="files">
+	  <li>iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The top level Contacts module.  The Contacts module is used accessing the device Address Book.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createGroup-method">createGroup <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createPerson-method">createPerson <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAllGroups-method">getAllGroups <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAllPeople-method">getAllPeople <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getGroupByID-method">getGroupByID <span class="params">(id)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPeopleWithName-method">getPeopleWithName <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPersonByID-method">getPersonByID <span class="params">(id)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeGroup-method">removeGroup <span class="params">(group)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removePerson-method">removePerson <span class="params">(person)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#revert-method">revert <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#save-method">save <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#showContacts-method">showContacts <span class="params">(cancel, selectedPerson, selectedProperty, animated, fields)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CONTACTS_KIND_ORGANIZATION-property"></a>CONTACTS_KIND_ORGANIZATION</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for 'organization' kind property of Person object</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CONTACTS_KIND_PERSON-property"></a>CONTACTS_KIND_PERSON</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for 'person' kind property of Person object</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CONTACTS_SORT_FIRST_NAME-property"></a>CONTACTS_SORT_FIRST_NAME</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for sorting group members by first name</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CONTACTS_SORT_LAST_NAME-property"></a>CONTACTS_SORT_LAST_NAME</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for sorting group members by last name</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><p><a href="Titanium.Contacts.Person.html">Titanium.Contacts.Person</a> objects which have been removed from the database are invalidated after a save operation, whether from creating a new contact or explicitly calling <a href="Titanium.Contacts.save().html">Titanium.Contacts.save()</a>.  Using them may result in unpredictable beavhior, including crashes.</p></div>
+    </table>
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createGroup-method">
+        <a name="createGroup-method"></a><b>createGroup</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Contacts.Group.html">Titanium.Contacts.Group</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Contacts.Group</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createPerson-method">
+        <a name="createPerson-method"></a><b>createPerson</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Contacts.Person.html">Titanium.Contacts.Person</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Contacts.Person</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAllGroups-method">
+        <a name="getAllGroups-method"></a><b>getAllGroups</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>Returns an of all <a href="Titanium.Contacts.Group.html">Titanium.Contacts.Group</a> objects in the contacts database</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAllPeople-method">
+        <a name="getAllPeople-method"></a><b>getAllPeople</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>Returns an array of all <a href="Titanium.Contacts.Person.html">Titanium.Contacts.Person</a> objects in the contacts database</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getGroupByID-method">
+        <a name="getGroupByID-method"></a><b>getGroupByID</b> <span class="params">(id)</span>
+      </div>
+      
+      <div class="description">
+        <p>Returns a <a href="Titanium.Contacts.Group.html">Titanium.Contacts.Group</a> object with the given ID</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>id</td>
+            <td class='attr-rw'>
+              [int]
+            </td>
+            <td class='attr-desc'>The database ID of the group to retrieve</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPeopleWithName-method">
+        <a name="getPeopleWithName-method"></a><b>getPeopleWithName</b> <span class="params">(name)</span>
+      </div>
+      
+      <div class="description">
+        <p>Returns an array of <a href="Titanium.Contacts.Person.html">Titanium.Contacts.Person</a> objects who have a name (first, last, middle, composite) which matches the given name</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>The name to match in the database</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>array</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPersonByID-method">
+        <a name="getPersonByID-method"></a><b>getPersonByID</b> <span class="params">(id)</span>
+      </div>
+      
+      <div class="description">
+        <p>Returns a <a href="Titanium.Contacts.Person.html">Titanium.Contacts.Person</a> object with the given ID</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>id</td>
+            <td class='attr-rw'>
+              [int]
+            </td>
+            <td class='attr-desc'>The database ID of the person to retrieve</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeGroup-method">
+        <a name="removeGroup-method"></a><b>removeGroup</b> <span class="params">(group)</span>
+      </div>
+      
+      <div class="description">
+        <p>Removes a group from the contacts database</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>group</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>The Titanium.Contacts.Group object to remove from the database.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removePerson-method">
+        <a name="removePerson-method"></a><b>removePerson</b> <span class="params">(person)</span>
+      </div>
+      
+      <div class="description">
+        <p>Removes a person from the contacts database</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>person</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>The Titanium.Contacts.Person object to remove from the database.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="revert-method">
+        <a name="revert-method"></a><b>revert</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>Reverts all changes made to the previous save of the database</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="save-method">
+        <a name="save-method"></a><b>save</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>Saves all changes to contacts to the database</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="showContacts-method">
+        <a name="showContacts-method"></a><b>showContacts</b> <span class="params">(cancel, selectedPerson, selectedProperty, animated, fields)</span>
+      </div>
+      
+      <div class="description">
+        <p>Displays the contact picker</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>cancel</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>The function to call when selection is cancelled</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>selectedPerson</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>The function to call when a person is selected.  Mutually exclusive with selectedProperty</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>selectedProperty</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>The function to call when a property is selected.  Mutally exclusive with selectedPerson</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>animated</td>
+            <td class='attr-rw'>
+              [boolean]
+            </td>
+            <td class='attr-desc'>Whether or not to animate the show/hide of the contacts picker</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>fields</td>
+            <td class='attr-rw'>
+              [array]
+            </td>
+            <td class='attr-desc'>A list of field names to show when selecting properties, default is to show all available</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

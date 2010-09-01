@@ -1,0 +1,1616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI.Window</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.UI.Window 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Window is an empty drawing surface or container. The Window is created by the method <a href="Titanium.UI.createWindow.html">Titanium.UI.createWindow</a>. Unlike <a href="Titanium.UI.View-object">Views</a>, Windows can be opened and closed and can have special display properties such as <tt>fullscreen</tt> or <tt>modal</tt>.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#add-method">add <span class="params">(view)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#animate-method">animate <span class="params">(obj, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#close-method">close <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hide-method">hide <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#open-method">open <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#remove-method">remove <span class="params">(view)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#show-method">show <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#toImage-method">toImage <span class="params">(f)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="anchorPoint-property"></a>anchorPoint</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>a dictionary with properties x and y to indicate the anchor point value. anchor specifies the position by which animation should occur. center is 0.5, 0.5</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>read-only object with x and y properties of where the view is during animation</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backButtonTitle-property"></a>backButtonTitle</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>title for the back button. only available in iPhone. this is only valid when the window is a child of a tab.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backButtonTitleImage-property"></a>backButtonTitleImage</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>url to an image to show as the back button.  only available in iPhone. this is only valid when the window is a child of a tab.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundColor-property"></a>backgroundColor</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the background color of the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundGradient-property"></a>backgroundGradient</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>a background gradient for the view with the properties: type,startPoint,endPoint,startRadius,endRadius,backfillStart,backfillEnd,colors.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundImage-property"></a>backgroundImage</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the background image url of the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundLeftCap-property"></a>backgroundLeftCap</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>End caps specify the portion of an image that should not be resized when an image is stretched. This technique is used to implement buttons and other resizable image-based interface elements. When a button with end caps is resized, the resizing occurs only in the middle of the button, in the region between the end caps. The end caps themselves keep their original size and appearance. This property specifies the size of the left end cap. The middle (stretchable) portion is assumed to be 1 pixel wide. The right end cap is therefore computed by adding the size of the left end cap and the middle portion together and then subtracting that value from the width of the image</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundTopCap-property"></a>backgroundTopCap</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>End caps specify the portion of an image that should not be resized when an image is stretched. This technique is used to implement buttons and other resizable image-based interface elements. When a button with end caps is resized, the resizing occurs only in the middle of the button, in the region between the end caps. The end caps themselves keep their original size and appearance. This property specifies the size of the top end cap. The middle (stretchable) portion is assumed to be 1 pixel wide. The bottom end cap is therefore computed by adding the size of the top end cap and the middle portion together and then subtracting that value from the height of the image</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="barColor-property"></a>barColor</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>web named color or hex value for the color of the nav bar. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="barImage-property"></a>barImage</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>url to a local image to place as the background of the nav bar. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="borderColor-property"></a>borderColor</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the border color of the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="borderRadius-property"></a>borderRadius</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the border radius of the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="borderWidth-property"></a>borderWidth</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the border width of the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="bottom-property"></a>bottom</td>
+            <td class='attr-rw'>
+                [float,string]
+            </td>
+            <td class='attr-desc'>property for the view bottom position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="center-property"></a>center</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>a dictionary with properties x and y to indicate the center of the views position relative to the parent view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="exitOnClose-property"></a>exitOnClose</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>(Android only.) Boolean indicates if the application should exit when the Android back button is pressed while the window is being shown.  You can only set this as a createWindow({...}) option.  Setting it after window creation will no effect.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="fullscreen-property"></a>fullscreen</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean indicates if the window is fullscreen (no device chrome)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="height-property"></a>height</td>
+            <td class='attr-rw'>
+                [float,string]
+            </td>
+            <td class='attr-desc'>property for the view height. can be either float value or a string of the width.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="left-property"></a>left</td>
+            <td class='attr-rw'>
+                [float,string]
+            </td>
+            <td class='attr-desc'>property for the view left position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="leftNavButton-property"></a>leftNavButton</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>view to show in the left nav bar area. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="modal-property"></a>modal</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate if the window should be opened modal in front of other windows</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="navBarHidden-property"></a>navBarHidden</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>for modal windows, hide the nav bar (true) or show the nav bar (false, default).</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="opacity-property"></a>opacity</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the opacity from 0.0-1.0</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="orientationModes-property"></a>orientationModes</td>
+            <td class='attr-rw'>
+                [array]
+            </td>
+            <td class='attr-desc'>array of orientation mode constants defined in [Titanium.UI]</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="right-property"></a>right</td>
+            <td class='attr-rw'>
+                [float,string]
+            </td>
+            <td class='attr-desc'>property for the view right position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="rightNavButton-property"></a>rightNavButton</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>view to show in the right nav bar area. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="size-property"></a>size</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>the size of the view as a dictionary of width and height properties</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="tabBarHidden-property"></a>tabBarHidden</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate if the tab bar should be hidden. this is only valid when the window is a child of a tab.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="title-property"></a>title</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>title of the window.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="titleControl-property"></a>titleControl</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>view to show in the title area. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="titleImage-property"></a>titleImage</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>url to a image that show in the title area. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="titlePrompt-property"></a>titlePrompt</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>title prompt for the window. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="toolbar-property"></a>toolbar</td>
+            <td class='attr-rw'>
+                [array]
+            </td>
+            <td class='attr-desc'>array of button objects to show in the toolbar of the window. only available in iPhone. this is only valid when the window is a child of a tab.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="top-property"></a>top</td>
+            <td class='attr-rw'>
+                [float,string]
+            </td>
+            <td class='attr-desc'>property for the view top position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="touchEnabled-property"></a>touchEnabled</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>a boolean indicating if the view should receive touch events (true, default) or forward them to peers (false)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="transform-property"></a>transform</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>the transformation matrix to apply to the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="translucent-property"></a>translucent</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate if the nav bar is translucent. only available in iPhone.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="url-property"></a>url</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>url to a JavaScript file with the windows instructions. this window will create a new JavaScript sub-context that will run in its own thread and global variable space.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="visible-property"></a>visible</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>a boolean of the visibility of the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="width-property"></a>width</td>
+            <td class='attr-rw'>
+                [float,string]
+            </td>
+            <td class='attr-desc'>property for the view width. can either be `auto`, a float value or a string of the width.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="zIndex-property"></a>zIndex</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the z index position relative to other sibling views</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#blur-event">blur</a></td>
+            <td class='attr-desc'>fired when the window loses focus</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#click-event">click</a></td>
+            <td class='attr-desc'>fired when the device detects a click (longer than touch) against the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#close-event">close</a></td>
+            <td class='attr-desc'>fired when the window is closed</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#dblclick-event">dblclick</a></td>
+            <td class='attr-desc'>fired when the device detects a double click against the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#doubletap-event">doubletap</a></td>
+            <td class='attr-desc'>fired when the device detects a double tap against the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#focus-event">focus</a></td>
+            <td class='attr-desc'>fired when the window gains focus</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#open-event">open</a></td>
+            <td class='attr-desc'>fired when the window is opened</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#singletap-event">singletap</a></td>
+            <td class='attr-desc'>fired when the device detects a single tap against the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#swipe-event">swipe</a></td>
+            <td class='attr-desc'>fired when the device detects a swipe (left or right) against the view</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#touchcancel-event">touchcancel</a></td>
+            <td class='attr-desc'>fired when a touch event is interrupted by the device. this happens in circumenstances such as an incoming call to allow the UI to clean up state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#touchend-event">touchend</a></td>
+            <td class='attr-desc'>fired when a touch event is completed</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#touchmove-event">touchmove</a></td>
+            <td class='attr-desc'>fired as soon as the device detects movement of a touch.  Event coordinates are always relative to the view in which the initial touch occurred</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#touchstart-event">touchstart</a></td>
+            <td class='attr-desc'>fired as soon as the device detects a gesture</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#twofingertap-event">twofingertap</a></td>
+            <td class='attr-desc'>fired when the device detects a two-finger tap against the view</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><h3 id="sub-contexts">Sub-contexts</h3>
+<p>Windows can be loaded from another Javascript file by specifying the property <tt>url</tt> and reference a file relative to your application <tt>Resources</tt> folder.  It's important to note that Titanium will refuse to load Javascript files from a remote URL. Loading remote Javascript from a URL and providing it with the full capabilities of the Titanium API would be very dangerous. </p>
+<p>When you Window is loaded from a separate Javascript file, the code will be executed in a separate Javascript context (called a "sub-context") than your <tt>app.js</tt> global context.  It will also execute in its own separate thread.<br>
+</p>
+<p>The special property <a href="Titanium.UI.currentWindow.html">Titanium.UI.currentWindow</a> is available inside a sub-context that points to the Javascript instance by reference in the global context.<br>
+</p>
+<h3 id="passing_data">Passing Data</h3>
+<p>By default, sub-context variables cannot access Javascript references in the global context.  However, the global context can allow its sub-contexts the ability to have access to properties and functions in the global context by reference assignment.  An example best illustrates how to do this.</p>
+<p>In <tt>app.js</tt>, you could define a function and a property.</p>
+<pre><code>var a = 1;
+function b()
+{
+    return "hello";
+}
+</code></pre>
+
+<p>Now, you can create a new Window - let's call it <tt>foo.js</tt> - in your <tt>app.js</tt>.</p>
+<pre><code>var w = Titanium.UI.createWindow({
+    url:'foo.js'
+});
+</code></pre>
+
+<p>To <em>give</em> your new window access to both <tt>a</tt> and <tt>b</tt>, you would need to assign them to the new window reference <tt>w</tt>.</p>
+<pre><code>w.a = a;
+w.b = b;
+</code></pre>
+
+<p>Of course, you could give them a different name than their original names.  However, what name you give them in your <tt>app.js</tt> is how you will reference them in <tt>foo.js</tt>.  Now, let's look at the code for <tt>foo.js</tt>.</p>
+<pre><code>alert("b() = "+Titanium.UI.currentWindow.b());
+</code></pre>
+
+<p>In the above code, the <tt>foo.js</tt> will execute the function <tt>b</tt> in the global context and return the result.  Since <tt>b</tt> is a reference (vs. a copy by value), any changes made to these Javascript references will be immediately available in all sub-contexts.</p>
+<h3 id="events">Events</h3>
+<p>If you'd like to send events to a window from the global context and vice versa, you could use the built-in event mechanism.  For example, you could define a custom event called <tt>foo</tt>. The window could listen for this event and then respond with some action.  For example, in your sub-context you might define:</p>
+<pre><code>Titanium.UI.currentWindow.addEventListener('foo',function(e)
+{
+    Titanium.API.info("foo event received = "+JSON.stringify(e));
+});
+</code></pre>
+
+<p>You could now fire the event from <tt>app.js</tt> like this:</p>
+<pre><code>var window = Titanium.UI.createWindow({
+    url:'bar.js'
+});
+window.open();
+window.fireEvent('foo',{a:'b'});
+</code></pre>
+
+<p>It's worth noting two important limitations of the example above:</p>
+<ul>
+<li>You must open the event before you can send events to it. You also may have to fire the event after a specified amount of time if you intend to immediately send data to the window.  This is because windows are opened asynchronously and on a separate thread than the caller thread.</li>
+<li>You can only send JSON-serializable data in a fireEvent.  If you attempt to send objects that have function references, they will be null.</li>
+</ul>
+<h3 id="animations">Animations</h3>
+<p>Windows can be animated like any normal <a href="Titanium.UI.View.html">View</a>.  To transition between 2 windows, you can use the <tt>transition</tt> property on an animation.  For example, to flip right-to-left between two windows, you could do the following:</p>
+<pre><code>var window2 = Titanium.UI.createWindow({url:'foo.js'});
+var t = Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT;
+window1.animate({view:window2,transition:t});
+</code></pre>
+
+<p>In the above example, the <tt>window2</tt> view will be animated from the right-to-left over <tt>window1</tt>.</p>
+<p>Windows can be opened or closed with animation.  In the example below, we create a window that will open from small to large with a bounce effect.  This is done by applying a transformation at initialization time that scales the original size of the window to 0.  When the window is opened, a new 2D transformation is applied that will scale the window size from 0 to 110% of it's original size and then, after 1/20th of a second, will scale it back to it's original size at 100%. This gives the bounce effect during animation. </p>
+<pre><code>var t = Titanium.UI.create2DMatrix().scale(0);
+
+// create a window with the initial transform scaled to 0
+var w = Titanium.UI.createWindow({
+    backgroundColor:'#336699',
+    borderWidth:8,
+    borderColor:'#999',
+    height:400,
+    width:300,
+    borderRadius:10,
+    opacity:0.92,
+    transform:t
+});
+
+// create first transform to go beyond normal size
+var t1 = Titanium.UI.create2DMatrix().scale(1.1);
+
+var a = Titanium.UI.createAnimation();
+a.transform = t1;
+a.duration = 200;
+
+// when this animation completes, scale to normal size
+a.addEventListener('complete', function()
+{
+    // we can use the identity transform to take it back to it's real size
+    var t2 = Titanium.UI.create2DMatrix();
+    w.animate({transform:t2, duration:200});
+});
+</code></pre>
+
+<h3 id="ipad_modal_windows">iPad Modal Windows</h3>
+<p>For iPad, iPhone SDK 3.2 and Titanium 1.2 introduced several new ways of presenting modal windows.<br>
+</p>
+<p>The example below is a modal window.</p>
+<p><img alt="modal" src="http://img.skitch.com/20100406-bqb3f8pb6e4ger7wkcdcw5mbar.png"></p>
+<p>You can create this type of modal window on iPad with the following code snippet:</p>
+<pre><code>var window = Titanium.UI.createWindow();
+window.open({
+    modal:true,
+    modalTransitionStyle: Ti.UI.iPhone.MODAL_TRANSITION_STYLE_FLIP_HORIZONTAL,
+    modalStyle: Ti.UI.iPhone.MODAL_PRESENTATION_FORMSHEET
+})
+</code></pre>
+
+<h3 id="android_root_windows">Android "root" Windows</h3>
+<p>In Android, you may wish to specify that a window which you create (such as the first window) should be considered the root window and that the application should exit when the back button is pressed from that window.  This is particularly useful if your application is not using a Tab Group and therefore the splash screen window is appearing whenever you press the back button from your lowest window on the stack.</p>
+<p>To indicate that a particular window should cause an application to exit when the back button is pressed, pass <tt>exitOnClose: true</tt> as one of the creation arguments, as shown here:</p>
+<pre><code>var win = Titanium.UI.createWindow({
+    title: 'My Root Window',
+    exitOnClose: true
+});
+</code></pre></div>
+    </table>
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Full Screen Window example</div>
+	<div class="code"><p>Create a fullscreen window with a red background.</p>
+<pre><code>var window = Titanium.UI.createWindow({
+   backgroundColor:'red'
+});
+window.open({fullscreen:true});
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="add-method">
+        <a name="add-method"></a><b>add</b> <span class="params">(view)</span>
+      </div>
+      
+      <div class="description">
+        add a child to the view hierarchy
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>view</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>the view to add to this views hiearchy</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="animate-method">
+        <a name="animate-method"></a><b>animate</b> <span class="params">(obj, callback)</span>
+      </div>
+      
+      <div class="description">
+        animate the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>obj</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>either a dictionary of animation properties or an Animation object</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>function to be invoked upon completion of the animation</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="close-method">
+        <a name="close-method"></a><b>close</b> <span class="params">(options)</span>
+      </div>
+      
+      <div class="description">
+        <p>close the window</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>options</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>close the window with optional animation or display properties</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hide-method">
+        <a name="hide-method"></a><b>hide</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        hide the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="open-method">
+        <a name="open-method"></a><b>open</b> <span class="params">(options)</span>
+      </div>
+      
+      <div class="description">
+        <p>open the window</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>options</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>open the window with optional animation or display properties</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="remove-method">
+        <a name="remove-method"></a><b>remove</b> <span class="params">(view)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously add view from the view hiearchy
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>view</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>the view to remove from this views hiearchy</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="show-method">
+        <a name="show-method"></a><b>show</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        make the view visible
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="toImage-method">
+        <a name="toImage-method"></a><b>toImage</b> <span class="params">(f)</span>
+      </div>
+      
+      <div class="description">
+        return a Blob image of the rendered view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>f</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>function to be invoked upon completion. if non-null, this method will be performed asynchronously. if null, it will be performed immediately</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="blur-event">
+        <a name="blur-method"></a><b>blur</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when the window loses focus</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="click-event">
+        <a name="click-method"></a><b>click</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when the device detects a click (longer than touch) against the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="close-event">
+        <a name="close-method"></a><b>close</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when the window is closed</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="dblclick-event">
+        <a name="dblclick-method"></a><b>dblclick</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when the device detects a double click against the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="doubletap-event">
+        <a name="doubletap-method"></a><b>doubletap</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when the device detects a double tap against the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="focus-event">
+        <a name="focus-method"></a><b>focus</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when the window gains focus</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="open-event">
+        <a name="open-method"></a><b>open</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when the window is opened</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="singletap-event">
+        <a name="singletap-method"></a><b>singletap</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when the device detects a single tap against the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="swipe-event">
+        <a name="swipe-method"></a><b>swipe</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when the device detects a swipe (left or right) against the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>direction</td>
+            <td class='attr-desc'>direction of the swipe - either left or right</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="touchcancel-event">
+        <a name="touchcancel-method"></a><b>touchcancel</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when a touch event is interrupted by the device. this happens in circumenstances such as an incoming call to allow the UI to clean up state.
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="touchend-event">
+        <a name="touchend-method"></a><b>touchend</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when a touch event is completed
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="touchmove-event">
+        <a name="touchmove-method"></a><b>touchmove</b>
+      </div>
+      
+      
+      <div class="description">
+        fired as soon as the device detects movement of a touch.  Event coordinates are always relative to the view in which the initial touch occurred
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="touchstart-event">
+        <a name="touchstart-method"></a><b>touchstart</b>
+      </div>
+      
+      
+      <div class="description">
+        fired as soon as the device detects a gesture
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="twofingertap-event">
+        <a name="twofingertap-method"></a><b>twofingertap</b>
+      </div>
+      
+      
+      <div class="description">
+        fired when the device detects a two-finger tap against the view
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

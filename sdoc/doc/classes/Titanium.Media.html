@@ -1,0 +1,1769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Media</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Media 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The top level Media module.  The Media module is used accessing the device's media related  functionality such as playing audio or recording video.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#beep-method">beep <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createAudioPlayer-method">createAudioPlayer <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createAudioRecorder-method">createAudioRecorder <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createItem-method">createItem <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createMusicPlayer-method">createMusicPlayer <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createSound-method">createSound <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createVideoPlayer-method">createVideoPlayer <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hideCamera-method">hideCamera <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hideMusicLibrary-method">hideMusicLibrary <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isMediaTypeSupported-method">isMediaTypeSupported <span class="params">(media, type)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#openPhotoGallery-method">openPhotoGallery <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#saveToPhotoGallery-method">saveToPhotoGallery <span class="params">(media)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#showCamera-method">showCamera <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#showMusicLibrary-method">showMusicLibrary <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#startMicrophoneMonitor-method">startMicrophoneMonitor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#stopMicrophoneMonitor-method">stopMicrophoneMonitor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#takePicture-method">takePicture <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#takeScreenshot-method">takeScreenshot <span class="params">(callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#vibrate-method">vibrate <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_3GP2-property"></a>AUDIO_FILEFORMAT_3GP2</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format 3GPP-2</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_3GPP-property"></a>AUDIO_FILEFORMAT_3GPP</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format 3GPP</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_AIFF-property"></a>AUDIO_FILEFORMAT_AIFF</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format AIFF</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_AMR-property"></a>AUDIO_FILEFORMAT_AMR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format AMR</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_CAF-property"></a>AUDIO_FILEFORMAT_CAF</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format Apple Compressed Audio Format (CAF)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_MP3-property"></a>AUDIO_FILEFORMAT_MP3</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format MP3</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_MP4-property"></a>AUDIO_FILEFORMAT_MP4</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format MP4</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_MP4A-property"></a>AUDIO_FILEFORMAT_MP4A</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format MP4A</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FILEFORMAT_WAVE-property"></a>AUDIO_FILEFORMAT_WAVE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio file format WAVE</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FORMAT_AAC-property"></a>AUDIO_FORMAT_AAC</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio format MPEG4 AAC encoding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FORMAT_ALAW-property"></a>AUDIO_FORMAT_ALAW</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio format 8-bit aLaw encoding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FORMAT_APPLE_LOSSLESS-property"></a>AUDIO_FORMAT_APPLE_LOSSLESS</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio format apple lossless encoding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FORMAT_ILBC-property"></a>AUDIO_FORMAT_ILBC</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio format iLBC encoding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FORMAT_IMA4-property"></a>AUDIO_FORMAT_IMA4</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio format Apple IMA4 encoding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FORMAT_LINEAR_PCM-property"></a>AUDIO_FORMAT_LINEAR_PCM</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio format Linear 16-bit, PCM encoding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_FORMAT_ULAW-property"></a>AUDIO_FORMAT_ULAW</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>audio format 8-bit muLaw encoding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_HEADPHONES-property"></a>AUDIO_HEADPHONES</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for line type headphones</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_HEADPHONES_AND_MIC-property"></a>AUDIO_HEADPHONES_AND_MIC</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type headphones and microphone</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_HEADSET_INOUT-property"></a>AUDIO_HEADSET_INOUT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type headset in/out</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_LINEOUT-property"></a>AUDIO_LINEOUT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type line out</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_MICROPHONE-property"></a>AUDIO_MICROPHONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type microphone</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_MUTED-property"></a>AUDIO_MUTED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type muted switch is on</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_RECEIVER_AND_MIC-property"></a>AUDIO_RECEIVER_AND_MIC</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type receiver and microphone</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_SESSION_MODE_AMBIENT-property"></a>AUDIO_SESSION_MODE_AMBIENT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>For long-duration sounds such as rain, car engine noise, and so on. It is also for 'play along' style applications, such a virtual piano that a user plays over iPod audio.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_SESSION_MODE_PLAYBACK-property"></a>AUDIO_SESSION_MODE_PLAYBACK</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>For playing recorded music or other sounds that are central to the successful use of your application. When using this mode, your application audio continues with the Ring/Silent switch set to silent or when the screen locks. This property normally disallows iPod audio to mix with application audio</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_SESSION_MODE_PLAY_AND_RECORD-property"></a>AUDIO_SESSION_MODE_PLAY_AND_RECORD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>Allows recording (input) and playback (output) of audio, such as for a VOIP (voice over IP) application. This category is appropriate for simultaneous recording and playback, and also for applications that record and play back but not simultaneously. If you want to ensure that sounds such as Messages alerts do not play while your application is recording, use  Titanium.Media.AUDIO_SESSION_MODE_RECORD instead. This category normally disallows iPod audio to mix with application audio.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_SESSION_MODE_RECORD-property"></a>AUDIO_SESSION_MODE_RECORD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>For recording audio; it silences playback audio.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_SESSION_MODE_SOLO_AMBIENT-property"></a>AUDIO_SESSION_MODE_SOLO_AMBIENT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>The solo ambient sound category is for long-duration sounds such as rain, car engine noise, and so on. When you use this category, audio from built-in applications, such as the iPod, is silenced. Your audio is silenced when the Ring/Silent switch is set to silent or when the screen locks.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_SPEAKER-property"></a>AUDIO_SPEAKER</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type speaker</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_UNAVAILABLE-property"></a>AUDIO_UNAVAILABLE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type unavailable</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUDIO_UNKNOWN-property"></a>AUDIO_UNKNOWN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant line type unknown or not determined</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEVICE_BUSY-property"></a>DEVICE_BUSY</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for media device busy error</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MEDIA_TYPE_PHOTO-property"></a>MEDIA_TYPE_PHOTO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media type constant to signify photo</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MEDIA_TYPE_VIDEO-property"></a>MEDIA_TYPE_VIDEO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media type constant to signify video</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_MEDIA_TYPE_ALL-property"></a>MUSIC_MEDIA_TYPE_ALL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media containing any content</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_MEDIA_TYPE_ANY_AUDIO-property"></a>MUSIC_MEDIA_TYPE_ANY_AUDIO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media containing any audio content</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_MEDIA_TYPE_AUDIOBOOK-property"></a>MUSIC_MEDIA_TYPE_AUDIOBOOK</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media containing audiobook content</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_MEDIA_TYPE_MUSIC-property"></a>MUSIC_MEDIA_TYPE_MUSIC</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media containing music content</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_MEDIA_TYPE_PODCAST-property"></a>MUSIC_MEDIA_TYPE_PODCAST</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media containing podcast content</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_REPEAT_ALL-property"></a>MUSIC_PLAYER_REPEAT_ALL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for repeating all setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_REPEAT_DEFAULT-property"></a>MUSIC_PLAYER_REPEAT_DEFAULT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for user default repeat setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_REPEAT_NONE-property"></a>MUSIC_PLAYER_REPEAT_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for no repeat setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_REPEAT_ONE-property"></a>MUSIC_PLAYER_REPEAT_ONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for repeating one item setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_SHUFFLE_ALBUMS-property"></a>MUSIC_PLAYER_SHUFFLE_ALBUMS</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for shuffling complete albums setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_SHUFFLE_DEFAULT-property"></a>MUSIC_PLAYER_SHUFFLE_DEFAULT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for user default shuffle setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_SHUFFLE_NONE-property"></a>MUSIC_PLAYER_SHUFFLE_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for no shuffle setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_SHUFFLE_SONGS-property"></a>MUSIC_PLAYER_SHUFFLE_SONGS</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for shuffling songs setting</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_STATE_INTERRUPTED-property"></a>MUSIC_PLAYER_STATE_INTERRUPTED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for interrupted state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_STATE_PAUSED-property"></a>MUSIC_PLAYER_STATE_PAUSED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for paused state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_STATE_PLAYING-property"></a>MUSIC_PLAYER_STATE_PLAYING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for playing state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_STATE_SEEK_BACKWARD-property"></a>MUSIC_PLAYER_STATE_SEEK_BACKWARD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for backward seek state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_STATE_SKEEK_FORWARD-property"></a>MUSIC_PLAYER_STATE_SKEEK_FORWARD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for forward seek state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MUSIC_PLAYER_STATE_STOPPED-property"></a>MUSIC_PLAYER_STATE_STOPPED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for stopped state</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="NO_CAMERA-property"></a>NO_CAMERA</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for media no camera error</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="NO_VIDEO-property"></a>NO_VIDEO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for media no video error</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="QUALITY_HIGH-property"></a>QUALITY_HIGH</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media type constant to use high-quality video recording. Recorded files are suitable for on-device playback and for wired transfer to the Desktop using Image Capture; they are likely to be too large for transfer using Wi-Fi.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="QUALITY_LOW-property"></a>QUALITY_LOW</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media type constant to use use low-quality video recording. Recorded files can usually be transferred over the cellular network.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="QUALITY_MEDIUM-property"></a>QUALITY_MEDIUM</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>media type constant to use medium-quality video recording. Recorded files can usually be transferred using Wi-Fi. This is the default video quality setting.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="UNKNOWN_ERROR-property"></a>UNKNOWN_ERROR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for unknown media error</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_CONTROL_DEFAULT-property"></a>VIDEO_CONTROL_DEFAULT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for video controls default</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_CONTROL_EMBEDDED-property"></a>VIDEO_CONTROL_EMBEDDED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>Controls for an embedded view. Used in conjunction with movieControlStyle property of Titanium.Media.VideoPlayer in iPhone 3.2+</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_CONTROL_FULLSCREEN-property"></a>VIDEO_CONTROL_FULLSCREEN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>Controls for fullscreen. Used in conjunction with movieControlStyle property of Titanium.Media.VideoPlayer in iPhone 3.2+</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_CONTROL_HIDDEN-property"></a>VIDEO_CONTROL_HIDDEN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for video controls hidden</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_CONTROL_NONE-property"></a>VIDEO_CONTROL_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>No controls. Used in conjunction with movieControlStyle property of Titanium.Media.VideoPlayer in iPhone 3.2+</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_CONTROL_VOLUME_ONLY-property"></a>VIDEO_CONTROL_VOLUME_ONLY</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for video controls volume only</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_FINISH_REASON_PLAYBACK_ENDED-property"></a>VIDEO_FINISH_REASON_PLAYBACK_ENDED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video playback ended normally</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_FINISH_REASON_PLAYBACK_ERROR-property"></a>VIDEO_FINISH_REASON_PLAYBACK_ERROR</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video playback ended abnormally</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_FINISH_REASON_USER_EXITED-property"></a>VIDEO_FINISH_REASON_USER_EXITED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video playback ended by user action (such as clicking the Done button)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_LOAD_STATE_PLAYABLE-property"></a>VIDEO_LOAD_STATE_PLAYABLE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the current media is playable</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_LOAD_STATE_PLAYTHROUGH_OK-property"></a>VIDEO_LOAD_STATE_PLAYTHROUGH_OK</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback will be automatically started in this state when autoplay is true</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_LOAD_STATE_STALLED-property"></a>VIDEO_LOAD_STATE_STALLED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback will be automatically paused in this state, if started</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_LOAD_STATE_UNKNOWN-property"></a>VIDEO_LOAD_STATE_UNKNOWN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the current load state is not known</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_MEDIA_TYPE_AUDIO-property"></a>VIDEO_MEDIA_TYPE_AUDIO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>A audio type of media in the movie returned by Titanium.Media.VideoPlayer mediaTypes property</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_MEDIA_TYPE_NONE-property"></a>VIDEO_MEDIA_TYPE_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>An unknown type of media in the movie returned by Titanium.Media.VideoPlayer mediaTypes property.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_MEDIA_TYPE_VIDEO-property"></a>VIDEO_MEDIA_TYPE_VIDEO</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>A video type of media in the movie returned by Titanium.Media.VideoPlayer mediaTypes property</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_PLAYBACK_STATE_INTERRUPTED-property"></a>VIDEO_PLAYBACK_STATE_INTERRUPTED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback has been interrupted</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_PLAYBACK_STATE_PAUSED-property"></a>VIDEO_PLAYBACK_STATE_PAUSED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback is paused</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_PLAYBACK_STATE_PLAYING-property"></a>VIDEO_PLAYBACK_STATE_PLAYING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback is playing</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_PLAYBACK_STATE_SEEKING_BACKWARD-property"></a>VIDEO_PLAYBACK_STATE_SEEKING_BACKWARD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback is rewinding</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_PLAYBACK_STATE_SEEKING_FORWARD-property"></a>VIDEO_PLAYBACK_STATE_SEEKING_FORWARD</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback is seeking forward</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_PLAYBACK_STATE_STOPPED-property"></a>VIDEO_PLAYBACK_STATE_STOPPED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>playback has stopped</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_REPEAT_MODE_NONE-property"></a>VIDEO_REPEAT_MODE_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video will not repeat</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_REPEAT_MODE_ONE-property"></a>VIDEO_REPEAT_MODE_ONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video will repeat once</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_SCALING_ASPECT_FILL-property"></a>VIDEO_SCALING_ASPECT_FILL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for video aspect where the movie will be scaled until the movie fills the entire screen. Content at the edges of the larger of the two dimensions is clipped so that the other dimension fits the screen exactly. The aspect ratio of the movie is preserved.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_SCALING_ASPECT_FIT-property"></a>VIDEO_SCALING_ASPECT_FIT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for video aspect fit where the movie will be scaled until one dimension fits on the screen exactly. In the other dimension, the region between the edge of the movie and the edge of the screen is filled with a black bar. The aspect ratio of the movie is preserved.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_SCALING_MODE_FILL-property"></a>VIDEO_SCALING_MODE_FILL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for video aspect where the movie will be scaled until both dimensions fit the screen exactly. The aspect ratio of the movie is not preserved.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_SCALING_NONE-property"></a>VIDEO_SCALING_NONE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant for video scaling where the scaling is turn off. The movie will not be scaled.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_SOURCE_TYPE_FILE-property"></a>VIDEO_SOURCE_TYPE_FILE</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video source type is a file. Related to the sourceType property of Titanium.Media.VideoPlayer</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_SOURCE_TYPE_STREAMING-property"></a>VIDEO_SOURCE_TYPE_STREAMING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video source type is a remote stream. Related to the sourceType property of Titanium.Media.VideoPlayer</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_SOURCE_TYPE_UNKNOWN-property"></a>VIDEO_SOURCE_TYPE_UNKNOWN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the video source type is unknown. Related to the sourceType property of Titanium.Media.VideoPlayer</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_TIME_OPTION_EXACT-property"></a>VIDEO_TIME_OPTION_EXACT</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>use the exact time</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VIDEO_TIME_OPTION_NEAREST_KEYFRAME-property"></a>VIDEO_TIME_OPTION_NEAREST_KEYFRAME</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>use the closest keyframe in the time</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="appMusicPlayer-property"></a>appMusicPlayer</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>an instance of Titanium.Media.MusicPlayer representing the app-specific music player.  iPhone/iPad only</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="audioLineType-property"></a>audioLineType</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>returns the line type constant for the current line type</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="audioPlaying-property"></a>audioPlaying</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>returns true if the device is playing audio</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="availableCameraMediaTypes-property"></a>availableCameraMediaTypes</td>
+            <td class='attr-rw'>
+                [array]
+            </td>
+            <td class='attr-desc'>return an array of media type constants supported for the camera</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="availablePhotoGalleryMediaTypes-property"></a>availablePhotoGalleryMediaTypes</td>
+            <td class='attr-rw'>
+                [array]
+            </td>
+            <td class='attr-desc'>return an array of media type constants supported for saving to the photo gallery</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="availablePhotoMediaTypes-property"></a>availablePhotoMediaTypes</td>
+            <td class='attr-rw'>
+                [array]
+            </td>
+            <td class='attr-desc'>return an array of media type constants supported for the photo</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="averageMicrophonePower-property"></a>averageMicrophonePower</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>return the current average microphone level in dB or -1 if microphone monitoring is disabled</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="canRecord-property"></a>canRecord</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>returns true if the device has recording input device available</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="defaultAudioSessionMode-property"></a>defaultAudioSessionMode</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>a constant for the default audio session mode to be used. One of Titanium.Media.AUDIO_SESSION_MODE_AMBIENT, Titanium.Media.AUDIO_SESSION_MODE_SOLO_AMBIENT Titanium.Media.AUDIO_SESSION_MODE_PLAYBACK Titanium.Media.AUDIO_SESSION_MODE_RECORD, Titanium.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="isCameraSupported-property"></a>isCameraSupported</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>returns true if the device has camera support</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="peakMicrophonePower-property"></a>peakMicrophonePower</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>return the current microphone level peak power in dB or -1 if microphone monitoring is disabled</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="systemMusicPlayer-property"></a>systemMusicPlayer</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>an instance of Titanium.Media.MusicPlayer representing the system-wide music player.  iPhone/iPad only</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="volume-property"></a>volume</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the current volume of the playback device</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#linechange-event">linechange</a></td>
+            <td class='attr-desc'>fired when a audio line type change is detected</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#recordinginput-event">recordinginput</a></td>
+            <td class='attr-desc'>fired when availablity of recording input changes</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#volume-event">volume</a></td>
+            <td class='attr-desc'>fired when the volume output changes</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="beep-method">
+        <a name="beep-method"></a><b>beep</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>play a device beep notification</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createAudioPlayer-method">
+        <a name="createAudioPlayer-method"></a><b>createAudioPlayer</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Media.AudioPlayer.html">Titanium.Media.AudioPlayer</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Media.AudioPlayer</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createAudioRecorder-method">
+        <a name="createAudioRecorder-method"></a><b>createAudioRecorder</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Media.AudioRecorder.html">Titanium.Media.AudioRecorder</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Media.AudioRecorder</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createItem-method">
+        <a name="createItem-method"></a><b>createItem</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Media.Item.html">Titanium.Media.Item</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Media.Item</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createMusicPlayer-method">
+        <a name="createMusicPlayer-method"></a><b>createMusicPlayer</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Media.MusicPlayer.html">Titanium.Media.MusicPlayer</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Media.MusicPlayer</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createSound-method">
+        <a name="createSound-method"></a><b>createSound</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Media.Sound.html">Titanium.Media.Sound</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Media.Sound</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createVideoPlayer-method">
+        <a name="createVideoPlayer-method"></a><b>createVideoPlayer</b> <span class="params">(parameters)</span>
+      </div>
+      
+      <div class="description">
+        create and return an instance of <a href="Titanium.Media.VideoPlayer.html">Titanium.Media.VideoPlayer</a>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>parameters</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Media.VideoPlayer</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>object</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hideCamera-method">
+        <a name="hideCamera-method"></a><b>hideCamera</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>hide the device camera UI. this must be called after calling <tt>showCamera</tt> and only when <tt>autohide</tt> is set to false. this method will cause the media capture device be hidden.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hideMusicLibrary-method">
+        <a name="hideMusicLibrary-method"></a><b>hideMusicLibrary</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>hide the music library.  This must be called after calling <tt>showMusicLibrary</tt> and only when <tt>autohide</tt> is set to false.  iPhone and iPad only.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isMediaTypeSupported-method">
+        <a name="isMediaTypeSupported-method"></a><b>isMediaTypeSupported</b> <span class="params">(media, type)</span>
+      </div>
+      
+      <div class="description">
+        <p>return boolean to indicate if the media type is supported</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>media</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>media type as a string of either camera, photo or photogallery.</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the type of media to check</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>boolean</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="openPhotoGallery-method">
+        <a name="openPhotoGallery-method"></a><b>openPhotoGallery</b> <span class="params">(options)</span>
+      </div>
+      
+      <div class="description">
+        <p>open the photo gallery picker</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>options</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>pass a dictionary with the following supported keys: success a function that will be called when the camera is completed, error a function that will be called upon receiving an error, cancel a function that will be called if the user presses the cancel button, autohide boolean if the camera should auto hide after the media capture is completed (defaults to true), animated boolean if the dialog should be animated (defaults to true) upon showing and hiding, saveToPhotoGallery boolean if the media should be saved to the photo gallery upon successful capture, allowEditing boolean if the media should be editable after capture in the UI interface, mediaTypes an array of media type constants supported by the capture device UI, showControls boolean to indicate if the built-in UI controls should be displayed, overlay view which is added as an overlay to the UI (on top), transform an transformation matrix that applies to the UI transform. For iPad, popoverView can be provided to position the photo gallery popover a specific view and arrowDirection can be provided to control the type of arrow and position of the gallery.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="saveToPhotoGallery-method">
+        <a name="saveToPhotoGallery-method"></a><b>saveToPhotoGallery</b> <span class="params">(media)</span>
+      </div>
+      
+      <div class="description">
+        <p>save media to photo gallery / camera roll</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>media</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>save the media passed to the cameras photo roll/media gallery. must be one of Blob object or File object or an error will be generated.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="showCamera-method">
+        <a name="showCamera-method"></a><b>showCamera</b> <span class="params">(options)</span>
+      </div>
+      
+      <div class="description">
+        <p>show the camera</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>options</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>pass a dictionary with the following supported keys: success a function that will be called when the camera is completed, error a function that will be called upon receiving an error, cancel a function that will be called if the user presses the cancel button, autohide boolean if the camera should auto hide after the media capture is completed (defaults to true), animated boolean if the dialog should be animated (defaults to true) upon showing and hiding, saveToPhotoGallery boolean if the media should be saved to the photo gallery upon successful capture, allowEditing boolean if the media should be editable after capture in the UI interface, mediaTypes an array of media type constants supported by the capture device UI, videoMaximumDuration float duration on how long in milliseconds to allow capture before completing, videoQuality constant to indicate the video quality during capture, showControls boolean to indicate if the built-in UI controls should be displayed, overlay view which is added as an overlay to the camera UI (on top), transform an transformation matrix that applies to the camera UI transform.</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="showMusicLibrary-method">
+        <a name="showMusicLibrary-method"></a><b>showMusicLibrary</b> <span class="params">(options)</span>
+      </div>
+      
+      <div class="description">
+        <p>show the music library.  iPhone and iPad only.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>options</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>pass a dictionary with the following supported keys: success a function that will be called when the camera is completed, error a function that will be called upon receiving an error, cancel a function that will be called if the user presses the cancel button, autohide boolean if the library listing should auto hide after selection is completed (defaults to true), animated boolean if the dialog should be animated (defaults to true) upon showing and hiding, mediaTypes an array of media type constants defining selectable media (see MUSIC_MEDIA_TYPE_* properties below) as either an array or a bitwise-or single value, allowMultipleSelections boolean whether or not more than one media selection is allowed</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="startMicrophoneMonitor-method">
+        <a name="startMicrophoneMonitor-method"></a><b>startMicrophoneMonitor</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>start the monitoring of microphone sound level</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stopMicrophoneMonitor-method">
+        <a name="stopMicrophoneMonitor-method"></a><b>stopMicrophoneMonitor</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>stop the monitoring of microphone sound level</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="takePicture-method">
+        <a name="takePicture-method"></a><b>takePicture</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>use the device camera to capture a photo. this must be called after calling <tt>showCamera</tt> and only when <tt>autohide</tt> is set to false. this method will cause the media capture device to capture a photo and call the <tt>success</tt> callback.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="takeScreenshot-method">
+        <a name="takeScreenshot-method"></a><b>takeScreenshot</b> <span class="params">(callback)</span>
+      </div>
+      
+      <div class="description">
+        <p>take a screen shot of the visible UI on the device</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>function that will be called upon capture. the event property media will contain an image Blob object of the screenshot</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="vibrate-method">
+        <a name="vibrate-method"></a><b>vibrate</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>play a device vibration</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="linechange-event">
+        <a name="linechange-method"></a><b>linechange</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when a audio line type change is detected</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="recordinginput-event">
+        <a name="recordinginput-method"></a><b>recordinginput</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when availablity of recording input changes</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>available</td>
+            <td class='attr-desc'>bool indicating availability of recording device</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="volume-event">
+        <a name="volume-method"></a><b>volume</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when the volume output changes</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>volume</td>
+            <td class='attr-desc'>float of the new volume in dB</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

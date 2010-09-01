@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium Mobile API Documents</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+    <style>
+body { min-width: 800px; }
+    </style>
+    <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-257489-10']);
+_gaq.push(['_setDomainName', 'none']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+function escapeHTML(str) {
+  return str.replace(/&/g,'&amp;')
+             .replace(/>/g,'&gt;')
+             .replace(/</g,'&lt;')
+             .replace(/\"/g,'&quot;');
+} 
+
+function qa_feed_json(json) {
+  var i, html = [];
+  for(i = 0; i<json.length; ++i) {
+    html.push("<li><a href=\""+json[i].link+"\" target=\"_blank\">"+escapeHTML(json[i].title)+"</a></li>");
+  }
+  document.getElementById('qa_feed').innerHTML = html.join("\n");
+}
+
+function devblog_json(json) {
+  var i, html = [];
+  for(i = 0; i<json.length; ++i) {
+    html.push("<li><a href=\""+json[i].link+"\" target=\"_blank\">"+escapeHTML(json[i].title)+"</a></li>");
+  }
+  document.getElementById('devblog_feed').innerHTML = html.join("\n");
+}
+
+    </script>
+</head>
+
+<body>     
+  <div class="banner">
+    <h1>Titanium Mobile 1.4 API Documents</h1>
+    <ul class="files">
+      <li>Unofficial searchable version.</li>
+    </ul>
+  </div>
+  
+  <div id="bodyContent">
+    <div id="content">
+      
+      <div class="description">
+	<p>
+	  This is the API reference documentation for the <a href="http://www.appcelerator.com/">Appcelerator Titanium™ Mobile</a>, version 1.4.
+	</p>
+	<p>
+	  Titanium Mobile is multi mobile platform (iPhone, iPad and Android, Blackbelly will be soon) development environment using Javascript.
+	<p>
+
+        <div class="sectiontitle">Link to Official</div>
+	<table width="100%">
+          <tr>
+	    <td width="25%">
+	      <ul>
+		<li><a href="http://www.appcelerator.com/" target="_blank">Appcelerator</a></li>
+		<li><a href="http://developer.appcelerator.com/" target="_blank">Developer Center</a></li>
+		<li><a href="http://developer.appcelerator.com/blog/" target="_blank">Developer Blog</a></li>
+		<li><a href="http://developer.appcelerator.com/questions/" target="_blank">Q&amp;A</a></li>
+		<li><a href="http://developer.appcelerator.com/doc/mobile/get_started" target="_blank">Get Started</a></li>
+		<li><a href="http://developer.appcelerator.com/doc/mobile/guides" target="_blank">Programming Guide</a></li>
+		<li><a href="http://developer.appcelerator.com/apidoc/mobile/latest" target="_blank">Official 1.4 Documents</a></li>
+	      </ul>
+	    </td>
+	    <td width="37%">
+	      <div style="font-weight: bold; margin: 0 0 8px 0;">Recent Q&A</div>
+	      <ul id="qa_feed">
+	      </ul>
+	    </td>
+	    <td width="37%">
+	      <div style="font-weight: bold; margin: 0 0 8px 0;">Developer Blog</div>
+	      <ul id="devblog_feed">
+	      </ul>
+	    </td>
+	  </tr>
+	</table>
+	
+        <div class="sectiontitle">This System</div>
+	<p>
+	  This system based <a href="http://github.com/voloko/sdoc/" target="_blank">SDoc</a>.
+	  Copyright &#169; 2009 Vladimir Kolesnikov.<br/>
+	  And modified for Titanium Mobile API by <a href="http://masuidrive.com/" target="_blank">Yuichiro MASUI</a>.
+	</p>
+	
+        <div class="subsectiontitle">Change log</div>
+	<ul>
+	  <li>Sept 01, 2010: Supported HTML5 Application cache, If you use HTML5 browsers, You can see this site when you're offline.</li>
+	  <li>Aug 31, 2010: Embeded <a href="http://developer.appcelerator.com/questions/">Q&A</a> and <a href="http://developer.appcelerator.com/blog/">Developer blog</a> feeds to top.</li>
+	</ul>
+
+        <div class="subsectiontitle">Future Plans</div>
+	<ul>
+	  <li>Post private/public note</li>
+	  <li>Link to <a href="http://developer.appcelerator.com/questions/" target="_blank">Q&amp;A</a></li>
+	</ul>
+
+        <div class="sectiontitle">Contacts</div>
+	<p>
+	  If you have a comment or something, please contact to me.<br/>
+	  Yuichiro MASUI &lt;masui at masuidrive.jp&gt;<br/>
+	  <a href="http://twitter.com/masuidrive_en" target="_blank">@masuidrive_en</a> /
+	  <a href="http://masuidrive.com" target="_blank">http://masuidrive.com/</a><br/>
+	</p>
+      </div>
+    </div>
+    <script type="text/javascript" src="http://tidocs-comments.appspot.com/qa_feed"></script>
+    <script type="text/javascript" src="http://tidocs-comments.appspot.com/devblog_feed"></script>
+  </body>
+</html>
+

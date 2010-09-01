@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Platform 
+        </h1>
+	<ul class="files">
+	  <li>Android, iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The top level Platform module.  The Platform module is used accessing the device's platform
+related functionality.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createUUID-method">createUUID <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#openURL-method">openURL <span class="params">(url)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BATTERY_STATE_CHARGING-property"></a>BATTERY_STATE_CHARGING</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the device is plugged in and currently being charged</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BATTERY_STATE_FULL-property"></a>BATTERY_STATE_FULL</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the battery is fully charged</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BATTERY_STATE_UNKNOWN-property"></a>BATTERY_STATE_UNKNOWN</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the battery state is unknown or not monitoring is not enabled</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BATTERY_STATE_UNPLUGGED-property"></a>BATTERY_STATE_UNPLUGGED</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the device is unplugged</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="address-property"></a>address</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the ip address that the device reports (only applicable on WIFI network)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="architecture-property"></a>architecture</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the processor architecture that the device reports</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="availableMemory-property"></a>availableMemory</td>
+            <td class='attr-rw'>
+                [double]
+            </td>
+            <td class='attr-desc'>return the amount of memory available on the device in bytes</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="batteryLevel-property"></a>batteryLevel</td>
+            <td class='attr-rw'>
+                [float]
+            </td>
+            <td class='attr-desc'>the current device battery level. this property is only accessible if batteryMonitoring is enabled. on iPhone, this level only changes at 5% intervals.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="batteryMonitoring-property"></a>batteryMonitoring</td>
+            <td class='attr-rw'>
+                [boolean]
+            </td>
+            <td class='attr-desc'>boolean to indicate if battery monitoring is enabled</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="batteryState-property"></a>batteryState</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>constant that represents the state of the battery. this property is only accessible if batteryMonitoring is enabled</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="displayCaps-property"></a>displayCaps</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>return the DisplayCaps object for platform</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="id-property"></a>id</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the unique id of the device</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="locale-property"></a>locale</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the primary language of the device that the user has enabled</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="macaddress-property"></a>macaddress</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>this property will return a unique identifier for the device</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="model-property"></a>model</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the model of the phone that the device reports</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="name-property"></a>name</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the name of the platform returned by the device</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="netmask-property"></a>netmask</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the network mask that the device reports (only applicable on WIFI network)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="osname-property"></a>osname</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the shortname of the operating system. for example, on an iPhone, will return iphone, iPad will return ipad and Android will return android.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ostype-property"></a>ostype</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the OS architecture, such as 32 bit</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="processorCount-property"></a>processorCount</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>the number of processors the device reports</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="username-property"></a>username</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the username of the device, if set</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="version-property"></a>version</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>the version of the platform returned by the device</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#battery-event">battery</a></td>
+            <td class='attr-desc'>fired when the battery state changes.  the battery state changes are only tracked on iPhone/iPad at 5% increments.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createUUID-method">
+        <a name="createUUID-method"></a><b>createUUID</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>create a globally unique identifier</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>string</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="openURL-method">
+        <a name="openURL-method"></a><b>openURL</b> <span class="params">(url)</span>
+      </div>
+      
+      <div class="description">
+        <p>open a URL in the system default manner</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>url</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>the url to open</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="battery-event">
+        <a name="battery-method"></a><b>battery</b>
+      </div>
+      
+      
+      <div class="description">
+        <p>fired when the battery state changes.  the battery state changes are only tracked on iPhone/iPad at 5% increments.</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>level</td>
+            <td class='attr-desc'>the new battery level</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>the name of the event fired</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>the source object that fired the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>state</td>
+            <td class='attr-desc'>the new battery state</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

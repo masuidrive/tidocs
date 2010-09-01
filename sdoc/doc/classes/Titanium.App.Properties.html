@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.App.Properties</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.App.Properties 
+        </h1>
+	<ul class="files">
+	  <li>iPhone, Android, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The App Properties module is used for storing application related property/value pairs which persist beyond application sessions.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBool-method">getBool <span class="params">(property, default)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDouble-method">getDouble <span class="params">(property, default)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getInt-method">getInt <span class="params">(property, default)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getList-method">getList <span class="params">(property, default)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getString-method">getString <span class="params">(property, default)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hasProperty-method">hasProperty <span class="params">(property)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#listProperties-method">listProperties <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeProperty-method">removeProperty <span class="params">(property)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBool-method">setBool <span class="params">(property, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDouble-method">setDouble <span class="params">(property, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setInt-method">setInt <span class="params">(property, value, property, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setList-method">setList <span class="params">(property, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setString-method">setString <span class="params">(property, value)</span></a></li>
+            </ul>
+    
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">store a property</div>
+	<div class="code"><p>In this example, we store a string property:</p>
+<pre><code>Titanium.App.Properties.setString("my_prop","cool");
+</code></pre></div>
+        
+	<div class="subsectiontitle">enumerate over saved properties</div>
+	<div class="code"><p>In this example, we print out all the saved properties to the console:</p>
+<pre><code>var props = Titanium.App.Properties.listProperties();
+for (var c=0;c<props.length;c++)
+{
+    var value = Titanium.App.Properties.getString(props[c]);
+    Titanium.API.info(props[c]+" = "+value);
+}
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        add an event listener for the instance to receive view triggered events
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function to invoke when the event is fired</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+      </div>
+      
+      <div class="description">
+        fire a synthesized event to the views listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>event</td>
+            <td class='attr-rw'>
+              [object]
+            </td>
+            <td class='attr-desc'>event object</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBool-method">
+        <a name="getBool-method"></a><b>getBool</b> <span class="params">(property, default)</span>
+      </div>
+      
+      <div class="description">
+        <p>return a boolean value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>return a boolean value for property</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>default</td>
+            <td class='attr-rw'>
+              [boolean]
+            </td>
+            <td class='attr-desc'>optional default value if property is not found</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>boolean</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDouble-method">
+        <a name="getDouble-method"></a><b>getDouble</b> <span class="params">(property, default)</span>
+      </div>
+      
+      <div class="description">
+        <p>return a double value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>return a double value for property</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>default</td>
+            <td class='attr-rw'>
+              [double]
+            </td>
+            <td class='attr-desc'>optional default value if property is not found</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>double</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getInt-method">
+        <a name="getInt-method"></a><b>getInt</b> <span class="params">(property, default)</span>
+      </div>
+      
+      <div class="description">
+        <p>return an integer value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>return a integer value for property</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>default</td>
+            <td class='attr-rw'>
+              [int]
+            </td>
+            <td class='attr-desc'>optional default value if property is not found</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>int</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getList-method">
+        <a name="getList-method"></a><b>getList</b> <span class="params">(property, default)</span>
+      </div>
+      
+      <div class="description">
+        <p>return a value as an array</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>return an array value for property</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>default</td>
+            <td class='attr-rw'>
+              [array]
+            </td>
+            <td class='attr-desc'>optional default value if property is not found</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>array</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getString-method">
+        <a name="getString-method"></a><b>getString</b> <span class="params">(property, default)</span>
+      </div>
+      
+      <div class="description">
+        <p>return a string value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>return a string value for property</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>default</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>optional default value if property is not found</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>string</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hasProperty-method">
+        <a name="hasProperty-method"></a><b>hasProperty</b> <span class="params">(property)</span>
+      </div>
+      
+      <div class="description">
+        <p>returns true if the property exists</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name to check</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>boolean</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="listProperties-method">
+        <a name="listProperties-method"></a><b>listProperties</b> <span class="params">()</span>
+      </div>
+      
+      <div class="description">
+        <p>return an array of property propertys</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>array</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+      </div>
+      
+      <div class="description">
+        remove a previously added event listener
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>name</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>name of the event</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>callback</td>
+            <td class='attr-rw'>
+              [function]
+            </td>
+            <td class='attr-desc'>callback function passed in addEventListener</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeProperty-method">
+        <a name="removeProperty-method"></a><b>removeProperty</b> <span class="params">(property)</span>
+      </div>
+      
+      <div class="description">
+        <p>remove an existing property</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name to remove</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBool-method">
+        <a name="setBool-method"></a><b>setBool</b> <span class="params">(property, value)</span>
+      </div>
+      
+      <div class="description">
+        <p>set a property as a boolean value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>value</td>
+            <td class='attr-rw'>
+              [boolean]
+            </td>
+            <td class='attr-desc'>value</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDouble-method">
+        <a name="setDouble-method"></a><b>setDouble</b> <span class="params">(property, value)</span>
+      </div>
+      
+      <div class="description">
+        <p>set a property as a double value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>value</td>
+            <td class='attr-rw'>
+              [double]
+            </td>
+            <td class='attr-desc'>value</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setInt-method">
+        <a name="setInt-method"></a><b>setInt</b> <span class="params">(property, value, property, value)</span>
+      </div>
+      
+      <div class="description">
+        <p>set a property as an integer value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>value</td>
+            <td class='attr-rw'>
+              [int]
+            </td>
+            <td class='attr-desc'>value</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>value</td>
+            <td class='attr-rw'>
+              [int]
+            </td>
+            <td class='attr-desc'>value</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setList-method">
+        <a name="setList-method"></a><b>setList</b> <span class="params">(property, value)</span>
+      </div>
+      
+      <div class="description">
+        <p>set a property as an array value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>value</td>
+            <td class='attr-rw'>
+              [array]
+            </td>
+            <td class='attr-desc'>value</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setString-method">
+        <a name="setString-method"></a><b>setString</b> <span class="params">(property, value)</span>
+      </div>
+      
+      <div class="description">
+        <p>set a property as a string value</p>
+      </div>
+      
+
+      
+      <div class="description">
+	<h4>Arguments</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>property</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>property name</td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>value</td>
+            <td class='attr-rw'>
+              [string]
+            </td>
+            <td class='attr-desc'>value</td>
+          </tr>
+          
+	</table>
+      </div>
+      
+      <div class="description">
+	<h4>Return Type</h4>
+	<div>void</div>
+      </div>
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

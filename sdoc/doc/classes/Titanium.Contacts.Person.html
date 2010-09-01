@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Contacts.Person</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Contacts.Person 
+        </h1>
+	<ul class="files">
+	  <li>iPhone, iPad</li>
+	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>An object which represents a person in the contacts database.</p>
+    </div>
+    
+
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL-property"></a>URL</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>URLs of webpages associated with the person.  Multi-value, valid labels are: home, work, other, homepage.  Values are strings.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="address-property"></a>address</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>The addresses for the person.  Multi-value, valid labels are: home, work, other.  Values are dictionaries.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="birthday-property"></a>birthday</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The birthday of the person.  Single value, format is "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000"</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="created-property"></a>created</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The date the person was created in the database.  Single value, format is "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000", read-only</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="date-property"></a>date</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>Dates associated with the person.  Multi-value, valid labels are: anniversary.  Values are strings of format "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000"</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="department-property"></a>department</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The department of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="email-property"></a>email</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>The email addresses for the person.  Multi-value, valid labels are: home, work, other.  Values are strings.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="firstName-property"></a>firstName</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The first name of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="firstPhonetic-property"></a>firstPhonetic</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The phonetic first name of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="fullName-property"></a>fullName</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The localized full name of the person.  Single value, read-only</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="image-property"></a>image</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>A blob object representing the image for the person.  Set to null to remove the image.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="instantMessage-property"></a>instantMessage</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>The instant messenger names for the person.  Multi-value, valid labels are: aim, icq, jabber, msn, yahoo.  Values are dictionaries.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="jobTitle-property"></a>jobTitle</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The job title of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="kind-property"></a>kind</td>
+            <td class='attr-rw'>
+                [int]
+            </td>
+            <td class='attr-desc'>The kind of person.  Single value, one of Titanium.Contacts.CONTACTS_KIND_PERSON or Titanium.Contacts.CONTACTS_KIND_ORGANIZATION</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="lastName-property"></a>lastName</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The last name of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="lastPhonetic-property"></a>lastPhonetic</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The phonetic last name of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="middleName-property"></a>middleName</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The middle name of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="middlePhonetic-property"></a>middlePhonetic</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The phonetic middle name of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="modified-property"></a>modified</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The most recent date the person was modified.  Single value, format is "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000", read-only</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="nickname-property"></a>nickname</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The nickname of the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="note-property"></a>note</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>Notes for the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="organization-property"></a>organization</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The organization the person belongs to.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="phone-property"></a>phone</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>The phone numbers for the person.  Multi-value, valid labels are: home, work, other, mobile, pager, workFax, homeFax, main, iPhone.  Values are strings.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="prefix-property"></a>prefix</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The prefix for the person.  Single value</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="relatedNames-property"></a>relatedNames</td>
+            <td class='attr-rw'>
+                [object]
+            </td>
+            <td class='attr-desc'>The names of people the person is related to.  Multi-value, valid labels are: mother, father, parent, sister, brother, child, friend, spouse, partner, manager, assistant.  Values are strings.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="suffix-property"></a>suffix</td>
+            <td class='attr-rw'>
+                [string]
+            </td>
+            <td class='attr-desc'>The suffix for the person.  Single value</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Notes</div>
+    <table border='0' cellpadding='5'>
+	<div class="code"><p>There are two kinds of properties: single value and multivalue.  Single value properties are returned as a direct value, while mutlivalue properties are returned as dictionary objects with keys which represent labels of the property, with values that are arrays of all values in the property which correspond to that label (e.g. {"home" : [address1, address2]})</p></div>
+    </table>
+    
+
+    
+
+
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    
