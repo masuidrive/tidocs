@@ -35,18 +35,19 @@
             <span class="type">Module</span> 
             Titanium.Filesystem 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level Filesystem module.  The Filesystem module is used for reading and saving files and 
-directories on the device.</p>
+        <p>The top level filesystem module, used to access files and directories on the device.</p>
     </div>
+    
+    
     
 
     
@@ -56,10 +57,6 @@ directories on the device.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#createFile-method">createFile <span class="params">(parameters)</span></a></li>
             </ul>
     
             <ul>
@@ -75,11 +72,51 @@ directories on the device.</p>
             </ul>
     
             <ul>
+                <li><a href="#getApplicationCacheDirectory-method">getApplicationCacheDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getApplicationDataDirectory-method">getApplicationDataDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getApplicationDirectory-method">getApplicationDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getApplicationSupportDirectory-method">getApplicationSupportDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getExternalStorageDirectory-method">getExternalStorageDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getFile-method">getFile <span class="params">(path)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#isExteralStoragePresent-method">isExteralStoragePresent <span class="params">()</span></a></li>
+                <li><a href="#getLineEnding-method">getLineEnding <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getResourcesDirectory-method">getResourcesDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSeparator-method">getSeparator <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTempDirectory-method">getTempDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isExternalStoragePresent-method">isExternalStoragePresent <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#openStream-method">openStream <span class="params">(mode, path)</span></a></li>
             </ul>
     
             <ul>
@@ -95,73 +132,109 @@ directories on the device.</p>
         <tr valign='top'>
             <td class='attr-name'><a name="MODE_APPEND-property"></a>MODE_APPEND</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant for append mode for file operations</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant for append mode for file operations.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="MODE_READ-property"></a>MODE_READ</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant for read mode for file operations</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant for read mode for file operations.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="MODE_WRITE-property"></a>MODE_WRITE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant for write mode for file operations</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant for write mode for file operations.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="applicationCacheDirectory-property"></a>applicationCacheDirectory</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Path to the application's internal cache directory.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="applicationDataDirectory-property"></a>applicationDataDirectory</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>readonly constant where your application data directory is located. this directory should be used to place applications-specific files. on iPhone, this directory is also backed up.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Path to the application's data directory.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="applicationDirectory-property"></a>applicationDirectory</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>readonly constant where your application is located</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Path to the iOS application directory.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="applicationSupportDirectory-property"></a>applicationSupportDirectory</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Path to the application support directory.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="externalStorageDirectory-property"></a>externalStorageDirectory</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Path to a directory on removable storage, such as SD card.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="lineEnding-property"></a>lineEnding</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>readonly platform specific line ending constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Platform-specific line ending constant.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="resourcesDirectory-property"></a>resourcesDirectory</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>readonly constant where your application resources are located</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Path to the application's resource directory.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="separator-property"></a>separator</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>readonly path separator constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Platform-specific path separator constant.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="tempDirectory-property"></a>tempDirectory</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>readonly constant where your application can place temporary files</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Path for the application's temporary directory.</td>
         </tr>
         
     </table>
@@ -180,236 +253,333 @@ directories on the device.</p>
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="createFile-method">
-        <a name="createFile-method"></a><b>createFile</b> <span class="params">(parameters)</span>
-      </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.Filesystem.File.html">Titanium.Filesystem.File</a>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Filesystem.File</td>
-          </tr>
-          
-	</table>
-      </div>
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createTempDirectory-method">
         <a name="createTempDirectory-method"></a><b>createTempDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>create temp file and return a <a href="Titanium.Filesystem.File-object.html">Titanium.Filesystem.File</a></p>
-      </div>
+      <div class="description"><p>Creates a temporary directory and returns a <a href="Titanium.Filesystem.File-object.html">File</a> object representing the new directory.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>Titanium.Filesystem.File</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createTempFile-method">
         <a name="createTempFile-method"></a><b>createTempFile</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>create a temp file and return a <a href="Titanium.Filesystem.File-object.html">Titanium.Filesystem.File</a></p>
-      </div>
+      <div class="description"><p>Creates a temporary file and returns a <a href="Titanium.Filesystem.File-object.html">File</a> object representing the new file.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>Titanium.Filesystem.File</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getApplicationCacheDirectory-method">
+        <a name="getApplicationCacheDirectory-method"></a><b>getApplicationCacheDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.applicationCacheDirectory-property.html">applicationCacheDirectory</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getApplicationDataDirectory-method">
+        <a name="getApplicationDataDirectory-method"></a><b>getApplicationDataDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.applicationDataDirectory-property.html">applicationDataDirectory</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getApplicationDirectory-method">
+        <a name="getApplicationDirectory-method"></a><b>getApplicationDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.applicationDirectory-property.html">applicationDirectory</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getApplicationSupportDirectory-method">
+        <a name="getApplicationSupportDirectory-method"></a><b>getApplicationSupportDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.applicationSupportDirectory-property.html">applicationSupportDirectory</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getExternalStorageDirectory-method">
+        <a name="getExternalStorageDirectory-method"></a><b>getExternalStorageDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.externalStorageDirectory-property.html">externalStorageDirectory</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="getFile-method">
         <a name="getFile-method"></a><b>getFile</b> <span class="params">(path)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return a fully formed file path as a <a href="Titanium.Filesystem.File-object.html">Titanium.Filesystem.File</a> object</p>
-      </div>
+      <div class="description"><p>Returns a <code>File</code> object representing the file identified by the path arguments.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>path</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>one or more path arguments to form the full path joined together with the platform specific path separator. if a relative path is passed, the full path will be relative to the application resource folder.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>path</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>One or more path components. Path arguments are joined together using the platform specific path separator to form the full path.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>Titanium.Filesystem.File</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="isExteralStoragePresent-method">
-        <a name="isExteralStoragePresent-method"></a><b>isExteralStoragePresent</b> <span class="params">()</span>
+      <div class="title" id="getLineEnding-method">
+        <a name="getLineEnding-method"></a><b>getLineEnding</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.lineEnding-property.html">lineEnding</a> property.</p></div>
       
-      <div class="description">
-        <p>returns true if the device supports external storage such as an SD card</p>
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getResourcesDirectory-method">
+        <a name="getResourcesDirectory-method"></a><b>getResourcesDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.resourcesDirectory-property.html">resourcesDirectory</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSeparator-method">
+        <a name="getSeparator-method"></a><b>getSeparator</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.separator-property.html">separator</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTempDirectory-method">
+        <a name="getTempDirectory-method"></a><b>getTempDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.tempDirectory-property.html">tempDirectory</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isExternalStoragePresent-method">
+        <a name="isExternalStoragePresent-method"></a><b>isExternalStoragePresent</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns <code>true</code> if the device supports external storage <em>and</em> the external storage device is mounted.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="openStream-method">
+        <a name="openStream-method"></a><b>openStream</b> <span class="params">(mode, path)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Opens file using the <a href="Titanium.IOStream-object.html"><code>Titanium.IOStream</code></a> interface.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>mode</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Access mode. Either Titanium.Filesystem.MODE_READ, Titanium.Filesystem.MODE_WRITE, or 
+Titanium.Filesystem.MODE_APPEND.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>path</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>One or more path components. Path arguments are joined together using the 
+platform-specific path separator to form the full path. </td>
+                </tr>
+                
+      	</table>
       </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     

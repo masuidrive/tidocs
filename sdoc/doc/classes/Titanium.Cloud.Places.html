@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Cloud.Places</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Cloud.Places 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Provides methods for accessing ACS places.</p>
+    </div>
+    
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#create-method">create <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#query-method">query <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#remove-method">remove <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#search-method">search <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#show-method">show <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#update-method">update <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Create Place Example</div>
+	<div class="code"><p>This example creates a new place and checks the response.</p>
+<pre><code>Cloud.Places.create({
+    name: 'Appcelerator HQ',
+    state: 'California',
+    website: 'http://www.appcelerator.com'
+}, function (e) {
+    if (e.success) {
+        var place = e.places[0];
+        alert('Success:\\n' +
+            'id: ' + place.id + '\\n' +
+            'name: ' + place.name + '\\n' +
+            'updated_at: ' + place.updated_at);
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Show a Place Example</div>
+	<div class="code"><p>This example retrieves information about a place and checks the response.</p>
+<pre><code>Cloud.Places.show({
+    place_id: savedPlaceId
+}, function (e) {
+    if (e.success) {
+        var place = e.places[0];
+        alert('Success:\\n' +
+            'id: ' + place.id + '\\n' +
+            'name: ' + place.name + '\\n' +
+            'updated_at: ' + place.updated_at);
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Search for Places Example</div>
+	<div class="code"><p>This example searches for places and checks the response.</p>
+<pre><code>Cloud.Places.search({
+    latitude: lat,
+    longitude: lon
+}, function (e) {
+    if (e.success) {
+        alert('Success:\\n' +
+            'Count: ' + e.places.length);
+        for (var i = 0; i &lt; e.places.length; i++) {
+            var place = e.places[i];
+            alert('id: ' + place.id + '\\n' +
+                  'name: ' + place.name + '\\n' +
+                  'longitude: ' + place.longitude + '\\n' +
+                  'latitude: ' + place.latitude + '\\n' +
+                  'updated_at: ' + place.updated_at);
+        }
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Query for Places Example</div>
+	<div class="code"><p>This example requests a list of places and checks the response.</p>
+<pre><code>Cloud.Places.query({
+    page: 1,
+    per_page: 20,
+    where: {
+        lnglat: {
+            '$nearSphere': [-122.23,37.12],
+            '$maxDistance': 0.00126
+        }
+    }
+}, function (e) {
+    if (e.success) {
+        alert('Success:\\n' +
+            'Count: ' + e.places.length);
+        for (var i = 0; i &lt; e.places.length; i++) {
+            var place = e.places[i];
+            alert('id: ' + place.id + '\\n' +
+                  'name: ' + place.name + '\\n' +
+                  'longitude: ' + place.longitude + '\\n' +
+                  'latitude: ' + place.latitude + '\\n' +
+                  'updated_at: ' + place.updated_at);
+        }
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Update a Place Example</div>
+	<div class="code"><p>This example updates a place and checks the response.</p>
+<pre><code>Cloud.Places.update({
+    place_id: savedPlaceId,
+    city: 'Mountain View'
+}, function (e) {
+    if (e.success) {
+        var place = e.places[0];
+        alert('Success:\\n' +
+            'id: ' + place.id + '\\n' +
+            'name: ' + place.name + '\\n' +
+            'updated_at: ' + place.updated_at);
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Remove a Place Example</div>
+	<div class="code"><p>This example deletes a place and checks the response.</p>
+<pre><code>Cloud.Places.remove({
+    place_id: savedPlaceId
+}, function (e) {
+    if (e.success) {
+        alert('Success');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="create-method">
+        <a name="create-method"></a><b>create</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Create a new place.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPlacesResponse.html">[Callback&lt;CloudPlacesResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="query-method">
+        <a name="query-method"></a><b>query</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Retrieve a list of places with sorting and pagination.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPlacesResponse.html">[Callback&lt;CloudPlacesResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="remove-method">
+        <a name="remove-method"></a><b>remove</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Delete a place.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPlacesResponse.html">[Callback&lt;CloudPlacesResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="search-method">
+        <a name="search-method"></a><b>search</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Retrieve a list of places.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPlacesResponse.html">[Callback&lt;CloudPlacesResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="show-method">
+        <a name="show-method"></a><b>show</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Retrieve information about a place.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPlacesResponse.html">[Callback&lt;CloudPlacesResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="update-method">
+        <a name="update-method"></a><b>update</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Update information about a place.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPlacesResponse.html">[Callback&lt;CloudPlacesResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

@@ -35,16 +35,71 @@
             <span class="type">Object</span> 
             Titanium.UI.Button 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>A Button is created by the method <a href="Titanium.UI.createButton.html">Titanium.UI.createButton</a>.</p>
+        <p>A button widget.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A button widget that has four states, normal, disabled, focused and selected. (Note
+that the focused state is only used on Android devices that have navigation keys or a
+keyboard.)</p>
+<p>You can specify background images for each state, as well as button text and a button 
+icon. On iOS, there are button styles which define appearance for each 
+state, even if no button images are set.</p>
+<p>Use the <a href="Titanium.UI.createButton-method.html"><code>Titanium.UI.createButton</code></a> method to create a button. </p>
+<h4>Android and Mobile Web Platform Notes</h4>
+<p>Android and Mobile Web use default button images for the normal, focused, selected and disabled
+states. If you use a custom button image, you should specify versions for the focused
+and selected states (and the disabled state, if the button is ever disabled).</p>
+<p>Android and Mobile Web also support setting the background color for each of the states. These are not
+supported on iOS.</p>
+<h4>iOS Platform Notes</h4>
+<p>iOS buttons have two special properties, <code>style</code> and <code>systemButton</code>.</p>
+<p>The <code>style</code> property specifies the type of button decoration, and can be set to one 
+of the values described in <a href="Titanium.UI.iPhone.SystemButtonStyle-object.html"><code>Titanium.UI.iPhone.SystemButtonStyle</code></a>. </p>
+<p>Unlike Android and Mobile Web, iOS doesn't supply any default background images for buttons--
+system button styles serve this purpose.</p>
+<p>Button style decorations are drawn above the background gradient and background color, 
+and below any background images. </p>
+<p>To use a custom button style, for example using a background gradient,
+you may need to explicitly set <code>style</code> to <code>PLAIN</code>, to prevent the button style from<br />
+overriding any background color or gradient. In addition, the <code>backgroundImage</code> must be 
+partially or wholly transparent for the background color or background gradient to be visible.</p>
+<p>In order for a background gradient to show through, the <code>backgroundColor</code> may need to be
+set to 'transparent'.</p>
+<p>The <code>systemButton</code> property lets you create a predefined system-defined button, 
+such as the <strong>Camera</strong> or <strong>Add</strong> buttons, for use in toolbars and nav bars.
+Specifically, system buttons may be used in the following locations:</p>
+<ul>
+<li><a href="Titanium.UI.iOS.Toolbar-object.html"><code>Titanium.UI.iOS.Toolbar</code></a>. The <code>items</code> array can contain system buttons.</li>
+<li><a href="Titanium.UI.iPad.Popover-object.html"><code>Titanium.UI.iPad.Popover</code></a>. The <code>leftNavButton</code> and <code>rightNavButton</code> properties can
+  refer to system buttons</li>
+<li><a href="Titanium.UI.iPad.SplitWindow-object.html"><code>Titanium.UI.iPad.SplitWindow</code></a>. The <code>toolbar</code> array can contain system buttons.</li>
+<li><a href="Titanium.UI.TextField-object.html"><code>Titanium.UI.TextField</code></a>. The <code>keyboardToolbar</code> array can contain system buttons.</li>
+<li><a href="Titanium.UI.TextArea-object.html"><code>Titanium.UI.TextArea</code></a>. The <code>keyboardToolbar</code> array can contain system buttons.</li>
+<li><a href="Titanium.UI.Window-object.html"><code>Titanium.UI.Window</code></a>. The <code>leftNavButton</code> and <code>rightNavButton</code> properties can refer to 
+  system buttons and the <code>toolbar</code> array can contain system buttons.</li>
+</ul>
+<p>Use the constants in <a href="Titanium.UI.iPhone.SystemButton-object.html"><code>Titanium.UI.iPhone.SystemButton</code></a> 
+to specify a button type. The size, style and decoration of system buttons is set
+automatically, so you can create a button by setting only the <code>systemButton</code> property.</p>
+<p>For example:</p>
+<pre><code>cancelButton = Ti.UI.createButton({ systemButton: Ti.UI.iPhone.SystemButton.CANCEL });
+</code></pre>
+<p>Note that the <code>systemButton</code> property specifies <em>appearance</em>, not behavior. For
+example, to bring up the camera when the user presses the <strong>Camera</strong> button, you must 
+add an event listener to the button and call <a href="Titanium.Media.showCamera-method.html"><code>Titanium.Media.showCamera</code></a> when the 
+button is clicked.</p>
     </div>
     
 
@@ -66,7 +121,203 @@
             </ul>
     
             <ul>
+                <li><a href="#convertPointToView-method">convertPointToView <span class="params">(point, destinationView)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#finishLayout-method">finishLayout <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAnchorPoint-method">getAnchorPoint <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAnimatedCenterPoint-method">getAnimatedCenterPoint <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundColor-method">getBackgroundColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundDisabledColor-method">getBackgroundDisabledColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundDisabledImage-method">getBackgroundDisabledImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundFocusedColor-method">getBackgroundFocusedColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundFocusedImage-method">getBackgroundFocusedImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundGradient-method">getBackgroundGradient <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundImage-method">getBackgroundImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundLeftCap-method">getBackgroundLeftCap <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundRepeat-method">getBackgroundRepeat <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundSelectedColor-method">getBackgroundSelectedColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundSelectedImage-method">getBackgroundSelectedImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundTopCap-method">getBackgroundTopCap <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBorderColor-method">getBorderColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBorderRadius-method">getBorderRadius <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBorderWidth-method">getBorderWidth <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBottom-method">getBottom <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCenter-method">getCenter <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getChildren-method">getChildren <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getColor-method">getColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getEnabled-method">getEnabled <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFocusable-method">getFocusable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFont-method">getFont <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getImage-method">getImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getKeepScreenOn-method">getKeepScreenOn <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLayout-method">getLayout <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLeft-method">getLeft <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOpacity-method">getOpacity <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRect-method">getRect <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRight-method">getRight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSelectedColor-method">getSelectedColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSize-method">getSize <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSoftKeyboardOnFocus-method">getSoftKeyboardOnFocus <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getStyle-method">getStyle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSystemButton-method">getSystemButton <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTextAlign-method">getTextAlign <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitle-method">getTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitleid-method">getTitleid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTop-method">getTop <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTouchEnabled-method">getTouchEnabled <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTransform-method">getTransform <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getVerticalAlign-method">getVerticalAlign <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getVisible-method">getVisible <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWidth-method">getWidth <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getZIndex-method">getZIndex <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -82,11 +333,191 @@
             </ul>
     
             <ul>
+                <li><a href="#setAnchorPoint-method">setAnchorPoint <span class="params">(anchorPoint)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundColor-method">setBackgroundColor <span class="params">(backgroundColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundDisabledColor-method">setBackgroundDisabledColor <span class="params">(backgroundDisabledColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundDisabledImage-method">setBackgroundDisabledImage <span class="params">(backgroundDisabledImage)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundFocusedColor-method">setBackgroundFocusedColor <span class="params">(backgroundFocusedColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundFocusedImage-method">setBackgroundFocusedImage <span class="params">(backgroundFocusedImage)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundGradient-method">setBackgroundGradient <span class="params">(backgroundGradient)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundImage-method">setBackgroundImage <span class="params">(backgroundImage)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundLeftCap-method">setBackgroundLeftCap <span class="params">(backgroundLeftCap)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundRepeat-method">setBackgroundRepeat <span class="params">(backgroundRepeat)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundSelectedColor-method">setBackgroundSelectedColor <span class="params">(backgroundSelectedColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundSelectedImage-method">setBackgroundSelectedImage <span class="params">(backgroundSelectedImage)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundTopCap-method">setBackgroundTopCap <span class="params">(backgroundTopCap)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBorderColor-method">setBorderColor <span class="params">(borderColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBorderRadius-method">setBorderRadius <span class="params">(borderRadius)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBorderWidth-method">setBorderWidth <span class="params">(borderWidth)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBottom-method">setBottom <span class="params">(bottom)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCenter-method">setCenter <span class="params">(center)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setColor-method">setColor <span class="params">(color)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setEnabled-method">setEnabled <span class="params">(enabled)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFocusable-method">setFocusable <span class="params">(focusable)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFont-method">setFont <span class="params">(font)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHeight-method">setHeight <span class="params">(height)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setImage-method">setImage <span class="params">(image)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setKeepScreenOn-method">setKeepScreenOn <span class="params">(keepScreenOn)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLayout-method">setLayout <span class="params">(layout)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLeft-method">setLeft <span class="params">(left)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOpacity-method">setOpacity <span class="params">(opacity)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRight-method">setRight <span class="params">(right)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSelectedColor-method">setSelectedColor <span class="params">(selectedColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSoftKeyboardOnFocus-method">setSoftKeyboardOnFocus <span class="params">(softKeyboardOnFocus)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setStyle-method">setStyle <span class="params">(style)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSystemButton-method">setSystemButton <span class="params">(systemButton)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTextAlign-method">setTextAlign <span class="params">(textAlign)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitle-method">setTitle <span class="params">(title)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitleid-method">setTitleid <span class="params">(titleid)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTop-method">setTop <span class="params">(top)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTouchEnabled-method">setTouchEnabled <span class="params">(touchEnabled)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTransform-method">setTransform <span class="params">(transform)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setVerticalAlign-method">setVerticalAlign <span class="params">(verticalAlign)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setVisible-method">setVisible <span class="params">(visible)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setWidth-method">setWidth <span class="params">(width)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setZIndex-method">setZIndex <span class="params">(zIndex)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#show-method">show <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#toImage-method">toImage <span class="params">(f)</span></a></li>
+                <li><a href="#startLayout-method">startLayout <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#toImage-method">toImage <span class="params">(callback, honorScaleFactor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#updateLayout-method">updateLayout <span class="params">(params)</span></a></li>
             </ul>
     
     
@@ -98,257 +529,432 @@
         <tr valign='top'>
             <td class='attr-name'><a name="anchorPoint-property"></a>anchorPoint</td>
             <td class='attr-rw'>
-                [object]
+                [Point]
             </td>
-            <td class='attr-desc'>a dictionary with properties x and y to indicate the anchor point value. anchor specifies the position by which animation should occur. center is 0.5, 0.5</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Anchor point where animation should occur, relative to the view's boundaries.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
             <td class='attr-rw'>
-                [object]
+                [Point]
             </td>
-            <td class='attr-desc'>read-only object with x and y properties of where the view is during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Current position of the view during an animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundColor-property"></a>backgroundColor</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the buttons background color</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Background color of the view, as a color name or hex triplet.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundDisabledColor-property"></a>backgroundDisabledColor</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Disabled background color of the view, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundDisabledImage-property"></a>backgroundDisabledImage</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>url to a button image that is drawn as the background of the button when the button is in the disabled state</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Background image for the button in its disabled state, specified as a local file path 
+or URL. </td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundFocusedColor-property"></a>backgroundFocusedColor</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Focused background color of the view, as a color name or hex triplet.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundFocusedImage-property"></a>backgroundFocusedImage</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Background image for the button in its focused state, specified as a local file path 
+or URL. </td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundGradient-property"></a>backgroundGradient</td>
             <td class='attr-rw'>
-                [object]
+                [Gradient]
             </td>
-            <td class='attr-desc'>a background gradient for the view with the properties: type,startPoint,endPoint,startRadius,endRadius,backfillStart,backfillEnd,colors.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A background gradient for the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundImage-property"></a>backgroundImage</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>url to a button image that is drawn as the background of the button</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Background image for the button in its normal state, specified as a local file path or URL. </td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundLeftCap-property"></a>backgroundLeftCap</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>End caps specify the portion of an image that should not be resized when an image is stretched. This technique is used to implement buttons and other resizable image-based interface elements. When a button with end caps is resized, the resizing occurs only in the middle of the button, in the region between the end caps. The end caps themselves keep their original size and appearance. This property specifies the size of the left end cap. The middle (stretchable) portion is assumed to be 1 pixel wide. The right end cap is therefore computed by adding the size of the left end cap and the middle portion together and then subtracting that value from the width of the image</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Size of the left end cap.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundRepeat-property"></a>backgroundRepeat</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Toggle for whether or not to tile a background across a view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="backgroundSelectedColor-property"></a>backgroundSelectedColor</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Selected background color of the view, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundSelectedImage-property"></a>backgroundSelectedImage</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>url to a button image that is drawn as the background of the button when the button is in the selected state</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Background image for the button in its selected state, specified as a local file 
+path or URL. </td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundTopCap-property"></a>backgroundTopCap</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>End caps specify the portion of an image that should not be resized when an image is stretched. This technique is used to implement buttons and other resizable image-based interface elements. When a button with end caps is resized, the resizing occurs only in the middle of the button, in the region between the end caps. The end caps themselves keep their original size and appearance. This property specifies the size of the top end cap. The middle (stretchable) portion is assumed to be 1 pixel wide. The bottom end cap is therefore computed by adding the size of the top end cap and the middle portion together and then subtracting that value from the height of the image</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Size of the top end cap.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="borderColor-property"></a>borderColor</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the border color of the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Border color of the view, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="borderRadius-property"></a>borderRadius</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>the border radius of the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Border radius of the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="borderWidth-property"></a>borderWidth</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>the border width of the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Border width of the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="bottom-property"></a>bottom</td>
             <td class='attr-rw'>
-                [float,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>property for the view bottom position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View's bottom position, in platform-specific units.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="center-property"></a>center</td>
             <td class='attr-rw'>
-                [object]
+                [Point]
             </td>
-            <td class='attr-desc'>a dictionary with properties x and y to indicate the center of the views position relative to the parent view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View's center position, in the parent view's coordinates.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="children-property"></a>children</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.UI.View&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Array of this view's child views.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="color-property"></a>color</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the foreground color of the button text</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Default button text color, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="enabled-property"></a>enabled</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>boolean that indicates if the button is enabled or not</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Set to true to enable the button, false to disable the button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="focusable-property"></a>focusable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Whether view should be focusable while navigating with the trackball.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="font-property"></a>font</td>
             <td class='attr-rw'>
-                [object]
+                [Font]
             </td>
-            <td class='attr-desc'>the font properties of the button</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Font to use for the button text.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="height-property"></a>height</td>
             <td class='attr-rw'>
-                [float,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>property for the view height. can be either float value or a string of the width.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View height, in platform-specific units.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="image-property"></a>image</td>
             <td class='attr-rw'>
-                [string]
+                [StringTitanium.Blob]
             </td>
-            <td class='attr-desc'>the image to display on the button to the left of the title</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Image to display on the button, specified as a local path, URL or (on iOS only) a Blob.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="keepScreenOn-property"></a>keepScreenOn</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Whether to keep the device screen on.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="layout-property"></a>layout</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies how the view positions its children. 
+One of: 'absolute', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="left-property"></a>left</td>
             <td class='attr-rw'>
-                [float,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>property for the view left position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View's left position, in platform-specific units.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="opacity-property"></a>opacity</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>the opacity from 0.0-1.0</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="rect-property"></a>rect</td>
+            <td class='attr-rw'>
+                [Dimension]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="right-property"></a>right</td>
             <td class='attr-rw'>
-                [float,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>property for the view right position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View's right position, in platform-specific units.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="selectedColor-property"></a>selectedColor</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the selected color of the button text when the button is in the selected state</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Button text color used to indicate the selected state, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="size-property"></a>size</td>
             <td class='attr-rw'>
-                [object]
+                [Dimension]
             </td>
-            <td class='attr-desc'>the size of the view as a dictionary of width and height properties</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="softKeyboardOnFocus-property"></a>softKeyboardOnFocus</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines keyboard behavior when this view is focused.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="style-property"></a>style</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>style constant for the type of button</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Style constant for the button, as defined in Titanium.UI.iPhone.SystemButtonStyle.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="systemButton-property"></a>systemButton</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies an iOS system button appearance, as defined in Titanium.UI.iPhone.SystemButton.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="textAlign-property"></a>textAlign</td>
+            <td class='attr-rw'>
+                [StringNumber]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Text alignment, specified using one of the Titanium.UI text alignment constants: TEXT_ALIGNMENT_LEFT, TEXT_ALIGNMENT_CENTER, or TEXT_ALIGNMENT_RIGHT.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="title-property"></a>title</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>button title</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Button title.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="titleid-property"></a>titleid</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Key identifying a string from the locale file to use for the button title.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="top-property"></a>top</td>
             <td class='attr-rw'>
-                [float,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>property for the view top position. this position is relative to the views parent. can be either a float value or a string of the width.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The view's top position.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="touchEnabled-property"></a>touchEnabled</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>a boolean indicating if the view should receive touch events (true, default) or forward them to peers (false)</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Whether view should receive touch events.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
             </td>
-            <td class='attr-desc'>the transformation matrix to apply to the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Transformation matrix to apply to the view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="verticalAlign-property"></a>verticalAlign</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Vertical alignment for the text field, specified using one of the 
+vertical alignment constants from Titanium.UI: 
+TEXT_VERTICAL_ALIGNMENT_BOTTOM, 
+TEXT_VERTICAL_ALIGNMENT_CENTER, or 
+TEXT_VERTICAL_ALIGNMENT_TOP.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="visible-property"></a>visible</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>a boolean of the visibility of the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Boolean value indicating whether the view is visible.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="width-property"></a>width</td>
             <td class='attr-rw'>
-                [float,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>property for the view width. can either be `auto`, a float value or a string of the width.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View's width, in platform-specific units.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="zIndex-property"></a>zIndex</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the z index position relative to other sibling views</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Z index position relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -360,52 +966,86 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#click-event">click</a></td>
-            <td class='attr-desc'>fired when the user presses the button</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a click against the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#dblclick-event">dblclick</a></td>
-            <td class='attr-desc'>fired when the device detects a double click against the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a double click against the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#doubletap-event">doubletap</a></td>
-            <td class='attr-desc'>fired when the device detects a double tap against the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a double tap against the view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#longclick-event">longclick</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a long click.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#longpress-event">longpress</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a long press.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#pinch-event">pinch</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a pinch gesture.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#postlayout-event">postlayout</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when a layout cycle is finished.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#singletap-event">singletap</a></td>
-            <td class='attr-desc'>fired when the device detects a single tap against the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a single tap against the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#swipe-event">swipe</a></td>
-            <td class='attr-desc'>fired when the device detects a swipe (left or right) against the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a swipe gesture against the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#touchcancel-event">touchcancel</a></td>
-            <td class='attr-desc'>fired when a touch event is interrupted by the device. this happens in circumenstances such as an incoming call to allow the UI to clean up state.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when a touch event is interrupted by the device.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#touchend-event">touchend</a></td>
-            <td class='attr-desc'>fired when a touch event is completed</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when a touch event is completed.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#touchmove-event">touchmove</a></td>
-            <td class='attr-desc'>fired as soon as the device detects movement of a touch.  Event coordinates are always relative to the view in which the initial touch occurred</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired as soon as the device detects movement of a touch.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#touchstart-event">touchstart</a></td>
-            <td class='attr-desc'>fired as soon as the device detects a gesture</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired as soon as the device detects a touch gesture.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#twofingertap-event">twofingertap</a></td>
-            <td class='attr-desc'>fired when the device detects a two-finger tap against the view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a two-finger tap against the view.</td>
         </tr>
         
     </table>
@@ -418,14 +1058,16 @@
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Button Example</div>
-	<div class="code"><pre><code>var button = Titanium.UI.createButton({
-   title: 'Hello'
+	<div class="code"><p>var button = Titanium.UI.createButton({
+   title: 'Hello',
+   top: 10,
+   width: 100,
+   height: 50
 });
 button.addEventListener('click',function(e)
 {
    Titanium.API.info("You clicked the button");
-});
-</code></pre></div>
+});</p></div>
         
     </table>
     
@@ -437,291 +1079,2203 @@ button.addEventListener('click',function(e)
     <div class="method">
       <div class="title" id="add-method">
         <a name="add-method"></a><b>add</b> <span class="params">(view)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add a child to the view hierarchy
-      </div>
+      <div class="description"><p>Adds a child to this view's hierarchy.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>view</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>the view to add to this views hiearchy</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>view</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>View to add to this view's hierarchy.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="animate-method">
         <a name="animate-method"></a><b>animate</b> <span class="params">(obj, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        animate the view
-      </div>
+      <div class="description"><p>Animates this view.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>obj</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>either a dictionary of animation properties or an Animation object</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>function to be invoked upon completion of the animation</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>obj</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.AnimationDictionary&lt;Titanium.UI.Animation&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Either a dictionary of animation properties or an 
+Animation object.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to be invoked upon completion of the animation.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="convertPointToView-method">
+        <a name="convertPointToView-method"></a><b>convertPointToView</b> <span class="params">(point, destinationView)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Translates a point from this view's coordinate system to another 
+view's coordinate system.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>point</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Point]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A point in this view's coordinate system.
+If this argument is missing an x or y property, or the properties can not 
+be converted into numbers, an exception will be raised.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>destinationView</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to.
+If this argument is not a view, an exception will be raised.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="finishLayout-method">
+        <a name="finishLayout-method"></a><b>finishLayout</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the view tree.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAnchorPoint-method">
+        <a name="getAnchorPoint-method"></a><b>getAnchorPoint</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.anchorPoint-property.html">anchorPoint</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAnimatedCenterPoint-method">
+        <a name="getAnimatedCenterPoint-method"></a><b>getAnimatedCenterPoint</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.animatedCenterPoint-property.html">animatedCenterPoint</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundColor-method">
+        <a name="getBackgroundColor-method"></a><b>getBackgroundColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundColor-property.html">backgroundColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundDisabledColor-method">
+        <a name="getBackgroundDisabledColor-method"></a><b>getBackgroundDisabledColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundDisabledColor-property.html">backgroundDisabledColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundDisabledImage-method">
+        <a name="getBackgroundDisabledImage-method"></a><b>getBackgroundDisabledImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundDisabledImage-property.html">backgroundDisabledImage</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundFocusedColor-method">
+        <a name="getBackgroundFocusedColor-method"></a><b>getBackgroundFocusedColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundFocusedColor-property.html">backgroundFocusedColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundFocusedImage-method">
+        <a name="getBackgroundFocusedImage-method"></a><b>getBackgroundFocusedImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundFocusedImage-property.html">backgroundFocusedImage</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundGradient-method">
+        <a name="getBackgroundGradient-method"></a><b>getBackgroundGradient</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundGradient-property.html">backgroundGradient</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundImage-method">
+        <a name="getBackgroundImage-method"></a><b>getBackgroundImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundImage-property.html">backgroundImage</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundLeftCap-method">
+        <a name="getBackgroundLeftCap-method"></a><b>getBackgroundLeftCap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundLeftCap-property.html">backgroundLeftCap</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundRepeat-method">
+        <a name="getBackgroundRepeat-method"></a><b>getBackgroundRepeat</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundRepeat-property.html">backgroundRepeat</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundSelectedColor-method">
+        <a name="getBackgroundSelectedColor-method"></a><b>getBackgroundSelectedColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundSelectedColor-property.html">backgroundSelectedColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundSelectedImage-method">
+        <a name="getBackgroundSelectedImage-method"></a><b>getBackgroundSelectedImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundSelectedImage-property.html">backgroundSelectedImage</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundTopCap-method">
+        <a name="getBackgroundTopCap-method"></a><b>getBackgroundTopCap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.backgroundTopCap-property.html">backgroundTopCap</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBorderColor-method">
+        <a name="getBorderColor-method"></a><b>getBorderColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.borderColor-property.html">borderColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBorderRadius-method">
+        <a name="getBorderRadius-method"></a><b>getBorderRadius</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.borderRadius-property.html">borderRadius</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBorderWidth-method">
+        <a name="getBorderWidth-method"></a><b>getBorderWidth</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.borderWidth-property.html">borderWidth</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBottom-method">
+        <a name="getBottom-method"></a><b>getBottom</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.bottom-property.html">bottom</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCenter-method">
+        <a name="getCenter-method"></a><b>getCenter</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.center-property.html">center</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getChildren-method">
+        <a name="getChildren-method"></a><b>getChildren</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.children-property.html">children</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getColor-method">
+        <a name="getColor-method"></a><b>getColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.color-property.html">color</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getEnabled-method">
+        <a name="getEnabled-method"></a><b>getEnabled</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.enabled-property.html">enabled</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFocusable-method">
+        <a name="getFocusable-method"></a><b>getFocusable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.focusable-property.html">focusable</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFont-method">
+        <a name="getFont-method"></a><b>getFont</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.font-property.html">font</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHeight-method">
+        <a name="getHeight-method"></a><b>getHeight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.height-property.html">height</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getImage-method">
+        <a name="getImage-method"></a><b>getImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.image-property.html">image</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getKeepScreenOn-method">
+        <a name="getKeepScreenOn-method"></a><b>getKeepScreenOn</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.keepScreenOn-property.html">keepScreenOn</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLayout-method">
+        <a name="getLayout-method"></a><b>getLayout</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.layout-property.html">layout</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLeft-method">
+        <a name="getLeft-method"></a><b>getLeft</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.left-property.html">left</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOpacity-method">
+        <a name="getOpacity-method"></a><b>getOpacity</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.opacity-property.html">opacity</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRect-method">
+        <a name="getRect-method"></a><b>getRect</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.rect-property.html">rect</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRight-method">
+        <a name="getRight-method"></a><b>getRight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.right-property.html">right</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSelectedColor-method">
+        <a name="getSelectedColor-method"></a><b>getSelectedColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.selectedColor-property.html">selectedColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSize-method">
+        <a name="getSize-method"></a><b>getSize</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.size-property.html">size</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSoftKeyboardOnFocus-method">
+        <a name="getSoftKeyboardOnFocus-method"></a><b>getSoftKeyboardOnFocus</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.softKeyboardOnFocus-property.html">softKeyboardOnFocus</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getStyle-method">
+        <a name="getStyle-method"></a><b>getStyle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.style-property.html">style</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSystemButton-method">
+        <a name="getSystemButton-method"></a><b>getSystemButton</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.systemButton-property.html">systemButton</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTextAlign-method">
+        <a name="getTextAlign-method"></a><b>getTextAlign</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.textAlign-property.html">textAlign</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitle-method">
+        <a name="getTitle-method"></a><b>getTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.title-property.html">title</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitleid-method">
+        <a name="getTitleid-method"></a><b>getTitleid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.titleid-property.html">titleid</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTop-method">
+        <a name="getTop-method"></a><b>getTop</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.top-property.html">top</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTouchEnabled-method">
+        <a name="getTouchEnabled-method"></a><b>getTouchEnabled</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.touchEnabled-property.html">touchEnabled</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTransform-method">
+        <a name="getTransform-method"></a><b>getTransform</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.transform-property.html">transform</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getVerticalAlign-method">
+        <a name="getVerticalAlign-method"></a><b>getVerticalAlign</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.verticalAlign-property.html">verticalAlign</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getVisible-method">
+        <a name="getVisible-method"></a><b>getVisible</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.visible-property.html">visible</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWidth-method">
+        <a name="getWidth-method"></a><b>getWidth</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.width-property.html">width</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getZIndex-method">
+        <a name="getZIndex-method"></a><b>getZIndex</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Button.zIndex-property.html">zIndex</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="hide-method">
         <a name="hide-method"></a><b>hide</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        hide the view
-      </div>
+      <div class="description"><p>Hides this view.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="remove-method">
         <a name="remove-method"></a><b>remove</b> <span class="params">(view)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously add view from the view hiearchy
-      </div>
+      <div class="description"><p>Removes a child view from this view's hierarchy.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>view</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>the view to remove from this views hiearchy</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>view</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>View to remove from this view's hierarchy.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAnchorPoint-method">
+        <a name="setAnchorPoint-method"></a><b>setAnchorPoint</b> <span class="params">(anchorPoint)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.anchorPoint-property.html">anchorPoint</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>anchorPoint</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Point]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundColor-method">
+        <a name="setBackgroundColor-method"></a><b>setBackgroundColor</b> <span class="params">(backgroundColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundColor-property.html">backgroundColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundDisabledColor-method">
+        <a name="setBackgroundDisabledColor-method"></a><b>setBackgroundDisabledColor</b> <span class="params">(backgroundDisabledColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundDisabledColor-property.html">backgroundDisabledColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundDisabledColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundDisabledImage-method">
+        <a name="setBackgroundDisabledImage-method"></a><b>setBackgroundDisabledImage</b> <span class="params">(backgroundDisabledImage)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundDisabledImage-property.html">backgroundDisabledImage</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundDisabledImage</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundFocusedColor-method">
+        <a name="setBackgroundFocusedColor-method"></a><b>setBackgroundFocusedColor</b> <span class="params">(backgroundFocusedColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundFocusedColor-property.html">backgroundFocusedColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundFocusedColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundFocusedImage-method">
+        <a name="setBackgroundFocusedImage-method"></a><b>setBackgroundFocusedImage</b> <span class="params">(backgroundFocusedImage)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundFocusedImage-property.html">backgroundFocusedImage</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundFocusedImage</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundGradient-method">
+        <a name="setBackgroundGradient-method"></a><b>setBackgroundGradient</b> <span class="params">(backgroundGradient)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundGradient-property.html">backgroundGradient</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundGradient</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Gradient]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundImage-method">
+        <a name="setBackgroundImage-method"></a><b>setBackgroundImage</b> <span class="params">(backgroundImage)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundImage-property.html">backgroundImage</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundImage</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundLeftCap-method">
+        <a name="setBackgroundLeftCap-method"></a><b>setBackgroundLeftCap</b> <span class="params">(backgroundLeftCap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundLeftCap-property.html">backgroundLeftCap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundLeftCap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundRepeat-method">
+        <a name="setBackgroundRepeat-method"></a><b>setBackgroundRepeat</b> <span class="params">(backgroundRepeat)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundRepeat-property.html">backgroundRepeat</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundRepeat</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundSelectedColor-method">
+        <a name="setBackgroundSelectedColor-method"></a><b>setBackgroundSelectedColor</b> <span class="params">(backgroundSelectedColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundSelectedColor-property.html">backgroundSelectedColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundSelectedColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundSelectedImage-method">
+        <a name="setBackgroundSelectedImage-method"></a><b>setBackgroundSelectedImage</b> <span class="params">(backgroundSelectedImage)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundSelectedImage-property.html">backgroundSelectedImage</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundSelectedImage</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundTopCap-method">
+        <a name="setBackgroundTopCap-method"></a><b>setBackgroundTopCap</b> <span class="params">(backgroundTopCap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.backgroundTopCap-property.html">backgroundTopCap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundTopCap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBorderColor-method">
+        <a name="setBorderColor-method"></a><b>setBorderColor</b> <span class="params">(borderColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.borderColor-property.html">borderColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>borderColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBorderRadius-method">
+        <a name="setBorderRadius-method"></a><b>setBorderRadius</b> <span class="params">(borderRadius)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.borderRadius-property.html">borderRadius</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>borderRadius</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBorderWidth-method">
+        <a name="setBorderWidth-method"></a><b>setBorderWidth</b> <span class="params">(borderWidth)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.borderWidth-property.html">borderWidth</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>borderWidth</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBottom-method">
+        <a name="setBottom-method"></a><b>setBottom</b> <span class="params">(bottom)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.bottom-property.html">bottom</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>bottom</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCenter-method">
+        <a name="setCenter-method"></a><b>setCenter</b> <span class="params">(center)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.center-property.html">center</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>center</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Point]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setColor-method">
+        <a name="setColor-method"></a><b>setColor</b> <span class="params">(color)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.color-property.html">color</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>color</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setEnabled-method">
+        <a name="setEnabled-method"></a><b>setEnabled</b> <span class="params">(enabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.enabled-property.html">enabled</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>enabled</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFocusable-method">
+        <a name="setFocusable-method"></a><b>setFocusable</b> <span class="params">(focusable)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.focusable-property.html">focusable</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>focusable</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFont-method">
+        <a name="setFont-method"></a><b>setFont</b> <span class="params">(font)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.font-property.html">font</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>font</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Font]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHeight-method">
+        <a name="setHeight-method"></a><b>setHeight</b> <span class="params">(height)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.height-property.html">height</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>height</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setImage-method">
+        <a name="setImage-method"></a><b>setImage</b> <span class="params">(image)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.image-property.html">image</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>image</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setKeepScreenOn-method">
+        <a name="setKeepScreenOn-method"></a><b>setKeepScreenOn</b> <span class="params">(keepScreenOn)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.keepScreenOn-property.html">keepScreenOn</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>keepScreenOn</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLayout-method">
+        <a name="setLayout-method"></a><b>setLayout</b> <span class="params">(layout)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.layout-property.html">layout</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>layout</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLeft-method">
+        <a name="setLeft-method"></a><b>setLeft</b> <span class="params">(left)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.left-property.html">left</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>left</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOpacity-method">
+        <a name="setOpacity-method"></a><b>setOpacity</b> <span class="params">(opacity)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.opacity-property.html">opacity</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>opacity</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRight-method">
+        <a name="setRight-method"></a><b>setRight</b> <span class="params">(right)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.right-property.html">right</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>right</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSelectedColor-method">
+        <a name="setSelectedColor-method"></a><b>setSelectedColor</b> <span class="params">(selectedColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.selectedColor-property.html">selectedColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>selectedColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSoftKeyboardOnFocus-method">
+        <a name="setSoftKeyboardOnFocus-method"></a><b>setSoftKeyboardOnFocus</b> <span class="params">(softKeyboardOnFocus)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.softKeyboardOnFocus-property.html">softKeyboardOnFocus</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>softKeyboardOnFocus</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setStyle-method">
+        <a name="setStyle-method"></a><b>setStyle</b> <span class="params">(style)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.style-property.html">style</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>style</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSystemButton-method">
+        <a name="setSystemButton-method"></a><b>setSystemButton</b> <span class="params">(systemButton)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.systemButton-property.html">systemButton</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>systemButton</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTextAlign-method">
+        <a name="setTextAlign-method"></a><b>setTextAlign</b> <span class="params">(textAlign)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.textAlign-property.html">textAlign</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>textAlign</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringNumber]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitle-method">
+        <a name="setTitle-method"></a><b>setTitle</b> <span class="params">(title)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.title-property.html">title</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>title</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitleid-method">
+        <a name="setTitleid-method"></a><b>setTitleid</b> <span class="params">(titleid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.titleid-property.html">titleid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>titleid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTop-method">
+        <a name="setTop-method"></a><b>setTop</b> <span class="params">(top)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.top-property.html">top</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>top</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTouchEnabled-method">
+        <a name="setTouchEnabled-method"></a><b>setTouchEnabled</b> <span class="params">(touchEnabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.touchEnabled-property.html">touchEnabled</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>touchEnabled</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTransform-method">
+        <a name="setTransform-method"></a><b>setTransform</b> <span class="params">(transform)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.transform-property.html">transform</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>transform</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setVerticalAlign-method">
+        <a name="setVerticalAlign-method"></a><b>setVerticalAlign</b> <span class="params">(verticalAlign)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.verticalAlign-property.html">verticalAlign</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>verticalAlign</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setVisible-method">
+        <a name="setVisible-method"></a><b>setVisible</b> <span class="params">(visible)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.visible-property.html">visible</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>visible</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setWidth-method">
+        <a name="setWidth-method"></a><b>setWidth</b> <span class="params">(width)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.width-property.html">width</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>width</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setZIndex-method">
+        <a name="setZIndex-method"></a><b>setZIndex</b> <span class="params">(zIndex)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Button.zIndex-property.html">zIndex</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>zIndex</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="show-method">
         <a name="show-method"></a><b>show</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        make the view visible
-      </div>
+      <div class="description"><p>Makes this view visible.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="startLayout-method">
+        <a name="startLayout-method"></a><b>startLayout</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Starts a batch update of this view's layout properties.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="toImage-method">
-        <a name="toImage-method"></a><b>toImage</b> <span class="params">(f)</span>
+        <a name="toImage-method"></a><b>toImage</b> <span class="params">(callback, honorScaleFactor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        return a Blob image of the rendered view
-      </div>
+      <div class="description"><p>Returns an image of the rendered view, as a Blob.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>f</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>function to be invoked upon completion. if non-null, this method will be performed asynchronously. if null, it will be performed immediately</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Titanium.Blob.html">[Callback&lt;Titanium.Blob&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be 
+performed asynchronously. If null, it will be performed immediately.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>honorScaleFactor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>When set to true, the image is scaled based on scale factor of main screen.
+When set to false the image in the blob has the same dimensions for retina and
+non-retina devices. Only used on iOS.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="updateLayout-method">
+        <a name="updateLayout-method"></a><b>updateLayout</b> <span class="params">(params)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a
+layout pass after they have been updated.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Dictionary of layout properties to be updated.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     
@@ -736,39 +3290,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        <p>fired when the user presses the button</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -782,39 +3355,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired when the device detects a double click against the view
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -828,39 +3420,242 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired when the device detects a double tap against the view
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="longclick-event">
+        <a name="longclick-method"></a><b>longclick</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="longpress-event">
+        <a name="longpress-method"></a><b>longpress</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="pinch-event">
+        <a name="pinch-method"></a><b>pinch</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>scale</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>The scale factor relative to the points of the two touches in screen coordinates.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>velocity</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>The velocity of the pinch in scale factor per second.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="postlayout-event">
+        <a name="postlayout-method"></a><b>postlayout</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -874,39 +3669,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired when the device detects a single tap against the view
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -920,44 +3734,68 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired when the device detects a swipe (left or right) against the view
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
+            <td class='attr-name'>direction</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Direction of the swipe--either 'left' or 'right'. Android also supports 'up' and 'down'.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event's endpoint in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>direction</td>
-            <td class='attr-desc'>direction of the swipe - either left or right</td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event's endpoint from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event's endpoint from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -971,39 +3809,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired when a touch event is interrupted by the device. this happens in circumenstances such as an incoming call to allow the UI to clean up state.
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -1017,39 +3874,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired when a touch event is completed
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -1063,39 +3939,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired as soon as the device detects movement of a touch.  Event coordinates are always relative to the view in which the initial touch occurred
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -1109,39 +4004,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired as soon as the device detects a gesture
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>
@@ -1155,39 +4069,58 @@ button.addEventListener('click',function(e)
       </div>
       
       
-      <div class="description">
-        fired when the device detects a two-finger tap against the view
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>the x point of the event in receiving view coordiantes</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>a dictionary with properties x and y describing the point of the event in screen coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>the y point of the event, in receiving view coordinates</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
+of the event in screen coordinates.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
           </tr>
           
 	</table>

@@ -35,17 +35,20 @@
             <span class="type">Module</span> 
             Titanium.UI.Android 
         </h1>
-	<ul class="files">
-	  <li>Android</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(1.0+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The Android specific UI capabilities. All properties, methods and events in this namespace will only work on Android related devices.</p>
+        <p>The Android-specific UI capabilities. All properties, methods and events in this namespace will 
+only work on Android systems.</p>
     </div>
+    
+    
     
 
     
@@ -62,17 +65,442 @@
             </ul>
     
             <ul>
+                <li><a href="#hideSoftKeyboard-method">hideSoftKeyboard <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#openPreferences-method">openPreferences <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
     
 
     
-
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LINKIFY_ALL-property"></a>LINKIFY_ALL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Auto-link all supported types for Titanium.UI.Label.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LINKIFY_EMAIL_ADDRESSES-property"></a>LINKIFY_EMAIL_ADDRESSES</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Auto-link email addresses for Titanium.UI.Label.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LINKIFY_MAP_ADDRESSES-property"></a>LINKIFY_MAP_ADDRESSES</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Auto-link physical addresses for Titanium.UI.Label.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LINKIFY_PHONE_NUMBERS-property"></a>LINKIFY_PHONE_NUMBERS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Auto-link phone numbers for Titanium.UI.Label.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LINKIFY_WEB_URLS-property"></a>LINKIFY_WEB_URLS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Auto-link web urls for Titanium.UI.Label.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_A_8-property"></a>PIXEL_FORMAT_A_8</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android A_8 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_LA_88-property"></a>PIXEL_FORMAT_LA_88</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android LA_88 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_L_8-property"></a>PIXEL_FORMAT_L_8</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android L_8 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_OPAQUE-property"></a>PIXEL_FORMAT_OPAQUE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android OPAQUE pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_RGBA_4444-property"></a>PIXEL_FORMAT_RGBA_4444</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android RGBA_4444 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_RGBA_5551-property"></a>PIXEL_FORMAT_RGBA_5551</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android RGBA_5551 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_RGBA_8888-property"></a>PIXEL_FORMAT_RGBA_8888</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android RGBA_8888 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_RGBX_8888-property"></a>PIXEL_FORMAT_RGBX_8888</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android RGBX_8888 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_RGB_332-property"></a>PIXEL_FORMAT_RGB_332</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android RGB_332 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_RGB_565-property"></a>PIXEL_FORMAT_RGB_565</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android RGB_565 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_RGB_888-property"></a>PIXEL_FORMAT_RGB_888</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android RGB_888 pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_TRANSLUCENT-property"></a>PIXEL_FORMAT_TRANSLUCENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android TRANSLUCENT pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_TRANSPARENT-property"></a>PIXEL_FORMAT_TRANSPARENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android A_8 pixel format for Titanium.UI.Window. Selecting the correct pixel format can 
+improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PIXEL_FORMAT_UNKNOWN-property"></a>PIXEL_FORMAT_UNKNOWN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android UNKNOWN pixel format for Titanium.UI.Window. Selecting the correct pixel format 
+can improve image clarity and performance.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_ADJUST_PAN-property"></a>SOFT_INPUT_ADJUST_PAN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Pan the current heavyweight window when the input method (ie software keyboard) is shown, to 
+ensure that its contents are not obscured.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_ADJUST_RESIZE-property"></a>SOFT_INPUT_ADJUST_RESIZE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Resize the current heavyweight window when the input method (ie software keyboard) is shown, 
+to ensure that its contents are not obscured.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_ADJUST_UNSPECIFIED-property"></a>SOFT_INPUT_ADJUST_UNSPECIFIED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the system-default behavior to determine how the soft input area (ie software keyboard) 
+is accomodated by the current heavyweight window when it receives focus (default.)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_STATE_ALWAYS_HIDDEN-property"></a>SOFT_INPUT_STATE_ALWAYS_HIDDEN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Always hide the soft input area (ie software keyboard) when the current heavyweight window 
+receives focus.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_STATE_ALWAYS_VISIBLE-property"></a>SOFT_INPUT_STATE_ALWAYS_VISIBLE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Always show the soft input area (ie software keyboard) when the current heavyweight window 
+receives focus.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_STATE_HIDDEN-property"></a>SOFT_INPUT_STATE_HIDDEN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Attempt to hide the soft input area (ie software keyboard) when the current heavyweight 
+window receives focus.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_STATE_UNSPECIFIED-property"></a>SOFT_INPUT_STATE_UNSPECIFIED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the system-default behavior to determine whether to show the soft input area 
+(ie software keyboard) when the current heavyweight window receives focus.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_INPUT_STATE_VISIBLE-property"></a>SOFT_INPUT_STATE_VISIBLE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Attempt to show the soft input area (ie software keyboard) when the current heavyweight 
+window receives focus.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_KEYBOARD_DEFAULT_ON_FOCUS-property"></a>SOFT_KEYBOARD_DEFAULT_ON_FOCUS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use Android default behavior to handle keyboard visibility when a view receives focus. 
+(default)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_KEYBOARD_HIDE_ON_FOCUS-property"></a>SOFT_KEYBOARD_HIDE_ON_FOCUS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Attempt to hide the soft keyboard when a view receives focus. Note: system can override 
+request.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOFT_KEYBOARD_SHOW_ON_FOCUS-property"></a>SOFT_KEYBOARD_SHOW_ON_FOCUS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Attempt to show the soft keyboard when a view receives focus. Note: system can override 
+request.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SWITCH_STYLE_CHECKBOX-property"></a>SWITCH_STYLE_CHECKBOX</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Display Titanium.UI.Switch as a checkbox.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SWITCH_STYLE_TOGGLEBUTTON-property"></a>SWITCH_STYLE_TOGGLEBUTTON</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Display Titanium.UI.Switch as a toggle button. (default)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="WEBVIEW_PLUGINS_OFF-property"></a>WEBVIEW_PLUGINS_OFF</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with WebView.pluginState to disable plugins in a web view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="WEBVIEW_PLUGINS_ON-property"></a>WEBVIEW_PLUGINS_ON</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with WebView.pluginState to enable plugins in a web view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="WEBVIEW_PLUGINS_ON_DEMAND-property"></a>WEBVIEW_PLUGINS_ON_DEMAND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Display a placeholder and only load plugins when user selects it.</td>
+        </tr>
+        
+    </table>
     
 
     
 
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Android Preferences Example</div>
+	<div class="code"><p>Create preferences interface for the application.</p>
+<h4><code>app.js</code></h4>
+<pre><code>var button = Ti.UI.createButton({
+  title:    'Click to Open Preferences'
+});
+button.addEventListener('click', function() {
+  Ti.UI.Android.openPreferences();
+});
+Ti.UI.currentWindow.add(button);
+</code></pre>
+<h4><code>platform/android/res/xml/preferences.xml</code></h4>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Preferences"&gt;
+  &lt;PreferenceScreen
+      android:title="Misc. Preferences"
+      android:summary="Click to see more options"&gt;
+    &lt;EditTextPreference
+      android:title="Edit Text Preference"
+      android:summary="You may enter a string"
+      android:defaultValue=""
+      android:key="editText" /&gt;
+  &lt;/PreferenceScreen&gt;
+  &lt;PreferenceCategory android:title="Category One"&gt;
+    &lt;CheckBoxPreference
+      android:title="CheckBox Preference"
+      android:defaultValue="false"
+      android:summary="You may enter a boolean"
+      android:key="checkbox" /&gt;
+    &lt;RingtonePreference
+      android:title="Ringtone Preference"
+      android:summary="You may pick a ringtone"
+      android:defaultValue=""
+      android:key="ringtone" /&gt;
+  &lt;/PreferenceCategory&gt;
+  &lt;PreferenceCategory android:title="Category Two"&gt;
+    &lt;ListPreference
+      android:title="List Preference"
+      android:summary="You may chose from multiple choices"
+      android:key="list" 
+    android:entries="@array/listNames"
+    android:entryValues="@array/listValues" 
+    /&gt;
+  &lt;/PreferenceCategory&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre>
+<h4><code>platform/android/res/values/array/array.xml</code></h4>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+  &lt;string-array name="listNames"&gt;
+    &lt;item&gt;5 Minutes&lt;/item&gt;
+    &lt;item&gt;10 Minutes&lt;/item&gt;
+    &lt;item&gt;15 Minutes&lt;/item&gt;
+    &lt;item&gt;30 Minutes&lt;/item&gt;
+    &lt;item&gt;60 Minutes&lt;/item&gt;
+  &lt;/string-array&gt;
+  &lt;string-array name="listValues"&gt;
+    &lt;item&gt;5&lt;/item&gt;
+    &lt;item&gt;10&lt;/item&gt;
+    &lt;item&gt;15&lt;/item&gt;
+    &lt;item&gt;30&lt;/item&gt;
+    &lt;item&gt;60&lt;/item&gt;
+  &lt;/string-array&gt;
+&lt;/resources&gt;
+</code></pre></div>
+        
+    </table>
     
 
 
@@ -82,121 +510,150 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hideSoftKeyboard-method">
+        <a name="hideSoftKeyboard-method"></a><b>hideSoftKeyboard</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Hides the soft keyboard.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="openPreferences-method">
+        <a name="openPreferences-method"></a><b>openPreferences</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Opens an application preferences dialog, using the native Android system settings interface, 
+defined by the platform-specific <code>preferences.xml</code> and <code>array.xml</code> files.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     

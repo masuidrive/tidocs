@@ -35,16 +35,56 @@
             <span class="type">Object</span> 
             Titanium.Map.Annotation 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>An Annotation object that is created by the method <a href="Titanium.Map.createAnnotation.html">Titanium.Map.createAnnotation</a>. This object gives you low level control over annotations that can be added to a Map View.</p>
+        <p>Represents a labeled point of interest on the map that the user can click on.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The <code>Annotation</code> object gives you low-level control over annotations that can be added to 
+<a href="Titanium.Map.View-object.html">map view</a>. An annotation must have its <code>latitude</code> and <code>longitude</code>
+properties set to appear on a map.</p>
+<p>An annotation can also have a title, a subtitle, and two inset buttons or views on the left
+and right side of the title. All of these items are optional.</p>
+<p>The controls on the left and right side of the annotation can be specified in one of two
+ways:</p>
+<ul>
+<li>
+<p>To display an image, set the <a href="Titanium.Map.Annotation.leftButton-property.html">leftButton</a> or 
+  <a href="Titanium.Map.Annotation.rightButton-property.html">rightButton</a> property to an image URL. (On 
+  iOS, you can also use a <a href="Titanium.UI.iPhone.SystemButton-object.html">SystemButton</a> constant 
+  to use one of the native system button icons.) </p>
+</li>
+<li>
+<p>To add another type of view to the annotation, set the 
+  <a href="Titanium.Map.Annotation.leftView-property.html">leftView</a> or 
+  <a href="Titanium.Map.Annotation.rightView-property.html">rightView</a> property to a <a href="Titanium.UI.View-object.html">View</a>
+  object.</p>
+</li>
+</ul>
+<p><code>leftButton</code> and <code>leftView</code> are mutually exclusive, as are <code>rightButton</code> and
+<code>rightView</code>. </p>
+<p>An annotation has two states: selected and deselected. A deselected annotation
+is marked by a pin image. When the user selects the pin, the full annotation is 
+displayed.</p>
+<p>You can specify a custom image for the map pin by setting the
+<a href="Titanium.Map.Annotation.image-property.html">image</a> property. </p>
+<p>When the user clicks on an annotation, a <code>click</code> event is generated. </p>
+<p>On iOS, You can add a click event listener to a specific annotation, or add a 
+click event listener to the map view to receive click events from all annotations 
+on the map.</p>
+<p>On Android, you must add the click event listener to the map view; the annotation
+itself does not generate these events. </p>
+<p>Use the <a href="Titanium.Map.createAnnotation-method.html"><code>Titanium.Map.createAnnotation</code></a> method to create an annotation.</p>
     </div>
     
 
@@ -62,7 +102,119 @@
             </ul>
     
             <ul>
+                <li><a href="#getAnimate-method">getAnimate <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getImage-method">getImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLatitude-method">getLatitude <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLeftButton-method">getLeftButton <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLeftView-method">getLeftView <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLongitude-method">getLongitude <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPinImage-method">getPinImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPincolor-method">getPincolor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRightButton-method">getRightButton <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRightView-method">getRightView <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSubtitle-method">getSubtitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSubtitleid-method">getSubtitleid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitle-method">getTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitleid-method">getTitleid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAnimate-method">setAnimate <span class="params">(animate)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setImage-method">setImage <span class="params">(image)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLatitude-method">setLatitude <span class="params">(latitude)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLeftButton-method">setLeftButton <span class="params">(leftButton)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLeftView-method">setLeftView <span class="params">(leftView)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLongitude-method">setLongitude <span class="params">(longitude)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPinImage-method">setPinImage <span class="params">(pinImage)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPincolor-method">setPincolor <span class="params">(pincolor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRightButton-method">setRightButton <span class="params">(rightButton)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRightView-method">setRightView <span class="params">(rightView)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSubtitle-method">setSubtitle <span class="params">(subtitle)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSubtitleid-method">setSubtitleid <span class="params">(subtitleid)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitle-method">setTitle <span class="params">(title)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitleid-method">setTitleid <span class="params">(titleid)</span></a></li>
             </ul>
     
     
@@ -74,78 +226,146 @@
         <tr valign='top'>
             <td class='attr-name'><a name="animate-property"></a>animate</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>boolean to indicate whether the pin should animate when dropped</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Boolean to indicate whether the pin should animate when dropped.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="image-property"></a>image</td>
             <td class='attr-rw'>
-                [string]
+                [StringTitanium.Blob]
             </td>
-            <td class='attr-desc'>image view for the pin instead of default image.  currently only supported in iphone</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Image to use for the the pin.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="latitude-property"></a>latitude</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Latitude of the annotation, in decimal degrees.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="leftButton-property"></a>leftButton</td>
             <td class='attr-rw'>
-                [int,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>the left button image on the annotation. must either be a button type constant or url</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Left button image on the annotation, specified as an image URL or an iOS
+button constant.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="leftView-property"></a>leftView</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.UI.View]
             </td>
-            <td class='attr-desc'>a left view that is displayed on the annotation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Left view that is displayed on the annotation.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="longitude-property"></a>longitude</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Longitude of the annotation, in decimal degrees.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="pinImage-property"></a>pinImage</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use Titanium.Map.Annotation.image property instead.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="pincolor-property"></a>pincolor</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the pin color as one of Titanium.Map.ANNOTATION_RED, Titanium.Map.ANNOTATION_GREEN or Titanium.Map.ANNOTATION_PURPLE.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Pin color. Specify one of: Titanium.Map.ANNOTATION_GREEN, Titanium.Map.ANNOTATION_PURPLE 
+or Titanium.Map.ANNOTATION_RED.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="rightButton-property"></a>rightButton</td>
             <td class='attr-rw'>
-                [int,string]
+                [NumberString]
             </td>
-            <td class='attr-desc'>the right button image on the annotation. must either be a button type constant or url</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Right button image on the annotation, specified as an image URL or an iOS
+button constant.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="rightView-property"></a>rightView</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.UI.View]
             </td>
-            <td class='attr-desc'>a right view that is displayed on the annotation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Right view that is displayed on the annotation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="subtitle-property"></a>subtitle</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the secondary title of the annotation view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Secondary title of the annotation view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="subtitleid-property"></a>subtitleid</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Key in the locale file to use for the subtitle property.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="title-property"></a>title</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the primary title of the annotation view</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Primary title of the annotation view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="titleid-property"></a>titleid</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Key in the locale file to use for the title property.</td>
         </tr>
         
     </table>
     
 
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#click-event">click</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the user selects, deselects, or clicks on this annotation.</td>
+        </tr>
+        
+    </table>
     
 
     
@@ -159,126 +379,795 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAnimate-method">
+        <a name="getAnimate-method"></a><b>getAnimate</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.animate-property.html">animate</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getImage-method">
+        <a name="getImage-method"></a><b>getImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.image-property.html">image</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLatitude-method">
+        <a name="getLatitude-method"></a><b>getLatitude</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.latitude-property.html">latitude</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLeftButton-method">
+        <a name="getLeftButton-method"></a><b>getLeftButton</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.leftButton-property.html">leftButton</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLeftView-method">
+        <a name="getLeftView-method"></a><b>getLeftView</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.leftView-property.html">leftView</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLongitude-method">
+        <a name="getLongitude-method"></a><b>getLongitude</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.longitude-property.html">longitude</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPinImage-method">
+        <a name="getPinImage-method"></a><b>getPinImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.pinImage-property.html">pinImage</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPincolor-method">
+        <a name="getPincolor-method"></a><b>getPincolor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.pincolor-property.html">pincolor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRightButton-method">
+        <a name="getRightButton-method"></a><b>getRightButton</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.rightButton-property.html">rightButton</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRightView-method">
+        <a name="getRightView-method"></a><b>getRightView</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.rightView-property.html">rightView</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSubtitle-method">
+        <a name="getSubtitle-method"></a><b>getSubtitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.subtitle-property.html">subtitle</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSubtitleid-method">
+        <a name="getSubtitleid-method"></a><b>getSubtitleid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.subtitleid-property.html">subtitleid</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitle-method">
+        <a name="getTitle-method"></a><b>getTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.title-property.html">title</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitleid-method">
+        <a name="getTitleid-method"></a><b>getTitleid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Map.Annotation.titleid-property.html">titleid</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAnimate-method">
+        <a name="setAnimate-method"></a><b>setAnimate</b> <span class="params">(animate)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.animate-property.html">animate</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>animate</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setImage-method">
+        <a name="setImage-method"></a><b>setImage</b> <span class="params">(image)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.image-property.html">image</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>image</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLatitude-method">
+        <a name="setLatitude-method"></a><b>setLatitude</b> <span class="params">(latitude)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.latitude-property.html">latitude</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>latitude</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLeftButton-method">
+        <a name="setLeftButton-method"></a><b>setLeftButton</b> <span class="params">(leftButton)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.leftButton-property.html">leftButton</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>leftButton</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLeftView-method">
+        <a name="setLeftView-method"></a><b>setLeftView</b> <span class="params">(leftView)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.leftView-property.html">leftView</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>leftView</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLongitude-method">
+        <a name="setLongitude-method"></a><b>setLongitude</b> <span class="params">(longitude)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.longitude-property.html">longitude</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>longitude</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPinImage-method">
+        <a name="setPinImage-method"></a><b>setPinImage</b> <span class="params">(pinImage)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.pinImage-property.html">pinImage</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>pinImage</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPincolor-method">
+        <a name="setPincolor-method"></a><b>setPincolor</b> <span class="params">(pincolor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.pincolor-property.html">pincolor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>pincolor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRightButton-method">
+        <a name="setRightButton-method"></a><b>setRightButton</b> <span class="params">(rightButton)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.rightButton-property.html">rightButton</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>rightButton</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRightView-method">
+        <a name="setRightView-method"></a><b>setRightView</b> <span class="params">(rightView)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.rightView-property.html">rightView</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>rightView</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSubtitle-method">
+        <a name="setSubtitle-method"></a><b>setSubtitle</b> <span class="params">(subtitle)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.subtitle-property.html">subtitle</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>subtitle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSubtitleid-method">
+        <a name="setSubtitleid-method"></a><b>setSubtitleid</b> <span class="params">(subtitleid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.subtitleid-property.html">subtitleid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>subtitleid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitle-method">
+        <a name="setTitle-method"></a><b>setTitle</b> <span class="params">(title)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.title-property.html">title</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>title</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitleid-method">
+        <a name="setTitleid-method"></a><b>setTitleid</b> <span class="params">(titleid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Map.Annotation.titleid-property.html">titleid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>titleid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     
 
 
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="click-event">
+        <a name="click-method"></a><b>click</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>annotation</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.Map.Annotation]</span><br /> 
+              
+              <p>Annotation source object.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>clicksource</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Source of the click event, such as <code>pin</code>, or <code>leftButton</code>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>index</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the annotation in the map view's <a href="Titanium.Map.View.annotations-property.html">annotations</a> array.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>map</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.Map.View]</span><br /> 
+              
+              <p>The map view instance that this annotation belongs to.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>title</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Title of the annotation.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
     
 
 

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI.iPhone.SystemButton</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.UI.iPhone.SystemButton 
+        </h1>
+      	<ul class="files">
+      	  <li>iPhone(0.8+), iPad(0.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>A set of constants for creating standard iOS system buttons.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Most of these constants are used with the
+<a href="Titanium.UI.Button.systemButton-property.html">Button.systemButton</a> property to define a standard
+iOS system buttons for use in navigation bars and toolbars. </p>
+<p>See <a href="Titanium.UI.Button-object.html"><code>Titanium.UI.Button</code></a> for more information on the <code>systemButton</code> property, including details
+on where system buttons can be used.</p>
+<p>A few of these constants are used with <a href="Titanium.UI.Button.style-property.html">Button.style</a> to
+create standard iOS buttons that can be used in other places, including table view rows.
+These standard button types are:</p>
+<ul>
+<li><a href="Titanium.UI.iPhone.SystemButton.CONTACT_ADD-property.html">CONTACT_ADD</a></li>
+<li><a href="Titanium.UI.iPhone.SystemButton.DISCLOSURE-property.html">DISCLOSURE</a></li>
+<li><a href="Titanium.UI.iPhone.SystemButton.INFO_DARK-property.html">INFO_DARK</a></li>
+<li><a href="Titanium.UI.iPhone.SystemButton.INFO_LIGHT-property.html">INFO_LIGHT</a></li>
+</ul>
+<p>See Apple's 
+<a href="https://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/MobileHIG/Introduction/Introduction.html">iOS Human Interface Guidelines</a> 
+in the iOS Developer Library for details on the proper usage of iOS standard buttons
+and icons.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION-property"></a>ACTION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify an Action button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTIVITY-property"></a>ACTIVITY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to create an activity indicator that
+can be used in navigation bars and toolbars. </td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ADD-property"></a>ADD</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify an Add button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BOOKMARKS-property"></a>BOOKMARKS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Bookmarks button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CAMERA-property"></a>CAMERA</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Camera button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CANCEL-property"></a>CANCEL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Cancel button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="COMPOSE-property"></a>COMPOSE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Compose button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CONTACT_ADD-property"></a>CONTACT_ADD</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.style to specify a ContactAdd button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DISCLOSURE-property"></a>DISCLOSURE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.style to specify a Disclosure button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DONE-property"></a>DONE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Done button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EDIT-property"></a>EDIT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify an Edit button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FAST_FORWARD-property"></a>FAST_FORWARD</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Fast Forward button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FIXED_SPACE-property"></a>FIXED_SPACE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to create a fixed-width blank space 
+for spacing items in toolbars.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLEXIBLE_SPACE-property"></a>FLEXIBLE_SPACE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to create a flexible blank space 
+for spacing items in toolbars.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INFO_DARK-property"></a>INFO_DARK</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.style to specify a dark-colored Info button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="INFO_LIGHT-property"></a>INFO_LIGHT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.style to specify a light-colored Info button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ORGANIZE-property"></a>ORGANIZE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify an Organize button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PAUSE-property"></a>PAUSE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Pause button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PLAY-property"></a>PLAY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Play button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="REFRESH-property"></a>REFRESH</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Refresh button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="REPLY-property"></a>REPLY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Reply button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="REWIND-property"></a>REWIND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Rewind button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SAVE-property"></a>SAVE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Save button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SPINNER-property"></a>SPINNER</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Identical to ACTIVITY.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STOP-property"></a>STOP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Stop button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TRASH-property"></a>TRASH</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Button.systemButton to specify a Trash button.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

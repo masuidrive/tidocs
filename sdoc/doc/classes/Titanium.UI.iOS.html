@@ -35,17 +35,19 @@
             <span class="type">Module</span> 
             Titanium.UI.iOS 
         </h1>
-	<ul class="files">
-	  <li>iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>iPhone(1.4+), iPad(1.4+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The Apple iOS specific UI capabilities.  All properties, methods and events in this namespace will only work on the Apple iOS related devices.</p>
+        <p>Apple iOS specific UI capabilities.  All properties, methods and events in this namespace will only work on Apple iOS devices.</p>
     </div>
+    
+    
     
 
     
@@ -58,7 +60,23 @@
             </ul>
     
             <ul>
+                <li><a href="#create3DMatrix-method">create3DMatrix <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#createAdView-method">createAdView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createCoverFlowView-method">createCoverFlowView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTabbedBar-method">createTabbedBar <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createToolbar-method">createToolbar <span class="params">(parameters)</span></a></li>
             </ul>
     
             <ul>
@@ -71,6 +89,379 @@
     
     
 
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AD_SIZE_LANDSCAPE-property"></a>AD_SIZE_LANDSCAPE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with AdView.adSize to specify a banner ad size
+appropriate for landscape orientations.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AD_SIZE_PORTRAIT-property"></a>AD_SIZE_PORTRAIT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with AdView.adSize to specify a banner ad size
+appropriate for portrait orientations.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_IN-property"></a>ANIMATION_CURVE_EASE_IN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Animation.curve to specify an
+animation that starts slowly and speeds up.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_IN_OUT-property"></a>ANIMATION_CURVE_EASE_IN_OUT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Animation.curve to specify an
+animation that starts slowly, and speeds up, then slows down at the end
+of the animation.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_OUT-property"></a>ANIMATION_CURVE_EASE_OUT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Animation.curve to specify an
+animation that starts quickly, then slows down at the end
+of the animation.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ANIMATION_CURVE_LINEAR-property"></a>ANIMATION_CURVE_LINEAR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with Animation.curve to specify an
+animation that proceeds at a constant rate.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTODETECT_ADDRESS-property"></a>AUTODETECT_ADDRESS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Convert strings formatted as addresses into clickable links.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTODETECT_ALL-property"></a>AUTODETECT_ALL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Convert all detectable types of data into clickable links.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTODETECT_CALENDAR-property"></a>AUTODETECT_CALENDAR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Convert strings formatted as calendar events into clickable links.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTODETECT_LINK-property"></a>AUTODETECT_LINK</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Convert strings formatted as URLs into clickable links.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTODETECT_NONE-property"></a>AUTODETECT_NONE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Disable converting strings into clickable links.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTODETECT_PHONE-property"></a>AUTODETECT_PHONE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Convert strings formatted as phone numbers into clickable links.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_CLEAR-property"></a>BLEND_MODE_CLEAR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COLOR-property"></a>BLEND_MODE_COLOR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COLOR_BURN-property"></a>BLEND_MODE_COLOR_BURN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COLOR_DODGE-property"></a>BLEND_MODE_COLOR_DODGE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_COPY-property"></a>BLEND_MODE_COPY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DARKEN-property"></a>BLEND_MODE_DARKEN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_ATOP-property"></a>BLEND_MODE_DESTINATION_ATOP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_IN-property"></a>BLEND_MODE_DESTINATION_IN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_OUT-property"></a>BLEND_MODE_DESTINATION_OUT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_OVER-property"></a>BLEND_MODE_DESTINATION_OVER</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_DIFFERENCE-property"></a>BLEND_MODE_DIFFERENCE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_EXCLUSION-property"></a>BLEND_MODE_EXCLUSION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_HARD_LIGHT-property"></a>BLEND_MODE_HARD_LIGHT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_HUE-property"></a>BLEND_MODE_HUE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_LIGHTEN-property"></a>BLEND_MODE_LIGHTEN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_LUMINOSITY-property"></a>BLEND_MODE_LUMINOSITY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_MULTIPLY-property"></a>BLEND_MODE_MULTIPLY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_NORMAL-property"></a>BLEND_MODE_NORMAL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_OVERLAY-property"></a>BLEND_MODE_OVERLAY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_PLUS_DARKER-property"></a>BLEND_MODE_PLUS_DARKER</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_PLUS_LIGHTER-property"></a>BLEND_MODE_PLUS_LIGHTER</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SATURATION-property"></a>BLEND_MODE_SATURATION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SCREEN-property"></a>BLEND_MODE_SCREEN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOFT_LIGHT-property"></a>BLEND_MODE_SOFT_LIGHT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOURCE_ATOP-property"></a>BLEND_MODE_SOURCE_ATOP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOURCE_IN-property"></a>BLEND_MODE_SOURCE_IN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_SOURCE_OUT-property"></a>BLEND_MODE_SOURCE_OUT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BLEND_MODE_XOR-property"></a>BLEND_MODE_XOR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
+        </tr>
+        
+    </table>
     
 
     
@@ -86,153 +477,277 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="create3DMatrix-method">
+        <a name="create3DMatrix-method"></a><b>create3DMatrix</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iOS.3DMatrix-object.html"><code>Titanium.UI.iOS.3DMatrix</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iOS.3DMatrix&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.3DMatrix except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="createAdView-method">
         <a name="createAdView-method"></a><b>createAdView</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.UI.iOS.AdView.html">Titanium.UI.iOS.AdView</a>
-      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iOS.AdView-object.html"><code>Titanium.UI.iOS.AdView</code></a>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.iOS.AdView</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iOS.AdView&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.AdView except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createCoverFlowView-method">
+        <a name="createCoverFlowView-method"></a><b>createCoverFlowView</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iOS.CoverFlowView-object.html"><code>Titanium.UI.iOS.CoverFlowView</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iOS.CoverFlowView&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.CoverFlowView except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTabbedBar-method">
+        <a name="createTabbedBar-method"></a><b>createTabbedBar</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iOS.TabbedBar-object.html"><code>Titanium.UI.iOS.TabbedBar</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iOS.TabbedBar&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.TabbedBar except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createToolbar-method">
+        <a name="createToolbar-method"></a><b>createToolbar</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iOS.Toolbar-object.html"><code>Titanium.UI.iOS.Toolbar</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iOS.Toolbar&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.Toolbar except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     

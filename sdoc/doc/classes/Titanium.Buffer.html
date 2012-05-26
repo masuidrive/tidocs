@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Buffer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Buffer 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.7+), iPhone(1.7+), iPad(1.7+), Mobile Web(1.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Buffer is a mutable, resizable container for raw data.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A <code>Buffer</code> works like a resizable array of byte values.</p>
+<p>Use the <a href="Titanium.createBuffer-method.html"><code>Titanium.createBuffer</code></a> method to create a buffer.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#append-method">append <span class="params">(sourceBuffer, sourceOffset, sourceLength)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#clear-method">clear <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#clone-method">clone <span class="params">(offset, length)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#copy-method">copy <span class="params">(sourceBuffer, offset, sourceOffset, sourceLength)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fill-method">fill <span class="params">(fillByte, offset, length)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getByteOrder-method">getByteOrder <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLength-method">getLength <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getType-method">getType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getValue-method">getValue <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#insert-method">insert <span class="params">(sourceBuffer, offset, sourceOffset, sourceLength)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#release-method">release <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLength-method">setLength <span class="params">(length)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#toBlob-method">toBlob <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#toString-method">toString <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="byteOrder-property"></a>byteOrder</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Byte order of this buffer.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="length-property"></a>length</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Length of the buffer in bytes.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="type-property"></a>type</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The type of data encoding to use with value.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="value-property"></a>value</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Data to be encoded.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="append-method">
+        <a name="append-method"></a><b>append</b> <span class="params">(sourceBuffer, sourceOffset, sourceLength)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Appends <code>sourceBuffer</code> to the this buffer.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceBuffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer to append to this buffer.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceOffset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset to start reading buffer data from.
+If specified, sourceLength must also be specified.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceLength</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Number of bytes to read from sourceBuffer.
+If specified, sourceOffset must also be specified.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="clear-method">
+        <a name="clear-method"></a><b>clear</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Clears this buffer's contents but does not change the size of the buffer.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="clone-method">
+        <a name="clone-method"></a><b>clone</b> <span class="params">(offset, length)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates a complete or partial copy of this buffer.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset of first byte of this buffer to clone.
+If specified, length must be specified as well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>length</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Number of bytes of data to clone.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="copy-method">
+        <a name="copy-method"></a><b>copy</b> <span class="params">(sourceBuffer, offset, sourceOffset, sourceLength)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Copies data from <code>sourceBuffer</code> into the current buffer at <code>offset</code>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceBuffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer to copy data from.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset in this buffer for the first byte of the copied data.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceOffset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset in sourceBuffer to copy data from.
+If specified, sourceLength must be specified as well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceLength</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Number of bytes to copy from sourceBuffer.
+If specified, sourceOffset must be specified as well.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fill-method">
+        <a name="fill-method"></a><b>fill</b> <span class="params">(fillByte, offset, length)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fills this buffer with the specified byte value.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>fillByte</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Byte to fill buffer with.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset of the first byte to set to fillByte.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>length</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Number of bytes to fill.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getByteOrder-method">
+        <a name="getByteOrder-method"></a><b>getByteOrder</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Buffer.byteOrder-property.html">byteOrder</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLength-method">
+        <a name="getLength-method"></a><b>getLength</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Buffer.length-property.html">length</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getType-method">
+        <a name="getType-method"></a><b>getType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Buffer.type-property.html">type</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getValue-method">
+        <a name="getValue-method"></a><b>getValue</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Buffer.value-property.html">value</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="insert-method">
+        <a name="insert-method"></a><b>insert</b> <span class="params">(sourceBuffer, offset, sourceOffset, sourceLength)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Inserts data from <code>sourceBuffer</code> into this buffer at <code>offset</code>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceBuffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer holding data to insert into this buffer.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset in this buffer to insert the first byte copied from
+sourceBuffer.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceOffset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset in sourceBuffer of the first byte to insert.
+If specified, sourceLength must be specified as well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceLength</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Number of bytes to insert from sourceBuffer.
+If specified, sourceOffset must be specified as well.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="release-method">
+        <a name="release-method"></a><b>release</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Releases the space allocated to the buffer, and sets its length to 0.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLength-method">
+        <a name="setLength-method"></a><b>setLength</b> <span class="params">(length)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Buffer.length-property.html">length</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>length</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="toBlob-method">
+        <a name="toBlob-method"></a><b>toBlob</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Converts this buffer to a <a href="Titanium.Blob-object.html"><code>Titanium.Blob</code></a>.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="toString-method">
+        <a name="toString-method"></a><b>toString</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Converts this buffer to a String.</p></div>
+      
+
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

@@ -35,16 +35,45 @@
             <span class="type">Object</span> 
             Titanium.UI.OptionDialog 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The Option Dialog is created by <a href="Titanium.UI.createOptionDialog.html">Titanium.UI.createOptionDialog</a> and allows you to show a modal dialog of one or more options to the user.</p>
+        <p>An option dialog is a modal view that includes a message and one or more option items positioned 
+in the middle of the display on Android and at the bottom edge on iOS. On Android, buttons may 
+be added below the options.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>An option dialog is created using <a href="Titanium.UI.createOptionDialog-method.html"><code>Titanium.UI.createOptionDialog</code></a>.</p>
+<p>This dialog is considerably different on each platform, as described below.</p>
+<h4>Android</h4>
+<p>On Android, this dialog is shown in the middle of the display (not touching the edges), 
+with the option items represented in a picker. The previously-selected, or default, item can be 
+set on creation.</p>
+<p>Buttons below the picker may be optionally defined. The <code>click</code> event returns a Boolean value 
+to indicate whether either an option item or a button was clicked.</p>
+<h4>iOS</h4>
+<p>The <code>destructive</code> property may be set for an item, to give a visual cue that selecting it 
+results in an irreversible action.</p>
+<p>On iOS 4, option dialogs are automatically cancelled when the application is paused/suspended.</p>
+<h5>iPhone</h5>
+<p>On iPhone, this dialog is shown at the bottom edge of the display, with the option items 
+represented as vertical buttons. </p>
+<h5>iPad</h5>
+<p>On iPad, this dialog is shown in the middle of the display, or as a popover-like dialog if 
+another view or control is specified via an argument.</p>
+<h4>Caveats</h4>
+<p>Care should be taken not to define any properties that are not documented, as this may produce 
+unexpected results. For example, setting a <code>message</code> property will prevent the picker of option 
+items from being displayed on Android.</p>
     </div>
     
 
@@ -54,7 +83,67 @@
     <dl class="methods">
     
             <ul>
-                <li><a href="#show-method">show <span class="params">()</span></a></li>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAndroidView-method">getAndroidView <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCancel-method">getCancel <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDestructive-method">getDestructive <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOptions-method">getOptions <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSelectedIndex-method">getSelectedIndex <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitle-method">getTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitleid-method">getTitleid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hide-method">hide <span class="params">(params)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAndroidView-method">setAndroidView <span class="params">(androidView)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCancel-method">setCancel <span class="params">(cancel)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitle-method">setTitle <span class="params">(title)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitleid-method">setTitleid <span class="params">(titleid)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#show-method">show <span class="params">(params)</span></a></li>
             </ul>
     
     
@@ -64,35 +153,66 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="androidView-property"></a>androidView</td>
+            <td class='attr-rw'>
+                [Titanium.UI.View]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View to load inside the message area, to create a custom layout.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="cancel-property"></a>cancel</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>an index to indicate which button should be the cancel button</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Index to define the cancel option, returned by the click event.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="destructive-property"></a>destructive</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the destructive button (indicated by a visual clue in the UI)</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Index to define the destructive option, indicated by a visual cue when rendered.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="options-property"></a>options</td>
             <td class='attr-rw'>
-                [array]
+                [Array&lt;String&gt;]
             </td>
-            <td class='attr-desc'>array of button names as strings</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>List of option names.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="selectedIndex-property"></a>selectedIndex</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Defines the default selected option.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="title-property"></a>title</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the title of the dialog</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Title of the dialog.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="titleid-property"></a>titleid</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Key identifying a string in the locale file to use for the title text.</td>
         </tr>
         
     </table>
@@ -104,7 +224,9 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#click-event">click</a></td>
-            <td class='attr-desc'>fired when a button in the dialog is clicked</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when an option of this dialog is clicked or, under certain circumstances, when this 
+dialog is dismissed.</td>
         </tr>
         
     </table>
@@ -116,15 +238,48 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Simple Options Dialog with 2 Options</div>
-	<div class="code"><p>In this example, we show a simple option dialog.</p>
-<pre><code>var dialog = Titanium.UI.createOptionDialog({
-    title: 'Hello',
-    options: ['Option 1','Option 2'],
-    cancel:1
+	<div class="subsectiontitle">Dialog with 3 Options</div>
+	<div class="code"><p>Ti.UI.setBackgroundColor('white');
+var win = Ti.UI.createWindow({
+  title: 'Click window to test',
+  backgroundColor: 'white',
+  exitOnClose: true,
+  fullscreen: false
+});</p>
+<p>var opts = {
+  cancel: 1,
+  options: ['Confirm', 'Cancel', 'Help'],
+  selectedIndex: 1,
+  destructive: 0,
+  title: 'Delete File?'
+};</p>
+<p>win.addEventListener('click', function(e){
+  var dialog = Ti.UI.createOptionDialog(opts).show();
 });
-dialog.show();
-</code></pre></div>
+win.open();</p></div>
+        
+	<div class="subsectiontitle">Dialog with 2 Options and 1 Button on Android and 3 Options on iOS</div>
+	<div class="code"><p>Ti.UI.setBackgroundColor('white');
+  var win = Ti.UI.createWindow({
+  title: 'Click window to test',
+  backgroundColor: 'white',
+  exitOnClose: true,
+  fullscreen: false
+});</p>
+<p>var opts = {
+  title: 'Delete File?'
+};</p>
+<p>var isAndroid = Ti.Platform.osname == 'android';</p>
+<p>if(isAndroid){
+  opts.options = ['Confirm', 'Cancel'];
+  opts.buttonNames = ['Confirm'];
+} else {
+  opts.options = ['Confirm', 'Cancel', 'Help'];
+}</p>
+<p>win.addEventListener('click', function(e){
+  var dialog = Ti.UI.createOptionDialog(opts).show();
+});
+win.open();</p></div>
         
     </table>
     
@@ -134,20 +289,386 @@ dialog.show();
     <div class="sectiontitle">Methods</div>
     
     <div class="method">
-      <div class="title" id="show-method">
-        <a name="show-method"></a><b>show</b> <span class="params">()</span>
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>cause the dialog to become visible</p>
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAndroidView-method">
+        <a name="getAndroidView-method"></a><b>getAndroidView</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.OptionDialog.androidView-property.html">androidView</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCancel-method">
+        <a name="getCancel-method"></a><b>getCancel</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.OptionDialog.cancel-property.html">cancel</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDestructive-method">
+        <a name="getDestructive-method"></a><b>getDestructive</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.OptionDialog.destructive-property.html">destructive</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOptions-method">
+        <a name="getOptions-method"></a><b>getOptions</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.OptionDialog.options-property.html">options</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSelectedIndex-method">
+        <a name="getSelectedIndex-method"></a><b>getSelectedIndex</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.OptionDialog.selectedIndex-property.html">selectedIndex</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitle-method">
+        <a name="getTitle-method"></a><b>getTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.OptionDialog.title-property.html">title</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitleid-method">
+        <a name="getTitleid-method"></a><b>getTitleid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.OptionDialog.titleid-property.html">titleid</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hide-method">
+        <a name="hide-method"></a><b>hide</b> <span class="params">(params)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Hides this dialog.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [hideParams]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Argument containing parameters for this method. Only used on iOS.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAndroidView-method">
+        <a name="setAndroidView-method"></a><b>setAndroidView</b> <span class="params">(androidView)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.OptionDialog.androidView-property.html">androidView</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>androidView</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCancel-method">
+        <a name="setCancel-method"></a><b>setCancel</b> <span class="params">(cancel)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.OptionDialog.cancel-property.html">cancel</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>cancel</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitle-method">
+        <a name="setTitle-method"></a><b>setTitle</b> <span class="params">(title)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.OptionDialog.title-property.html">title</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>title</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitleid-method">
+        <a name="setTitleid-method"></a><b>setTitleid</b> <span class="params">(titleid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.OptionDialog.titleid-property.html">titleid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>titleid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="show-method">
+        <a name="show-method"></a><b>show</b> <span class="params">(params)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Shows this dialog.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [showParams]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Argument containing parameters for this method. Only used on iPad.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     
@@ -162,39 +683,71 @@ dialog.show();
       </div>
       
       
-      <div class="description">
-        <p>fired when a button in the dialog is clicked</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>cancel</td>
-            <td class='attr-desc'>boolean to indicate if the cancel button was pressed</td>
+            <td class='attr-name'>button</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Boolean]</span><br /> 
+              
+              <p>Indicates whether the index returned by the <code>index</code> property relates to a button rather 
+than an option item.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>cancel</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the cancel option if defined or <code>-1</code> otherwise.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>destructive</td>
-            <td class='attr-desc'>boolean to indicate if the destructive button was pressed</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the destructive option if defined or <code>-1</code> otherwise.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>index</td>
-            <td class='attr-desc'>the button index that was pressed</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the option that was pressed. See description for result of the dialog being 
+dismissed in some other way.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

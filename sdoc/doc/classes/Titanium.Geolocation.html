@@ -35,16 +35,130 @@
             <span class="type">Module</span> 
             Titanium.Geolocation 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level Geolocation module.  The Geolocation module is used for accessing device location based information.</p>
+        <p>The top level Geolocation module. The Geolocation module is used for accessing device location based information.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This module combines two sets of features:</p>
+<ul>
+<li>
+<p>Location services. Determining the location of the device.</p>
+</li>
+<li>
+<p>Geocoding and reverse geocoding. Converting geographic  coordinates into
+    addresses, and converting addresses into geographic  coordinates.</p>
+</li>
+</ul>
+<p>Using location services can have a significant impact on a device's battery life, 
+so it's important to use them in the most efficient manner possible. Power consumption
+is strongly influenced by the accuracy and frequency of location updates required by 
+your application. </p>
+<p>The location services systems of the underlying platforms are very different, so there
+are significant implementation differences between the platforms.</p>
+<p>The basic methods of requesting location information and receiving location updates
+are essentially the same on all platforms. However, the method of configuring the 
+accuracy and frequency of location updates is different for each platform.</p>
+<h4>Getting Location Information</h4>
+<p>There are two ways to get location information:</p>
+<ul>
+<li>
+<p>Make a one-time request with <a href="Titanium.Geolocation.getCurrentPosition-method.html">getCurrentPosition</a>.</p>
+</li>
+<li>
+<p>Register to receive location updates by adding an event listener for the
+    <a href="Titanium.Geolocation.location-event.html">location</a> event.</p>
+</li>
+</ul>
+<p><strong>NOTE:</strong> Location services stay enabled for as long as a listener is registered for the
+<code>location</code> event, so be sure to remove the event listener when you do not require
+location updates.</p>
+<h4>Configurating Location Updates on iOS</h4>
+<p>In iOS, the accuracy (and power consumption) of location services is primarily
+determined by the <a href="Titanium.Geolocation.accuracy-property.html">accuracy</a> setting. This can be set
+to one of the following values:</p>
+<ul>
+<li><a href="Titanium.Geolocation.ACCURACY_BEST-property.html">ACCURACY_BEST</a> (highest accuracy and power consumption)</li>
+<li><a href="Titanium.Geolocation.ACCURACY_HIGH-property.html">ACCURACY_HIGH</a></li>
+<li><a href="Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS-property.html">ACCURACY_NEAREST_TEN_METERS</a> </li>
+<li><a href="Titanium.Geolocation.ACCURACY_HUNDRED_METERS-property.html">ACCURACY_HUNDRED_METERS</a> </li>
+<li><a href="Titanium.Geolocation.ACCURACY_KILOMETER-property.html">ACCURACY_KILOMETER</a> </li>
+<li><a href="Titanium.Geolocation.ACCURACY_LOW-property.html">ACCURACY_LOW</a></li>
+<li><a href="Titanium.Geolocation.ACCURACY_THREE_KILOMETERS-property.html">ACCURACY_THREE_KILOMETERS</a> (lowest
+    accuracy and power consumption). </li>
+</ul>
+<p>Based on the accuracy you choose, iOS uses its own logic to select location providers
+and filter location updates to provide location updates that meet your accuracy
+requirements.</p>
+<p>You can further limit power consumption on iOS by setting the
+<a href="Titanium.Geolocation.distanceFilter-property.html">distanceFilter</a> property to eliminate position
+updates when the user is not moving.</p>
+<h4>Configurating Location Updates on Android</h4>
+<p>Prior to Titanium Mobile 2.0, Titanium attempted to follow the iOS model on Android,
+but this didn't fit the native Android model well. In Release 2.0, three different
+location service mode are supported on Android: <em>legacy</em>, <em>manual</em>, and <em>simple</em>.</p>
+<ul>
+<li>
+<p><em>Legacy mode</em> is the mode that existed prior to 2.0. Legacy mode is 
+    used when you set the <code>accuracy</code> property to one of the iOS 
+    <code>ACCURACY</code> constants:</p>
+<ul>
+<li><a href="Titanium.Geolocation.ACCURACY_BEST-property.html">ACCURACY_BEST</a> (highest accuracy and power consumption)</li>
+<li><a href="Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS-property.html">ACCURACY_NEAREST_TEN_METERS</a> </li>
+<li><a href="Titanium.Geolocation.ACCURACY_HUNDRED_METERS-property.html">ACCURACY_HUNDRED_METERS</a> </li>
+<li><a href="Titanium.Geolocation.ACCURACY_KILOMETER-property.html">ACCURACY_KILOMETER</a> </li>
+<li><a href="Titanium.Geolocation.ACCURACY_THREE_KILOMETERS-property.html">ACCURACY_THREE_KILOMETERS</a> (lowest
+    accuracy and power consumption). </li>
+</ul>
+<p>This mode is deprecated and should not be used for new development. </p>
+<p>In this mode, the specified <code>accuracy</code> value determines the 
+<em>minimum distance between location updates</em>. If <code>accuracy</code> is set to
+<code>ACCURACY_BEST</code>, no distance filter is used on updates.</p>
+<p>In legacy mode, only a single location provider (GPS, network, or passive) is
+enabled at a time. You can specify a the location provider using the 
+<a href="Titanium.Geolocation.preferredProvider-property.html">preferredProvider</a> property.</p>
+<p>You can also specifying a desired update frequency using the
+<a href="Titanium.Geolocation.frequency-property.html">frequency</a> property. The <code>preferredProvider</code>
+and <code>frequency</code> properties are not used in any other mode.</p>
+</li>
+<li>
+<p><em>Manual mode</em> gives developers low-level control of location updates, including
+    enabling individual location providers and filtering updates, for the best
+    combination of accuracy and battery life. </p>
+<p>Manual mode is used when the <a href="Titanium.Geolocation.Android.manualMode-property.html"><code>Titanium.Geolocation.Android.manualMode</code></a> flag is set
+to <code>true</code>. In manual mode, the <code>accuracy</code> property is not used, and all
+configuration is done through the <a href="Titanium.Geolocation.Android.html"><code>Titanium.Geolocation.Android</code></a> module.</p>
+</li>
+<li>
+<p><em>Simple mode</em> provides a compromise mode that provides adaquate support for 
+    undemanding location applications without requiring developers to
+    write a lot of Android-specific code. </p>
+<p>Setting the <a href="Titanium.Geolocation.accuracy-property.html">accuracy</a> property to 
+either <a href="Titanium.Geolocation.ACCURACY_HIGH-property.html">ACCURACY_HIGH</a> or 
+<a href="Titanium.Geolocation.ACCURACY_LOW-property.html">ACCURACY_LOW</a> enables simple mode.</p>
+<p>In this mode the platform handles enabling and disabling location providers and
+filtering location updates.</p>
+</li>
+</ul>
+<h4>Configuring Location Updates on Mobile Web</h4>
+<p>Location services on Mobile Web operate similarly to the <em>simple mode</em> operations on
+Android. Setting <a href="Titanium.Geolocation.accuracy-property.html">accuracy</a> property to 
+<a href="Titanium.Geolocation.ACCURACY_HIGH-property.html">ACCURACY_HIGH</a> yeilds the best available location
+updates, with the hightest power consumption.
+Using <a href="Titanium.Geolocation.ACCURACY_LOW-property.html">ACCURACY_LOW</a> provides lower-quality location
+updates with lower power consumption.</p>
+<p>In addition to the accuracy setting, there are several Mobile Web-specific settings.
+See <a href="Titanium.Geolocation.MobileWeb.html"><code>Titanium.Geolocation.MobileWeb</code></a> for details.</p>
     </div>
     
 
@@ -62,11 +176,91 @@
             </ul>
     
             <ul>
+                <li><a href="#forwardGeocoder-method">forwardGeocoder <span class="params">(address, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAccuracy-method">getAccuracy <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCurrentHeading-method">getCurrentHeading <span class="params">(callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCurrentPosition-method">getCurrentPosition <span class="params">(callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDistanceFilter-method">getDistanceFilter <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFrequency-method">getFrequency <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHeadingFilter-method">getHeadingFilter <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLocationServicesAuthorization-method">getLocationServicesAuthorization <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLocationServicesEnabled-method">getLocationServicesEnabled <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPreferredProvider-method">getPreferredProvider <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPurpose-method">getPurpose <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getShowCalibration-method">getShowCalibration <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#setShowCalibration-method">setShowCalibration <span class="params">()</span></a></li>
+                <li><a href="#reverseGeocoder-method">reverseGeocoder <span class="params">(latitude, longitude, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAccuracy-method">setAccuracy <span class="params">(accuracy)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDistanceFilter-method">setDistanceFilter <span class="params">(distanceFilter)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFrequency-method">setFrequency <span class="params">(frequency)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHeadingFilter-method">setHeadingFilter <span class="params">(headingFilter)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLocationServicesAuthorization-method">setLocationServicesAuthorization <span class="params">(locationServicesAuthorization)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPreferredProvider-method">setPreferredProvider <span class="params">(preferredProvider)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPurpose-method">setPurpose <span class="params">(purpose)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setShowCalibration-method">setShowCalibration <span class="params">(showCalibration)</span></a></li>
             </ul>
     
     
@@ -78,89 +272,297 @@
         <tr valign='top'>
             <td class='attr-name'><a name="ACCURACY_BEST-property"></a>ACCURACY_BEST</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>accuracy constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with accuracy to request the best
+accuracy available.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACCURACY_HIGH-property"></a>ACCURACY_HIGH</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with accuracy to request more
+accurate location updates with higher battery usage.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="ACCURACY_HUNDRED_METERS-property"></a>ACCURACY_HUNDRED_METERS</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>accuracy constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with accuracy to request location
+updates accurate to the nearest 100 meters.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="ACCURACY_KILOMETER-property"></a>ACCURACY_KILOMETER</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>accuracy constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with accuracy to request location
+updates accurate to the nearest kilometer.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACCURACY_LOW-property"></a>ACCURACY_LOW</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with accuracy to request less
+accurate location updates with lower battery usage.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="ACCURACY_NEAREST_TEN_METERS-property"></a>ACCURACY_NEAREST_TEN_METERS</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>accuracy constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with accuracy to request location
+updates accurate to the nearest 10 meters.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="ACCURACY_THREE_KILOMETERS-property"></a>ACCURACY_THREE_KILOMETERS</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>accuracy constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with accuracy to request location
+updates accurate to the nearest three kilometers.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTHORIZATION_AUTHORIZED-property"></a>AUTHORIZATION_AUTHORIZED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A locationServicesAuthorization value 
+indicating that the application is authorized to use location services.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTHORIZATION_DENIED-property"></a>AUTHORIZATION_DENIED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A locationServicesAuthorization value 
+indicating that the application is not authorized to use location services, or
+location services are disabled.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTHORIZATION_RESTRICTED-property"></a>AUTHORIZATION_RESTRICTED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A locationServicesAuthorization value 
+indicating that the application is not authorized to use location servies and
+the user cannot change this application's status.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="AUTHORIZATION_UNKNOWN-property"></a>AUTHORIZATION_UNKNOWN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A locationServicesAuthorization value 
+indicating that the authorization state is unknown.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_DENIED-property"></a>ERROR_DENIED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code indicating that the user denied access to the location service.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_HEADING_FAILURE-property"></a>ERROR_HEADING_FAILURE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code indicating that the heading could not be determined.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_LOCATION_UNKNOWN-property"></a>ERROR_LOCATION_UNKNOWN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code indicating that the user's location could not be determined.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_NETWORK-property"></a>ERROR_NETWORK</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code indicating that the network was unavailable.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_REGION_MONITORING_DELAYED-property"></a>ERROR_REGION_MONITORING_DELAYED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code indicating that region monitoring is delayed.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_REGION_MONITORING_DENIED-property"></a>ERROR_REGION_MONITORING_DENIED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code indicating that region monitoring is denied.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_REGION_MONITORING_FAILURE-property"></a>ERROR_REGION_MONITORING_FAILURE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code indicating a region monitoring failure.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ERROR_TIMEOUT-property"></a>ERROR_TIMEOUT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error indicating a timeout.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="PROVIDER_GPS-property"></a>PROVIDER_GPS</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The GPS location provider</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies the GPS location provider.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="PROVIDER_NETWORK-property"></a>PROVIDER_NETWORK</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The Network location provider</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies the network location provider.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PROVIDER_PASSIVE-property"></a>PROVIDER_PASSIVE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies the passive location provider.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="accuracy-property"></a>accuracy</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies the requested accuracy for location updates.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="distanceFilter-property"></a>distanceFilter</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The minimum change of position (in meters) before a 'location' event is fired.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="frequency-property"></a>frequency</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Requested frequency for location updates, in milliseconds.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="headingFilter-property"></a>headingFilter</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Minimum heading change (in degrees) before a heading event is fired.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="locationServicesAuthorization-property"></a>locationServicesAuthorization</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Returns an authorization constant indicating if the application has access to location services.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="locationServicesEnabled-property"></a>locationServicesEnabled</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>returns true if the user has enabled or disable location services for the device (not the application).</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates if the user has enabled or disabled location services for the device (not the application).</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="preferredProvider-property"></a>preferredProvider</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>allows setting of the preferred location provider.  Returns undefined when the preferred provider is auto-detected</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines the preferred location provider, either
+PROVIDER_GPS,
+[PROVIDER_NETWORK](Titanium.Geolocation.PROVIDER_NETWORK],
+or PROVIDER_PASSIVE.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="purpose-property"></a>purpose</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>(iOS only). This property informs the end-user why location services are being requested by the application.  This string will be display in the permission dialog. This property is REQUIRED starting in 4.0.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Text to display in the permission dialog when requesting location
+services.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="showCalibration-property"></a>showCalibration</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>returns true if the calibration UI can show</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the compass calibration UI is shown if needed.</td>
         </tr>
         
     </table>
@@ -172,17 +574,20 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#calibration-event">calibration</a></td>
-            <td class='attr-desc'>fired only on iPhone/iPad when the device detects interface and requires calibration. when this event is fired, the calibration UI is being displayed to the end user.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects interface and requires calibration.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#heading-event">heading</a></td>
-            <td class='attr-desc'>fired when a heading event is received</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when an heading update is received.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#location-event">location</a></td>
-            <td class='attr-desc'>fired when a location event is received</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when a location update is received.</td>
         </tr>
         
     </table>
@@ -199,138 +604,622 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="forwardGeocoder-method">
+        <a name="forwardGeocoder-method"></a><b>forwardGeocoder</b> <span class="params">(address, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Resolves an address to a location.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>address</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>address to resolve.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="ForwardGeocodeResponse.html">[Callback&lt;ForwardGeocodeResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to invoke on success or failure.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAccuracy-method">
+        <a name="getAccuracy-method"></a><b>getAccuracy</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.accuracy-property.html">accuracy</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCurrentHeading-method">
+        <a name="getCurrentHeading-method"></a><b>getCurrentHeading</b> <span class="params">(callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Retrieves the current compass heading.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="HeadingResponse.html">[Callback&lt;HeadingResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to invoke on success or failure of obtaining the current heading.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCurrentPosition-method">
+        <a name="getCurrentPosition-method"></a><b>getCurrentPosition</b> <span class="params">(callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Retrieves the last known location from the device.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to invoke on success or failure of obtaining the current location.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDistanceFilter-method">
+        <a name="getDistanceFilter-method"></a><b>getDistanceFilter</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.distanceFilter-property.html">distanceFilter</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFrequency-method">
+        <a name="getFrequency-method"></a><b>getFrequency</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.frequency-property.html">frequency</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHeadingFilter-method">
+        <a name="getHeadingFilter-method"></a><b>getHeadingFilter</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.headingFilter-property.html">headingFilter</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLocationServicesAuthorization-method">
+        <a name="getLocationServicesAuthorization-method"></a><b>getLocationServicesAuthorization</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.locationServicesAuthorization-property.html">locationServicesAuthorization</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLocationServicesEnabled-method">
+        <a name="getLocationServicesEnabled-method"></a><b>getLocationServicesEnabled</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.locationServicesEnabled-property.html">locationServicesEnabled</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPreferredProvider-method">
+        <a name="getPreferredProvider-method"></a><b>getPreferredProvider</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.preferredProvider-property.html">preferredProvider</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPurpose-method">
+        <a name="getPurpose-method"></a><b>getPurpose</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.purpose-property.html">purpose</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getShowCalibration-method">
+        <a name="getShowCalibration-method"></a><b>getShowCalibration</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.showCalibration-property.html">showCalibration</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="reverseGeocoder-method">
+        <a name="reverseGeocoder-method"></a><b>reverseGeocoder</b> <span class="params">(latitude, longitude, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Tries to resolve a location to an address.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>latitude</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Latitude to search, specified in decimal degrees.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>longitude</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Longitude to search, specified in decimal degrees.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="ReverseGeocodeResponse.html">[Callback&lt;ReverseGeocodeResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to invoke on success or failure.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAccuracy-method">
+        <a name="setAccuracy-method"></a><b>setAccuracy</b> <span class="params">(accuracy)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.accuracy-property.html">accuracy</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>accuracy</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDistanceFilter-method">
+        <a name="setDistanceFilter-method"></a><b>setDistanceFilter</b> <span class="params">(distanceFilter)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.distanceFilter-property.html">distanceFilter</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>distanceFilter</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFrequency-method">
+        <a name="setFrequency-method"></a><b>setFrequency</b> <span class="params">(frequency)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.frequency-property.html">frequency</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>frequency</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHeadingFilter-method">
+        <a name="setHeadingFilter-method"></a><b>setHeadingFilter</b> <span class="params">(headingFilter)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.headingFilter-property.html">headingFilter</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>headingFilter</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLocationServicesAuthorization-method">
+        <a name="setLocationServicesAuthorization-method"></a><b>setLocationServicesAuthorization</b> <span class="params">(locationServicesAuthorization)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.locationServicesAuthorization-property.html">locationServicesAuthorization</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>locationServicesAuthorization</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPreferredProvider-method">
+        <a name="setPreferredProvider-method"></a><b>setPreferredProvider</b> <span class="params">(preferredProvider)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.preferredProvider-property.html">preferredProvider</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>preferredProvider</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPurpose-method">
+        <a name="setPurpose-method"></a><b>setPurpose</b> <span class="params">(purpose)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.purpose-property.html">purpose</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>purpose</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="setShowCalibration-method">
-        <a name="setShowCalibration-method"></a><b>setShowCalibration</b> <span class="params">()</span>
+        <a name="setShowCalibration-method"></a><b>setShowCalibration</b> <span class="params">(showCalibration)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>configure the calibration UI. set the false to disable the calibration display.</p>
-      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.showCalibration-property.html">showCalibration</a> property.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>showCalibration</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
     </div>
     
     
@@ -345,24 +1234,29 @@
       </div>
       
       
-      <div class="description">
-        <p>fired only on iPhone/iPad when the device detects interface and requires calibration. when this event is fired, the calibration UI is being displayed to the end user.</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -376,39 +1270,65 @@
       </div>
       
       
-      <div class="description">
-        <p>fired when a heading event is received</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>heading</td>
-            <td class='attr-desc'>heading results dictionary with the following sub-properties: magneticHeading, trueHeading, accuracy, x, y, z, timestamp.</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>success</td>
-            <td class='attr-desc'>boolean to indicate if the heading event was successfully received or an error occurred</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-name'>code</td>
+            <td class='attr-desc'>
+              
+              <p>If <code>success</code> is false, the error code if available.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>error</td>
-            <td class='attr-desc'>if success is false, returns a string of the error description</td>
+            <td class='attr-desc'>
+              
+              <p>If <code>success</code> is false, a string describing the error.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>heading</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[HeadingResults]</span><br /> 
+              
+              <p>Dictionary object containing the heading data.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>success</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Boolean]</span><br /> 
+              
+              <p>Indicate if the heading event was successfully received.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -422,39 +1342,79 @@
       </div>
       
       
-      <div class="description">
-        <p>fired when a location event is received</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>success</td>
-            <td class='attr-desc'>boolean to indicate if the location event was successfully received or an error occurred</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>error</td>
-            <td class='attr-desc'>if success is false, returns a string of the error description</td>
+            <td class='attr-name'>code</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>if <code>success</code> is false, the error code if available.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>coords</td>
-            <td class='attr-desc'>location coordinates dictionary with the following sub-properties: latitude, longitude, altitude, accuracy, altitudeAccuracy, heading, speed, timestamp.</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[LocationCoordinates]</span><br /> 
+              
+              <p>Location data for this update.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>error</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>If <code>success</code> is false, a string describing the error.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>provider</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[LocationProviderDict]</span><br /> 
+              
+              <p>Object describing the location provider generating this update.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>success</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Boolean]</span><br /> 
+              
+              <p>Indicates if location data was successfully retrieved.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

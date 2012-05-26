@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.Service</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Android.Service 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Titanium binding of an <a href="http://developer.android.com/reference/android/app/Service.html">Android Service</a>.  Can be used to start/stop the service directly and listen for service-specific events.  In the Javascript-based services you write, this can be referenced with <a href="Titanium.Android.currentService-property.html"><code>Titanium.Android.currentService</code></a>.  You can create an instance of the service with <a href="Titanium.Android.createService-method.html"><code>Titanium.Android.createService</code></a>.</p>
+    </div>
+    
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getIntent-method">getIntent <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getServiceInstanceId-method">getServiceInstanceId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#start-method">start <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#stop-method">stop <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="intent-property"></a>intent</td>
+            <td class='attr-rw'>
+                [Titanium.Android.Intent]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The Titanium.Android.Intent used to start or bind to the Service.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="serviceInstanceId-property"></a>serviceInstanceId</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A service can be started more than once -- this number (based on an incrementing integer) indicates which "start number" in the sequence the current service instance is.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#pause-event">pause</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>For Javascript-based Services which you create, pause fires after each time the Javascript code executes.  resume and pause happen in pairs, with resume firing just before your Javascript service code executes, and pause just after.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#resume-event">resume</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>For Javascript-based Services which you create, resume fires each time the Javascript code executes.  For example, if your Service runs on an interval of 10000 (10 seconds), you would expect to see resume fired every 10 seconds, just as the Javascript service code you wrote is about to execute.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#start-event">start</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the bound Service instance starts.  Bound service instances are created via Titanium.Android.createService.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#stop-event">stop</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the bound Service instance stops, meaning Titanium.Android.Service.stop or Titanium.Android.stopService has been called and there are no more bound, un-stopped clients.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Hello World Service</div>
+	<div class="code"><p>Your service code in its own Javascript file.  It reads the <a href="Titanium.Android.Intent-object.html"><code>Titanium.Android.Intent</code></a> which created it, to see what it should say besides "Hello World".</p>
+<p>File: myservice.js:</p>
+<pre><code>var service = Titanium.Android.currentService;
+var intent = service.intent;
+var message = intent.getStringExtra("message_to_echo");
+Titanium.API.info("Hello World!  I am a Service.  I have this to say: " + message);
+</code></pre>
+<p>Register the service in tiapp.xml:</p>
+<pre><code>&lt;android xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;services&gt;
+        &lt;service url="myservice.js" type="interval"/&gt;
+    &lt;/services&gt;
+&lt;/android&gt;
+</code></pre>
+<p>Code in "regular" Titanium file to launch the service and listen for pause/resume events.  Code also stops the service after its code runs 3 times.</p>
+<pre><code>var intent = Titanium.Android.createServiceIntent( { url: 'myservice.js' } );
+// Service should run its code every 2 seconds.
+intent.putExtra('interval', 2000);
+// A message that the service should 'echo'
+intent.putExtra('message_to_echo', 'Titanium rocks!');
+
+var service = Titanium.Android.createService(intent);
+service.addEventListener('resume', function(e) {
+    Titanium.API.info('Service code resumes, iteration ' + e.iteration);
+});
+service.addEventListener('pause', function(e) {
+    Titanium.API.info('Service code pauses, iteration ' + e.iteration);
+    if (e.iteration === 3) {
+        Titanium.API.info('Service code has run 3 times, will now stop it.');
+        service.stop();
+    }
+});
+service.start();
+</code></pre>
+<p>Console Output:</p>
+<pre><code>[INFO] [29,1942] Service code resumes, iteration 1
+[INFO] [70,2029] Hello World! I am a Service. I have this to say: Titanium rocks!
+[INFO] [3,2070] Service code pauses, iteration 1
+[INFO] [2,3915] Service code resumes, iteration 2
+[INFO] [31,3961] Hello World! I am a Service. I have this to say: Titanium rocks!
+[INFO] [5,3968] Service code pauses, iteration 2
+[INFO] [2,5917] Service code resumes, iteration 3
+[INFO] [27,5961] Hello World! I am a Service. I have this to say: Titanium rocks!
+[INFO] [16,5980] Service code pauses, iteration 3
+[INFO] [1,5981] Service code has run 3 times, will now stop it.
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getIntent-method">
+        <a name="getIntent-method"></a><b>getIntent</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Service.intent-property.html">intent</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getServiceInstanceId-method">
+        <a name="getServiceInstanceId-method"></a><b>getServiceInstanceId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Service.serviceInstanceId-property.html">serviceInstanceId</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="start-method">
+        <a name="start-method"></a><b>start</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Start the Service.  Effective only if this instance of <a href="Titanium.Android.Service-object.html"><code>Titanium.Android.Service</code></a> was created with <a href="Titanium.Android.createService-method.html"><code>Titanium.Android.createService</code></a>.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stop-method">
+        <a name="stop-method"></a><b>stop</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Stop this running instance of the Service.</p></div>
+      
+
+      
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="pause-event">
+        <a name="pause-method"></a><b>pause</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>iteration</td>
+            <td class='attr-desc'>
+              
+              <p>incrementing integer indicating which iteration of an interval-based Service is pausing.  For example, if you have an interval-based Service running every 10 seconds, iteration 3 would occur at about 30 seconds after you start the instance (assuming your service code runs quickly.)</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="resume-event">
+        <a name="resume-method"></a><b>resume</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>iteration</td>
+            <td class='attr-desc'>
+              
+              <p>incrementing integer indicating which iteration of an interval-based Service is resuming.  For example, if you have an interval-based Service running every 10 seconds, iteration 3 would occur at about 30 seconds after you start the instance (assuming your service code runs quickly.)</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="start-event">
+        <a name="start-method"></a><b>start</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stop-event">
+        <a name="stop-method"></a><b>stop</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

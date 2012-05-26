@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Blob</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Blob 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+), Mobile Web(1.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The blob is an abstract data type that represents binary information, often obtained through HTTPClient or via files. It often is used to store text or the actual data of an image.</p>
+    </div>
+    
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#append-method">append <span class="params">(blob)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLength-method">getLength <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMimeType-method">getMimeType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNativePath-method">getNativePath <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSize-method">getSize <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getText-method">getText <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWidth-method">getWidth <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#imageAsCropped-method">imageAsCropped <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#imageAsResized-method">imageAsResized <span class="params">(width, height)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#imageAsThumbnail-method">imageAsThumbnail <span class="params">(size, borderSize, cornerRadius)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#imageWithAlpha-method">imageWithAlpha <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#imageWithRoundedCorner-method">imageWithRoundedCorner <span class="params">(cornerSize, borderSize)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#imageWithTransparentBorder-method">imageWithTransparentBorder <span class="params">(size)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#toString-method">toString <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="height-property"></a>height</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>When this blob represents an image, this is the height of the image in pixels. Otherwise, this is 0.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="length-property"></a>length</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The length of this blob in bytes.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="mimeType-property"></a>mimeType</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The mime type of this blob.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="nativePath-property"></a>nativePath</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>When this blob represents a Titanium.Filesystem.File, this is the file URL that represents it</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="size-property"></a>size</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>When this blob represents an image, this is the total number of pixels in the image. Otherwise it returns the number of bytes in the binary data.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="text-property"></a>text</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A UTF-8 string representation of the data in this blob. If this blob represents pure binary data, the value will be null.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="width-property"></a>width</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>When this blob represents an image, this is the width of the image in pixels. Otherwise, this is 0.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="append-method">
+        <a name="append-method"></a><b>append</b> <span class="params">(blob)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Appends the data from another blob to this blob.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>blob</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The blob to append to this blob</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHeight-method">
+        <a name="getHeight-method"></a><b>getHeight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.height-property.html">height</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLength-method">
+        <a name="getLength-method"></a><b>getLength</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.length-property.html">length</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMimeType-method">
+        <a name="getMimeType-method"></a><b>getMimeType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.mimeType-property.html">mimeType</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNativePath-method">
+        <a name="getNativePath-method"></a><b>getNativePath</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.nativePath-property.html">nativePath</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSize-method">
+        <a name="getSize-method"></a><b>getSize</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.size-property.html">size</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getText-method">
+        <a name="getText-method"></a><b>getText</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.text-property.html">text</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWidth-method">
+        <a name="getWidth-method"></a><b>getWidth</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.width-property.html">width</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="imageAsCropped-method">
+        <a name="imageAsCropped-method"></a><b>imageAsCropped</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>When this blob represents an image, this creates a new blob by cropping the underlying image to the specified dimensions.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;ImageAsCroppedDict&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>imageAsCropped named options</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="imageAsResized-method">
+        <a name="imageAsResized-method"></a><b>imageAsResized</b> <span class="params">(width, height)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>When this blob represents an image, this creates a new blob by resizing and scaling the underlying image to the specified dimensions.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>width</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The width to resize this image to.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>height</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The height to resize this image to.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="imageAsThumbnail-method">
+        <a name="imageAsThumbnail-method"></a><b>imageAsThumbnail</b> <span class="params">(size, borderSize, cornerRadius)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Generate a thumbnail version of an image, optionally with a border and rounded corners</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>size</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The size of the thumbnail, in either width or height</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>borderSize</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The width of the thumbnail's border.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>cornerRadius</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The radius of the thumbnail's corners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="imageWithAlpha-method">
+        <a name="imageWithAlpha-method"></a><b>imageWithAlpha</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>When this blob represents an image, this adds an alpha channel to the underlying image.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="imageWithRoundedCorner-method">
+        <a name="imageWithRoundedCorner-method"></a><b>imageWithRoundedCorner</b> <span class="params">(cornerSize, borderSize)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>When this blob represents an image, this adds a rounded corner to the underlying image.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>cornerSize</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The size of the rounded corners in pixels.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>borderSize</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The size of the border in pixels.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="imageWithTransparentBorder-method">
+        <a name="imageWithTransparentBorder-method"></a><b>imageWithTransparentBorder</b> <span class="params">(size)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>When this blob represents an image, this adds a transparent border to the underlying image.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>size</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The size of the transparent border.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="toString-method">
+        <a name="toString-method"></a><b>toString</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Converts this blob to a String</p></div>
+      
+
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

@@ -35,18 +35,20 @@
             <span class="type">Module</span> 
             Titanium.Utils 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level Utils module.  The Utils module is a set of common JavaScript functions that are 
-useful for applications.</p>
+        <p>The top-level Utils module, containing a set of JavaScript methods that are often useful when 
+building applications.</p>
     </div>
+    
+    
     
 
     
@@ -59,11 +61,11 @@ useful for applications.</p>
             </ul>
     
             <ul>
-                <li><a href="#base64decode-method">base64decode <span class="params">(str)</span></a></li>
+                <li><a href="#base64decode-method">base64decode <span class="params">(obj)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#base64encode-method">base64encode <span class="params">(str)</span></a></li>
+                <li><a href="#base64encode-method">base64encode <span class="params">(obj)</span></a></li>
             </ul>
     
             <ul>
@@ -71,11 +73,19 @@ useful for applications.</p>
             </ul>
     
             <ul>
-                <li><a href="#md5HexDigest-method">md5HexDigest <span class="params">(str)</span></a></li>
+                <li><a href="#md5HexDigest-method">md5HexDigest <span class="params">(obj)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#sha1-method">sha1 <span class="params">(obj)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#sha256-method">sha256 <span class="params">(obj)</span></a></li>
             </ul>
     
     
@@ -95,217 +105,277 @@ useful for applications.</p>
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="base64decode-method">
-        <a name="base64decode-method"></a><b>base64decode</b> <span class="params">(str)</span>
+        <a name="base64decode-method"></a><b>base64decode</b> <span class="params">(obj)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>decode a Base64 string</p>
-      </div>
+      <div class="description"><p>Returns the specified data decoded from Base64.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>str</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the string to use for the input</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>obj</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to decode.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="base64encode-method">
-        <a name="base64encode-method"></a><b>base64encode</b> <span class="params">(str)</span>
+        <a name="base64encode-method"></a><b>base64encode</b> <span class="params">(obj)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>encode a string into Base64</p>
-      </div>
+      <div class="description"><p>Returns the specified data encoded to Base64.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>str</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the string to use for the input</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>obj</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to encode.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="md5HexDigest-method">
-        <a name="md5HexDigest-method"></a><b>md5HexDigest</b> <span class="params">(str)</span>
+        <a name="md5HexDigest-method"></a><b>md5HexDigest</b> <span class="params">(obj)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>compute a MD5 hash algorithm against the input and return a hex-based string</p>
-      </div>
+      <div class="description"><p>Returns a MD5 digest of the specified data as a hex-based String.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>str</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the string to use for the input</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>obj</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to calculate.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="sha1-method">
+        <a name="sha1-method"></a><b>sha1</b> <span class="params">(obj)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Returns a SHA-1 hash of the specified data as a hex-based String.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>obj</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to calculate.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="sha256-method">
+        <a name="sha256-method"></a><b>sha256</b> <span class="params">(obj)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns a SHA-256 hash of the specified data as a hex-based String.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>obj</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to calculate.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     

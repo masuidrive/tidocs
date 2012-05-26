@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.Calendar</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Android.Calendar 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Android.Calendar module provides proxies and methods for accessing the native Android 
+calendar functionality.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This module supports retrieving information about existing events and creating new events.<br />
+However, modifying or deleting existing events is not yet supported.<br />
+Additionally, recurring events are not yet supported.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAllAlerts-method">getAllAlerts <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAllCalendars-method">getAllCalendars <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCalendarById-method">getCalendarById <span class="params">(id)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSelectableCalendars-method">getSelectableCalendars <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="METHOD_ALERT-property"></a>METHOD_ALERT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Reminder alert delivery method.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="METHOD_DEFAULT-property"></a>METHOD_DEFAULT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Reminder default delivery method.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="METHOD_EMAIL-property"></a>METHOD_EMAIL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Reminder email delivery method.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="METHOD_SMS-property"></a>METHOD_SMS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Reminder SMS delivery method.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_DISMISSED-property"></a>STATE_DISMISSED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Alert dismissed state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_FIRED-property"></a>STATE_FIRED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Alert fired state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATE_SCHEDULED-property"></a>STATE_SCHEDULED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Alert scheduled status.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATUS_CANCELED-property"></a>STATUS_CANCELED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Event canceled status.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATUS_CONFIRMED-property"></a>STATUS_CONFIRMED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Event confirmed status.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STATUS_TENTATIVE-property"></a>STATUS_TENTATIVE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Event tentative status.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VISIBILITY_CONFIDENTIAL-property"></a>VISIBILITY_CONFIDENTIAL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Event confidential visibility.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VISIBILITY_DEFAULT-property"></a>VISIBILITY_DEFAULT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Event default visibility.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VISIBILITY_PRIVATE-property"></a>VISIBILITY_PRIVATE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Event private visibility.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="VISIBILITY_PUBLIC-property"></a>VISIBILITY_PUBLIC</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Event public visibility.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="allAlerts-property"></a>allAlerts</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.Android.Calendar.Alert&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>All alerts in selected calendars.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="allCalendars-property"></a>allCalendars</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.Android.Calendar.Calendar&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>All calendars known to the native calendar app.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="selectableCalendars-property"></a>selectableCalendars</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.Android.Calendar.Calendar&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>All calendars selected within the native calendar app, which may be a subset of allCalendars. </td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">All Calendars vs Selectable Calendars</div>
+	<div class="code"><p>Print the names of all calendars known to Android, and the names of calendars that 
+have been selected in the native Android calendar application.</p>
+<pre><code>function showCalendars(calendars) {
+    for (var i = 0; i &lt; calendars.length; i++) {
+        Ti.API.info(calendars[i].name);
+    }
+}
+
+Ti.API.info('ALL CALENDARS:');
+showCalendars(Ti.Android.Calendar.allCalendars);
+Ti.API.info('SELECTABLE CALENDARS:');
+showCalendars(Ti.Android.Calendar.selectableCalendars);
+</code></pre></div>
+        
+	<div class="subsectiontitle">Events in a year</div>
+	<div class="code"><p>Create a picker to allow an existing calendar to be selected and, when a button is clicked, 
+generate details of all events in that calendar for the current year .</p>
+<pre><code>var calendars = [];
+var selectedCalendarName;
+var selectedCalendarId;
+var pickerData = [];
+
+var win = Ti.UI.createWindow({
+  backgroundColor: 'white',
+  exitOnClose: true,
+  fullscreen: false,
+  layout: 'vertical',
+  title: 'Calendar Demo'
+});
+
+var scrollView = Ti.UI.createScrollView({
+  backgroundColor: '#eee',
+  height: 500,
+  top: 20
+});
+
+var label = Ti.UI.createLabel({
+  backgroundColor: 'white',
+  text: 'Click on the button to display the events for the selected calendar',
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  top: 20
+});
+scrollView.add(label);
+
+var selectableCalendars = Ti.Android.Calendar.selectableCalendars;
+for (var i = 0, ilen = selectableCalendars.length; i &lt; ilen; i++) {
+  calendars.push({ name: selectableCalendars[i].name, id: selectableCalendars[i].id });
+  pickerData.push( Ti.UI.createPickerRow({ title: calendars[i].name }) );
+  if(i === 0){
+    selectedCalendarName = selectableCalendars[i].name;
+    selectedCalendarId = selectableCalendars[i].id;
+  }
+}
+var selectableCalendars = null;
+
+if(!calendars.length){
+  label.text = 'No calendars available. Select at least one in the native calendar before using this app';
+} else {
+  label.text = 'Click button to view calendar events';
+
+  var picker = Ti.UI.createPicker({
+    top:20
+  });
+
+  picker.add(pickerData);
+  win.add(picker);
+
+  picker.addEventListener('change', function(e){
+    for (var i = 0, ilen = calendars.length; i &lt; ilen; i++) {
+      if(calendars[i].name === e.row.title){
+        selectedCalendarName = calendars[i].name;
+        selectedCalendarId = calendars[i].id;
+      }
+    }
+  });
+
+  var button = Ti.UI.createButton({
+    title: 'View events',
+    top: 20
+  });
+  win.add(button);
+
+  button.addEventListener('click', function(e){
+    label.text = 'Generating...';
+
+    var currentYear = new Date().getFullYear();
+
+    var consoleString = '';
+
+    function print(s) {
+      if (consoleString.length) {
+        consoleString = consoleString + '\n';
+      }
+      consoleString = consoleString + s;
+    }
+
+    var calendar = Ti.Android.Calendar.getCalendarById(selectedCalendarId);
+
+    function printReminder(r) {
+      var typetext = '[method unknown]';
+      if (r.method == Ti.Android.Calendar.METHOD_EMAIL) {
+        typetext = 'Email';
+      } else if (r.method == Ti.Android.Calendar.METHOD_SMS) {
+        typetext = 'SMS';
+      } else if (r.method == Ti.Android.Calendar.METHOD_ALERT) {
+        typetext = 'Alert';
+      } else if (r.method == Ti.Android.Calendar.METHOD_DEFAULT) {
+        typetext = '[default reminder method]';
+      }
+      print(typetext + ' reminder to be sent ' + r.minutes + ' minutes before the event');
+    }
+
+    function printAlert(a) {
+      print('Alert id ' + a.id + ' begin ' + a.begin + '; end ' + a.end + '; alarmTime ' + a.alarmTime + '; minutes ' + a.minutes);
+    }
+
+    function printEvent(event) {
+      if (event.allDay) {
+        print('Event: ' + event.title + '; ' + event.begin.toLocaleDateString() + ' (all day)');
+      } else {
+        print('Event: ' + event.title + '; ' + event.begin.toLocaleDateString() + ' ' + event.begin.toLocaleTimeString()+ '-' + event.end.toLocaleTimeString());
+      }
+
+      var reminders = event.reminders;
+      if (reminders &amp;&amp; reminders.length) {
+        print('There is/are ' + reminders.length + ' reminder(s)');
+        for (var i = 0; i &lt; reminders.length; i++) {
+          printReminder(reminders[i]);
+        }
+      }
+
+      print('hasAlarm? ' + event.hasAlarm);
+      var alerts = event.alerts;
+      if (alerts &amp;&amp; alerts.length) {
+        for (var i = 0; i &lt; alerts.length; i++) {
+          printAlert(alerts[i]);
+        }
+      }
+
+      var status = event.status;
+      if (status == Ti.Android.Calendar.STATUS_TENTATIVE) {
+        print('This event is tentative');
+      }
+      if (status == Ti.Android.Calendar.STATUS_CONFIRMED) {
+        print('This event is confirmed');
+      }
+      if (status == Ti.Android.Calendar.STATUS_CANCELED) {
+        print('This event was canceled');
+      }
+    }
+
+    var events = calendar.getEventsInYear(currentYear);
+    if (events &amp;&amp; events.length) {
+      print(events.length + ' event(s) in ' + currentYear);
+      print('');
+      for (var i = 0; i &lt; events.length; i++) {
+        printEvent(events[i]);
+        print('');
+      }
+    } else {
+      print('No events');
+    }
+
+    label.text = consoleString;
+  });
+}
+
+win.add(scrollView);
+
+win.open();
+</code></pre></div>
+        
+	<div class="subsectiontitle">Create an Event and Reminder</div>
+	<div class="code"><p>Creates an event and adds an e-mail reminder for 10 minutes before the event.</p>
+<pre><code>var CALENDAR_TO_USE = 3;
+var calendar = Ti.Android.Calendar.getCalendarById(CALENDAR_TO_USE);
+
+// Create the event
+var eventBegins = new Date(2010, 11, 26, 12, 0, 0);
+var eventEnds = new Date(2010, 11, 26, 14, 0, 0);
+var details = {
+    title: 'Do some stuff',
+    description: "I'm going to do some stuff at this time.",
+    begin: eventBegins,
+    end: eventEnds
+};
+
+var event = calendar.createEvent(details);
+
+// Now add a reminder via e-mail for 10 minutes before the event.
+var reminderDetails = {
+    minutes: 10,
+    method: Ti.Android.Calendar.METHOD_EMAIL
+};
+event.createReminder(reminderDetails);
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAllAlerts-method">
+        <a name="getAllAlerts-method"></a><b>getAllAlerts</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.allAlerts-property.html">allAlerts</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAllCalendars-method">
+        <a name="getAllCalendars-method"></a><b>getAllCalendars</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.allCalendars-property.html">allCalendars</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCalendarById-method">
+        <a name="getCalendarById-method"></a><b>getCalendarById</b> <span class="params">(id)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the calendar with the specified identifier.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>id</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Integer identifier of the calendar.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSelectableCalendars-method">
+        <a name="getSelectableCalendars-method"></a><b>getSelectableCalendars</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.selectableCalendars-property.html">selectableCalendars</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

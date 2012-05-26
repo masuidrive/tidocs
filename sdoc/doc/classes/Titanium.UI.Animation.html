@@ -35,16 +35,58 @@
             <span class="type">Object</span> 
             Titanium.UI.Animation 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The Animation object is used for specifying lower-level animation properties and more low-level control of events during an animation. The Animation is created by the method <a href="Titanium.UI.createAnimation.html">Titanium.UI.createAnimation</a>.</p>
+        <p>The <code>Animation</code> object defines an animation that can be applied to a view.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>An animation object describes the properties of an animation. At its 
+most basic, an animation object represents a single-phase animation with an 
+end state and a duration. </p>
+<p>When <a href="Titanium.UI.View.animate-method.html">animate</a> is called on a <a href="Titanium.UI.View-object.html">View</a>,
+the view is animated from its current state to the state described by the 
+animation object. The properties that can be animated include the view's 
+position, size, colors, transformation matrix and opacity. </p>
+<p>Animations can be set to reverse themselves automatically on completion,
+and to repeat a given number of times. For more complicated effects, 
+multiple animations can be combined in sequence, starting one animation 
+when the previous animation completes.</p>
+<p>Use the <a href="Titanium.UI.createAnimation-method.html"><code>Titanium.UI.createAnimation</code></a> method to create an animation object.</p>
+<p>Note that when you animate a view's size or position, the actual layout properties
+(such as <code>top</code>, <code>left</code>, <code>width</code>, <code>height</code>) are not changed by the animation.
+See the description of the <a href="Titanium.UI.View.animate-method.html">animate</a> method for more information.</p>
+<h4>iOS Platform Notes</h4>
+<p>iOS supports both 2D and 3D matrix transformations in animations.</p>
+<p>In iOS, you can also specify an animation curve or <em>easing function</em> to control
+the pace of the animation. To use an easing function, set the animation's 
+<code>curve</code> property to one of the <code>ANIMATION_CURVE</code> constants defined in
+<a href="Titanium.UI.iOS.html"><code>Titanium.UI.iOS</code></a>. For example, 
+<a href="Titanium.UI.iOS.ANIMATION_CURVE_EASE_IN-property.html">ANIMATION_CURVE_EASE_IN</a> specifies 
+an animation that starts slowly and then speeds up.</p>
+<p>Finally, iOS also supports <em>transitions</em> between windows or views. You can create a 
+transition by creating an animation object and setting the <code>view</code> property to the 
+view you want to transition to. The <code>transition</code> property specifies the transition
+effect to apply. Use one of the transition style constants defined in 
+<a href="Titanium.UI.iPhone.AnimationStyle-object.html"><code>Titanium.UI.iPhone.AnimationStyle</code></a>.</p>
+<h4>Android Platform Notes</h4>
+<p>Android supports 2D matrix transformations. Note that the
+<a href="Titanium.UI.2DMatrix.rotate-method.html">2DMatrix.rotate</a> method operates differently
+on Android. Called with a single argument, it rotates from zero to the specified 
+angle. That is, it ignores any existing rotation. Called with two arguments, 
+it interprets the first argument as a "from" angle and the second argument as a 
+"to" angle. </p>
+<p>Android doesn't support any animation curves or easing functions. Animations
+always interpolate linearly between the start state and the end state.</p>
     </div>
     
 
@@ -62,7 +104,167 @@
             </ul>
     
             <ul>
+                <li><a href="#getAutoreverse-method">getAutoreverse <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBackgroundColor-method">getBackgroundColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBottom-method">getBottom <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCenter-method">getCenter <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getColor-method">getColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCurve-method">getCurve <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDelay-method">getDelay <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDuration-method">getDuration <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLeft-method">getLeft <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOpacity-method">getOpacity <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOpaque-method">getOpaque <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRepeat-method">getRepeat <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRight-method">getRight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTop-method">getTop <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTransform-method">getTransform <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTransition-method">getTransition <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getVisible-method">getVisible <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWidth-method">getWidth <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getZIndex-method">getZIndex <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAutoreverse-method">setAutoreverse <span class="params">(autoreverse)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundColor-method">setBackgroundColor <span class="params">(backgroundColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBottom-method">setBottom <span class="params">(bottom)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCenter-method">setCenter <span class="params">(center)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setColor-method">setColor <span class="params">(color)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCurve-method">setCurve <span class="params">(curve)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDelay-method">setDelay <span class="params">(delay)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDuration-method">setDuration <span class="params">(duration)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHeight-method">setHeight <span class="params">(height)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLeft-method">setLeft <span class="params">(left)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOpacity-method">setOpacity <span class="params">(opacity)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOpaque-method">setOpaque <span class="params">(opaque)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRepeat-method">setRepeat <span class="params">(repeat)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRight-method">setRight <span class="params">(right)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTop-method">setTop <span class="params">(top)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTransform-method">setTransform <span class="params">(transform)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTransition-method">setTransition <span class="params">(transition)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setVisible-method">setVisible <span class="params">(visible)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setWidth-method">setWidth <span class="params">(width)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setZIndex-method">setZIndex <span class="params">(zIndex)</span></a></li>
             </ul>
     
     
@@ -74,161 +276,182 @@
         <tr valign='top'>
             <td class='attr-name'><a name="autoreverse-property"></a>autoreverse</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>the property specifies if the animation should be replayed in reverse upon completion</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies if the animation should be replayed in reverse upon completion.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="backgroundColor-property"></a>backgroundColor</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>value of the backgroundColor property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the backgroundColor property at the end of the animation, as a color name 
+or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="bottom-property"></a>bottom</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the bottom property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the bottom property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="center-property"></a>center</td>
             <td class='attr-rw'>
-                [object]
+                [Object]
             </td>
-            <td class='attr-desc'>value of the center property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the center property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="color-property"></a>color</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>value of the color property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the color property at the end of the animation, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="curve-property"></a>curve</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the curve of the animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Animation curve or easing function to apply to the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="delay-property"></a>delay</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>the duration of time in milliseconds before starting the animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Delay, in milliseconds before starting the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="duration-property"></a>duration</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>the duration of time in milliseconds to perform the animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Duration of the animation, in milliseconds.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="height-property"></a>height</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the height property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the height property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="left-property"></a>left</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the left property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the left property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="opacity-property"></a>opacity</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the opacity property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the opacity property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="opaque-property"></a>opaque</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>value of the opaque property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the opaque property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="repeat-property"></a>repeat</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the number of times the animation should be performed</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Number of times the animation should be performed.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="right-property"></a>right</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the right property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the right property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="top-property"></a>top</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the top property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the top property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
             </td>
-            <td class='attr-desc'>value of the transform property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Animate the view from its current tranform to the specified transform.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transition-property"></a>transition</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>during a transition animation, this is the constant to the type of transition to use</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Transition type to use during a transition animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="visible-property"></a>visible</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>value of the visible property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the visible property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="width-property"></a>width</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the width property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the width property at the end of the animation.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="zIndex-property"></a>zIndex</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>value of the zIndex property to change during animation</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value of the zIndex property at the end of the animation.</td>
         </tr>
         
     </table>
@@ -240,12 +463,14 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#complete-event">complete</a></td>
-            <td class='attr-desc'>fired when the animation completes</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the animation completes.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#start-event">start</a></td>
-            <td class='attr-desc'>fired when the animation starts</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the animation starts.</td>
         </tr>
         
     </table>
@@ -257,7 +482,7 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Animation applied to a view</div>
+	<div class="subsectiontitle">Simple Animation Applied to a View</div>
 	<div class="code"><p>Create a simple animation and apply it to the view.  In this example, the view will animate from red to black to orange over 2 seconds.</p>
 <pre><code>var view = Titanium.UI.createView({
    backgroundColor:'red'
@@ -265,13 +490,38 @@
 var animation = Titanium.UI.createAnimation();
 animation.backgroundColor = 'black';
 animation.duration = 1000;
-animation.addEventListener('complete',function()
-{
-   animation.removeEventListener('complete',this);
+var animationHandler = function() {
+   animation.removeEventListener('complete',animationHandler);
    animation.backgroundColor = 'orange';
    view.animate(animation);
-});
+};
+animation.addEventListener('complete',animationHandler);
 view.animate(animation);
+</code></pre></div>
+        
+	<div class="subsectiontitle">Animation Using Matrix Transforms</div>
+	<div class="code"><p>The following example uses a transformation matrix to animate
+a view when the view is clicked. The animation rotates and scales
+the view, then returns it to its original size and position. The
+entire animation is repeated three times.</p>
+<p>var box = Ti.UI.createView({
+        backgroundColor : 'red',
+        height : '100',
+        width : '100'
+    });
+    win.add(box);</p>
+<pre><code>box.addEventListener('click', function() {
+    var matrix = Ti.UI.create2DMatrix()
+    matrix = matrix.rotate(180);
+    matrix = matrix.scale(2, 2);
+    var a = Ti.UI.createAnimation({
+            transform : matrix,
+            duration : 2000,
+            autoreverse : true,
+            repeat : 3
+        });
+    box.animate(a);
+});
 </code></pre></div>
         
     </table>
@@ -284,121 +534,947 @@ view.animate(animation);
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAutoreverse-method">
+        <a name="getAutoreverse-method"></a><b>getAutoreverse</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.autoreverse-property.html">autoreverse</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBackgroundColor-method">
+        <a name="getBackgroundColor-method"></a><b>getBackgroundColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.backgroundColor-property.html">backgroundColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBottom-method">
+        <a name="getBottom-method"></a><b>getBottom</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.bottom-property.html">bottom</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCenter-method">
+        <a name="getCenter-method"></a><b>getCenter</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.center-property.html">center</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getColor-method">
+        <a name="getColor-method"></a><b>getColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.color-property.html">color</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCurve-method">
+        <a name="getCurve-method"></a><b>getCurve</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.curve-property.html">curve</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDelay-method">
+        <a name="getDelay-method"></a><b>getDelay</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.delay-property.html">delay</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDuration-method">
+        <a name="getDuration-method"></a><b>getDuration</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.duration-property.html">duration</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHeight-method">
+        <a name="getHeight-method"></a><b>getHeight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.height-property.html">height</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLeft-method">
+        <a name="getLeft-method"></a><b>getLeft</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.left-property.html">left</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOpacity-method">
+        <a name="getOpacity-method"></a><b>getOpacity</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.opacity-property.html">opacity</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOpaque-method">
+        <a name="getOpaque-method"></a><b>getOpaque</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.opaque-property.html">opaque</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRepeat-method">
+        <a name="getRepeat-method"></a><b>getRepeat</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.repeat-property.html">repeat</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRight-method">
+        <a name="getRight-method"></a><b>getRight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.right-property.html">right</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTop-method">
+        <a name="getTop-method"></a><b>getTop</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.top-property.html">top</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTransform-method">
+        <a name="getTransform-method"></a><b>getTransform</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.transform-property.html">transform</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTransition-method">
+        <a name="getTransition-method"></a><b>getTransition</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.transition-property.html">transition</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getVisible-method">
+        <a name="getVisible-method"></a><b>getVisible</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.visible-property.html">visible</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWidth-method">
+        <a name="getWidth-method"></a><b>getWidth</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.width-property.html">width</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getZIndex-method">
+        <a name="getZIndex-method"></a><b>getZIndex</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.zIndex-property.html">zIndex</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAutoreverse-method">
+        <a name="setAutoreverse-method"></a><b>setAutoreverse</b> <span class="params">(autoreverse)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.autoreverse-property.html">autoreverse</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>autoreverse</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundColor-method">
+        <a name="setBackgroundColor-method"></a><b>setBackgroundColor</b> <span class="params">(backgroundColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.backgroundColor-property.html">backgroundColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBottom-method">
+        <a name="setBottom-method"></a><b>setBottom</b> <span class="params">(bottom)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.bottom-property.html">bottom</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>bottom</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCenter-method">
+        <a name="setCenter-method"></a><b>setCenter</b> <span class="params">(center)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.center-property.html">center</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>center</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setColor-method">
+        <a name="setColor-method"></a><b>setColor</b> <span class="params">(color)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.color-property.html">color</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>color</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCurve-method">
+        <a name="setCurve-method"></a><b>setCurve</b> <span class="params">(curve)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.curve-property.html">curve</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>curve</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDelay-method">
+        <a name="setDelay-method"></a><b>setDelay</b> <span class="params">(delay)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.delay-property.html">delay</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>delay</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDuration-method">
+        <a name="setDuration-method"></a><b>setDuration</b> <span class="params">(duration)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.duration-property.html">duration</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>duration</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHeight-method">
+        <a name="setHeight-method"></a><b>setHeight</b> <span class="params">(height)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.height-property.html">height</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>height</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLeft-method">
+        <a name="setLeft-method"></a><b>setLeft</b> <span class="params">(left)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.left-property.html">left</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>left</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOpacity-method">
+        <a name="setOpacity-method"></a><b>setOpacity</b> <span class="params">(opacity)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.opacity-property.html">opacity</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>opacity</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOpaque-method">
+        <a name="setOpaque-method"></a><b>setOpaque</b> <span class="params">(opaque)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.opaque-property.html">opaque</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>opaque</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRepeat-method">
+        <a name="setRepeat-method"></a><b>setRepeat</b> <span class="params">(repeat)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.repeat-property.html">repeat</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>repeat</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRight-method">
+        <a name="setRight-method"></a><b>setRight</b> <span class="params">(right)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.right-property.html">right</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>right</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTop-method">
+        <a name="setTop-method"></a><b>setTop</b> <span class="params">(top)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.top-property.html">top</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>top</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTransform-method">
+        <a name="setTransform-method"></a><b>setTransform</b> <span class="params">(transform)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.transform-property.html">transform</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>transform</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTransition-method">
+        <a name="setTransition-method"></a><b>setTransition</b> <span class="params">(transition)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.transition-property.html">transition</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>transition</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setVisible-method">
+        <a name="setVisible-method"></a><b>setVisible</b> <span class="params">(visible)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.visible-property.html">visible</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>visible</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setWidth-method">
+        <a name="setWidth-method"></a><b>setWidth</b> <span class="params">(width)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.width-property.html">width</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>width</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setZIndex-method">
+        <a name="setZIndex-method"></a><b>setZIndex</b> <span class="params">(zIndex)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.zIndex-property.html">zIndex</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>zIndex</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     
@@ -413,24 +1489,29 @@ view.animate(animation);
       </div>
       
       
-      <div class="description">
-        <p>fired when the animation completes</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -444,24 +1525,29 @@ view.animate(animation);
       </div>
       
       
-      <div class="description">
-        <p>fired when the animation starts</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

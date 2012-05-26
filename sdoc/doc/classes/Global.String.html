@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Global.String</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Global.String 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The JavaScript built-in String type.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This module contains Titanium-only extensions for formatting data into locale-specific strings. 
+The target locale is configured by the user in the device's system Settings.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#format-method">format <span class="params">(formatString, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#formatCurrency-method">formatCurrency <span class="params">(value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#formatDate-method">formatDate <span class="params">(date, format)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#formatDecimal-method">formatDecimal <span class="params">(value, locale, pattern)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#formatTime-method">formatTime <span class="params">(date, format)</span></a></li>
+            </ul>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="format-method">
+        <a name="format-method"></a><b>format</b> <span class="params">(formatString, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Formats a string using <code>printf</code>-style substitution.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>formatString</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An IEEE printf-style string, containing zero or more conversion specifications.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringNumber]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Comma-separated list of one or more values to substitute into the formatString. 
+Optional on Android.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="formatCurrency-method">
+        <a name="formatCurrency-method"></a><b>formatCurrency</b> <span class="params">(value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Formats a number into the currency format, including currency symbol, of the locale 
+configured for the system.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Currency value.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="formatDate-method">
+        <a name="formatDate-method"></a><b>formatDate</b> <span class="params">(date, format)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Formats a date into the date format of the locale configured for the system.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>date</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Date]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Date to format.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>format</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Date format to use. One of 'short', 'medium', or 'long'.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="formatDecimal-method">
+        <a name="formatDecimal-method"></a><b>formatDecimal</b> <span class="params">(value, locale, pattern)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Formats a number into the decimal format, including decimal symbol, of the locale 
+configured for the system.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Value to format.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>locale</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Locale string. For example, en-US for US English.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>pattern</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Format pattern.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="formatTime-method">
+        <a name="formatTime-method"></a><b>formatTime</b> <span class="params">(date, format)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Formats a date into the time format of the locale configured for the system.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>date</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Date]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Date to format.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>format</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Date format to use. One of 'short', 'medium', or 'long' (iOS only.)</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

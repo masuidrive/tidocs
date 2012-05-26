@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Stream</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Stream 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.7+), iPhone(1.7+), iPad(1.7+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Stream module containing stream utility methods.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This module provides a set of methods for interacting with
+<a href="Titanium.IOStream-object.html">IOStream</a> objects, including asynchronous versions of the 
+<code>read</code> and <code>write</code> methods offered by all stream objects. These 
+methods should be used in any place where reading from or writing
+to a stream might block.</p>
+<p>See also:</p>
+<ul>
+<li><a href="Titanium.IOStream-object.html"><code>Titanium.IOStream</code></a></li>
+<li><a href="Titanium.BlobStream-object.html"><code>Titanium.BlobStream</code></a></li>
+<li><a href="Titanium.BufferStream-object.html"><code>Titanium.BufferStream</code></a></li>
+<li><a href="Titanium.Filesystem.FileStream-object.html"><code>Titanium.Filesystem.FileStream</code></a></li>
+<li><a href="Titanium.Network.Socket.TCP-object.html"><code>Titanium.Network.Socket.TCP</code></a></li>
+</ul>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createStream-method">createStream <span class="params">(params)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#pump-method">pump <span class="params">(inputStream, handler, maxChunkSize, isAsync)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#read-method">read <span class="params">(sourceStream, buffer, offset, length, resultsCallback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#readAll-method">readAll <span class="params">(sourceStream, buffer, resultsCallback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#write-method">write <span class="params">(outputStream, buffer, offset, length, resultsCallback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#writeStream-method">writeStream <span class="params">(inputStream, outputStream, maxChunkSize, resultsCallback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODE_APPEND-property"></a>MODE_APPEND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with createStream to open a stream in append
+mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODE_READ-property"></a>MODE_READ</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with createStream to open a stream in read
+mode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="MODE_WRITE-property"></a>MODE_WRITE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with createStream to open a stream in write
+mode.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Stream.pump Example</div>
+	<div class="code"><p>The following example shows how to use the <a href="Titanium.Stream.pump-method.html">pump</a> method.</p>
+<pre><code>var pumpCallback = function(arg) {
+    if(arg.bytesProcessed == -1) {
+        Ti.API.info("At end of stream.");
+    } else {
+        Ti.API.info(String.format("Received %.0f bytes. Total: %.0f bytes.", 
+                    arg.bytesProcessed, arg.totalBytesProcessed));
+        // do something useful with the data in arg.buffer
+    }
+}
+Ti.Stream.pump(inputStream, pumpCallback, 1024);
+</code></pre></div>
+        
+	<div class="subsectiontitle">Write Stream to File</div>
+	<div class="code"><p>The following example uses the <a href="Titanium.Stream.writeStream-method.html">writeStream</a> method
+to copy the contents of an input stream to a file. This can be used for any kind
+of input stream -- <code>BufferStream</code>, <code>FileStream</code>, or <code>Socket.TCP</code>.</p>
+<pre><code>var outFileStream = Ti.Filesystem.getFile('outfile.txt').open(Ti.Filesystem.MODE_WRITE);
+
+// writes all data from inputStream to outFileStream in chunks of 1024 bytes
+var bytesWritten = Ti.Stream.writeStream(inputStream, outFileStream, 1024);
+Ti.API.info('Wrote ' + bytesWritten + ' bytes, closing both streams.');
+
+inputStream.close();
+outFileStream.close();
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createStream-method">
+        <a name="createStream-method"></a><b>createStream</b> <span class="params">(params)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates stream from a <code>Buffer</code> or <code>Blob</code> object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [CreateStreamArgs]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameter object, for specifying the source object and mode.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="pump-method">
+        <a name="pump-method"></a><b>pump</b> <span class="params">(inputStream, handler, maxChunkSize, isAsync)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Reads data from input stream and passes it to a handler method.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>inputStream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.IOStream]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Stream to pump from.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>handler</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="PumpCallbackArgs.html">[Callback&lt;PumpCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Handler method that will receive data from inputStream.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>maxChunkSize</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Maximum number of bytes to pass to handler in a single call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>isAsync</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Specifies if the pump operation should run asynchronously.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="read-method">
+        <a name="read-method"></a><b>read</b> <span class="params">(sourceStream, buffer, offset, length, resultsCallback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Asynchronously reads data from an <a href="Titanium.IOStream-object.html">IOStream</a> into a buffer.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceStream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.IOStream]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Stream to read from.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>buffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer to read into.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset to start reading stream data from, in bytes.
+If specified, length must be specified as well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>length</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Number of bytes of data to read from the stream.
+If specified, offset must be specified as well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>resultsCallback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="ReadCallbackArgs.html">[Callback&lt;ReadCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to call with the results of the read operation.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="readAll-method">
+        <a name="readAll-method"></a><b>readAll</b> <span class="params">(sourceStream, buffer, resultsCallback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Reads all data from the specified <a href="Titanium.IOStream-object.html">IOStream</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sourceStream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.IOStream]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Stream to read from.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>buffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer to read into. If specified, resultsCallback must be specified as
+well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>resultsCallback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="ReadCallbackArgs.html">[Callback&lt;ReadCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to call with the results of the read operation.
+If specified, resultsCallback must be specified as well.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="write-method">
+        <a name="write-method"></a><b>write</b> <span class="params">(outputStream, buffer, offset, length, resultsCallback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Asynchronously writes data from a buffer to an <a href="Titanium.IOStream-object.html">IOStream</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>outputStream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.IOStream]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Stream to write to.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>buffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer to write from.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset to start writing buffer data from.
+If specified, length must be specified as well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>length</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Bytes of data to write. If specified, offset must be specified as well.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>resultsCallback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="WriteCallbackArgs.html">[Callback&lt;WriteCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to call with the results of the write operation.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="writeStream-method">
+        <a name="writeStream-method"></a><b>writeStream</b> <span class="params">(inputStream, outputStream, maxChunkSize, resultsCallback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Writes all data from an input stream to an output stream.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>inputStream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.IOStream]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Stream to read from.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>outputStream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.IOStream]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Stream to write to.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>maxChunkSize</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Maximum number of bytes to copy from inputStream to outputStream in a 
+single operation.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>resultsCallback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="WriteStreamCallbackArgs.html">[Callback&lt;WriteStreamCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to call with the results of the writeStream operation.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

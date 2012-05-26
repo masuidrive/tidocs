@@ -1,0 +1,1395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI.iOS.3DMatrix</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.UI.iOS.3DMatrix 
+        </h1>
+      	<ul class="files">
+      	  <li>iPhone(0.9+), iPad(0.9+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The 3D Matrix is an object for holding values for an affine transformation matrix.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The 3DMatrix is created by <a href="Titanium.UI.iOS.create3DMatrix-method.html"><code>Titanium.UI.iOS.create3DMatrix</code></a>.  A 3D matrix is
+used to rotate, scale, translate, or skew the objects in a three-dimensional
+space. A 3D matrix is represented by a 4 by 4 matrix. </p>
+<p>You create an <code>identity matrix</code> by creating a 3D Matrix with an empty
+constructor.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM11-method">getM11 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM12-method">getM12 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM13-method">getM13 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM14-method">getM14 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM21-method">getM21 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM22-method">getM22 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM23-method">getM23 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM24-method">getM24 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM31-method">getM31 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM32-method">getM32 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM33-method">getM33 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM34-method">getM34 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM41-method">getM41 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM42-method">getM42 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM43-method">getM43 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getM44-method">getM44 <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#invert-method">invert <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#multiply-method">multiply <span class="params">(t2)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#rotate-method">rotate <span class="params">(angle, x, y, z)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#scale-method">scale <span class="params">(sx, sy, sz)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM11-method">setM11 <span class="params">(m11)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM12-method">setM12 <span class="params">(m12)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM13-method">setM13 <span class="params">(m13)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM14-method">setM14 <span class="params">(m14)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM21-method">setM21 <span class="params">(m21)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM22-method">setM22 <span class="params">(m22)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM23-method">setM23 <span class="params">(m23)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM24-method">setM24 <span class="params">(m24)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM31-method">setM31 <span class="params">(m31)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM32-method">setM32 <span class="params">(m32)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM33-method">setM33 <span class="params">(m33)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM34-method">setM34 <span class="params">(m34)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM41-method">setM41 <span class="params">(m41)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM42-method">setM42 <span class="params">(m42)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM43-method">setM43 <span class="params">(m43)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setM44-method">setM44 <span class="params">(m44)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#translate-method">translate <span class="params">(tx, ty, tz)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m11-property"></a>m11</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [1,1] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m12-property"></a>m12</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [1,2] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m13-property"></a>m13</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [1,3] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m14-property"></a>m14</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [1,4] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m21-property"></a>m21</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [2,1] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m22-property"></a>m22</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [2,2] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m23-property"></a>m23</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [2,3] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m24-property"></a>m24</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [2,4] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m31-property"></a>m31</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [3,1] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m32-property"></a>m32</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [3,2] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m33-property"></a>m33</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [3,3] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m34-property"></a>m34</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [3,4] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m41-property"></a>m41</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [4,1] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m42-property"></a>m42</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [4,2] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m43-property"></a>m43</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [4,3] in the matrix.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="m44-property"></a>m44</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The entry at position [4,4] in the matrix.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM11-method">
+        <a name="getM11-method"></a><b>getM11</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m11-property.html">m11</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM12-method">
+        <a name="getM12-method"></a><b>getM12</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m12-property.html">m12</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM13-method">
+        <a name="getM13-method"></a><b>getM13</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m13-property.html">m13</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM14-method">
+        <a name="getM14-method"></a><b>getM14</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m14-property.html">m14</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM21-method">
+        <a name="getM21-method"></a><b>getM21</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m21-property.html">m21</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM22-method">
+        <a name="getM22-method"></a><b>getM22</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m22-property.html">m22</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM23-method">
+        <a name="getM23-method"></a><b>getM23</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m23-property.html">m23</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM24-method">
+        <a name="getM24-method"></a><b>getM24</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m24-property.html">m24</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM31-method">
+        <a name="getM31-method"></a><b>getM31</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m31-property.html">m31</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM32-method">
+        <a name="getM32-method"></a><b>getM32</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m32-property.html">m32</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM33-method">
+        <a name="getM33-method"></a><b>getM33</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m33-property.html">m33</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM34-method">
+        <a name="getM34-method"></a><b>getM34</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m34-property.html">m34</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM41-method">
+        <a name="getM41-method"></a><b>getM41</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m41-property.html">m41</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM42-method">
+        <a name="getM42-method"></a><b>getM42</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m42-property.html">m42</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM43-method">
+        <a name="getM43-method"></a><b>getM43</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m43-property.html">m43</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getM44-method">
+        <a name="getM44-method"></a><b>getM44</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.3DMatrix.m44-property.html">m44</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="invert-method">
+        <a name="invert-method"></a><b>invert</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns a matrix constructed by inverting an existing matrix</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="multiply-method">
+        <a name="multiply-method"></a><b>multiply</b> <span class="params">(t2)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns a matrix constructed by combining two existing matrix.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>t2</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.iOS.3DMatrix]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The second matrix. This matrix is concatenated to the matrix instance against which the function is invoked.  The result of this function is the first matrix multiplied by the second matrix. You might perform several multiplications in order to create a single matrix that contains the cumulative effects of several transformations. Note that matrix operations are not commutative - the order in which you concatenate matrices is important. That is, the result of multiplying matrix t1 by matrix t2 does not necessarily equal the result of multiplying matrix t2 by matrix t1.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="rotate-method">
+        <a name="rotate-method"></a><b>rotate</b> <span class="params">(angle, x, y, z)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns a matrix constructed by rotating an existing matrix</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>angle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The angle, in degrees, by which to rotate the matrix. A positive value specifies counterclockwise rotation and a negative value specifies clockwise rotation.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>x</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The x part of the vector about which to rotate</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>y</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The y part of the vector about which to rotate</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>z</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The z part of the vector about which to rotate</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="scale-method">
+        <a name="scale-method"></a><b>scale</b> <span class="params">(sx, sy, sz)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns a matrix constructed by scaling an existing matrix</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sx</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The value by which to scale x values of the matrix</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sy</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The value by which to scale y values of the matrix</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sz</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The value by which to scale z values of the matrix</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM11-method">
+        <a name="setM11-method"></a><b>setM11</b> <span class="params">(m11)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m11-property.html">m11</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m11</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM12-method">
+        <a name="setM12-method"></a><b>setM12</b> <span class="params">(m12)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m12-property.html">m12</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m12</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM13-method">
+        <a name="setM13-method"></a><b>setM13</b> <span class="params">(m13)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m13-property.html">m13</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m13</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM14-method">
+        <a name="setM14-method"></a><b>setM14</b> <span class="params">(m14)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m14-property.html">m14</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m14</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM21-method">
+        <a name="setM21-method"></a><b>setM21</b> <span class="params">(m21)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m21-property.html">m21</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m21</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM22-method">
+        <a name="setM22-method"></a><b>setM22</b> <span class="params">(m22)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m22-property.html">m22</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m22</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM23-method">
+        <a name="setM23-method"></a><b>setM23</b> <span class="params">(m23)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m23-property.html">m23</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m23</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM24-method">
+        <a name="setM24-method"></a><b>setM24</b> <span class="params">(m24)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m24-property.html">m24</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m24</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM31-method">
+        <a name="setM31-method"></a><b>setM31</b> <span class="params">(m31)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m31-property.html">m31</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m31</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM32-method">
+        <a name="setM32-method"></a><b>setM32</b> <span class="params">(m32)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m32-property.html">m32</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m32</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM33-method">
+        <a name="setM33-method"></a><b>setM33</b> <span class="params">(m33)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m33-property.html">m33</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m33</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM34-method">
+        <a name="setM34-method"></a><b>setM34</b> <span class="params">(m34)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m34-property.html">m34</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m34</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM41-method">
+        <a name="setM41-method"></a><b>setM41</b> <span class="params">(m41)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m41-property.html">m41</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m41</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM42-method">
+        <a name="setM42-method"></a><b>setM42</b> <span class="params">(m42)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m42-property.html">m42</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m42</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM43-method">
+        <a name="setM43-method"></a><b>setM43</b> <span class="params">(m43)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m43-property.html">m43</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m43</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setM44-method">
+        <a name="setM44-method"></a><b>setM44</b> <span class="params">(m44)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.3DMatrix.m44-property.html">m44</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>m44</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="translate-method">
+        <a name="translate-method"></a><b>translate</b> <span class="params">(tx, ty, tz)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns a matrix constructed by translating an existing matrix</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tx</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The value by which to move x values with the matrix</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ty</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The value by which to move y values with the matrix</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tz</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The value by which to move z values with the matrix</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

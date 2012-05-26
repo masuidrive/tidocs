@@ -35,19 +35,70 @@
             <span class="type">Object</span> 
             Titanium.UI.iPhone.SystemButtonStyle 
         </h1>
-	<ul class="files">
-	  <li>iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>iPhone(0.8+), iPad(0.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>A set of constants for the system button styles that can be used for the button <tt>style</tt> property.</p>
+        <p>A set of constants for the system button styles that can be used for the button <code>style</code> property.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>These constants represent standard iOS system button styles that affect the 
+<a href="Titanium.UI.Button-object.html">Button</a>, <a href="Titanium.UI.ButtonBar-object.html">ButtonBar</a>, and 
+<a href="Titanium.UI.iOS.TabbedBar-object.html">TabbedBar</a> UI elements.</p>
+<p>The different styles are used in different places. For normal buttons which are <strong>not</strong> 
+contained in a nav bar, toolbar, button bar or tabbed bar, the following styles apply:</p>
+<ul>
+<li><code>BORDERED</code>. Simple button style with a rounded border and a white background. 
+            The default style for normal buttons.</li>
+<li><code>DONE</code>. Like the bordered button, but with a blue background. Button style for a button 
+        that indicates completion, such as OK, Save, or Go. </li>
+<li><code>PLAIN</code> Button style for an undecorated button. </li>
+</ul>
+<p>Note that if you specify the <code>PLAIN</code> style, you must style the button using the other button 
+properties. For example, there is no indication that the button has been pressed unless you set 
+other properties for the selected state, such as <code>backgroundSelectedImage</code> and <code>selectedColor</code>.</p>
+<p>When you add a button to a <a href="Titanium.UI.iOS.Toolbar-object.html">Toolbar</a>, the styles have a slightly 
+different effect:</p>
+<ul>
+<li><code>PLAIN</code> Button style for an undecorated button with large text and a <em>glow</em> effect when the 
+button is pressed. Default style for buttons in toolbars.</li>
+<li><code>BORDERED</code>. Simple button style with a rounded border and a light blue background. </li>
+<li><code>DONE</code>. Like the bordered button, but with a dark blue background. </li>
+</ul>
+<p>For <code>TabbedBar</code> and <code>ButtonBar</code> controls, styles have the following meaning:</p>
+<ul>
+<li><code>PLAIN</code>. Default style for <code>ButtonBar</code> and <code>TabbedBar</code>.</li>
+<li><code>BORDERED</code>. Creates a bar like the <code>PLAIN</code> bar, but with a heavier border.</li>
+<li><code>BAR</code>. Used on <code>ButtonBar</code> and <code>TabbedBar</code> controls to produce a more compact bar with 
+translucent buttons that allow the bar's background color to show through.</li>
+</ul>
     </div>
     
 
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
     
     
 
@@ -56,27 +107,41 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="BAR-property"></a>BAR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Used with ButtonBar or TabbedBar only, 
+to use the more condensed style used in nav bars and tool bars.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="BORDERED-property"></a>BORDERED</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>A simple button style with a border.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="DONE-property"></a>DONE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>The style for a done button - for example, a button that completes some task and returns to the previous view.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The style for a Done button--for example, a button that completes some task and returns 
+to the previous view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="PLAIN-property"></a>PLAIN</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>Glows when tapped. The default item style.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies a borderless button, the default style for toolbars, button bars, and tabbed bars.</td>
         </tr>
         
     </table>
@@ -89,6 +154,135 @@
     
 
 
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
     
 
 

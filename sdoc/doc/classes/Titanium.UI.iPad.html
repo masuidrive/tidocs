@@ -35,17 +35,26 @@
             <span class="type">Module</span> 
             Titanium.UI.iPad 
         </h1>
-	<ul class="files">
-	  <li>iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>iPad(1.2+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The iPad specific UI capabilities.  All properties, methods and events in this namespace will only work on the Apple iPad related devices.  To develop for iPad, you will need the Apple iPhone SDK 3.2 or later and Titanium Mobile SDK 1.2 or later. </p>
-<p>For iPad UI programming guidelines, please review the <a href="http://developer.apple.com/iphone/library/documentation/General/Conceptual/iPadHIG/Introduction/Introduction.html">iPad Human Interface Guidelines</a>. </p>
+        <p>iPad specific UI capabilities.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>All properties, methods and events in this namespace will only work on the Apple iPad 
+related devices.  To develop for iPad, you will need the Apple iPhone SDK 3.2 or later 
+and Titanium Mobile SDK 1.2 or later. </p>
+<p>For iPad UI programming guidelines, please review the [iPad Human Interface Guidelines]
+(http://developer.apple.com/iphone/library/documentation/General/Conceptual/iPadHIG/Introduction/Introduction.html).</p>
     </div>
     
 
@@ -56,6 +65,10 @@
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createDocumentViewer-method">createDocumentViewer <span class="params">(parameters)</span></a></li>
             </ul>
     
             <ul>
@@ -83,48 +96,54 @@
         <tr valign='top'>
             <td class='attr-name'><a name="POPOVER_ARROW_DIRECTION_ANY-property"></a>POPOVER_ARROW_DIRECTION_ANY</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>An arrow that points in any direction.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="POPOVER_ARROW_DIRECTION_DOWN-property"></a>POPOVER_ARROW_DIRECTION_DOWN</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>An arrow that points downward.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="POPOVER_ARROW_DIRECTION_LEFT-property"></a>POPOVER_ARROW_DIRECTION_LEFT</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>An arrow that points toward the left.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="POPOVER_ARROW_DIRECTION_RIGHT-property"></a>POPOVER_ARROW_DIRECTION_RIGHT</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>An arrow that points toward the right.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="POPOVER_ARROW_DIRECTION_UNKNOWN-property"></a>POPOVER_ARROW_DIRECTION_UNKNOWN</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>The status of the arrow is currently unknown.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="POPOVER_ARROW_DIRECTION_UP-property"></a>POPOVER_ARROW_DIRECTION_UP</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>An arrow that points upward.</td>
         </tr>
         
@@ -133,12 +152,6 @@
 
     
 
-    
-    <div class="sectiontitle">Notes</div>
-    <table border='0' cellpadding='5'>
-	<div class="code"><h3 id="custom_fonts">Custom Fonts</h3>
-<p>The iPad supports the ability to embed your own fonts in your iPad application. To add your own fonts, you should add the </p></div>
-    </table>
     
 
     
@@ -150,185 +163,217 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createDocumentViewer-method">
+        <a name="createDocumentViewer-method"></a><b>createDocumentViewer</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iPad.DocumentViewer-object.html"><code>Titanium.UI.iPad.DocumentViewer</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iPad.DocumentViewer&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iPad.DocumentViewer except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="createPopover-method">
         <a name="createPopover-method"></a><b>createPopover</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.UI.iPad.Popover.html">Titanium.UI.iPad.Popover</a>
-      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iPad.Popover-object.html"><code>Titanium.UI.iPad.Popover</code></a>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.iPad.Popover</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iPad.Popover&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iPad.Popover except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createSplitWindow-method">
         <a name="createSplitWindow-method"></a><b>createSplitWindow</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.UI.iPad.SplitWindow.html">Titanium.UI.iPad.SplitWindow</a>
-      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iPad.SplitWindow-object.html"><code>Titanium.UI.iPad.SplitWindow</code></a>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.UI.iPad.SplitWindow</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iPad.SplitWindow&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iPad.SplitWindow except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     

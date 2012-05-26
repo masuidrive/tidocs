@@ -35,16 +35,31 @@
             <span class="type">Module</span> 
             Titanium.Analytics 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level Analytics module.  The Analytics module is used for transmitting developer-defined Analytics event for your application to the Appcelerator Analytics product. It can be used to augment additional context or application-specific information which can then be accessed during analysis using Analytics.</p>
+        <p>Used for transmitting developer-defined Analytics events to the Appcelerator Analytics product. </p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The analytics module can be used to supply additional context or application-specific 
+information which can then be accessed during analysis using Analytics.</p>
+<p>Use the <a href="Titanium.Analytics.featureEvent-method.html">featureEvent</a> method to generate custom
+events that you can view through the Analytics product. You can specify a name for 
+the feature event which is visible through Analytics.</p>
+<p><strong>NOTE</strong> Although the analytics module allows you to transmit other types of 
+events, such as navigation events and timed events, <em>data regarding these events 
+is <strong>not</strong> accessible through the Analytics UI.</em> </p>
+<p>Navigation events will be supported in a future version of the Analytics product. 
+There is no plan to support the other event types, and they and should not be used.</p>
     </div>
     
 
@@ -58,23 +73,11 @@
             </ul>
     
             <ul>
-                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#featureEvent-method">featureEvent <span class="params">(name, data)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#navEvent-method">navEvent <span class="params">(from, to, name, data)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
             <ul>
@@ -102,9 +105,12 @@
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Custom Feature Event</div>
-	<div class="code"><p>This examples shows how to send a featureEvent during an application session to indicate some feature was triggered/used by the user that you would like to track.</p>
-<pre><code>Titanium.Analytics.featureEvent('app.feature.blah',{product:'killer'});
-</code></pre></div>
+	<div class="code"><p>This example shows how to send a feature event during an application session to indicate 
+some feature that you would like to track was used.</p>
+<pre><code>Titanium.Analytics.featureEvent('app.feature.blah');
+</code></pre>
+<p>In this case, the Analytics product would show statistics about how many times the
+'app.feature.blah' event was generated. </p></div>
         
     </table>
     
@@ -116,409 +122,330 @@
     <div class="method">
       <div class="title" id="addEvent-method">
         <a name="addEvent-method"></a><b>addEvent</b> <span class="params">(type, name, data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>send a generic event for the application session</p>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the event type</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the event name</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event data or null if not specified. the object must be serializable as JSON</td>
-          </tr>
-          
-	</table>
-      </div>
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="addEventListener-method">
-        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
-      </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Sends a generic event for this application session.
+<strong>Not displayed in Analytics UI</strong>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>type</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event type.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event name.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="featureEvent-method">
         <a name="featureEvent-method"></a><b>featureEvent</b> <span class="params">(name, data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>send an analytics feature event for the application session</p>
-      </div>
+      <div class="description"><p>Sends a feature event for this application session.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the event name</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event data or null if not specified. the object must be serializable as JSON</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event name, displayed in Analytics UI.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Extra data related to the event, not displayed in Analytics UI. 
+The object must be serializable as JSON.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="fireEvent-method">
-        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
-      </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
-      </div>
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="navEvent-method">
         <a name="navEvent-method"></a><b>navEvent</b> <span class="params">(from, to, name, data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>send an analytics nav event for the application session</p>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>from</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the from location in the nav event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>to</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the to location in the nav event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the event name</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event data or null if not specified. the object must be serializable as JSON</td>
-          </tr>
-          
-	</table>
-      </div>
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="removeEventListener-method">
-        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
-      </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Sends a navigation event for this application session. 
+<strong>Not displayed in Analytics UI</strong>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>from</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>String describing the location the user navigated from.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>to</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>String describing the location the user navigated to.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event name.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Extra data related to the event. The object must be serializable as JSON.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="settingsEvent-method">
         <a name="settingsEvent-method"></a><b>settingsEvent</b> <span class="params">(name, data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>send a analytics settings event for the application session</p>
-      </div>
+      <div class="description"><p>Sends a settings event for this application session.
+<strong>Not displayed in Analytics UI</strong>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the event name</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event data or null if not specified. the object must be serializable as JSON</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event name.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="timedEvent-method">
         <a name="timedEvent-method"></a><b>timedEvent</b> <span class="params">(name, start, stop, duration, data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>send an analytics timed event for the application session</p>
-      </div>
+      <div class="description"><p>Send a timed event for this application session.
+<strong>Not displayed in Analytics UI</strong>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the event name</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>start</td>
-            <td class='attr-rw'>
-              [date]
-            </td>
-            <td class='attr-desc'>the event start as a Date object</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>stop</td>
-            <td class='attr-rw'>
-              [date]
-            </td>
-            <td class='attr-desc'>the event end as a Date object</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>duration</td>
-            <td class='attr-rw'>
-              [float]
-            </td>
-            <td class='attr-desc'>the event duration</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event data or null if not specified. the object must be serializable as JSON</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event name.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>start</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Date]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event start as a Date object.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>stop</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Date]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event end as a Date object.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>duration</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event duration.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="userEvent-method">
         <a name="userEvent-method"></a><b>userEvent</b> <span class="params">(name, data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>send an analytics user event for the application session</p>
-      </div>
+      <div class="description"><p>Sends a user event for this application session. <strong>Not displayed in Analytics UI</strong>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the event name</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event data or null if not specified. the object must be serializable as JSON</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Event name.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     

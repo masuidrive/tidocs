@@ -35,19 +35,105 @@
             <span class="type">Object</span> 
             Titanium.Platform.DisplayCaps 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The Display Caps object returned by the <a href="Titanium.Platform.displayCaps.html">Titanium.Platform.displayCaps</a> property.</p>
+        <p>The Display Caps object returned by the <a href="Titanium.Platform.displayCaps-property.html"><code>Titanium.Platform.displayCaps</code></a> property.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>On iPhone and iPod devices with retina display, the <code>density</code> property is <code>high</code> and the <code>dpi</code> 
+property is <code>320</code>. For other iPhone and iPod devices, <code>density</code> is <code>medium</code> and <code>dpi</code> is <code>160</code>.</p>
+<p>On iPad devices with retina display, the <code>density</code> property is <code>high</code> and the <code>dpi</code> 
+property is <code>260</code>. For other iPad devices, <code>density</code> is <code>medium</code> and <code>dpi</code> is <code>130</code>.</p>
+<p>Note that Xcode versions prior to 4.3.1 do not have the correct tools to detect the iPad 3 
+retina display. Apps must be built with Xcode 4.3.1 or later to detect iPad 3 retina display.</p>
+<p>Note that the <code>displayCaps</code> property begins with a lowercase letter, which differentiates it 
+from the <code>DisplayCaps</code> object that it returns. Refer to the example to understand how it should 
+be called.</p>
     </div>
     
 
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDensity-method">getDensity <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDpi-method">getDpi <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLogicalDensityFactor-method">getLogicalDensityFactor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPlatformHeight-method">getPlatformHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPlatformWidth-method">getPlatformWidth <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getXdpi-method">getXdpi <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getYdpi-method">getYdpi <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDensity-method">setDensity <span class="params">(density)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDpi-method">setDpi <span class="params">(dpi)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLogicalDensityFactor-method">setLogicalDensityFactor <span class="params">(logicalDensityFactor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPlatformHeight-method">setPlatformHeight <span class="params">(platformHeight)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPlatformWidth-method">setPlatformWidth <span class="params">(platformWidth)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setXdpi-method">setXdpi <span class="params">(xdpi)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setYdpi-method">setYdpi <span class="params">(ydpi)</span></a></li>
+            </ul>
     
     
 
@@ -58,33 +144,67 @@
         <tr valign='top'>
             <td class='attr-name'><a name="density-property"></a>density</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>returns the density property of the display device.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Logical density of the display.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="dpi-property"></a>dpi</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the DPI of the display device.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Display density expressed as dots-per-inch.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="logicalDensityFactor-property"></a>logicalDensityFactor</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Logical density of the display, as a scaling factor for the Density Independent Pixel (dip) 
+unit.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="platformHeight-property"></a>platformHeight</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>the height of the device screen</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Absolute height of the display in relation to UI orientation. Measured in platform-specific 
+units; pixels on Android and density-independent pixels (dip) on iOS.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="platformWidth-property"></a>platformWidth</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
-            <td class='attr-desc'>the width of the device screen</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Absolute width of the display in relation to UI orientation. Measured in platform-specific 
+units; pixels on Android and density-independent pixels (dip) on iOS.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="xdpi-property"></a>xdpi</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Physical pixels per inch of the display in the X dimension.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ydpi-property"></a>ydpi</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Physical pixels per inch of the display in the Y dimension.</td>
         </tr>
         
     </table>
@@ -93,15 +213,444 @@
     
 
     
-    <div class="sectiontitle">Notes</div>
+
+    
+    <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
-	<div class="code"><p>On iPhone, the <tt>density</tt> property will return <tt>low</tt> and the <tt>dpi</tt> property will return <tt>160</tt>. For iPad, the <tt>density</tt> property will return <tt>high</tt> and the <tt>dpi</tt> property will return <tt>130</tt>.  For Android, these values are device specific.</p></div>
+        
+	<div class="subsectiontitle">System Display Information</div>
+	<div class="code"><p>Output the display properties to the system log.</p>
+<pre><code>Ti.API.info('Ti.Platform.displayCaps.density: ' + Ti.Platform.displayCaps.density);
+Ti.API.info('Ti.Platform.displayCaps.dpi: ' + Ti.Platform.displayCaps.dpi);
+Ti.API.info('Ti.Platform.displayCaps.platformHeight: ' + Ti.Platform.displayCaps.platformHeight);
+Ti.API.info('Ti.Platform.displayCaps.platformWidth: ' + Ti.Platform.displayCaps.platformWidth);
+if(Ti.Platform.osname === 'android'){
+  Ti.API.info('Ti.Platform.displayCaps.xdpi: ' + Ti.Platform.displayCaps.xdpi);
+  Ti.API.info('Ti.Platform.displayCaps.ydpi: ' + Ti.Platform.displayCaps.ydpi);
+  Ti.API.info('Ti.Platform.displayCaps.logicalDensityFactor: ' + Ti.Platform.displayCaps.logicalDensityFactor);
+}
+</code></pre></div>
+        
     </table>
     
 
+
     
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
 
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
 
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDensity-method">
+        <a name="getDensity-method"></a><b>getDensity</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.DisplayCaps.density-property.html">density</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDpi-method">
+        <a name="getDpi-method"></a><b>getDpi</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.DisplayCaps.dpi-property.html">dpi</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLogicalDensityFactor-method">
+        <a name="getLogicalDensityFactor-method"></a><b>getLogicalDensityFactor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.DisplayCaps.logicalDensityFactor-property.html">logicalDensityFactor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPlatformHeight-method">
+        <a name="getPlatformHeight-method"></a><b>getPlatformHeight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.DisplayCaps.platformHeight-property.html">platformHeight</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPlatformWidth-method">
+        <a name="getPlatformWidth-method"></a><b>getPlatformWidth</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.DisplayCaps.platformWidth-property.html">platformWidth</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getXdpi-method">
+        <a name="getXdpi-method"></a><b>getXdpi</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.DisplayCaps.xdpi-property.html">xdpi</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getYdpi-method">
+        <a name="getYdpi-method"></a><b>getYdpi</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.DisplayCaps.ydpi-property.html">ydpi</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDensity-method">
+        <a name="setDensity-method"></a><b>setDensity</b> <span class="params">(density)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Platform.DisplayCaps.density-property.html">density</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>density</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDpi-method">
+        <a name="setDpi-method"></a><b>setDpi</b> <span class="params">(dpi)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Platform.DisplayCaps.dpi-property.html">dpi</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>dpi</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLogicalDensityFactor-method">
+        <a name="setLogicalDensityFactor-method"></a><b>setLogicalDensityFactor</b> <span class="params">(logicalDensityFactor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Platform.DisplayCaps.logicalDensityFactor-property.html">logicalDensityFactor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>logicalDensityFactor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPlatformHeight-method">
+        <a name="setPlatformHeight-method"></a><b>setPlatformHeight</b> <span class="params">(platformHeight)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Platform.DisplayCaps.platformHeight-property.html">platformHeight</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>platformHeight</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPlatformWidth-method">
+        <a name="setPlatformWidth-method"></a><b>setPlatformWidth</b> <span class="params">(platformWidth)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Platform.DisplayCaps.platformWidth-property.html">platformWidth</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>platformWidth</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setXdpi-method">
+        <a name="setXdpi-method"></a><b>setXdpi</b> <span class="params">(xdpi)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Platform.DisplayCaps.xdpi-property.html">xdpi</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>xdpi</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setYdpi-method">
+        <a name="setYdpi-method"></a><b>setYdpi</b> <span class="params">(ydpi)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Platform.DisplayCaps.ydpi-property.html">ydpi</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ydpi</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
     
 
 

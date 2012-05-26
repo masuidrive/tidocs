@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Geolocation.Android</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Geolocation.Android 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(2.0.0+), iPhone(2.0.0+), iPad(2.0.0+), Mobile Web(2.0.0+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Module for Android-specific geolocation functionality.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This module is used for manually configuring geolocation settings on Android. 
+Manual configuration involves managing <em>providers</em> and <em>rules</em>:</p>
+<ul>
+<li>
+<p><em>Location providers</em>, such as GPS, provide location updates.</p>
+</li>
+<li>
+<p><em>Location rules</em> filter the results returned by location providers. </p>
+</li>
+</ul>
+<p>Configuring geolocation manually involves three steps:</p>
+<ol>
+<li>
+<p>Enabling manual mode.</p>
+</li>
+<li>
+<p>Enabling location providers.</p>
+</li>
+<li>
+<p>Adding location rules (optional).</p>
+</li>
+</ol>
+<p>As with the other modes, you register for location updates using the main
+<a href="Titanium.Geolocation.html"><code>Titanium.Geolocation</code></a> module. Location updates are generated as long as 
+an event listener is registered for the <code>location</code> event.  When you are not 
+using location updates, you should remove any registered event listeners.</p>
+<p>In manual mode, the application is responsible for dynamically updating the settings
+to acheive its required accuracy while limiting battery usage. For example, an
+application might do any of the following:</p>
+<ul>
+<li>
+<p>If the application isn't getting updates frequently enough, it can adjust its
+    provider settings to provide more updates, or relax its location rules to allow
+    less accurate updates through. </p>
+</li>
+<li>
+<p>If the application isn't receiving accurate enough updates from one provider, it 
+    can add another provider to try to improve results.</p>
+</li>
+<li>
+<p>If the application is getting sufficiently accurate results from the network 
+    provider, it can disable the GPS provider to save power.</p>
+</li>
+</ul>
+<h4>Enabling Manual Configuration Mode</h4>
+<p>To enable manual configuration mode, set the <a href="Titanium.Geolocation.Android.manualMode-property.html">manualMode</a> 
+property to <code>true</code>. In manual configuration mode, the location providers and location
+rules set through this module control the generation of location updates.</p>
+<p>When <code>manualMode</code> is <code>true</code>, the following configuration settings in the
+<a href="Titanium.Geolocation.html"><code>Titanium.Geolocation</code></a> module are ignored:</p>
+<ul>
+<li><a href="Titanium.Geolocation.accuracy-property.html">Geolocation.accuracy</a></li>
+<li><a href="Titanium.Geolocation.frequency-property.html">Geolocation.frequency</a></li>
+<li><a href="Titanium.Geolocation.preferredProvider-property.html">Geolocation.preferredProvider</a></li>
+</ul>
+<p>When <code>manualMode</code> is <code>false</code>, the <code>accuracy</code>, <code>frequency</code> and <code>preferredProvider</code> 
+settings from <a href="Titanium.Geolocation.html"><code>Titanium.Geolocation</code></a> are used to configure location updates.
+Any location providers and location rules set in <a href="Titanium.Geolocation.Android.html"><code>Titanium.Geolocation.Android</code></a> 
+are retained, but they have no effect.</p>
+<h4>Location Providers</h4>
+<p>Android supports three kinds of location providers: GPS, network, and the 
+"passive" location provider, which provides only cached information. </p>
+<p>Each location provider represents a different tradeoff between accuracy and
+battery power. For most accurate results, you can use a combination of location
+providers. Your application can also dynamically change providers to optimize
+battery life (for example, if the network provider is providing good enough
+location updates, you can disable the GPS provider).</p>
+<p>Location providers are represented by the
+<a href="Titanium.Geolocation.Android.LocationProvider-object.html">LocationProvider</a> object. 
+To specify a location provider, create a new provider object, then register it
+with <a href="Titanium.Geolocation.Android.createLocationProvider-method.html">addLocationProvider</a>:</p>
+<pre><code>gpsProvider = Ti.Geolocation.Android.createLocationProvider({
+    name: Ti.Geolocation.PROVIDER_GPS,
+    minUpdateTime: 60, 
+    minUpdateDistance: 100
+});
+Ti.Geolocation.Android.addProvider(gpsProvider);
+</code></pre>
+<p>As shown above, when you create a location provider, you can specify two
+properties to limit update frequency:</p>
+<ul>
+<li>
+<p><code>minUpdateTime</code>. Limits the frequency of location updates to no more 
+    than one per <code>minUpdateTime</code> seconds.</p>
+</li>
+<li>
+<p><code>minUpdateDistance</code>. Don't send location updates until the location changes
+    at least <code>minUpdateDistance</code> meters.</p>
+</li>
+</ul>
+<p>Only one provider of each type (GPS, network, passive) can be registered at a
+time. Adding a new location provider with the same <code>name</code> value replaces any
+existing provider with the same <code>name</code>.</p>
+<p>Once a location provider is added, changes made to the location provider object itself
+(such as changing its <code>minUpdateTime</code> value) change the active configuration of the 
+location system.</p>
+<h4>Location Rules</h4>
+<p><em>Location Rules</em> filter the results returned by location providers. You use
+location rules to reduce the number of location update events, and ensure that 
+the events you do receive are as accurate and recent as your application requires.</p>
+<p>You are not required to set any location rules. However, by reducing the number of 
+location events that are passed from the native code
+to the JavaScript layer, location rules can improve both performance and battery
+life.</p>
+<p>Location rules are represented by the
+<a href="Titanium.Geolocation.Android.LocationProvider-object.html">LocationRule</a> object. To
+specify a location rule, create a new rule object, then register it with 
+<a href="Titanium.Geolocation.Android.createLocationProvider-method.html">addLocationRule</a>:</p>
+<pre><code>var gpsRule = Ti.Geolocation.Android.createLocationRule({
+    provider: Ti.Geolocation.PROVIDER_GPS,
+    // Updates should be accurate to 100m
+    accuracy: 100,
+    // Updates should be no older than 5m
+    maxAge: 300000
+    // But  no more frequent than once per 10 seconds
+    minAge: 10000
+});
+Ti.Geolocation.Android.addRule(gpsRule);
+</code></pre>
+<p>Each rule can specify any combination of the following criteria:</p>
+<ul>
+<li>
+<p><code>provider</code>. If specified, this rule only applies to updates generated
+    by the specified provider. If not specified, this rule applies to all updates.</p>
+</li>
+<li>
+<p><code>accuracy</code>. Minimum accuracy required for a location update. Accuracy is
+    expressed as the maximum allowable error, in meters. Updates with reported
+    accuracy values greater than this are filtered out. </p>
+</li>
+<li>
+<p><code>minAge</code>. Controls the frequency of location updates. Do not forward an update unless
+     at least <code>minAge</code> milliseconds have passed since the last good location
+     update.</p>
+</li>
+<li>
+<p><code>maxAge</code>. Controls the freshness of location updates. Do not forward an update
+    unless it is newer than <code>maxAge</code> milliseconds.</p>
+</li>
+</ul>
+<p>You can specify as many location rules as you like. The order in which location rules
+are added is not significant. For a <code>location</code> event to be generated, the location
+update must pass all of the active rules.</p>
+<p>Note that some combinations of rules may make it very difficult to get location
+updates. In particular, very low values for either <code>accuracy</code> or <code>maxAge</code> may prevent 
+results from getting through. </p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#addLocationProvider-method">addLocationProvider <span class="params">(provider)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#addLocationRule-method">addLocationRule <span class="params">(rule)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createLocationProvider-method">createLocationProvider <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createLocationRule-method">createLocationRule <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getManualMode-method">getManualMode <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeLocationProvider-method">removeLocationProvider <span class="params">(provider)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeLocationRule-method">removeLocationRule <span class="params">(rule)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setManualMode-method">setManualMode <span class="params">(manualMode)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="manualMode-property"></a>manualMode</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Set to true to enable manual configuration of location updates through this module.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="addLocationProvider-method">
+        <a name="addLocationProvider-method"></a><b>addLocationProvider</b> <span class="params">(provider)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds and enables the specified location provider, possibly replacing an existing one.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>provider</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Geolocation.Android.LocationProvider]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The location provider to add.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="addLocationRule-method">
+        <a name="addLocationRule-method"></a><b>addLocationRule</b> <span class="params">(rule)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds and enables the specified location rule.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>rule</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Geolocation.Android.LocationRule]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The location rule to add.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createLocationProvider-method">
+        <a name="createLocationProvider-method"></a><b>createLocationProvider</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.Geolocation.Android.LocationProvider-object.html"><code>Titanium.Geolocation.Android.LocationProvider</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Geolocation.Android.LocationProvider&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.Geolocation.Android.LocationProvider except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createLocationRule-method">
+        <a name="createLocationRule-method"></a><b>createLocationRule</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.Geolocation.Android.LocationRule-object.html"><code>Titanium.Geolocation.Android.LocationRule</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Geolocation.Android.LocationRule&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.Geolocation.Android.LocationRule except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getManualMode-method">
+        <a name="getManualMode-method"></a><b>getManualMode</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.Android.manualMode-property.html">manualMode</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeLocationProvider-method">
+        <a name="removeLocationProvider-method"></a><b>removeLocationProvider</b> <span class="params">(provider)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Disables and removes the specified location provider.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>provider</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Geolocation.Android.LocationProvider]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The location provider to remove.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeLocationRule-method">
+        <a name="removeLocationRule-method"></a><b>removeLocationRule</b> <span class="params">(rule)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Disables and removes the specified location rule.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>rule</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Geolocation.Android.LocationRule]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The location rule to remove.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setManualMode-method">
+        <a name="setManualMode-method"></a><b>setManualMode</b> <span class="params">(manualMode)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.Android.manualMode-property.html">manualMode</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>manualMode</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,1169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.Notification</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Android.Notification 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Titanium binding of an 
+<a href="http://developer.android.com/reference/android/app/Notification.html">Android Notification</a>.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This object is used for status bar notifications.</p>
+<p>See the official Android documentation on 
+<a href="http://developer.android.com/guide/topics/ui/notifiers/notifications.html">Status Bar Notifications</a>
+for an overview of how status bar notifications are used.</p>
+<p>If you pass <code>contentTitle</code> and/or <code>contentText</code> into <a href="Titanium.Android.createNotification-method.html"><code>Titanium.Android.createNotification</code></a>, 
+then <code>setLatestEventInfo</code> will automatically be called with those properties.  There's no need 
+to call it separately unless you want to update the notification at a later time. You can also 
+use a custom <code>layout.xml</code> wrapped in 
+a <a href="Titanium.Android.RemoteViews-object.html"><code>Titanium.Android.RemoteViews</code></a> object in the <code>contentView</code> property, which gives more 
+fine grained control and customization to how the notification actually behaves.</p>
+<p>Use the <a href="Titanium.Android.NotificationManager.html">NotificationManager</a> module to send
+and cancel notifications.</p>
+<p>For Android "toast" (pop-up) notifications, see <a href="Titanium.UI.Notification-object.html"><code>Titanium.UI.Notification</code></a>.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAudioStreamType-method">getAudioStreamType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getContentIntent-method">getContentIntent <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getContentText-method">getContentText <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getContentTitle-method">getContentTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDefaults-method">getDefaults <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDeleteIntent-method">getDeleteIntent <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFlags-method">getFlags <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getIcon-method">getIcon <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLedARGB-method">getLedARGB <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLedOffMS-method">getLedOffMS <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLedOnMS-method">getLedOnMS <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNumber-method">getNumber <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSound-method">getSound <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTickerText-method">getTickerText <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWhen-method">getWhen <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAudioStreamType-method">setAudioStreamType <span class="params">(audioStreamType)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setContentIntent-method">setContentIntent <span class="params">(contentIntent)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setContentText-method">setContentText <span class="params">(contentText)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setContentTitle-method">setContentTitle <span class="params">(contentTitle)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDefaults-method">setDefaults <span class="params">(defaults)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDeleteIntent-method">setDeleteIntent <span class="params">(deleteIntent)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFlags-method">setFlags <span class="params">(flags)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setIcon-method">setIcon <span class="params">(icon)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLatestEventInfo-method">setLatestEventInfo <span class="params">(contentTitle, contentText, contentIntent)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLedARGB-method">setLedARGB <span class="params">(ledARGB)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLedOffMS-method">setLedOffMS <span class="params">(ledOffMS)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLedOnMS-method">setLedOnMS <span class="params">(ledOnMS)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setNumber-method">setNumber <span class="params">(number)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSound-method">setSound <span class="params">(sound)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTickerText-method">setTickerText <span class="params">(tickerText)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setWhen-method">setWhen <span class="params">(when)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="audioStreamType-property"></a>audioStreamType</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The audio stream type to use when playing the sound.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="contentIntent-property"></a>contentIntent</td>
+            <td class='attr-rw'>
+                [Titanium.Android.PendingIntent]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The PendingIntent to execute when the expanded status entry is clicked.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="contentText-property"></a>contentText</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Description text of the notification.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="contentTitle-property"></a>contentTitle</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Title of the notification.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="defaults-property"></a>defaults</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies which values should be taken from the defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="deleteIntent-property"></a>deleteIntent</td>
+            <td class='attr-rw'>
+                [Titanium.Android.PendingIntent]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The PendingIntent to execute when the status entry is deleted by the user with the "Clear All Notifications" button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="flags-property"></a>flags</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Set of flags for the notification.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="icon-property"></a>icon</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Notification icon, specified as an Android resource ID, or a local URL to a density-specific image.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ledARGB-property"></a>ledARGB</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The color for the LED to blink.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ledOffMS-property"></a>ledOffMS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The number of milliseconds for the LED to be off while it's flashing.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ledOnMS-property"></a>ledOnMS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The number of milliseconds for the LED to be on while it's flashing.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="number-property"></a>number</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The number of events that this notification represents.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="sound-property"></a>sound</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A URL to the sound to play (supports both Android and Titanium URLs).</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="tickerText-property"></a>tickerText</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Text to scroll across the screen when this item is added to the status bar.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="when-property"></a>when</td>
+            <td class='attr-rw'>
+                [DateNumber]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The timestamp for the notification (defaults to the current time).</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAudioStreamType-method">
+        <a name="getAudioStreamType-method"></a><b>getAudioStreamType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.audioStreamType-property.html">audioStreamType</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getContentIntent-method">
+        <a name="getContentIntent-method"></a><b>getContentIntent</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.contentIntent-property.html">contentIntent</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getContentText-method">
+        <a name="getContentText-method"></a><b>getContentText</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.contentText-property.html">contentText</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getContentTitle-method">
+        <a name="getContentTitle-method"></a><b>getContentTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.contentTitle-property.html">contentTitle</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDefaults-method">
+        <a name="getDefaults-method"></a><b>getDefaults</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.defaults-property.html">defaults</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDeleteIntent-method">
+        <a name="getDeleteIntent-method"></a><b>getDeleteIntent</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.deleteIntent-property.html">deleteIntent</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFlags-method">
+        <a name="getFlags-method"></a><b>getFlags</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.flags-property.html">flags</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getIcon-method">
+        <a name="getIcon-method"></a><b>getIcon</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.icon-property.html">icon</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLedARGB-method">
+        <a name="getLedARGB-method"></a><b>getLedARGB</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.ledARGB-property.html">ledARGB</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLedOffMS-method">
+        <a name="getLedOffMS-method"></a><b>getLedOffMS</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.ledOffMS-property.html">ledOffMS</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLedOnMS-method">
+        <a name="getLedOnMS-method"></a><b>getLedOnMS</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.ledOnMS-property.html">ledOnMS</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNumber-method">
+        <a name="getNumber-method"></a><b>getNumber</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.number-property.html">number</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSound-method">
+        <a name="getSound-method"></a><b>getSound</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.sound-property.html">sound</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTickerText-method">
+        <a name="getTickerText-method"></a><b>getTickerText</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.tickerText-property.html">tickerText</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWhen-method">
+        <a name="getWhen-method"></a><b>getWhen</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Notification.when-property.html">when</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAudioStreamType-method">
+        <a name="setAudioStreamType-method"></a><b>setAudioStreamType</b> <span class="params">(audioStreamType)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.audioStreamType-property.html">audioStreamType</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>audioStreamType</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setContentIntent-method">
+        <a name="setContentIntent-method"></a><b>setContentIntent</b> <span class="params">(contentIntent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.contentIntent-property.html">contentIntent</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>contentIntent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.PendingIntent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setContentText-method">
+        <a name="setContentText-method"></a><b>setContentText</b> <span class="params">(contentText)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.contentText-property.html">contentText</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>contentText</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setContentTitle-method">
+        <a name="setContentTitle-method"></a><b>setContentTitle</b> <span class="params">(contentTitle)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.contentTitle-property.html">contentTitle</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>contentTitle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDefaults-method">
+        <a name="setDefaults-method"></a><b>setDefaults</b> <span class="params">(defaults)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.defaults-property.html">defaults</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>defaults</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDeleteIntent-method">
+        <a name="setDeleteIntent-method"></a><b>setDeleteIntent</b> <span class="params">(deleteIntent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.deleteIntent-property.html">deleteIntent</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>deleteIntent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.PendingIntent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFlags-method">
+        <a name="setFlags-method"></a><b>setFlags</b> <span class="params">(flags)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.flags-property.html">flags</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>flags</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setIcon-method">
+        <a name="setIcon-method"></a><b>setIcon</b> <span class="params">(icon)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.icon-property.html">icon</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>icon</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLatestEventInfo-method">
+        <a name="setLatestEventInfo-method"></a><b>setLatestEventInfo</b> <span class="params">(contentTitle, contentText, contentIntent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the latest event info using the built-in Notification View for this notification.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>contentTitle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Title to display when the notification is expanded.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>contentText</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Text to display when the notification is expanded.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>contentIntent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.PendingIntent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Intent to launch when the user clicks on the notification.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLedARGB-method">
+        <a name="setLedARGB-method"></a><b>setLedARGB</b> <span class="params">(ledARGB)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.ledARGB-property.html">ledARGB</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ledARGB</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLedOffMS-method">
+        <a name="setLedOffMS-method"></a><b>setLedOffMS</b> <span class="params">(ledOffMS)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.ledOffMS-property.html">ledOffMS</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ledOffMS</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLedOnMS-method">
+        <a name="setLedOnMS-method"></a><b>setLedOnMS</b> <span class="params">(ledOnMS)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.ledOnMS-property.html">ledOnMS</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ledOnMS</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setNumber-method">
+        <a name="setNumber-method"></a><b>setNumber</b> <span class="params">(number)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.number-property.html">number</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>number</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSound-method">
+        <a name="setSound-method"></a><b>setSound</b> <span class="params">(sound)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.sound-property.html">sound</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sound</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTickerText-method">
+        <a name="setTickerText-method"></a><b>setTickerText</b> <span class="params">(tickerText)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.tickerText-property.html">tickerText</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tickerText</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setWhen-method">
+        <a name="setWhen-method"></a><b>setWhen</b> <span class="params">(when)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Notification.when-property.html">when</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>when</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [DateNumber]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

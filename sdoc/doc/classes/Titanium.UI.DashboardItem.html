@@ -35,16 +35,22 @@
             <span class="type">Object</span> 
             Titanium.UI.DashboardItem 
         </h1>
-	<ul class="files">
-	  <li>iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>iPhone(1.2+), iPad(1.2+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>An item that represents a visual icon in the <a href="Titanium.UI.DashboardView.html">Titanium.UI.DashboardView</a>. The Dashboard Item is created by the method <a href="Titanium.UI.createDashboardItem.html">Titanium.UI.createDashboardItem</a>.</p>
+        <p>A dashboard item is a view that is displayed as an icon in a <a href="Titanium.UI.DashboardView-object.html"><code>Titanium.UI.DashboardView</code></a>.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A DashboardItem is created using the <a href="Titanium.UI.createDashboardItem-method.html"><code>Titanium.UI.createDashboardItem</code></a> method.</p>
     </div>
     
 
@@ -62,7 +68,39 @@
             </ul>
     
             <ul>
+                <li><a href="#getBadge-method">getBadge <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCanDelete-method">getCanDelete <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getImage-method">getImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSelectedImage-method">getSelectedImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBadge-method">setBadge <span class="params">(badge)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCanDelete-method">setCanDelete <span class="params">(canDelete)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setImage-method">setImage <span class="params">(image)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSelectedImage-method">setSelectedImage <span class="params">(selectedImage)</span></a></li>
             </ul>
     
     
@@ -74,33 +112,37 @@
         <tr valign='top'>
             <td class='attr-name'><a name="badge-property"></a>badge</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the badge value or 0 to remove the badge</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Integer value displayed in a badge.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="canDelete-property"></a>canDelete</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>a boolean to indicate if this item can be deleted when it edit mode</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether this item can be deleted when it edit mode.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="image-property"></a>image</td>
             <td class='attr-rw'>
-                [string]
+                [StringTitanium.Blob]
             </td>
-            <td class='attr-desc'>the URL to the image</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Image or path to image to display in the item by default.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="selectedImage-property"></a>selectedImage</td>
             <td class='attr-rw'>
-                [string]
+                [StringTitanium.Blob]
             </td>
-            <td class='attr-desc'>the URL to the image to display when the item is depressed (clicked)</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Image or path to image to display in the item as it is selected.</td>
         </tr>
         
     </table>
@@ -112,17 +154,20 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#click-event">click</a></td>
-            <td class='attr-desc'>fired when a Titanium.UI.DashboardItem is clicked</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when a click is detected against the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#delete-event">delete</a></td>
-            <td class='attr-desc'>fired when a  Titanium.UI.DashboardItem is deleted during editings</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when an item is deleted during editing mode.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#move-event">move</a></td>
-            <td class='attr-desc'>fired when a  Titanium.UI.DashboardItem is moved during editing</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when an item is moved during editing mode.</td>
         </tr>
         
     </table>
@@ -139,121 +184,291 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBadge-method">
+        <a name="getBadge-method"></a><b>getBadge</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.DashboardItem.badge-property.html">badge</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCanDelete-method">
+        <a name="getCanDelete-method"></a><b>getCanDelete</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.DashboardItem.canDelete-property.html">canDelete</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getImage-method">
+        <a name="getImage-method"></a><b>getImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.DashboardItem.image-property.html">image</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSelectedImage-method">
+        <a name="getSelectedImage-method"></a><b>getSelectedImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.DashboardItem.selectedImage-property.html">selectedImage</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBadge-method">
+        <a name="setBadge-method"></a><b>setBadge</b> <span class="params">(badge)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.DashboardItem.badge-property.html">badge</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>badge</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCanDelete-method">
+        <a name="setCanDelete-method"></a><b>setCanDelete</b> <span class="params">(canDelete)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.DashboardItem.canDelete-property.html">canDelete</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>canDelete</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setImage-method">
+        <a name="setImage-method"></a><b>setImage</b> <span class="params">(image)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.DashboardItem.image-property.html">image</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>image</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSelectedImage-method">
+        <a name="setSelectedImage-method"></a><b>setSelectedImage</b> <span class="params">(selectedImage)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.DashboardItem.selectedImage-property.html">selectedImage</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>selectedImage</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     
@@ -268,34 +483,49 @@
       </div>
       
       
-      <div class="description">
-        <p>fired when a <a href="Titanium.UI.DashboardItem-object.html">Titanium.UI.DashboardItem</a> is clicked</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>location</td>
-            <td class='attr-desc'>the location object with the properties x and y of where in the parent view the click was</td>
+            <td class='attr-name'>item</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.UI.DashboardItem]</span><br /> 
+              
+              <p>Item that was clicked.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>location</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Dictionary]</span><br /> 
+              
+              <p>Coordinates <code>x</code> and <code>y</code> of the event from the parent view's coordinate system.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>item</td>
-            <td class='attr-desc'>the Titanium.UI.DashboardItem that was clicked</td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -309,29 +539,39 @@
       </div>
       
       
-      <div class="description">
-        <p>fired when a  <a href="Titanium.UI.DashboardItem-object.html">Titanium.UI.DashboardItem</a> is deleted during editings</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>item</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.UI.DashboardItem]</span><br /> 
+              
+              <p>Item that was deleted.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>item</td>
-            <td class='attr-desc'>the Titanium.UI.DashboardItem that was deleted</td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -345,34 +585,49 @@
       </div>
       
       
-      <div class="description">
-        <p>fired when a  <a href="Titanium.UI.DashboardItem-object.html">Titanium.UI.DashboardItem</a> is moved during editing</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>items</td>
-            <td class='attr-desc'>the pending data array in the new order (uncommitted)</td>
+            <td class='attr-name'>item</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.UI.DashboardItem]</span><br /> 
+              
+              <p>Item that was deleted.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>items</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Array<Titanium.UI.DashboardItem>]</span><br /> 
+              
+              <p>List of items to be committed, possibly in new order, when edit mode ends.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>item</td>
-            <td class='attr-desc'>the Titanium.UI.DashboardItem that was moved</td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

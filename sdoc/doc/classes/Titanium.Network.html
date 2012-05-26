@@ -35,16 +35,27 @@
             <span class="type">Module</span> 
             Titanium.Network 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level Network module.  The Network module is used accessing Networking related functionality.</p>
+        <p>The top level network module.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The <code>Network</code> module is used to access networking related functionality.</p>
+<p>For TCP sockets, see <a href="Titanium.Network.Socket.TCP-object.html"><code>Titanium.Network.Socket.TCP</code></a>.</p>
+<p>The legacy <a href="Titanium.Network.TCPSocket-object.html"><code>Titanium.Network.TCPSocket</code></a> object is still required
+by the <a href="Titanium.Network.BonjourBrowser-object.html">BonjourBrowser</a> and
+<a href="Titanium.Network.BonjourService-object.html">BonjourService</a> objects.</p>
+<p>For all other socket needs, use <a href="Titanium.Network.Socket.TCP-object.html"><code>Titanium.Network.Socket.TCP</code></a>.</p>
     </div>
     
 
@@ -90,6 +101,34 @@
             </ul>
     
             <ul>
+                <li><a href="#getHttpURLFormatter-method">getHttpURLFormatter <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNetworkType-method">getNetworkType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNetworkTypeName-method">getNetworkTypeName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOnline-method">getOnline <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRemoteDeviceUUID-method">getRemoteDeviceUUID <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRemoteNotificationTypes-method">getRemoteNotificationTypes <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRemoteNotificationsEnabled-method">getRemoteNotificationsEnabled <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#registerForPushNotifications-method">registerForPushNotifications <span class="params">(config)</span></a></li>
             </ul>
     
@@ -101,6 +140,14 @@
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
+            <ul>
+                <li><a href="#setHttpURLFormatter-method">setHttpURLFormatter <span class="params">(httpURLFormatter)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#unregisterForPushNotifications-method">unregisterForPushNotifications <span class="params">()</span></a></li>
+            </ul>
+    
     
 
     
@@ -110,145 +157,261 @@
         <tr valign='top'>
             <td class='attr-name'><a name="INADDR_ANY-property"></a>INADDR_ANY</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>constant value representing the ability for sockets to listen on any locally available network device</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Special hostname value for listening sockets, representing all
+locally available network interfaces.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NETWORK_LAN-property"></a>NETWORK_LAN</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value to indicate that the network is LAN</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A networkType value indicating that the device is
+communicating over a local-area network.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NETWORK_MOBILE-property"></a>NETWORK_MOBILE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value to indicate that the network is MOBILE</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A networkType value indicating that the device is
+communicating over a mobile network.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NETWORK_NONE-property"></a>NETWORK_NONE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value to indicate that the network is not available</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A networkType value indicating that no 
+network is available.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NETWORK_UNKNOWN-property"></a>NETWORK_UNKNOWN</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value to indicate that the network is not known</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A networkType value indicating that the
+current network type is unknown.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NETWORK_WIFI-property"></a>NETWORK_WIFI</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value to indicate that the network is WIFI</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A networkType value indicating that the
+device is communicating over a WiFi network.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NOTIFICATION_TYPE_ALERT-property"></a>NOTIFICATION_TYPE_ALERT</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value for the push notification alert type</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value for an Alert style push notification.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NOTIFICATION_TYPE_BADGE-property"></a>NOTIFICATION_TYPE_BADGE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value for the push notification badge type</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value for a Badge style push notification.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="NOTIFICATION_TYPE_NEWSSTAND-property"></a>NOTIFICATION_TYPE_NEWSSTAND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value for a Newsstand style push notification. Only available on iOS5 and later</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="NOTIFICATION_TYPE_SOUND-property"></a>NOTIFICATION_TYPE_SOUND</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value for the push notification sound type</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value for a Sound style push notification.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="READ_MODE-property"></a>READ_MODE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value specifying read-only mode for sockets</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value specifying read-only mode for sockets.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="READ_WRITE_MODE-property"></a>READ_WRITE_MODE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value specifying read-write mode for sockets</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value specifying read-write mode for sockets.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOCKET_CLOSED-property"></a>SOCKET_CLOSED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value representing a socket in the CLOSED state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOCKET_CONNECTED-property"></a>SOCKET_CONNECTED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value representing a socket in the CONNECTED state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOCKET_ERROR-property"></a>SOCKET_ERROR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value representing a socket in the ERROR state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOCKET_INITIALIZED-property"></a>SOCKET_INITIALIZED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value representing a socket in the INITIALIZED state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SOCKET_LISTENING-property"></a>SOCKET_LISTENING</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value representing a socket in the LISTENING state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TLS_VERSION_1_0-property"></a>TLS_VERSION_1_0</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value specifying TLS version 1.0 for SSL.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TLS_VERSION_1_1-property"></a>TLS_VERSION_1_1</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value specifying TLS version 1.1 for SSL.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TLS_VERSION_1_2-property"></a>TLS_VERSION_1_2</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value specifying TLS version 1.2 for SSL.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="WRITE_MODE-property"></a>WRITE_MODE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant value specifying write-only mode for sockets</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant value specifying write-only mode for sockets.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="httpURLFormatter-property"></a>httpURLFormatter</td>
+            <td class='attr-rw'>
+                [Callback&lt;String&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>User-defined function that is called everytime HTTPClient connects to a remote resource.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="networkType-property"></a>networkType</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the network type value as a constant.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Network type value as a constant.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="networkTypeName-property"></a>networkTypeName</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the network type name constant. Returns one of NONE, WIFI, LAN or MOBILE.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Network type as a String. Returns one of NONE, WIFI, LAN, MOBILE, or UNKNOWN.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="online-property"></a>online</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>readonly boolean value that indicates if the network is reachable to the Internet either via WIFI or Carrier network</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Boolean value indicating if the device can reach the Internet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="remoteDeviceUUID-property"></a>remoteDeviceUUID</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the remote device UUID if the device was registered with the Apple Push Notification Service or null if not set. Only available on iPhone.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Remote device UUID if the device is registered with the Apple Push Notification
+Service, or null if it is not registered.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="remoteNotificationTypes-property"></a>remoteNotificationTypes</td>
             <td class='attr-rw'>
-                [array]
+                [Array&lt;Number&gt;]
             </td>
-            <td class='attr-desc'>returns an array of network type constants enabled for the application. Only available on iPhone.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Array of push notification type constants enabled for the application.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="remoteNotificationsEnabled-property"></a>remoteNotificationsEnabled</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>returns true if remote notifications have been enabled. Only available on iPhone.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether push  notifications have been enabled using 
+registerForPushNotifications.</td>
         </tr>
         
     </table>
@@ -260,7 +423,8 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#change-event">change</a></td>
-            <td class='attr-desc'>fired upon a network connectivity change</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when network connectivity changes.</td>
         </tr>
         
     </table>
@@ -277,473 +441,612 @@
     <div class="method">
       <div class="title" id="addConnectivityListener-method">
         <a name="addConnectivityListener-method"></a><b>addConnectivityListener</b> <span class="params">(callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>adds a connectivity listener to listen for network changes. This method has been deprecated in favor of listening for a <tt>change</tt> event.</p>
-      </div>
+      <div class="description"><p>Use the <a href="Titanium.Network.change-event.html">change</a> event to monitor connectivity changes.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke upon network connectivity changes</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke upon network connectivity changes.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createBonjourBrowser-method">
         <a name="createBonjourBrowser-method"></a><b>createBonjourBrowser</b> <span class="params">(serviceType, domain, parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.Network.BonjourBrowser.html">Titanium.Network.BonjourBrowser</a>
-      </div>
+      <div class="description"><p>Creates and returns a <code>BonjourBrowser</code> object.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>serviceType</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>service to search for, must include the protocol type suffix (._tcp)</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>domain</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the Bonjour service domain to conduct the search in.  Default value is 'local.'</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Network.BonjourBrowser</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>serviceType</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Service to search for, must include the protocol type suffix (._tcp).</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>domain</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Bonjour service domain to conduct the search in.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Network.BonjourBrowser&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary object of properties defined in Titanium.Network.BonjourBrowser.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createBonjourService-method">
         <a name="createBonjourService-method"></a><b>createBonjourService</b> <span class="params">(name, type, domain, parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.Network.BonjourService.html">Titanium.Network.BonjourService</a>
-      </div>
+      <div class="description"><p>Creates and returns a <code>BonjourService</code> object.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the name of the service.  Must be a unique identifier for this service type and domain.</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the type of service.  Must include the protocol identifier (._tcp)</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>domain</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the domain to publish the service in.  Default value is 'local.'</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Network.BonjourService</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the service. Must be a unique identifier for this service type and domain.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>type</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Type of service.  Must include the protocol identifier (._tcp).</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>domain</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Domain to publish the service in.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Network.BonjourService&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Dictionary object of properties defined in Titanium.Network.BonjourService.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createHTTPClient-method">
         <a name="createHTTPClient-method"></a><b>createHTTPClient</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.Network.HTTPClient.html">Titanium.Network.HTTPClient</a>
-      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.Network.HTTPClient-object.html"><code>Titanium.Network.HTTPClient</code></a>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Network.HTTPClient</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Network.HTTPClient&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.Network.HTTPClient except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createTCPSocket-method">
         <a name="createTCPSocket-method"></a><b>createTCPSocket</b> <span class="params">(hostName, port, mode, parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.Network.TCPSocket.html">Titanium.Network.TCPSocket</a>
-      </div>
+      <div class="description"><p>Use <a href="Titanium.Network.Socket.createTCP-method.html"><code>Titanium.Network.Socket.createTCP</code></a> instead.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>hostName</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the host name to connect to/listen on</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>port</td>
-            <td class='attr-rw'>
-              [int]
-            </td>
-            <td class='attr-desc'>the port for the socket</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>mode</td>
-            <td class='attr-rw'>
-              [int]
-            </td>
-            <td class='attr-desc'>the socket's mode; one of Titanium.Network.READ_MODE, Titanium.Network.WRITE_MODE, Titanium.Network.READ_WRITE_MODE</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Network.TCPSocket</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>hostName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Host name to connect to/listen on.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>port</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Port for the socket.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>mode</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Socket's mode; one of Titanium.Network.READ_MODE, Titanium.Network.WRITE_MODE, 
+Titanium.Network.READ_WRITE_MODE.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Network.TCPSocket&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Dictionary object with properties defined in Titanium.Network.TCPSocket.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="decodeURIComponent-method">
         <a name="decodeURIComponent-method"></a><b>decodeURIComponent</b> <span class="params">(value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>decode a URI component part using URI encoding</p>
-      </div>
+      <div class="description"><p>Returns a decoded version of a URI encoded value.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>value</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>input value to be decoded</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>URI encoded input value to be decoded.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="encodeURIComponent-method">
         <a name="encodeURIComponent-method"></a><b>encodeURIComponent</b> <span class="params">(value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>encode a URI component part using URI encoding</p>
-      </div>
+      <div class="description"><p>Returns a URI encoded version of the specified URI component.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>value</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>input value to be encoded</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Input value to be encoded.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHttpURLFormatter-method">
+        <a name="getHttpURLFormatter-method"></a><b>getHttpURLFormatter</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.httpURLFormatter-property.html">httpURLFormatter</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNetworkType-method">
+        <a name="getNetworkType-method"></a><b>getNetworkType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.networkType-property.html">networkType</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNetworkTypeName-method">
+        <a name="getNetworkTypeName-method"></a><b>getNetworkTypeName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.networkTypeName-property.html">networkTypeName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOnline-method">
+        <a name="getOnline-method"></a><b>getOnline</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.online-property.html">online</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRemoteDeviceUUID-method">
+        <a name="getRemoteDeviceUUID-method"></a><b>getRemoteDeviceUUID</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.remoteDeviceUUID-property.html">remoteDeviceUUID</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRemoteNotificationTypes-method">
+        <a name="getRemoteNotificationTypes-method"></a><b>getRemoteNotificationTypes</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.remoteNotificationTypes-property.html">remoteNotificationTypes</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRemoteNotificationsEnabled-method">
+        <a name="getRemoteNotificationsEnabled-method"></a><b>getRemoteNotificationsEnabled</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.remoteNotificationsEnabled-property.html">remoteNotificationsEnabled</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="registerForPushNotifications-method">
         <a name="registerForPushNotifications-method"></a><b>registerForPushNotifications</b> <span class="params">(config)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>register for push notifications with the Apple Push Notification Service. Only available on iPhone.</p>
-      </div>
+      <div class="description"><p>Registers for push notifications with the Apple Push Notification Service.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>config</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>dictionary of the following: types is an array of type constants that the application would like to receive, success is a callback function that is called when the push registration is successfully completed, error is a callback function that is called when an error is received during registration and callback is a callback function that is invoked upon receiving a new push notification. This method should be called at application startup.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>config</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [PushNotificationConfig]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Dictionary specifying push-notification related options.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeConnectivityListener-method">
         <a name="removeConnectivityListener-method"></a><b>removeConnectivityListener</b> <span class="params">(callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>removes a connectivity listener. This method has been deprecated in favor of listening for a <tt>change</tt> event.</p>
-      </div>
+      <div class="description"><p>Use the <a href="Titanium.Network.change-event.html">change</a> event to monitor connectivity changes.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to remove</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHttpURLFormatter-method">
+        <a name="setHttpURLFormatter-method"></a><b>setHttpURLFormatter</b> <span class="params">(httpURLFormatter)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.httpURLFormatter-property.html">httpURLFormatter</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>httpURLFormatter</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="String.html">[Callback&lt;String&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="unregisterForPushNotifications-method">
+        <a name="unregisterForPushNotifications-method"></a><b>unregisterForPushNotifications</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Unregisters the application for push notifications.</p></div>
+      
+
+      
     </div>
     
     
@@ -758,39 +1061,69 @@
       </div>
       
       
-      <div class="description">
-        <p>fired upon a network connectivity change</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>networkTypeName</td>
-            <td class='attr-desc'>the new network type as a string</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>networkType</td>
-            <td class='attr-desc'>the new network type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>New network type, one of the <code>NETWORK</code> constants defined in <a href="Titanium.Network.html"><code>Titanium.Network</code></a>.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-name'>networkTypeName</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>New network type as a string.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>online</td>
-            <td class='attr-desc'>boolean to indicate if the network is online</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Boolean]</span><br /> 
+              
+              <p>Boolean to indicate if the device is online.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>reason</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Human-readable text describing the reason for the change.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

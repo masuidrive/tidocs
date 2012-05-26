@@ -35,16 +35,38 @@
             <span class="type">Object</span> 
             Titanium.UI.2DMatrix 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The 2DMatrix is created by <a href="Titanium.UI.create2DMatrix.html">Titanium.UI.create2DMatrix</a>.  The 2D Matrix is an object for holding values for an affine transformation matrix. A 2D matrix is used to rotate, scale, translate, or skew the objects in a two-dimensional space. A 2D matrix is represented by a 3 by 3 matrix. Because the third column is always (0,0,1), the data structure contains values for only the first two columns.</p>
+        <p>The 2D Matrix is an object for holding values for an affine transformation matrix.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A 2D matrix is used to rotate, scale, translate, or skew the objects in a two-dimensional space. 
+A 2D affine transformation can be  represented by a 3 by 3 matrix:</p>
+<table>
+<tr><td><i>a</i></td><td><i>b</i></td><td>0</td></tr>
+<tr><td><i>c</i></td><td><i>d</i></td><td>0</td></tr>
+<tr><td><i>tx</i></td><td><i>ty</i></td><td>1</td></tr>
+</table>
+
+<p>The third column is constant (0,0,1). </p>
+<p>On iOS, the matrix terms, <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, <code>tx</code>, and <code>ty</code>, are available as
+properties. On Android, the matrix terms are not available as properties. </p>
+<p>Use the <a href="Titanium.UI.create2DMatrix-method.html"><code>Titanium.UI.create2DMatrix</code></a> method to create a new 2D matrix. You can 
+pass an optional <a href="MatrixCreationDict-object.html"><code>MatrixCreationDict</code></a> dictionary to the method to initialize the 
+matrix. For example:</p>
+<p>var m = Ti.UI.2DMatrix({ rotate: 45 });</p>
+<p>Produces a new matrix with a 45 degree rotation.  If you pass no arguments, 
+<code>create2DMatrix</code> returns an identity matrix.</p>
     </div>
     
 
@@ -62,6 +84,30 @@
             </ul>
     
             <ul>
+                <li><a href="#getA-method">getA <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getB-method">getB <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getC-method">getC <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getD-method">getD <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTx-method">getTx <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTy-method">getTy <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#invert-method">invert <span class="params">()</span></a></li>
             </ul>
     
@@ -74,11 +120,35 @@
             </ul>
     
             <ul>
-                <li><a href="#rotate-method">rotate <span class="params">(angle)</span></a></li>
+                <li><a href="#rotate-method">rotate <span class="params">(angle, toAngle)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#scale-method">scale <span class="params">(sx, sy)</span></a></li>
+                <li><a href="#scale-method">scale <span class="params">(sx, sy, toSx, toSy)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setA-method">setA <span class="params">(a)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setB-method">setB <span class="params">(b)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setC-method">setC <span class="params">(c)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setD-method">setD <span class="params">(d)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTx-method">setTx <span class="params">(tx)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTy-method">setTy <span class="params">(ty)</span></a></li>
             </ul>
     
             <ul>
@@ -94,48 +164,54 @@
         <tr valign='top'>
             <td class='attr-name'><a name="a-property"></a>a</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>The entry at position [1,1] in the matrix.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="b-property"></a>b</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>The entry at position [1,2] in the matrix.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="c-property"></a>c</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>The entry at position [2,1] in the matrix.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="d-property"></a>d</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>The entry at position [2,2] in the matrix.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="tx-property"></a>tx</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>The entry at position [3,1] in the matrix.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="ty-property"></a>ty</td>
             <td class='attr-rw'>
-                [float]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>The entry at position [3,2] in the matrix.</td>
         </tr>
         
@@ -144,11 +220,6 @@
 
     
 
-    
-    <div class="sectiontitle">Notes</div>
-    <table border='0' cellpadding='5'>
-	<div class="code"><p>You create an <tt>identity matrix</tt> by creating a 2D Matrix with an empty constructor.</p></div>
-    </table>
     
 
     
@@ -160,282 +231,571 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getA-method">
+        <a name="getA-method"></a><b>getA</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.2DMatrix.a-property.html">a</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getB-method">
+        <a name="getB-method"></a><b>getB</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.2DMatrix.b-property.html">b</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getC-method">
+        <a name="getC-method"></a><b>getC</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.2DMatrix.c-property.html">c</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getD-method">
+        <a name="getD-method"></a><b>getD</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.2DMatrix.d-property.html">d</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTx-method">
+        <a name="getTx-method"></a><b>getTx</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.2DMatrix.tx-property.html">tx</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTy-method">
+        <a name="getTy-method"></a><b>getTy</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.2DMatrix.ty-property.html">ty</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="invert-method">
         <a name="invert-method"></a><b>invert</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>Returns a matrix constructed by inverting an existing matrix</p>
-      </div>
+      <div class="description"><p>Returns a matrix constructed by inverting this matrix.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="multiply-method">
         <a name="multiply-method"></a><b>multiply</b> <span class="params">(t2)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>Returns a matrix constructed by combining two existing matrix.</p>
-      </div>
+      <div class="description"><p>Returns a matrix constructed by combining two existing matrices.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>t2</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>The second matrix. This matrix is concatenated to the matrix instance against which the function is invoked.  The result of this function is the first matrix multiplied by the second matrix. You might perform several multiplications in order to create a single matrix that contains the cumulative effects of several transformations. Note that matrix operations are not commutative - the order in which you concatenate matrices is important. That is, the result of multiplying matrix t1 by matrix t2 does not necessarily equal the result of multiplying matrix t2 by matrix t1.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>t2</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.2DMatrix]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The second matrix.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="rotate-method">
-        <a name="rotate-method"></a><b>rotate</b> <span class="params">(angle)</span>
+        <a name="rotate-method"></a><b>rotate</b> <span class="params">(angle, toAngle)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>Returns a matrix constructed by rotating an existing matrix</p>
-      </div>
+      <div class="description"><p>Returns a matrix constructed by rotating this matrix.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>angle</td>
-            <td class='attr-rw'>
-              [float]
-            </td>
-            <td class='attr-desc'>The angle, in degrees, by which to rotate the matrix. A positive value specifies counterclockwise rotation and a negative value specifies clockwise rotation.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>angle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Angle to rotate to, in degrees. On Android, if angleTo is specified, this specifies
+the starting angle for a rotation animation.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>toAngle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Ending angle for a rotation animation, in degrees. Android only.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="scale-method">
-        <a name="scale-method"></a><b>scale</b> <span class="params">(sx, sy)</span>
+        <a name="scale-method"></a><b>scale</b> <span class="params">(sx, sy, toSx, toSy)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>Returns a matrix constructed by scaling an existing matrix</p>
-      </div>
+      <div class="description"><p>Returns a <code>2DMatrix</code> object that specifies a scaling animation from one scale to another.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>sx</td>
-            <td class='attr-rw'>
-              [float]
-            </td>
-            <td class='attr-desc'>The value by which to scale x values of the matrix</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>sy</td>
-            <td class='attr-rw'>
-              [float]
-            </td>
-            <td class='attr-desc'>The value by which to scale y values of the matrix</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sx</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Horizontal scaling factor. If toSx and toSy are specified, 
+this specifies the starting horizontal scaling factor, at the beginning 
+of an animation.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sy</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Vertical scaling factor. If toSx and toSy are specified, 
+this specifies the starting vertical scaling factor, at the beginning of 
+an animation.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>toSx</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Ending horizontal scaling factor, at the end of an animation.
+If specified, toSy must be specified as well. Android only.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>toSy</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Ending vertical scaling factor, at the end of an animation.
+If specified, toSx must be specified as well. Android only.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setA-method">
+        <a name="setA-method"></a><b>setA</b> <span class="params">(a)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.2DMatrix.a-property.html">a</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>a</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setB-method">
+        <a name="setB-method"></a><b>setB</b> <span class="params">(b)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.2DMatrix.b-property.html">b</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>b</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setC-method">
+        <a name="setC-method"></a><b>setC</b> <span class="params">(c)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.2DMatrix.c-property.html">c</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>c</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setD-method">
+        <a name="setD-method"></a><b>setD</b> <span class="params">(d)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.2DMatrix.d-property.html">d</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>d</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTx-method">
+        <a name="setTx-method"></a><b>setTx</b> <span class="params">(tx)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.2DMatrix.tx-property.html">tx</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tx</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTy-method">
+        <a name="setTy-method"></a><b>setTy</b> <span class="params">(ty)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.2DMatrix.ty-property.html">ty</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ty</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="translate-method">
         <a name="translate-method"></a><b>translate</b> <span class="params">(tx, ty)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>Returns a matrix constructed by translating an existing matrix</p>
-      </div>
+      <div class="description"><p>Returns a matrix constructed by applying a translation transform to this matrix.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>tx</td>
-            <td class='attr-rw'>
-              [float]
-            </td>
-            <td class='attr-desc'>The value by which to move x values with the matrix</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>ty</td>
-            <td class='attr-rw'>
-              [float]
-            </td>
-            <td class='attr-desc'>The value by which to move y values with the matrix</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tx</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Horizontal component of the translation.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ty</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Vertical component of the translation.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     

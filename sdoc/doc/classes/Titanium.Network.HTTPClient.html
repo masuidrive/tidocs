@@ -35,16 +35,58 @@
             <span class="type">Object</span> 
             Titanium.Network.HTTPClient 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The HttpClient instance returned from <a href="Titanium.Network.createHTTPClient.html">Titanium.Network.createHTTPClient</a>. This object (mostly) implements the XMLHttpRequest specification.</p>
+        <p>HTTP client object that (mostly) implements the XMLHttpRequest specification.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Use <a href="Titanium.Network.createHTTPClient-method.html"><code>Titanium.Network.createHTTPClient</code></a> to create a new <code>HTTPClient</code> object.</p>
+<p>An <code>HTTPClient</code> object is intended to be used for a single request. It may be 
+possible to re-use an <code>HTTPClient</code> object, but this use case is not tested. </p>
+<p>There are three steps in making a typical HTTP request:</p>
+<ul>
+<li>Creating an <code>HTTPClient</code> object.</li>
+<li>Opening the <code>HTTPClient</code> object.</li>
+<li>Sending the request.</li>
+</ul>
+<p>Before opening the request, you must define one or more callbacks to handle
+the HTTP response, as well as errors, progress updates, and other conditions.</p>
+<p>The <code>HTTPClient</code> callbacks operate somewhat differently from other
+Titanium callbacks, in accordance with the XMLHttpRequest specification.</p>
+<p>When the callbacks are invoked, the <code>this</code> value is set to either the 
+original <code>HTTPClient</code> object itself, or a response object that holds all
+of the response-related properties defined for the <code>HTTPClient</code> object. So the 
+callbacks can use code like this to access the response values:</p>
+<pre><code>httpResponse = this.responseText;
+status = this.status;
+</code></pre>
+<h4>Mobile Web Platform Implementation Notes</h4>
+<p>Mobile Web is limited by the same-origin policy. According to W3C: "User agents 
+commonly apply same-origin restrictions to network requests. These restrictions 
+prevent a client-side Web application running from one origin from obtaining 
+data retrieved from another origin, and also limit unsafe HTTP requests that can 
+be automatically launched toward destinations that differ from the running 
+application's origin."  This means that browsers cannot request information from 
+a domain that the app itself does not reside on. If you are hosting the app at 
+foo.example.com, then requests to any domain other than *.example.com will fail.</p>
+<p>There are two solutions to get around this problem:</p>
+<ul>
+<li>Configure the destination server to support Cross-Origin Resource Sharing.</li>
+<li>Use <a href="Titanium.Network.httpURLFormatter-property.html">Ti.Network.httpURLFormatter</a> in conjunction 
+  with a proxy on the server hosting the application.</li>
+</ul>
+<p>More information about Cross-Origin Resource Sharing can be found on the 
+<a href="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a> specification page.</p>
     </div>
     
 
@@ -58,7 +100,115 @@
             </ul>
     
             <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#clearCookies-method">clearCookies <span class="params">(host)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAllResponseHeaders-method">getAllResponseHeaders <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAutoEncodeUrl-method">getAutoEncodeUrl <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAutoRedirect-method">getAutoRedirect <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCache-method">getCache <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getConnected-method">getConnected <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getConnectionType-method">getConnectionType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getEnableKeepAlive-method">getEnableKeepAlive <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFile-method">getFile <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLocation-method">getLocation <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOndatastream-method">getOndatastream <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOnerror-method">getOnerror <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOnload-method">getOnload <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOnreadystatechange-method">getOnreadystatechange <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOnsendstream-method">getOnsendstream <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getReadyState-method">getReadyState <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getResponseData-method">getResponseData <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getResponseHeader-method">getResponseHeader <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getResponseText-method">getResponseText <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getResponseXML-method">getResponseXML <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getStatus-method">getStatus <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getStatusText-method">getStatusText <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTimeout-method">getTimeout <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTlsVersion-method">getTlsVersion <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getValidatesSecureCertificate-method">getValidatesSecureCertificate <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWithCredentials-method">getWithCredentials <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -66,7 +216,51 @@
             </ul>
     
             <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#send-method">send <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAutoEncodeUrl-method">setAutoEncodeUrl <span class="params">(autoEncodeUrl)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAutoRedirect-method">setAutoRedirect <span class="params">(autoRedirect)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCache-method">setCache <span class="params">(cache)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setEnableKeepAlive-method">setEnableKeepAlive <span class="params">(enableKeepAlive)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFile-method">setFile <span class="params">(file)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOndatastream-method">setOndatastream <span class="params">(ondatastream)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnerror-method">setOnerror <span class="params">(onerror)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnload-method">setOnload <span class="params">(onload)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnreadystatechange-method">setOnreadystatechange <span class="params">(onreadystatechange)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnsendstream-method">setOnsendstream <span class="params">(onsendstream)</span></a></li>
             </ul>
     
             <ul>
@@ -75,6 +269,18 @@
     
             <ul>
                 <li><a href="#setTimeout-method">setTimeout <span class="params">(timeout)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTlsVersion-method">setTlsVersion <span class="params">(tlsVersion)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setValidatesSecureCertificate-method">setValidatesSecureCertificate <span class="params">(validatesSecureCertificate)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setWithCredentials-method">setWithCredentials <span class="params">(withCredentials)</span></a></li>
             </ul>
     
     
@@ -86,161 +292,263 @@
         <tr valign='top'>
             <td class='attr-name'><a name="DONE-property"></a>DONE</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the DONE readyState constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Ready state constant indicating that the request is complete.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="HEADERS_RECEIVED-property"></a>HEADERS_RECEIVED</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the HEADERS_RECEIVED readyState constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Ready state constant indicating that response headers have been received.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="LOADING-property"></a>LOADING</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the LOADING readyState constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Ready state constant indicating that response data is being received from the remote server.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="OPENED-property"></a>OPENED</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the OPENED readyState constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Ready state constant indicating that the connection has been opened, but the request has not yet been sent.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="UNSENT-property"></a>UNSENT</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the UNSET readyState constant</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Ready state constant indicating that HTTPClient request has not been opened or sent.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="allResponseHeaders-property"></a>allResponseHeaders</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>All of the response headers as a single string, or an empty string if no headers are available.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="autoEncodeUrl-property"></a>autoEncodeUrl</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Set to false to suppress URL-encoding of the specified URL.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="autoRedirect-property"></a>autoRedirect</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Set to false to disable automatic handling of HTTP redirects.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="cache-property"></a>cache</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Controls whether or not HTTP responses are cached.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="connected-property"></a>connected</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>boolean to indicate that the response was successful</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="connectionType-property"></a>connectionType</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the connection type, normally either GET or POST.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Connection type, normally either GET or POST.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="enableKeepAlive-property"></a>enableKeepAlive</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the client should attempt to keep a persistent connection.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="file-property"></a>file</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>File to download contents to.  Can only be set after calling
+open.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="location-property"></a>location</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the absolute URL of the request</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Absolute URL of the request.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="ondatastream-property"></a>ondatastream</td>
             <td class='attr-rw'>
-                [function]
+                [Callback&lt;Object&gt;]
             </td>
-            <td class='attr-desc'>set this to a function before calling open to cause the function to be called at regular intervals as the request data is being received. the progress property of the event will contain a value from 0.0-1.0 with the progress.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Function to be called at regular intervals as the request data is being received.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="onerror-property"></a>onerror</td>
             <td class='attr-rw'>
-                [function]
+                [Callback&lt;Object&gt;]
             </td>
-            <td class='attr-desc'>set this to a function before calling open to cause the function to be called upon a error response</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Function to be called upon a error response.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="onload-property"></a>onload</td>
             <td class='attr-rw'>
-                [function]
+                [Callback&lt;Object&gt;]
             </td>
-            <td class='attr-desc'>set this to a function before calling open to cause the function to be called upon a successful response</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Function to be called upon a successful response.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="onreadystatechange-property"></a>onreadystatechange</td>
             <td class='attr-rw'>
-                [function]
+                [Callback&lt;Object&gt;]
             </td>
-            <td class='attr-desc'>set this to a function before calling open to cause the function to be called for each readyState change</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Function to be called for each readyState change.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="onsendstream-property"></a>onsendstream</td>
             <td class='attr-rw'>
-                [function]
+                [Callback&lt;Object&gt;]
             </td>
-            <td class='attr-desc'>set this to a function before calling open to cause the function to be called at regular intervals as the request data is being transmitted. the progress property of the event will contain a value from 0.0-1.0 with the progress.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Function to be called at regular intervals as the request data is being transmitted.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="readyState-property"></a>readyState</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the readyState value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The current ready state of this HTTP request.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="responseData-property"></a>responseData</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.Blob]
             </td>
-            <td class='attr-desc'>the response data as a Blob object.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Response data as a Blob object.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="responseText-property"></a>responseText</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the response as text or null if an error was received or no data was returned</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Response as text or null if an error was received or no data was returned.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="responseXML-property"></a>responseXML</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.XML.Document]
             </td>
-            <td class='attr-desc'>the response object as an XML DOMDocument object. returns null if the content type returned by the server was not XML or the content could not be parsed</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Response object as an XML DOM Document object.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="status-property"></a>status</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the response HTTP status code</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Response HTTP status code.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="statusText-property"></a>statusText</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Human-readable status message associated with the status code.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="timeout-property"></a>timeout</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>timeout is milliseconds when the connection should be aborted</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Timeout in milliseconds when the connection should be aborted</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="tlsVersion-property"></a>tlsVersion</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Sets the TLS version to use for handshakes.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="validatesSecureCertificate-property"></a>validatesSecureCertificate</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>set this to control how SSL certification validation is performed on connection.  defaults to false if in simulator or device testing and true if release for distribution mode.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Controls how SSL certification validation is performed on connection.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="withCredentials-property"></a>withCredentials</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Tells the request to include any cookies and HTTP authentication information.</td>
         </tr>
         
     </table>
@@ -251,6 +559,33 @@
     
 
     
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Simple GET Request</div>
+	<div class="code"><p>The following code excerpt does a simple GET request and logs the response text.</p>
+<pre><code> var url = "http://www.appcelerator.com";
+ var client = Ti.Network.createHTTPClient({
+     // function called when the response data is available
+     onload : function(e) {
+         Ti.API.info("Received text: " + this.responseText);
+         alert('success');
+     },
+     // function called when an error occurs, including a timeout
+     onerror : function(e) {
+         Ti.API.debug(e.error);
+         alert('error');
+     },
+     timeout : 5000  /* in milliseconds */
+ });
+ // Prepare the connection.
+ client.open("GET", url);
+ // Send the request.
+ client.send();
+</code></pre></div>
+        
+    </table>
+    
 
 
     
@@ -259,202 +594,1008 @@
     <div class="method">
       <div class="title" id="abort-method">
         <a name="abort-method"></a><b>abort</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Cancels a pending request.</p></div>
       
-      <div class="description">
-        <p>abort a pending request</p>
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="clearCookies-method">
+        <a name="clearCookies-method"></a><b>clearCookies</b> <span class="params">(host)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Clears any cookies stored for the host.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>host</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The URL of the host/domain to clear cookies for.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAllResponseHeaders-method">
+        <a name="getAllResponseHeaders-method"></a><b>getAllResponseHeaders</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.allResponseHeaders-property.html">allResponseHeaders</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAutoEncodeUrl-method">
+        <a name="getAutoEncodeUrl-method"></a><b>getAutoEncodeUrl</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.autoEncodeUrl-property.html">autoEncodeUrl</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAutoRedirect-method">
+        <a name="getAutoRedirect-method"></a><b>getAutoRedirect</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.autoRedirect-property.html">autoRedirect</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCache-method">
+        <a name="getCache-method"></a><b>getCache</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.cache-property.html">cache</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getConnected-method">
+        <a name="getConnected-method"></a><b>getConnected</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.connected-property.html">connected</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getConnectionType-method">
+        <a name="getConnectionType-method"></a><b>getConnectionType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.connectionType-property.html">connectionType</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getEnableKeepAlive-method">
+        <a name="getEnableKeepAlive-method"></a><b>getEnableKeepAlive</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.enableKeepAlive-property.html">enableKeepAlive</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFile-method">
+        <a name="getFile-method"></a><b>getFile</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.file-property.html">file</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLocation-method">
+        <a name="getLocation-method"></a><b>getLocation</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.location-property.html">location</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOndatastream-method">
+        <a name="getOndatastream-method"></a><b>getOndatastream</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.ondatastream-property.html">ondatastream</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOnerror-method">
+        <a name="getOnerror-method"></a><b>getOnerror</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.onerror-property.html">onerror</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOnload-method">
+        <a name="getOnload-method"></a><b>getOnload</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.onload-property.html">onload</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOnreadystatechange-method">
+        <a name="getOnreadystatechange-method"></a><b>getOnreadystatechange</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.onreadystatechange-property.html">onreadystatechange</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOnsendstream-method">
+        <a name="getOnsendstream-method"></a><b>getOnsendstream</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.onsendstream-property.html">onsendstream</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getReadyState-method">
+        <a name="getReadyState-method"></a><b>getReadyState</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.readyState-property.html">readyState</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getResponseData-method">
+        <a name="getResponseData-method"></a><b>getResponseData</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.responseData-property.html">responseData</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="getResponseHeader-method">
         <a name="getResponseHeader-method"></a><b>getResponseHeader</b> <span class="params">(name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the response header.</p>
-      </div>
+      <div class="description"><p>Returns the value of the specified response header.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the header name</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the header to retrieve.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getResponseText-method">
+        <a name="getResponseText-method"></a><b>getResponseText</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.responseText-property.html">responseText</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getResponseXML-method">
+        <a name="getResponseXML-method"></a><b>getResponseXML</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.responseXML-property.html">responseXML</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getStatus-method">
+        <a name="getStatus-method"></a><b>getStatus</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.status-property.html">status</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getStatusText-method">
+        <a name="getStatusText-method"></a><b>getStatusText</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.statusText-property.html">statusText</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTimeout-method">
+        <a name="getTimeout-method"></a><b>getTimeout</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.timeout-property.html">timeout</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTlsVersion-method">
+        <a name="getTlsVersion-method"></a><b>getTlsVersion</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.tlsVersion-property.html">tlsVersion</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getValidatesSecureCertificate-method">
+        <a name="getValidatesSecureCertificate-method"></a><b>getValidatesSecureCertificate</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.validatesSecureCertificate-property.html">validatesSecureCertificate</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWithCredentials-method">
+        <a name="getWithCredentials-method"></a><b>getWithCredentials</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.HTTPClient.withCredentials-property.html">withCredentials</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="open-method">
         <a name="open-method"></a><b>open</b> <span class="params">(method, url, async)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>open the request and ready the connection</p>
-      </div>
+      <div class="description"><p>Opens the request and readies the connection.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>method</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the HTTP method</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>url</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the URL for the request</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>async</td>
-            <td class='attr-rw'>
-              [boolean]
-            </td>
-            <td class='attr-desc'>optional property to indicate if asynchronous (default) or not</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>method</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>HTTP method for this request, such as 'GET' or 'POST'.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>url</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>URL for the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>async</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Whether the request should be made asynchronously. Only used on iOS.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="send-method">
         <a name="send-method"></a><b>send</b> <span class="params">(data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>send the request</p>
-      </div>
+      <div class="description"><p>Sends the request.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>the data to send in the request. can either be null, dictionary, string, File object or Blob.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [ObjectStringTitanium.Filesystem.FileTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to send with a POST request.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAutoEncodeUrl-method">
+        <a name="setAutoEncodeUrl-method"></a><b>setAutoEncodeUrl</b> <span class="params">(autoEncodeUrl)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.autoEncodeUrl-property.html">autoEncodeUrl</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>autoEncodeUrl</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAutoRedirect-method">
+        <a name="setAutoRedirect-method"></a><b>setAutoRedirect</b> <span class="params">(autoRedirect)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.autoRedirect-property.html">autoRedirect</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>autoRedirect</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCache-method">
+        <a name="setCache-method"></a><b>setCache</b> <span class="params">(cache)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.cache-property.html">cache</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>cache</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setEnableKeepAlive-method">
+        <a name="setEnableKeepAlive-method"></a><b>setEnableKeepAlive</b> <span class="params">(enableKeepAlive)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.enableKeepAlive-property.html">enableKeepAlive</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>enableKeepAlive</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFile-method">
+        <a name="setFile-method"></a><b>setFile</b> <span class="params">(file)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.file-property.html">file</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>file</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOndatastream-method">
+        <a name="setOndatastream-method"></a><b>setOndatastream</b> <span class="params">(ondatastream)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.ondatastream-property.html">ondatastream</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ondatastream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOnerror-method">
+        <a name="setOnerror-method"></a><b>setOnerror</b> <span class="params">(onerror)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.onerror-property.html">onerror</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>onerror</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOnload-method">
+        <a name="setOnload-method"></a><b>setOnload</b> <span class="params">(onload)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.onload-property.html">onload</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>onload</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOnreadystatechange-method">
+        <a name="setOnreadystatechange-method"></a><b>setOnreadystatechange</b> <span class="params">(onreadystatechange)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.onreadystatechange-property.html">onreadystatechange</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>onreadystatechange</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOnsendstream-method">
+        <a name="setOnsendstream-method"></a><b>setOnsendstream</b> <span class="params">(onsendstream)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.onsendstream-property.html">onsendstream</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>onsendstream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="setRequestHeader-method">
         <a name="setRequestHeader-method"></a><b>setRequestHeader</b> <span class="params">(name, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>set the request header. Must be called after <tt>open</tt> but before <tt>send</tt>.</p>
-      </div>
+      <div class="description"><p>Sets the value for the specified request header. Must be called after <code>open</code> but before <code>send</code>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the header</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>value</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>value of the header. May be null to clearing out a property, such as X-Requested-With</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the header to set.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Value to assign to the header. May be null to clear a default header value, such as X-Requested-With.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="setTimeout-method">
         <a name="setTimeout-method"></a><b>setTimeout</b> <span class="params">(timeout)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>set the request timeout</p>
-      </div>
+      <div class="description"><p>Sets the request timeout.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>timeout</td>
-            <td class='attr-rw'>
-              [double]
-            </td>
-            <td class='attr-desc'>the timeout in milliseconds</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>timeout</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Timeout in milliseconds.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTlsVersion-method">
+        <a name="setTlsVersion-method"></a><b>setTlsVersion</b> <span class="params">(tlsVersion)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.tlsVersion-property.html">tlsVersion</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tlsVersion</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setValidatesSecureCertificate-method">
+        <a name="setValidatesSecureCertificate-method"></a><b>setValidatesSecureCertificate</b> <span class="params">(validatesSecureCertificate)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.validatesSecureCertificate-property.html">validatesSecureCertificate</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>validatesSecureCertificate</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setWithCredentials-method">
+        <a name="setWithCredentials-method"></a><b>setWithCredentials</b> <span class="params">(withCredentials)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.HTTPClient.withCredentials-property.html">withCredentials</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>withCredentials</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     

@@ -35,19 +35,268 @@
             <span class="type">Object</span> 
             Titanium.Contacts.Person 
         </h1>
-	<ul class="files">
-	  <li>iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>An object which represents a person in the contacts database.</p>
+        <p>An object that represents a contact record for a person or organization in the system contacts 
+address book.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A person object is created using <a href="Titanium.Contacts.createPerson-method.html"><code>Titanium.Contacts.createPerson</code></a>.</p>
+<p>The following two kinds of properties exist for this object:</p>
+<ul>
+<li>single value - contains either a <code>string</code> or <code>number</code> type value, an array of <code>string</code> type 
+values, or <code>null</code> if unset.</li>
+<li>multi-value - contains a dictionary with typical keys of <code>home</code>, <code>work</code> and/or <code>other</code>. Each 
+key contains either a <code>string</code> type value, an array of <code>string</code> type values, or a dictionary 
+containing key/value pairs with <code>string</code> type values.</li>
+</ul>
+<h4>Adding and Modifying Properties</h4>
+<p>Support for adding and modifying properties is currently only supported on iOS.</p>
+<h4>Keys as Address Book UI Labels</h4>
+<p>Keys act as labels in the address book user interface.</p>
+<p>Although there is limited support for custom, arbitrarily-named, keys when used with multi-value 
+properties, there is no support them with single value properties.</p>
+<p>On iOS, creating custom keys is not recommended, and will lead to undefined results.</p>
+<p>If a label has been created by the user of the device and used with a multi-value property, it 
+will exist as a key with the same name.</p>
+<p>See examples in <a href="Titanium.Contacts.html"><code>Titanium.Contacts</code></a> for more information.</p>
     </div>
     
 
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAddress-method">getAddress <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBirthday-method">getBirthday <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCreated-method">getCreated <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDate-method">getDate <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDepartment-method">getDepartment <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getEmail-method">getEmail <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFirstName-method">getFirstName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFirstPhonetic-method">getFirstPhonetic <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFullName-method">getFullName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getId-method">getId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getImage-method">getImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getInstantMessage-method">getInstantMessage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getJobTitle-method">getJobTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getKind-method">getKind <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLastName-method">getLastName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLastPhonetic-method">getLastPhonetic <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMiddleName-method">getMiddleName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMiddlePhonetic-method">getMiddlePhonetic <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getModified-method">getModified <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNickname-method">getNickname <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNote-method">getNote <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOrganization-method">getOrganization <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPhone-method">getPhone <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPrefix-method">getPrefix <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRecordId-method">getRecordId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRelatedNames-method">getRelatedNames <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSuffix-method">getSuffix <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getUrl-method">getUrl <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAddress-method">setAddress <span class="params">(address)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBirthday-method">setBirthday <span class="params">(birthday)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDate-method">setDate <span class="params">(date)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDepartment-method">setDepartment <span class="params">(department)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setEmail-method">setEmail <span class="params">(email)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFirstName-method">setFirstName <span class="params">(firstName)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFirstPhonetic-method">setFirstPhonetic <span class="params">(firstPhonetic)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setId-method">setId <span class="params">(id)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setImage-method">setImage <span class="params">(image)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setInstantMessage-method">setInstantMessage <span class="params">(instantMessage)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setJobTitle-method">setJobTitle <span class="params">(jobTitle)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setKind-method">setKind <span class="params">(kind)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLastName-method">setLastName <span class="params">(lastName)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLastPhonetic-method">setLastPhonetic <span class="params">(lastPhonetic)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMiddleName-method">setMiddleName <span class="params">(middleName)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMiddlePhonetic-method">setMiddlePhonetic <span class="params">(middlePhonetic)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setNickname-method">setNickname <span class="params">(nickname)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setNote-method">setNote <span class="params">(note)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOrganization-method">setOrganization <span class="params">(organization)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPhone-method">setPhone <span class="params">(phone)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRecordId-method">setRecordId <span class="params">(recordId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRelatedNames-method">setRelatedNames <span class="params">(relatedNames)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSuffix-method">setSuffix <span class="params">(suffix)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setUrl-method">setUrl <span class="params">(url)</span></a></li>
+            </ul>
     
     
 
@@ -56,211 +305,256 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="URL-property"></a>URL</td>
-            <td class='attr-rw'>
-                [object]
-            </td>
-            <td class='attr-desc'>URLs of webpages associated with the person.  Multi-value, valid labels are: home, work, other, homepage.  Values are strings.</td>
-        </tr>
-        
-        <tr valign='top'>
             <td class='attr-name'><a name="address-property"></a>address</td>
             <td class='attr-rw'>
-                [object]
+                [Dictionary]
             </td>
-            <td class='attr-desc'>The addresses for the person.  Multi-value, valid labels are: home, work, other.  Values are dictionaries.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Addresses for the person. Multi-value. Read-only on Android.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="birthday-property"></a>birthday</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The birthday of the person.  Single value, format is "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000"</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Date of birth of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="created-property"></a>created</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The date the person was created in the database.  Single value, format is "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000", read-only</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Date and time that the person record was created. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="date-property"></a>date</td>
             <td class='attr-rw'>
-                [object]
+                [Dictionary]
             </td>
-            <td class='attr-desc'>Dates associated with the person.  Multi-value, valid labels are: anniversary.  Values are strings of format "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000"</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Dates associated with the person. Multi-value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="department-property"></a>department</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The department of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Department of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="email-property"></a>email</td>
             <td class='attr-rw'>
-                [object]
+                [Dictionary]
             </td>
-            <td class='attr-desc'>The email addresses for the person.  Multi-value, valid labels are: home, work, other.  Values are strings.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Email addresses for the person. Multi-value. Read-only on Android.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="firstName-property"></a>firstName</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The first name of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>First name of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="firstPhonetic-property"></a>firstPhonetic</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The phonetic first name of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Phonetic first name of the person.  Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="fullName-property"></a>fullName</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The localized full name of the person.  Single value, read-only</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Localized full name of the person. Single value. Read-only on Android.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="id-property"></a>id</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Record identifier of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="image-property"></a>image</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.Blob]
             </td>
-            <td class='attr-desc'>A blob object representing the image for the person.  Set to null to remove the image.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Image for the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="instantMessage-property"></a>instantMessage</td>
             <td class='attr-rw'>
-                [object]
+                [Dictionary]
             </td>
-            <td class='attr-desc'>The instant messenger names for the person.  Multi-value, valid labels are: aim, icq, jabber, msn, yahoo.  Values are dictionaries.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Instant messenger names of the person. Multi-value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="jobTitle-property"></a>jobTitle</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The job title of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Job title of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="kind-property"></a>kind</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>The kind of person.  Single value, one of Titanium.Contacts.CONTACTS_KIND_PERSON or Titanium.Contacts.CONTACTS_KIND_ORGANIZATION</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines the type of information the person record contains; either person or organization. 
+Read-only on Android.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="lastName-property"></a>lastName</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The last name of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Last name of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="lastPhonetic-property"></a>lastPhonetic</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The phonetic last name of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Phonetic last name of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="middleName-property"></a>middleName</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The middle name of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Middle name of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="middlePhonetic-property"></a>middlePhonetic</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The phonetic middle name of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Phonetic middle name of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="modified-property"></a>modified</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The most recent date the person was modified.  Single value, format is "yyyy-MM-dd'T'HH:mm:ss'.'SSS+0000", read-only</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Date and time that the person record was last modified. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="nickname-property"></a>nickname</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The nickname of the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Nickname of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="note-property"></a>note</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>Notes for the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Notes for the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="organization-property"></a>organization</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The organization the person belongs to.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Organization to which the person belongs. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="phone-property"></a>phone</td>
             <td class='attr-rw'>
-                [object]
+                [Dictionary]
             </td>
-            <td class='attr-desc'>The phone numbers for the person.  Multi-value, valid labels are: home, work, other, mobile, pager, workFax, homeFax, main, iPhone.  Values are strings.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Phone numbers for the person. Multi-value. Read-only on Android.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="prefix-property"></a>prefix</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The prefix for the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Prefix for the person. Single value.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="recordId-property"></a>recordId</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Record identifier of the person. Single value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="relatedNames-property"></a>relatedNames</td>
             <td class='attr-rw'>
-                [object]
+                [Dictionary]
             </td>
-            <td class='attr-desc'>The names of people the person is related to.  Multi-value, valid labels are: mother, father, parent, sister, brother, child, friend, spouse, partner, manager, assistant.  Values are strings.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Names of people to which the person is related. Multi-value.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="suffix-property"></a>suffix</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>The suffix for the person.  Single value</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Suffix for the person. Single value. Read-only on Android.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="url-property"></a>url</td>
+            <td class='attr-rw'>
+                [Dictionary]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>URLs of webpages associated with the person. Multi-value.</td>
         </tr>
         
     </table>
@@ -269,15 +563,1167 @@
     
 
     
-    <div class="sectiontitle">Notes</div>
-    <table border='0' cellpadding='5'>
-	<div class="code"><p>There are two kinds of properties: single value and multivalue.  Single value properties are returned as a direct value, while mutlivalue properties are returned as dictionary objects with keys which represent labels of the property, with values that are arrays of all values in the property which correspond to that label (e.g. {"home" : [address1, address2]})</p></div>
-    </table>
-    
 
     
 
 
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAddress-method">
+        <a name="getAddress-method"></a><b>getAddress</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.address-property.html">address</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBirthday-method">
+        <a name="getBirthday-method"></a><b>getBirthday</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.birthday-property.html">birthday</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCreated-method">
+        <a name="getCreated-method"></a><b>getCreated</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.created-property.html">created</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDate-method">
+        <a name="getDate-method"></a><b>getDate</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.date-property.html">date</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDepartment-method">
+        <a name="getDepartment-method"></a><b>getDepartment</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.department-property.html">department</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getEmail-method">
+        <a name="getEmail-method"></a><b>getEmail</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.email-property.html">email</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFirstName-method">
+        <a name="getFirstName-method"></a><b>getFirstName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.firstName-property.html">firstName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFirstPhonetic-method">
+        <a name="getFirstPhonetic-method"></a><b>getFirstPhonetic</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.firstPhonetic-property.html">firstPhonetic</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFullName-method">
+        <a name="getFullName-method"></a><b>getFullName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.fullName-property.html">fullName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getId-method">
+        <a name="getId-method"></a><b>getId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.id-property.html">id</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getImage-method">
+        <a name="getImage-method"></a><b>getImage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.image-property.html">image</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getInstantMessage-method">
+        <a name="getInstantMessage-method"></a><b>getInstantMessage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.instantMessage-property.html">instantMessage</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getJobTitle-method">
+        <a name="getJobTitle-method"></a><b>getJobTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.jobTitle-property.html">jobTitle</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getKind-method">
+        <a name="getKind-method"></a><b>getKind</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.kind-property.html">kind</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLastName-method">
+        <a name="getLastName-method"></a><b>getLastName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.lastName-property.html">lastName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLastPhonetic-method">
+        <a name="getLastPhonetic-method"></a><b>getLastPhonetic</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.lastPhonetic-property.html">lastPhonetic</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMiddleName-method">
+        <a name="getMiddleName-method"></a><b>getMiddleName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.middleName-property.html">middleName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMiddlePhonetic-method">
+        <a name="getMiddlePhonetic-method"></a><b>getMiddlePhonetic</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.middlePhonetic-property.html">middlePhonetic</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getModified-method">
+        <a name="getModified-method"></a><b>getModified</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.modified-property.html">modified</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNickname-method">
+        <a name="getNickname-method"></a><b>getNickname</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.nickname-property.html">nickname</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNote-method">
+        <a name="getNote-method"></a><b>getNote</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.note-property.html">note</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOrganization-method">
+        <a name="getOrganization-method"></a><b>getOrganization</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.organization-property.html">organization</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPhone-method">
+        <a name="getPhone-method"></a><b>getPhone</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.phone-property.html">phone</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPrefix-method">
+        <a name="getPrefix-method"></a><b>getPrefix</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.prefix-property.html">prefix</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRecordId-method">
+        <a name="getRecordId-method"></a><b>getRecordId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.recordId-property.html">recordId</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRelatedNames-method">
+        <a name="getRelatedNames-method"></a><b>getRelatedNames</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.relatedNames-property.html">relatedNames</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSuffix-method">
+        <a name="getSuffix-method"></a><b>getSuffix</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.suffix-property.html">suffix</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getUrl-method">
+        <a name="getUrl-method"></a><b>getUrl</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Contacts.Person.url-property.html">url</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAddress-method">
+        <a name="setAddress-method"></a><b>setAddress</b> <span class="params">(address)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.address-property.html">address</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>address</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBirthday-method">
+        <a name="setBirthday-method"></a><b>setBirthday</b> <span class="params">(birthday)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.birthday-property.html">birthday</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>birthday</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDate-method">
+        <a name="setDate-method"></a><b>setDate</b> <span class="params">(date)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.date-property.html">date</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>date</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDepartment-method">
+        <a name="setDepartment-method"></a><b>setDepartment</b> <span class="params">(department)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.department-property.html">department</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>department</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setEmail-method">
+        <a name="setEmail-method"></a><b>setEmail</b> <span class="params">(email)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.email-property.html">email</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>email</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFirstName-method">
+        <a name="setFirstName-method"></a><b>setFirstName</b> <span class="params">(firstName)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.firstName-property.html">firstName</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>firstName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFirstPhonetic-method">
+        <a name="setFirstPhonetic-method"></a><b>setFirstPhonetic</b> <span class="params">(firstPhonetic)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.firstPhonetic-property.html">firstPhonetic</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>firstPhonetic</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setId-method">
+        <a name="setId-method"></a><b>setId</b> <span class="params">(id)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.id-property.html">id</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>id</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setImage-method">
+        <a name="setImage-method"></a><b>setImage</b> <span class="params">(image)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.image-property.html">image</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>image</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setInstantMessage-method">
+        <a name="setInstantMessage-method"></a><b>setInstantMessage</b> <span class="params">(instantMessage)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.instantMessage-property.html">instantMessage</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>instantMessage</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setJobTitle-method">
+        <a name="setJobTitle-method"></a><b>setJobTitle</b> <span class="params">(jobTitle)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.jobTitle-property.html">jobTitle</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>jobTitle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setKind-method">
+        <a name="setKind-method"></a><b>setKind</b> <span class="params">(kind)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.kind-property.html">kind</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>kind</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLastName-method">
+        <a name="setLastName-method"></a><b>setLastName</b> <span class="params">(lastName)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.lastName-property.html">lastName</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>lastName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLastPhonetic-method">
+        <a name="setLastPhonetic-method"></a><b>setLastPhonetic</b> <span class="params">(lastPhonetic)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.lastPhonetic-property.html">lastPhonetic</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>lastPhonetic</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMiddleName-method">
+        <a name="setMiddleName-method"></a><b>setMiddleName</b> <span class="params">(middleName)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.middleName-property.html">middleName</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>middleName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMiddlePhonetic-method">
+        <a name="setMiddlePhonetic-method"></a><b>setMiddlePhonetic</b> <span class="params">(middlePhonetic)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.middlePhonetic-property.html">middlePhonetic</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>middlePhonetic</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setNickname-method">
+        <a name="setNickname-method"></a><b>setNickname</b> <span class="params">(nickname)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.nickname-property.html">nickname</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>nickname</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setNote-method">
+        <a name="setNote-method"></a><b>setNote</b> <span class="params">(note)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.note-property.html">note</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>note</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOrganization-method">
+        <a name="setOrganization-method"></a><b>setOrganization</b> <span class="params">(organization)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.organization-property.html">organization</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>organization</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPhone-method">
+        <a name="setPhone-method"></a><b>setPhone</b> <span class="params">(phone)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.phone-property.html">phone</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>phone</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRecordId-method">
+        <a name="setRecordId-method"></a><b>setRecordId</b> <span class="params">(recordId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.recordId-property.html">recordId</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>recordId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRelatedNames-method">
+        <a name="setRelatedNames-method"></a><b>setRelatedNames</b> <span class="params">(relatedNames)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.relatedNames-property.html">relatedNames</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>relatedNames</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSuffix-method">
+        <a name="setSuffix-method"></a><b>setSuffix</b> <span class="params">(suffix)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.suffix-property.html">suffix</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>suffix</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setUrl-method">
+        <a name="setUrl-method"></a><b>setUrl</b> <span class="params">(url)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.url-property.html">url</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>url</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
     
 
 

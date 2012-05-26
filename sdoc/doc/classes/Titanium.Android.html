@@ -1,0 +1,2214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Android 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The top level Android module.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The <a href="Titanium.Android.currentActivity-property.html">currentActivity</a> property provides a reference to the
+context's current <a href="Titanium.Android.Activity-object.html">Activity</a>. Activity objects cannot be 
+created directly, although a new activity can be started from an existing activity
+using <a href="Titanium.Android.Activity.startActivity-method.html">Activity.startActivity</a> or 
+<a href="Titanium.Android.Activity.startActivityForResult-method.html">Activity.startActivityForResult</a>.</p>
+<p>Almost all of the constants defined in this module correspond directly to Android
+constants, and are documented in the official Android documentation. In particular, 
+the <code>ACTION_</code>, <code>EXTRA_</code> and <code>CATEGORY_</code> constants are defined in the 
+<a href="http://developer.android.com/reference/android/content/Intent.html">Intent Class Reference</a>, </p>
+<p>See also:</p>
+<ul>
+<li><a href="http://developer.android.com/guide/topics/intents/intents-filters.html">Intents and Intent Filters in the Android Developer's Guide</a></li>
+</ul>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createIntent-method">createIntent <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createIntentChooser-method">createIntentChooser <span class="params">(intent, title)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createNotification-method">createNotification <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createPendingIntent-method">createPendingIntent <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createService-method">createService <span class="params">(intent)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createServiceIntent-method">createServiceIntent <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCurrentActivity-method">getCurrentActivity <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCurrentService-method">getCurrentService <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isServiceRunning-method">isServiceRunning <span class="params">(intent)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#startService-method">startService <span class="params">(intent)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#stopService-method">stopService <span class="params">(intent)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_AIRPLANE_MODE_CHANGED-property"></a>ACTION_AIRPLANE_MODE_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_AIRPLANE_MODE_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_ALL_APPS-property"></a>ACTION_ALL_APPS</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_ALL_APPS constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_ANSWER-property"></a>ACTION_ANSWER</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_ANSWER constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_ATTACH_DATA-property"></a>ACTION_ATTACH_DATA</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_ATTACH_DATA constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_BATTERY_CHANGED-property"></a>ACTION_BATTERY_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_BATTERY_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_BATTERY_LOW-property"></a>ACTION_BATTERY_LOW</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_BATTERY_LOW constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_BATTERY_OKAY-property"></a>ACTION_BATTERY_OKAY</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_BATTERY_OKAY constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_BOOT_COMPLETED-property"></a>ACTION_BOOT_COMPLETED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_BOOT_COMPLETED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_BUG_REPORT-property"></a>ACTION_BUG_REPORT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_BUG_REPORT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_CALL-property"></a>ACTION_CALL</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_CALL constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_CALL_BUTTON-property"></a>ACTION_CALL_BUTTON</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_CALL_BUTTON constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_CAMERA_BUTTON-property"></a>ACTION_CAMERA_BUTTON</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_CAMERA_BUTTON constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_CHOOSER-property"></a>ACTION_CHOOSER</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_CHOOSER constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_CLOSE_SYSTEM_DIALOGS-property"></a>ACTION_CLOSE_SYSTEM_DIALOGS</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_CLOSE_SYSTEM_DIALOGS constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_CONFIGURATION_CHANGED-property"></a>ACTION_CONFIGURATION_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_CONFIGURATION_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_CREATE_SHORTCUT-property"></a>ACTION_CREATE_SHORTCUT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_CREATE_SHORTCUT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_DATE_CHANGED-property"></a>ACTION_DATE_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_DATE_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_DEFAULT-property"></a>ACTION_DEFAULT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_DEFAULT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_DELETE-property"></a>ACTION_DELETE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_DELETE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_DEVICE_STORAGE_LOW-property"></a>ACTION_DEVICE_STORAGE_LOW</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_DEVICE_STORAGE_LOW constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_DIAL-property"></a>ACTION_DIAL</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_DIAL constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_EDIT-property"></a>ACTION_EDIT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_EDIT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_GET_CONTENT-property"></a>ACTION_GET_CONTENT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_GET_CONTENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_GTALK_SERVICE_CONNECTED-property"></a>ACTION_GTALK_SERVICE_CONNECTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_GTALK_SERVICE_CONNECTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_GTALK_SERVICE_DISCONNECTED-property"></a>ACTION_GTALK_SERVICE_DISCONNECTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_GTALK_SERVICE_DISCONNECTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_HEADSET_PLUG-property"></a>ACTION_HEADSET_PLUG</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_HEADSET_PLUG constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_INPUT_METHOD_CHANGED-property"></a>ACTION_INPUT_METHOD_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_INPUT_METHOD_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_INSERT-property"></a>ACTION_INSERT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_INSERT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_INSERT_OR_EDIT-property"></a>ACTION_INSERT_OR_EDIT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_INSERT_OR_EDIT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MAIN-property"></a>ACTION_MAIN</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MAIN constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MANAGE_PACKAGE_STORAGE-property"></a>ACTION_MANAGE_PACKAGE_STORAGE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MANAGE_PACKAGE_STORAGE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_BAD_REMOVAL-property"></a>ACTION_MEDIA_BAD_REMOVAL</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_BAD_REMOVAL constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_BUTTON-property"></a>ACTION_MEDIA_BUTTON</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_BUTTON constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_CHECKING-property"></a>ACTION_MEDIA_CHECKING</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_CHECKING constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_EJECT-property"></a>ACTION_MEDIA_EJECT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_EJECT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_MOUNTED-property"></a>ACTION_MEDIA_MOUNTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_MOUNTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_NOFS-property"></a>ACTION_MEDIA_NOFS</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_NOFS constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_REMOVED-property"></a>ACTION_MEDIA_REMOVED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_REMOVED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_SCANNER_FINISHED-property"></a>ACTION_MEDIA_SCANNER_FINISHED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_SCANNER_FINISHED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_SCANNER_SCAN_FILE-property"></a>ACTION_MEDIA_SCANNER_SCAN_FILE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_SCANNER_SCAN_FILE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_SCANNER_STARTED-property"></a>ACTION_MEDIA_SCANNER_STARTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_SCANNER_STARTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_SHARED-property"></a>ACTION_MEDIA_SHARED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_SHARED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_UNMOUNTABLE-property"></a>ACTION_MEDIA_UNMOUNTABLE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_UNMOUNTABLE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_MEDIA_UNMOUNTED-property"></a>ACTION_MEDIA_UNMOUNTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_MEDIA_UNMOUNTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_NEW_OUTGOING_CALL-property"></a>ACTION_NEW_OUTGOING_CALL</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_NEW_OUTGOING_CALL constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PACKAGE_ADDED-property"></a>ACTION_PACKAGE_ADDED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PACKAGE_ADDED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PACKAGE_CHANGED-property"></a>ACTION_PACKAGE_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PACKAGE_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PACKAGE_DATA_CLEARED-property"></a>ACTION_PACKAGE_DATA_CLEARED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PACKAGE_DATA_CLEARED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PACKAGE_INSTALL-property"></a>ACTION_PACKAGE_INSTALL</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PACKAGE_INSTALL constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PACKAGE_REMOVED-property"></a>ACTION_PACKAGE_REMOVED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PACKAGE_REMOVED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PACKAGE_REPLACED-property"></a>ACTION_PACKAGE_REPLACED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PACKAGE_REPLACED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PACKAGE_RESTARTED-property"></a>ACTION_PACKAGE_RESTARTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PACKAGE_RESTARTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PICK-property"></a>ACTION_PICK</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PICK constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PICK_ACTIVITY-property"></a>ACTION_PICK_ACTIVITY</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PICK_ACTIVITY constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_POWER_CONNECTED-property"></a>ACTION_POWER_CONNECTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_POWER_CONNECTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_POWER_DISCONNECTED-property"></a>ACTION_POWER_DISCONNECTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_POWER_DISCONNECTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_POWER_USAGE_SUMMARY-property"></a>ACTION_POWER_USAGE_SUMMARY</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_POWER_USAGE_SUMMARY constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_PROVIDER_CHANGED-property"></a>ACTION_PROVIDER_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_PROVIDER_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_REBOOT-property"></a>ACTION_REBOOT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_REBOOT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_RUN-property"></a>ACTION_RUN</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_RUN constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SCREEN_OFF-property"></a>ACTION_SCREEN_OFF</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SCREEN_OFF constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SCREEN_ON-property"></a>ACTION_SCREEN_ON</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SCREEN_ON constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SEARCH-property"></a>ACTION_SEARCH</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SEARCH constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SEARCH_LONG_PRESS-property"></a>ACTION_SEARCH_LONG_PRESS</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SEARCH_LONG_PRESS constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SEND-property"></a>ACTION_SEND</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SEND constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SENDTO-property"></a>ACTION_SENDTO</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SENDTO constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SEND_MULTIPLE-property"></a>ACTION_SEND_MULTIPLE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SEND_MULTIPLE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SET_WALLPAPER-property"></a>ACTION_SET_WALLPAPER</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SET_WALLPAPER constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SHUTDOWN-property"></a>ACTION_SHUTDOWN</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SHUTDOWN constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SYNC-property"></a>ACTION_SYNC</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SYNC constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_SYSTEM_TUTORIAL-property"></a>ACTION_SYSTEM_TUTORIAL</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_SYSTEM_TUTORIAL constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_TIME_CHANGED-property"></a>ACTION_TIME_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_TIME_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_TIME_TICK-property"></a>ACTION_TIME_TICK</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_TIME_TICK constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_UID_REMOVED-property"></a>ACTION_UID_REMOVED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_UID_REMOVED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_UMS_CONNECTED-property"></a>ACTION_UMS_CONNECTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_UMS_CONNECTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_UMS_DISCONNECTED-property"></a>ACTION_UMS_DISCONNECTED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_UMS_DISCONNECTED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_USER_PRESENT-property"></a>ACTION_USER_PRESENT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_USER_PRESENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_VIEW-property"></a>ACTION_VIEW</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_VIEW constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_VOICE_COMMAND-property"></a>ACTION_VOICE_COMMAND</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_VOICE_COMMAND constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_WALLPAPER_CHANGED-property"></a>ACTION_WALLPAPER_CHANGED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_WALLPAPER_CHANGED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ACTION_WEB_SEARCH-property"></a>ACTION_WEB_SEARCH</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.ACTION_WEB_SEARCH constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_ALTERNATIVE-property"></a>CATEGORY_ALTERNATIVE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_ALTERNATIVE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_BROWSABLE-property"></a>CATEGORY_BROWSABLE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_BROWSABLE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_DEFAULT-property"></a>CATEGORY_DEFAULT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_DEFAULT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_DEVELOPMENT_PREFERENCE-property"></a>CATEGORY_DEVELOPMENT_PREFERENCE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_DEVELOPMENT_PREFERENCE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_EMBED-property"></a>CATEGORY_EMBED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_EMBED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_FRAMEWORK_INSTRUMENTATION_TEST-property"></a>CATEGORY_FRAMEWORK_INSTRUMENTATION_TEST</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_FRAMEWORK_INSTRUMENTATION_TEST constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_HOME-property"></a>CATEGORY_HOME</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_HOME constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_INFO-property"></a>CATEGORY_INFO</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_INFO constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_LAUNCHER-property"></a>CATEGORY_LAUNCHER</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_LAUNCHER constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_MONKEY-property"></a>CATEGORY_MONKEY</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_MONKEY constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_OPENABLE-property"></a>CATEGORY_OPENABLE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_OPENABLE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_PREFERENCE-property"></a>CATEGORY_PREFERENCE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_PREFERENCE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_SAMPLE_CODE-property"></a>CATEGORY_SAMPLE_CODE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_SAMPLE_CODE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_SELECTED_ALTERNATIVE-property"></a>CATEGORY_SELECTED_ALTERNATIVE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_SELECTED_ALTERNATIVE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_TAB-property"></a>CATEGORY_TAB</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_TAB constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_TEST-property"></a>CATEGORY_TEST</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_TEST constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CATEGORY_UNIT_TEST-property"></a>CATEGORY_UNIT_TEST</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.CATEGORY_UNIT_TEST constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_ALL-property"></a>DEFAULT_ALL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use all default settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_LIGHTS-property"></a>DEFAULT_LIGHTS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the default light settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_SOUND-property"></a>DEFAULT_SOUND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the default sound settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_VIBRATE-property"></a>DEFAULT_VIBRATE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the default vibration settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_ALARM_COUNT-property"></a>EXTRA_ALARM_COUNT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_ALARM_COUNT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_BCC-property"></a>EXTRA_BCC</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_BCC constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_CC-property"></a>EXTRA_CC</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_CC constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_DATA_REMOVED-property"></a>EXTRA_DATA_REMOVED</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_DATA_REMOVED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_DONT_KILL_APP-property"></a>EXTRA_DONT_KILL_APP</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_DONT_KILL_APP constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_EMAIL-property"></a>EXTRA_EMAIL</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_EMAIL constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_INTENT-property"></a>EXTRA_INTENT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_INTENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_KEY_EVENT-property"></a>EXTRA_KEY_EVENT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_KEY_EVENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_PHONE_NUMBER-property"></a>EXTRA_PHONE_NUMBER</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_PHONE_NUMBER constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_REPLACING-property"></a>EXTRA_REPLACING</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_REPLACING constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_SHORTCUT_ICON-property"></a>EXTRA_SHORTCUT_ICON</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_SHORTCUT_ICON constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_SHORTCUT_ICON_RESOURCE-property"></a>EXTRA_SHORTCUT_ICON_RESOURCE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_SHORTCUT_ICON_RESOURCE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_SHORTCUT_INTENT-property"></a>EXTRA_SHORTCUT_INTENT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_SHORTCUT_INTENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_SHORTCUT_NAME-property"></a>EXTRA_SHORTCUT_NAME</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_SHORTCUT_NAME constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_STREAM-property"></a>EXTRA_STREAM</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_STREAM constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_SUBJECT-property"></a>EXTRA_SUBJECT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_SUBJECT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_TEMPLATE-property"></a>EXTRA_TEMPLATE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_TEMPLATE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_TEXT-property"></a>EXTRA_TEXT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_TEXT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_TITLE-property"></a>EXTRA_TITLE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_TITLE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="EXTRA_UID-property"></a>EXTRA_UID</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.EXTRA_UID constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FILL_IN_ACTION-property"></a>FILL_IN_ACTION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FILL_IN_ACTION constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FILL_IN_CATEGORIES-property"></a>FILL_IN_CATEGORIES</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FILL_IN_CATEGORIES constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FILL_IN_COMPONENT-property"></a>FILL_IN_COMPONENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FILL_IN_COMPONENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FILL_IN_DATA-property"></a>FILL_IN_DATA</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FILL_IN_DATA constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FILL_IN_PACKAGE-property"></a>FILL_IN_PACKAGE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FILL_IN_PACKAGE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_BROUGHT_TO_FRONT-property"></a>FLAG_ACTIVITY_BROUGHT_TO_FRONT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_CLEAR_TOP-property"></a>FLAG_ACTIVITY_CLEAR_TOP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_CLEAR_TOP constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET-property"></a>FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS-property"></a>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_FORWARD_RESULT-property"></a>FLAG_ACTIVITY_FORWARD_RESULT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_FORWARD_RESULT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY-property"></a>FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_MULTIPLE_TASK-property"></a>FLAG_ACTIVITY_MULTIPLE_TASK</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_MULTIPLE_TASK constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_NEW_TASK-property"></a>FLAG_ACTIVITY_NEW_TASK</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_NEW_TASK constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_NO_ANIMATION-property"></a>FLAG_ACTIVITY_NO_ANIMATION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_NO_ANIMATION constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_NO_HISTORY-property"></a>FLAG_ACTIVITY_NO_HISTORY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_NO_HISTORY constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_NO_USER_ACTION-property"></a>FLAG_ACTIVITY_NO_USER_ACTION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_NO_USER_ACTION constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_PREVIOUS_IS_TOP-property"></a>FLAG_ACTIVITY_PREVIOUS_IS_TOP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_REORDER_TO_FRONT-property"></a>FLAG_ACTIVITY_REORDER_TO_FRONT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_REORDER_TO_FRONT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_RESET_TASK_IF_NEEDED-property"></a>FLAG_ACTIVITY_RESET_TASK_IF_NEEDED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ACTIVITY_SINGLE_TOP-property"></a>FLAG_ACTIVITY_SINGLE_TOP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_ACTIVITY_SINGLE_TOP constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_AUTO_CANCEL-property"></a>FLAG_AUTO_CANCEL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Cancel the notification when it is clicked by the user.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_CANCEL_CURRENT-property"></a>FLAG_CANCEL_CURRENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android PendingIntent.FLAG_CANCEL_CURRENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_DEBUG_LOG_RESOLUTION-property"></a>FLAG_DEBUG_LOG_RESOLUTION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_DEBUG_LOG_RESOLUTION constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_FROM_BACKGROUND-property"></a>FLAG_FROM_BACKGROUND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_FROM_BACKGROUND constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_GRANT_READ_URI_PERMISSION-property"></a>FLAG_GRANT_READ_URI_PERMISSION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_GRANT_READ_URI_PERMISSION constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_GRANT_WRITE_URI_PERMISSION-property"></a>FLAG_GRANT_WRITE_URI_PERMISSION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_GRANT_WRITE_URI_PERMISSION constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_INSISTENT-property"></a>FLAG_INSISTENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Repeat audio until the notification is cancelled or the notification window
+is opened.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_NO_CLEAR-property"></a>FLAG_NO_CLEAR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Do not cancel the notification when the user clicks the Clear All button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_NO_CREATE-property"></a>FLAG_NO_CREATE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android PendingIntent.FLAG_NO_CREATE constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ONE_SHOT-property"></a>FLAG_ONE_SHOT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android PendingIntent.FLAG_ONE_SHOT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ONGOING_EVENT-property"></a>FLAG_ONGOING_EVENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies that a notification is in reference to something that is ongoing, like a phone call.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ONLY_ALERT_ONCE-property"></a>FLAG_ONLY_ALERT_ONCE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Play an alert (sound, lights, and/or vibration) once each time the notification is sent, even if it has not been canceled before that.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_RECEIVER_REGISTERED_ONLY-property"></a>FLAG_RECEIVER_REGISTERED_ONLY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android Intent.FLAG_RECEIVER_REGISTERED_ONLY constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_SHOW_LIGHTS-property"></a>FLAG_SHOW_LIGHTS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use LED lights to alert the user to the notification.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_UPDATE_CURRENT-property"></a>FLAG_UPDATE_CURRENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Corresponds to the Android PendingIntent.FLAG_UPDATE_CURRENT constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PENDING_INTENT_FOR_ACTIVITY-property"></a>PENDING_INTENT_FOR_ACTIVITY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Not used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PENDING_INTENT_FOR_BROADCAST-property"></a>PENDING_INTENT_FOR_BROADCAST</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Not used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PENDING_INTENT_FOR_SERVICE-property"></a>PENDING_INTENT_FOR_SERVICE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Not used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PENDING_INTENT_MAX_VALUE-property"></a>PENDING_INTENT_MAX_VALUE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Not used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="R-property"></a>R</td>
+            <td class='attr-rw'>
+                [Titanium.Android.R]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Accessor for Android system resources.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RESULT_CANCELED-property"></a>RESULT_CANCELED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Used with setResult to specify that
+an activity was canceled.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RESULT_FIRST_USER-property"></a>RESULT_FIRST_USER</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Used with setResult to specify a 
+user-defined result.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="RESULT_OK-property"></a>RESULT_OK</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Used with setResult to specify that
+an activity succeeded.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SCREEN_ORIENTATION_BEHIND-property"></a>SCREEN_ORIENTATION_BEHIND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with requestedOrientation to
+specify the activity should run in the same orientation as the activity behind it
+in the activity stack.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SCREEN_ORIENTATION_LANDSCAPE-property"></a>SCREEN_ORIENTATION_LANDSCAPE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with requestedOrientation to
+specify a landscape screen orientation.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SCREEN_ORIENTATION_NOSENSOR-property"></a>SCREEN_ORIENTATION_NOSENSOR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with requestedOrientation to
+specify that the sensor should be ignored and the display should not rotate.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SCREEN_ORIENTATION_PORTRAIT-property"></a>SCREEN_ORIENTATION_PORTRAIT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with requestedOrientation to
+specify a portrait screen orientation.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SCREEN_ORIENTATION_SENSOR-property"></a>SCREEN_ORIENTATION_SENSOR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with requestedOrientation to
+specify that orientation should be determined by the orientation sensor.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SCREEN_ORIENTATION_UNSPECIFIED-property"></a>SCREEN_ORIENTATION_UNSPECIFIED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with requestedOrientation to
+specify that the system should use its default rules for determining the best
+orientation.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="SCREEN_ORIENTATION_USER-property"></a>SCREEN_ORIENTATION_USER</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with requestedOrientation to
+specify that the system should use the user's preferred orientation.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="START_NOT_STICKY-property"></a>START_NOT_STICKY</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A Service start mode indicating that if the host application is stopped by Android, the service should not be restarted automatically.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="START_REDELIVER_INTENT-property"></a>START_REDELIVER_INTENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A Service start mode indicating that if the host application is stopped by Android, the service should be restarted automatically and the original Intent re-sent.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_DEFAULT-property"></a>STREAM_DEFAULT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to request that the default stream type for notifications be used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URI_INTENT_SCHEME-property"></a>URI_INTENT_SCHEME</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The URI scheme used for intent URIs.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="currentActivity-property"></a>currentActivity</td>
+            <td class='attr-rw'>
+                [Titanium.Android.Activity]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Activity of the active context.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="currentService-property"></a>currentService</td>
+            <td class='attr-rw'>
+                [Titanium.Android.Service]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Service in the active context.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createIntent-method">
+        <a name="createIntent-method"></a><b>createIntent</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.Android.Intent-object.html"><code>Titanium.Android.Intent</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Android.Intent&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.Android.Intent except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createIntentChooser-method">
+        <a name="createIntentChooser-method"></a><b>createIntentChooser</b> <span class="params">(intent, title)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an activity chooser intent, used to allow the user to select a target activity
+for an intent.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>intent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.Intent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The intent to display a chooser for.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>title</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Title to display on the chooser.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createNotification-method">
+        <a name="createNotification-method"></a><b>createNotification</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.Android.Notification-object.html"><code>Titanium.Android.Notification</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Android.Notification&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.Android.Notification except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createPendingIntent-method">
+        <a name="createPendingIntent-method"></a><b>createPendingIntent</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates a <a href="Titanium.Android.PendingIntent-object.html">PendingIntent</a> to be used inside a
+<a href="Titanium.Android.Notification-object.html">Notification</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Android.PendingIntent&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on the new object, including any defined by
+Titanium.Android.PendingIntent, except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createService-method">
+        <a name="createService-method"></a><b>createService</b> <span class="params">(intent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Create a <a href="Titanium.Android.Service-object.html"><code>Titanium.Android.Service</code></a> so you can start/stop it and listen for events from it.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>intent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.Intent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An Intent created with createServiceIntent,
+which specifies the service to be instantiated.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createServiceIntent-method">
+        <a name="createServiceIntent-method"></a><b>createServiceIntent</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Create an <code>Intent</code> to be used to start a service.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [ServiceIntentOptions]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Options for the Service.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCurrentActivity-method">
+        <a name="getCurrentActivity-method"></a><b>getCurrentActivity</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.currentActivity-property.html">currentActivity</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCurrentService-method">
+        <a name="getCurrentService-method"></a><b>getCurrentService</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.currentService-property.html">currentService</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isServiceRunning-method">
+        <a name="isServiceRunning-method"></a><b>isServiceRunning</b> <span class="params">(intent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Check on state of Service.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>intent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.Intent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An Intent created with createServiceIntent,
+which specifies the service to check.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="startService-method">
+        <a name="startService-method"></a><b>startService</b> <span class="params">(intent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Starts a simple service.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>intent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.Intent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An Intent created with createServiceIntent,
+which specifies the service to start.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stopService-method">
+        <a name="stopService-method"></a><b>stopService</b> <span class="params">(intent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Stop a simple service that was started with <code>startService</code>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>intent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.Intent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An Intent created with createServiceIntent,
+which specifies the service to stop.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    
