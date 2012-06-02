@@ -35,16 +35,30 @@
             <span class="type">Object</span> 
             Titanium.Network.TCPSocket 
         </h1>
-	<ul class="files">
-	  <li>iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>iPhone(1.2.0+), iPad(1.2.0+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The TCPSocket instance returned from <a href="Titanium.Network.createTCPSocket-method.html">Titanium.Network.createTCPSocket</a>.  This object represents a socket which either listens locally on the device for connections, or connects to a remote machine.</p>
+        <p>DEPRECATED: USE <a href="Titanium.Network.Socket.TCP-object.html"><code>Titanium.Network.Socket.TCP</code></a> WHERE POSSIBLE.  The TCPSocket instance returned from <a href="Titanium.Network.createTCPSocket-method.html"><code>Titanium.Network.createTCPSocket</code></a>.  This object represents a socket which either listens locally on the device for connections, or connects to a remote machine.</p>
+    </div>
+    
+    
+    <div class="description">
+        <p style="border: 2px #f99 solid; padding:4px;">
+          <span style="background-color:red; color:white;padding:2px">Deprecated</span>
+        since 1.7.0
+        
+        </p>
+    </div>
+    
+    
+    <div class="description">
+        <p>Sockets are nontrivial; it is recommended that anyone using them be familiar with the basics of BSD sockets.  All sockets use TCP connections, and are asynchronous for read operations, so your program should be ready to receive 'read' events at any point.  Socket references cannot be transferred to socket objects, and vice-versa - socket references are an internal mechanism which is used only to determine which sockets to send data to and read data from.  For listening sockets, it is highly recommended that you use the <a href="Titanium.Network.INADDR_ANY-property.html"><code>Titanium.Network.INADDR_ANY</code></a> constant as the host name.  If a window containing a socket is closed, the socket MUST be closed also unless you intend to continue to receive data, otherwise the socket will consume resources (and potentially cause conflicts with opening the window again, if a listener) until the program is restarted.  Be aware of the differences between the listen() and connect() functions; attempting to use one when you mean the other may result in errors, unpredictable behavior, or both.</p>
     </div>
     
 
@@ -52,6 +66,10 @@
     
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
     
             <ul>
                 <li><a href="#close-method">close <span class="params">()</span></a></li>
@@ -62,7 +80,55 @@
             </ul>
     
             <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHostName-method">getHostName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getIsValid-method">getIsValid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMode-method">getMode <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPort-method">getPort <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getStripTerminator-method">getStripTerminator <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#listen-method">listen <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHostName-method">setHostName <span class="params">(hostName)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setIsValid-method">setIsValid <span class="params">(isValid)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMode-method">setMode <span class="params">(mode)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPort-method">setPort <span class="params">(port)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setStripTerminator-method">setStripTerminator <span class="params">(stripTerminator)</span></a></li>
             </ul>
     
             <ul>
@@ -78,33 +144,46 @@
         <tr valign='top'>
             <td class='attr-name'><a name="hostName-property"></a>hostName</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the host name to connect to.  Must be INADDR_ANY or an identifier for the local device in order to listen</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>the host name to connect to.  Must be Titanium.Network.INADDR_ANY or an identifier for the local device in order to listen</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="isValid-property"></a>isValid</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>whether or not the socket is valid</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="mode-property"></a>mode</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>the socket's mode</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="port-property"></a>port</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>the port to connect/listen on</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="stripTerminator-property"></a>stripTerminator</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>strip terminating null character when sending string data; default is false</td>
         </tr>
         
     </table>
@@ -116,27 +195,25 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#read-event">read</a></td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>new data was read off the socket</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#readError-event">readError</a></td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>an error occured when reading</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#writeError-event">writeError</a></td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>an error occured when writing</td>
         </tr>
         
     </table>
     
 
-    
-    <div class="sectiontitle">Notes</div>
-    <table border='0' cellpadding='5'>
-	<div class="code"><p>Sockets are nontrivial; it is recommended that anyone using them be familiar with the basics of BSD sockets.  All sockets use TCP connections, and are asynchronous for read operations, so your program should be ready to receive 'read' events at any point.  Socket references cannot be transferred to socket objects, and vice-versa - socket references are an internal mechanism which is used only to determine which sockets to send data to and read data from.  For listening sockets, it is highly recommended that you use the <a href="Titanium.Network.INADDR_ANY-property.html">Titanium.Network.INADDR_ANY</a> constant as the host name.  If a window containing a socket is closed, the socket MUST be closed also unless you intend to continue to receive data, otherwise the socket will consume resources (and potentially cause conflicts with opening the window again, if a listener) until the program is restarted.  Be aware of the differences between the listen() and connect() functions; attempting to use one when you mean the other may result in errors, unpredictable behavior, or both.</p></div>
-    </table>
     
 
     
@@ -146,94 +223,409 @@
     <div class="sectiontitle">Methods</div>
     
     <div class="method">
-      <div class="title" id="close-method">
-        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>close the socket</p>
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="close-method">
+        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>close the socket</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="connect-method">
         <a name="connect-method"></a><b>connect</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>connect the scocket to a TCP server</p></div>
       
-      <div class="description">
-        <p>connect the scocket to a TCP server</p>
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHostName-method">
+        <a name="getHostName-method"></a><b>getHostName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.TCPSocket.hostName-property.html">hostName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getIsValid-method">
+        <a name="getIsValid-method"></a><b>getIsValid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.TCPSocket.isValid-property.html">isValid</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMode-method">
+        <a name="getMode-method"></a><b>getMode</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.TCPSocket.mode-property.html">mode</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPort-method">
+        <a name="getPort-method"></a><b>getPort</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.TCPSocket.port-property.html">port</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getStripTerminator-method">
+        <a name="getStripTerminator-method"></a><b>getStripTerminator</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.TCPSocket.stripTerminator-property.html">stripTerminator</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="listen-method">
         <a name="listen-method"></a><b>listen</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>set up the socket to receive connections</p></div>
       
-      <div class="description">
-        <p>set up the socket to receive connections</p>
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHostName-method">
+        <a name="setHostName-method"></a><b>setHostName</b> <span class="params">(hostName)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.TCPSocket.hostName-property.html">hostName</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>hostName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setIsValid-method">
+        <a name="setIsValid-method"></a><b>setIsValid</b> <span class="params">(isValid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.TCPSocket.isValid-property.html">isValid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>isValid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMode-method">
+        <a name="setMode-method"></a><b>setMode</b> <span class="params">(mode)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.TCPSocket.mode-property.html">mode</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>mode</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPort-method">
+        <a name="setPort-method"></a><b>setPort</b> <span class="params">(port)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.TCPSocket.port-property.html">port</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>port</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setStripTerminator-method">
+        <a name="setStripTerminator-method"></a><b>setStripTerminator</b> <span class="params">(stripTerminator)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.TCPSocket.stripTerminator-property.html">stripTerminator</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>stripTerminator</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="write-method">
         <a name="write-method"></a><b>write</b> <span class="params">(data, sendTo)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>write data to the socket, if the mode is WRITE_MODE or READ_WRITE_MODE</p>
-      </div>
+      <div class="description"><p>write data to the socket, if the mode is WRITE_MODE or READ_WRITE_MODE</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object,string]
-            </td>
-            <td class='attr-desc'>either a string or blob object representing the data to be transferred</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>sendTo</td>
-            <td class='attr-rw'>
-              [int]
-            </td>
-            <td class='attr-desc'>the socket reference to send the data to.  Default is to send to all connected sockets</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [ObjectString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>either a string or blob object representing the data to be transferred</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sendTo</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>the socket reference to send the data to.  Default is to send to all connected sockets</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     
@@ -248,34 +640,45 @@
       </div>
       
       
-      <div class="description">
-        <p>new data was read off the socket</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>from[int]</td>
-            <td class='attr-desc'>the reference for the socket that data was retrieved from</td>
+            <td class='attr-name'>data</td>
+            <td class='attr-desc'>
+              
+              <p>a blob representing the data read, can be interpreted via toString</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>data[object]</td>
-            <td class='attr-desc'>a blob representing the data read, can be interpreted via toString</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>from</td>
+            <td class='attr-desc'>
+              
+              <p>the reference for the socket that data was retrieved from</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -289,34 +692,45 @@
       </div>
       
       
-      <div class="description">
-        <p>an error occured when reading</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>code</td>
+            <td class='attr-desc'>
+              
+              <p>the BSD socket error code</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>code[int]</td>
-            <td class='attr-desc'>the BSD socket error code</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>error[string]</td>
-            <td class='attr-desc'>a description of the error</td>
+            <td class='attr-name'>error</td>
+            <td class='attr-desc'>
+              
+              <p>a description of the error</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>
@@ -330,34 +744,45 @@
       </div>
       
       
-      <div class="description">
-        <p>an error occured when writing</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
+            <td class='attr-name'>code</td>
+            <td class='attr-desc'>
+              
+              <p>the BSD socket error code</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>code[int]</td>
-            <td class='attr-desc'>the BSD socket error code</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>error[string]</td>
-            <td class='attr-desc'>a description of the error</td>
+            <td class='attr-name'>error</td>
+            <td class='attr-desc'>
+              
+              <p>a description of the error</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

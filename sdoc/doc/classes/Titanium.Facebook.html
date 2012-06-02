@@ -35,17 +35,112 @@
             <span class="type">Module</span> 
             Titanium.Facebook 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level Facebook module.  The Facebook module is used for connecting your application with 
-Facebook through Facebook Connect.</p>
+        <p>The top level Facebook module.<br />
+</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The Facebook module is used for connecting your application with 
+Facebook. This module supports the following features:</p>
+<ul>
+<li>
+<p>Logging in to Facebook and authorizing your application.</p>
+</li>
+<li>
+<p>Making requests through the Facebook Graph API using
+  <a href="Titanium.Facebook.requestWithGraphPath-method.html">requestWithGraphPath</a>.</p>
+</li>
+<li>
+<p>Making requests through the legacy Facebook REST API using
+  <a href="Titanium.Facebook.request-method.html">request</a>. </p>
+</li>
+<li>
+<p>Posting Facebook dialogs.</p>
+</li>
+</ul>
+<h4>Facebook Login and Authorization</h4>
+<p>To use Facebook, a user must log in to Facebook and explicitly authorize the
+application to perform certain actions, such as accessing profile information or 
+posting status messages. </p>
+<p>There are two ways to initiate the login process:</p>
+<ul>
+<li>
+<p>Call <a href="Titanium.Facebook.authorize-method.html">authorize</a> prompt the user to login and authorize
+  the application.</p>
+</li>
+<li>
+<p>Create a Facebook <a href="Titanium.Facebook.LoginButton-object.html">LoginButton</a> to allow the user to 
+  log in if desired.</p>
+</li>
+</ul>
+<p>Which approach you take depends on your UI and how central Facebook is to your
+application.</p>
+<p>Before calling <code>authorize</code> or creating a login button, you must set the
+<a href="Titanium.Facebook.appid-property.html">appid</a> and <a href="Titanium.Facebook.permissions-property.html">permissions</a>
+properties. </p>
+<p>To create a Facebook App ID, go to the Facebook Developer App:</p>
+<p><a href="https://developers.facebook.com/apps">developers.facebook.com/apps</a></p>
+<p>For a complete list of permissions, see the 
+<a href="http://developers.facebook.com/docs/reference/api/permissions/">official Facebook Permissions Reference</a></p>
+<h4>Facebook Graph API</h4>
+<p>The Facebook Graph API is the preferred method for getting information about a user's friends, 
+news feed, and so on. Each object in the Facebook social graph is represented by a
+graph API <em>object</em>, such as a user, photo, or status message. </p>
+<p>The Graph API allows you to make requests on behalf of the user, such as posting a
+picture or status message. </p>
+<p>Use the <a href="Titanium.Facebook.requestWithGraphPath-method.html">requestWithGraphPath</a> method to make a 
+request to the Graph API.</p>
+<p>For details on each of the Graph API objects and the supported operations, see the 
+<a href="http://developers.facebook.com/docs/reference/api/">official Facebook Graph API documentation</a>.</p>
+<h4>Facebook REST API</h4>
+<p>The Facebook REST API is in the process of being deprecated, and should not be used 
+unless your application relies on an API that doesn't exist in the Graph API.</p>
+<p>Use the <a href="Titanium.Facebook.request-method.html">request</a> method to make a request to the REST API.</p>
+<p>For details on the REST API, see the 
+<a href="http://developers.facebook.com/docs/reference/rest/">official Facebook REST API documentation</a>.</p>
+<h4>Facebook Dialogs</h4>
+<p>Facebook dialogs are standard user-interface components for used to prompt users to
+interact with Facebook in a specific way, such as:</p>
+<ul>
+<li>
+<p>Sending an application request</p>
+</li>
+<li>
+<p>Sending a status update</p>
+</li>
+<li>
+<p>Adding a friend</p>
+</li>
+</ul>
+<p>Because dialogs require user interaction, they do not require Facebook permissions.</p>
+<p>For details on different dialogs see the 
+<a href="http://developers.facebook.com/docs/reference/dialogs/">official Facebook Dialogs documentation</a>.<br />
+</p>
+<h4>iOS Platform Implementation Notes</h4>
+<p>Due to how the facebook login process works on iOS, your app will need to have the following 
+in your tiapp.xml if you target those platforms:</p>
+<pre><code>&lt;property name="ti.facebook.appid"&gt;your_facebook_app_id_here&lt;/property &gt;
+</code></pre>
+<p>You must still set Ti.Facebook.appid within your app itself to use the facebook module.<br />
+This property is used only for configuring your app to interface with the facebook 
+login process.</p>
+<h4>Previous Versions</h4>
+<p>Titanium Mobile SDK 1.6.0 marked a significant change for this module.  Older versions of 
+the module were not compatible with the new Graph API.  Applications written for the 
+pre-1.6.0 version of this module will <strong>not</strong> work with the 1.6.0 and higher versions.<br />
+Nor is the code shown in the examples here backwards-compatible with pre-1.6.0 Titanium 
+Mobile SDK.</p>
     </div>
     
 
@@ -59,11 +154,15 @@ Facebook through Facebook Connect.</p>
             </ul>
     
             <ul>
-                <li><a href="#createLoginButton-method">createLoginButton <span class="params">(params, parameters)</span></a></li>
+                <li><a href="#authorize-method">authorize <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#execute-method">execute <span class="params">(method, params, callback, data)</span></a></li>
+                <li><a href="#createLoginButton-method">createLoginButton <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#dialog-method">dialog <span class="params">(action, params, callback)</span></a></li>
             </ul>
     
             <ul>
@@ -71,19 +170,35 @@ Facebook through Facebook Connect.</p>
             </ul>
     
             <ul>
-                <li><a href="#hasPermission-method">hasPermission <span class="params">(permission)</span></a></li>
+                <li><a href="#getAccessToken-method">getAccessToken <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#isLoggedIn-method">isLoggedIn <span class="params">()</span></a></li>
+                <li><a href="#getAppid-method">getAppid <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#publishStream-method">publishStream <span class="params">(title, data, target, callback)</span></a></li>
+                <li><a href="#getExpirationDate-method">getExpirationDate <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#query-method">query <span class="params">(fql, callback)</span></a></li>
+                <li><a href="#getForceDialogAuth-method">getForceDialogAuth <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLoggedIn-method">getLoggedIn <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPermissions-method">getPermissions <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getUid-method">getUid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#logout-method">logout <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -91,7 +206,39 @@ Facebook through Facebook Connect.</p>
             </ul>
     
             <ul>
-                <li><a href="#requestPermission-method">requestPermission <span class="params">(permission, callback)</span></a></li>
+                <li><a href="#request-method">request <span class="params">(method, params, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#requestWithGraphPath-method">requestWithGraphPath <span class="params">(path, params, httpMethod, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAccessToken-method">setAccessToken <span class="params">(accessToken)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAppid-method">setAppid <span class="params">(appid)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setExpirationDate-method">setExpirationDate <span class="params">(expirationDate)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setForceDialogAuth-method">setForceDialogAuth <span class="params">(forceDialogAuth)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLoggedIn-method">setLoggedIn <span class="params">(loggedIn)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPermissions-method">setPermissions <span class="params">(permissions)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setUid-method">setUid <span class="params">(uid)</span></a></li>
             </ul>
     
     
@@ -101,35 +248,87 @@ Facebook through Facebook Connect.</p>
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="BUTTON_STYLE_NORMAL-property"></a>BUTTON_STYLE_NORMAL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with LoginButton.style to specify
+the default login button reading "Connect" or "Login".</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BUTTON_STYLE_WIDE-property"></a>BUTTON_STYLE_WIDE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with LoginButton.style to specify
+a wide login button reading "Connect with Facebook" or "Login with Facebook".</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="accessToken-property"></a>accessToken</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>OAuth token set after a successful authorize.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="appid-property"></a>appid</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Your Facebook application id. You need to set this for anything to work.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="expirationDate-property"></a>expirationDate</td>
+            <td class='attr-rw'>
+                [Date]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Time at which the accessToken expires.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="forceDialogAuth-property"></a>forceDialogAuth</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether the login should use the traditional dialog-based
+authentication.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="loggedIn-property"></a>loggedIn</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>return true if the user has logged in</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates if the user is logged in.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="permissions-property"></a>permissions</td>
             <td class='attr-rw'>
-                [object]
+                [Array&lt;String&gt;]
             </td>
-            <td class='attr-desc'>return a dictionary of permissions with the keys being the name of the permission and the value being a boolean of true if granted, false if not granted</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Array of permissions to request for your app.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="session-property"></a>session</td>
+            <td class='attr-name'><a name="uid-property"></a>uid</td>
             <td class='attr-rw'>
-                [object]
+                [String]
             </td>
-            <td class='attr-desc'>return the special properties of the session</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="userId-property"></a>userId</td>
-            <td class='attr-rw'>
-                [long]
-            </td>
-            <td class='attr-desc'>the unique user id returned from Facebook. returns 0 if not logged in</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Unique user ID returned from Facebook.</td>
         </tr>
         
     </table>
@@ -141,12 +340,14 @@ Facebook through Facebook Connect.</p>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#login-event">login</a></td>
-            <td class='attr-desc'>fired at session login</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired at session login.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#logout-event">logout</a></td>
-            <td class='attr-desc'>fired at session logout</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired at session logout.</td>
         </tr>
         
     </table>
@@ -154,6 +355,251 @@ Facebook through Facebook Connect.</p>
 
     
 
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Authorize</div>
+	<div class="code"><p>Shows official Facebook dialog for logging in the user and prompting the user to approve your 
+requested permissions.  Listen for the module's <a href="Titanium.Facebook.login-event.html">login</a> event to 
+determine whether the request succeeded.</p>
+<pre><code>Ti.Facebook.appid = '[YOUR APPID]';
+Ti.Facebook.permissions = ['publish_stream']; // Permissions your app needs
+Ti.Facebook.addEventListener('login', function(e) {
+    if (e.success) {
+        alert('Logged In');
+    } else if (e.error) {
+        alert(e.error);
+    } else if (e.cancelled) {
+        alert("Canceled");
+    }
+});
+Ti.Facebook.authorize();
+</code></pre></div>
+        
+	<div class="subsectiontitle">Logout</div>
+	<div class="code"><p>Logout the user and forget the authorization token.  The 
+<a href="Titanium.Facebook.logout-method.html">logout</a> event is fired after the user is logged out.</p>
+<pre><code>Ti.Facebook.addEventListener('logout', function(e) {
+    alert('Logged out');
+});
+Ti.Facebook.logout();
+</code></pre></div>
+        
+	<div class="subsectiontitle">Authorize/Logout Using the Facebook LoginButton</div>
+	<div class="code"><p>You can use the the Facebook-themed <a href="Titanium.Facebook.LoginButton-object.html">LoginButton</a>
+to allow the user to log in as required. The button updates its state automatically depending 
+on whether the user is logged in or not.  When the user is logged in, then the button 
+will show "Logout", and vice-versa.</p>
+<p>Note that you don't need to set a click listener or anything else on the button. 
+It "just works".  To be notified when the user logs in or out, add event listeners for the 
+<a href="Titanium.Facebook.login-event.html">login</a> and <a href="Titanium.Facebook.logout-method.html">logout</a> events
+provided by the Titanium Facebook module, as in the example below.</p>
+<pre><code>// Don't forget to set your appid and requested permissions, else the login button
+// won't be effective.
+Ti.Facebook.appid = '[your appid]';
+Ti.Facebook.permissions = ['publish_stream'];
+Ti.Facebook.addEventListener('login', function(e) {
+    if (e.success) {
+        alert('Logged in');
+    }
+});
+Ti.Facebook.addEventListener('logout', function(e) {
+    alert('Logged out');
+});
+
+// Add the button.  Note that it doesn't need a click event listener.
+win2.add(Ti.Facebook.createLoginButton({
+    top : 50,
+    style : Ti.Facebook.BUTTON_STYLE_WIDE
+}));
+</code></pre>
+<p>The specified button style ('wide' or <code>BUTTON_STYLE_WIDE</code>) shows a wide version of the 
+button that displays "Connect with Facebook" instead of just "Connect".</p></div>
+        
+	<div class="subsectiontitle">Simple Graph API Call</div>
+	<div class="code"><p>This example makes a call to the "me" graph path, which represents the current
+user. The JSON results are simply displayed in an alert.  This example assumes 
+the user is already logged in (you can check this with <a href="Titanium.Facebook.loggedIn-property.html"><code>Titanium.Facebook.loggedIn</code></a>).</p>
+<pre><code>Ti.Facebook.requestWithGraphPath('me', {}, 'GET', function(e) {
+    if (e.success) {
+        alert(e.result);
+    } else if (e.error) {
+        alert(e.error);
+    } else {
+        alert('Unknown response');
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Create an Event Using the Graph API</div>
+	<div class="code"><p>This example uses the Graph API to create an event<br />
+in the logged-on user's Facebook account. This requires the "create_event" permission.</p>
+<pre><code>// First make sure this permission exists
+Ti.Facebook.permissions = ['create_event'];
+Ti.Facebook.authorize();
+
+// ...
+// ...
+
+// Now create the event after you've confirmed authorize() was successful.
+var starttime = new Date(2012, 4, 31, 17, 0);
+var endtime = new Date(2012, 4, 31, 19, 0);
+var title = "Barry's Birthday Celebration";
+var description = "Barry will have a great party";
+var data = {
+    start_time: JSON.stringify(starttime), // API expects a JSON stringified date
+    end_time: JSON.stringify(endtime),
+    summary: description,
+    name: title
+};
+Ti.Facebook.requestWithGraphPath('me/events', data, 'POST', function(e) {
+    if (e.success) {
+        alert("Success! Returned from FB: " + e.result);
+    } else {
+        if (e.error) {
+            alert(e.error);
+        } else {
+            alert("Unknown result");
+        }
+    }
+});
+</code></pre>
+<p>For more information on the Event object, see:</p>
+<ul>
+<li><a href="http://developers.facebook.com/docs/reference/api/event/">Event in the Facebook Graph API Reference</a>.</li>
+</ul></div>
+        
+	<div class="subsectiontitle">Set a User's Facebook Status Using the Graph API</div>
+	<div class="code"><p>This example uses the Graph API to set the user's Facebook status, which requires the 
+"publish_stream" permission.</p>
+<pre><code>// First make sure this permission exists
+Ti.Facebook.permissions = ['publish_stream'];
+Ti.Facebook.authorize();
+
+// ...
+// ...
+
+// Now create the status message after you've confirmed that authorize() succeeded
+Ti.Facebook.requestWithGraphPath('me/feed', {message: "Trying out FB Graph API and it's fun!"}, 
+         "POST", function(e) {
+    if (e.success) {
+        alert("Success!  From FB: " + e.result);
+    } else {
+        if (e.error) {
+            alert(e.error);
+        } else {
+            alert("Unkown result");
+        }
+    }
+});
+</code></pre>
+<p>For more information on the Staus object, see:</p>
+<ul>
+<li><a href="http://developers.facebook.com/docs/reference/api/status/">Status in the Facebook Graph API Reference</a>.<br />
+</li>
+</ul></div>
+        
+	<div class="subsectiontitle">Post a Photo Using the Graph API</div>
+	<div class="code"><p>This example posts a photo to the user's account using the Graph API.
+Another example below shows how to do this with the REST API, if desired. 
+This requires the "publish_stream" permission.</p>
+<pre><code>// First make sure this permission exists
+Ti.Facebook.permissions = ['publish_stream'];
+Ti.Facebook.authorize();
+
+// ...
+// ...
+
+// Now post the photo after you've confirmed that authorize() succeeded
+var f = Ti.Filesystem.getFile('pumpkin.jpg');
+var blob = f.read();
+var data = {
+    message: 'This is a pumpkin',
+    picture: blob
+};
+Ti.Facebook.requestWithGraphPath('me/photos', data, 'POST', function(e){
+    if (e.success) {
+        alert("Success!  From FB: " + e.result);
+    } else {
+        if (e.error) {
+            alert(e.error);
+        } else {
+            alert("Unkown result");
+        }
+    }
+});
+</code></pre>
+<p>For more information on posting photos, see:</p>
+<ul>
+<li><a href="http://developers.facebook.com/docs/reference/api/photo/">Photo in the Facebook Graph API Reference</a> </li>
+</ul></div>
+        
+	<div class="subsectiontitle">Post a photo using the REST API</div>
+	<div class="code"><p>This example posts a photo to the user's account using the REST API. Another example above shows 
+how to do this with the Graph API.  This requires the "publish_stream" permission.</p>
+<pre><code>// First make sure this permission exists
+Ti.Facebook.permissions = ['publish_stream'];
+Ti.Facebook.authorize();
+
+// ...
+// ...
+
+// Now post the photo after you've confirmed that authorize() succeeded
+var f = Ti.Filesystem.getFile('pumpkin.jpg');
+var blob = f.read();
+var data = {
+    caption: 'This is a pumpkin',
+    picture: blob
+};
+Ti.Facebook.request('photos.upload', data, function(e){
+    if (e.success) {
+        alert("Success!  From FB: " + e.result);
+    } else {
+        if (e.error) {
+            alert(e.error);
+        } else {
+            alert("Unkown result");
+        }
+    }
+});
+</code></pre>
+<p>For more information on posting photos using the REST API, see:</p>
+<ul>
+<li><a href="http://developers.facebook.com/docs/reference/rest/photos.upload/">photos.upload in the Facebook REST API Reference</a> </li>
+</ul></div>
+        
+	<div class="subsectiontitle">Show the Facebook Feed Dialog</div>
+	<div class="code"><p>This example shows how to display the offical Facebook Feed Dialog, for adding a
+post to the user's wall. In this example, we'll prefill some of the feed fields by 
+passing a data dictionary to the <a href="Titanium.Facebook.dialog-method.html">dialog</a> method; this is not required.</p>
+<pre><code>var data = {
+    link : "http://www.appcelerator.com",
+    name : "Appcelerator Titanium Mobile",
+    message : "Checkout this cool open source project for creating mobile apps",
+    caption : "Appcelerator Titanium Mobile",
+    picture : "http://developer.appcelerator.com/assets/img/DEV_titmobile_image.png",
+    description : "You've got the ideas, now you've got the power. Titanium translates " +
+                  "your hard won web skills into native applications..."
+};
+Titanium.Facebook.dialog("feed", data, function(e) {
+    if(e.success &amp;&amp; e.result) {
+        alert("Success! New Post ID: " + e.result);
+    } else {
+        if(e.error) {
+            alert(e.error);
+        } else {
+            alert("User canceled dialog.");
+        }
+    }
+});
+</code></pre>
+<p>For more information on Facebook Dialogs, see:</p>
+<ul>
+<li><a href="http://developers.facebook.com/docs/reference/dialogs/">Facebook Dialog Reference</a> </li>
+</ul></div>
+        
+    </table>
     
 
 
@@ -163,402 +609,644 @@ Facebook through Facebook Connect.</p>
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="authorize-method">
+        <a name="authorize-method"></a><b>authorize</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Prompts the user to log in (if not already logged in) and authorize your application.<br />
+</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="createLoginButton-method">
-        <a name="createLoginButton-method"></a><b>createLoginButton</b> <span class="params">(params, parameters)</span>
+        <a name="createLoginButton-method"></a><b>createLoginButton</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        create and return an instance of <a href="Titanium.Facebook.LoginButton.html">Titanium.Facebook.LoginButton</a>
-      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.Facebook.LoginButton-object.html"><code>Titanium.Facebook.LoginButton</code></a>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>params</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>the parameters for the request. the following keys are valid: apikey (the application API key), secret (the application API secret or null if using a session proxy), sessionProxy (the URL to the application session proxy), style (the button style - which is either normal or wide).</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>parameters</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>(optional) a dictionary object properties defined in Titanium.Facebook.LoginButton</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Facebook.LoginButton&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.Facebook.LoginButton except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="execute-method">
-        <a name="execute-method"></a><b>execute</b> <span class="params">(method, params, callback, data)</span>
+      <div class="title" id="dialog-method">
+        <a name="dialog-method"></a><b>dialog</b> <span class="params">(action, params, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>execute a FB API execute request</p>
-      </div>
+      <div class="description"><p>Opens a supported Facebook dialog.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>method</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>method to execute</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>params</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>JSON serializable object or null (if no parameters) to send with the request</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>the callback function to execute upon receiving a response. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed.</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>the data payload for the request. Must either null, a string or a Blob object.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>action</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Specifies which dialog to show, such as "feed".</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary object for pre-filling some of the dialog's fields.
+See Code Examples.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="FacebookDialogResponse.html">[Callback&lt;FacebookDialogResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback to invoke  when the user completes or cancels the dialog.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="hasPermission-method">
-        <a name="hasPermission-method"></a><b>hasPermission</b> <span class="params">(permission)</span>
+      <div class="title" id="getAccessToken-method">
+        <a name="getAccessToken-method"></a><b>getAccessToken</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>checks the existing permission and returns true if the user has granted the requested permission</p>
-      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Facebook.accessToken-property.html">accessToken</a> property.</p></div>
       
 
       
-      <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>permission</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the permission to check</td>
-          </tr>
-          
-	</table>
-      </div>
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="isLoggedIn-method">
-        <a name="isLoggedIn-method"></a><b>isLoggedIn</b> <span class="params">()</span>
+      <div class="title" id="getAppid-method">
+        <a name="getAppid-method"></a><b>getAppid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return true if the user has logged in</p>
-      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Facebook.appid-property.html">appid</a> property.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="publishStream-method">
-        <a name="publishStream-method"></a><b>publishStream</b> <span class="params">(title, data, target, callback)</span>
+      <div class="title" id="getExpirationDate-method">
+        <a name="getExpirationDate-method"></a><b>getExpirationDate</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>execute a stream request to FB</p>
-      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Facebook.expirationDate-property.html">expirationDate</a> property.</p></div>
       
 
       
-      <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>title</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the title of the stream post</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>data</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>the data to include in the post. Must be JSON serializable or null.</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>target</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the target user id to publish the stream or null if the logged in users account</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>the callback function to execute upon receiving a response. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed. the cancel property will be set to true if the user cancelled the dialog.</td>
-          </tr>
-          
-	</table>
-      </div>
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="query-method">
-        <a name="query-method"></a><b>query</b> <span class="params">(fql, callback)</span>
+      <div class="title" id="getForceDialogAuth-method">
+        <a name="getForceDialogAuth-method"></a><b>getForceDialogAuth</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>execute a FQL query against the FB API</p>
-      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Facebook.forceDialogAuth-property.html">forceDialogAuth</a> property.</p></div>
       
 
       
-      <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>fql</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the FQL query to execute</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>the callback to execute with results once the query is completed. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed.</td>
-          </tr>
-          
-	</table>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLoggedIn-method">
+        <a name="getLoggedIn-method"></a><b>getLoggedIn</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Facebook.loggedIn-property.html">loggedIn</a> property.</p></div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPermissions-method">
+        <a name="getPermissions-method"></a><b>getPermissions</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Facebook.permissions-property.html">permissions</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getUid-method">
+        <a name="getUid-method"></a><b>getUid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Facebook.uid-property.html">uid</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="logout-method">
+        <a name="logout-method"></a><b>logout</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Clears the OAuth <code>accessToken</code> and logs out the user.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="requestPermission-method">
-        <a name="requestPermission-method"></a><b>requestPermission</b> <span class="params">(permission, callback)</span>
+      <div class="title" id="request-method">
+        <a name="request-method"></a><b>request</b> <span class="params">(method, params, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>request a special permission from the user</p>
-      </div>
+      <div class="description"><p>Makes a request to the legacy Facebook REST API.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>permission</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the permission</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>the callback function to execute upon receiving a response. the result object will contain a success boolean to indicate the result.  if success is false, the error property will give the error message.  the data property will contain the result if successfully executed. the cancel property will be set to true if the user cancelled the dialog.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>method</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The REST API method to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary object for setting parameters required by the call, if any.
+See Code Examples.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="FacebookRESTResponse.html">[Callback&lt;FacebookRESTResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback to invoke  when the request completes.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="requestWithGraphPath-method">
+        <a name="requestWithGraphPath-method"></a><b>requestWithGraphPath</b> <span class="params">(path, params, httpMethod, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Makes a Facebook Graph API request.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>path</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Graph API path to request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary object for setting parameters required by the call, if any.
+See Code Examples.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>httpMethod</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The HTTP method (GET/POST/DELETE) to use for the call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="FacebookGraphResponse.html">[Callback&lt;FacebookGraphResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback to invoke  when the request completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAccessToken-method">
+        <a name="setAccessToken-method"></a><b>setAccessToken</b> <span class="params">(accessToken)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Facebook.accessToken-property.html">accessToken</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>accessToken</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAppid-method">
+        <a name="setAppid-method"></a><b>setAppid</b> <span class="params">(appid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Facebook.appid-property.html">appid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>appid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setExpirationDate-method">
+        <a name="setExpirationDate-method"></a><b>setExpirationDate</b> <span class="params">(expirationDate)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Facebook.expirationDate-property.html">expirationDate</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>expirationDate</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Date]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setForceDialogAuth-method">
+        <a name="setForceDialogAuth-method"></a><b>setForceDialogAuth</b> <span class="params">(forceDialogAuth)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Facebook.forceDialogAuth-property.html">forceDialogAuth</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>forceDialogAuth</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLoggedIn-method">
+        <a name="setLoggedIn-method"></a><b>setLoggedIn</b> <span class="params">(loggedIn)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Facebook.loggedIn-property.html">loggedIn</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>loggedIn</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPermissions-method">
+        <a name="setPermissions-method"></a><b>setPermissions</b> <span class="params">(permissions)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Facebook.permissions-property.html">permissions</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>permissions</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Array&lt;String&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setUid-method">
+        <a name="setUid-method"></a><b>setUid</b> <span class="params">(uid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Facebook.uid-property.html">uid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>uid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     
@@ -573,39 +1261,75 @@ Facebook through Facebook Connect.</p>
       </div>
       
       
-      <div class="description">
-        <p>fired at session login</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>cancel</td>
-            <td class='attr-desc'>true if the user cancelled the request by closing the dialog</td>
+            <td class='attr-name'>cancelled</td>
+            <td class='attr-desc'>
+              
+              <p>Indicates if the user canceled the login request by closing the dialog.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>success</td>
-            <td class='attr-desc'>true if the login was successful</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-name'>data</td>
+            <td class='attr-desc'>
+              
+              <p>Data returned by Facebook when we query for the UID (using graph path "me")
+after a successful login. Data is in JSON format, and includes information 
+such as user name, locale and gender.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>error</td>
-            <td class='attr-desc'>error message if success was false</td>
+            <td class='attr-desc'>
+              
+              <p>Error message, if request failed.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>success</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Boolean]</span><br /> 
+              
+              <p>Indicates if the login was successful.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>uid</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>User ID returned by Facebook if the login was successful.</p>
+            </td>
           </tr>
           
 	</table>
@@ -619,39 +1343,29 @@ Facebook through Facebook Connect.</p>
       </div>
       
       
-      <div class="description">
-        <p>fired at session logout</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>cancel</td>
-            <td class='attr-desc'>true if the user cancelled the request by closing the dialog</td>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>success</td>
-            <td class='attr-desc'>true if the logout was successful</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>error</td>
-            <td class='attr-desc'>error message if success was false</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

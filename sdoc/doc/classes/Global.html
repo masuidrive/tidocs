@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Global</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Global 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The APIs that reside in the global scope, which may be called without a namespace prefix.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Titanium provides a number of global built-in objects, detailed below. </p>
+<h4>JSON</h4>
+<p>Titanium provides a built-in <a href="Global.JSON-object.html">JSON</a> object two functions, <code>parse</code> and <code>stringify</code>.</p>
+<h4>String Utilities</h4>
+<p>Titanium includes several extra utility functions for formatting text, attached to the
+global <a href="Global.String-object.html">String</a> object.</p>
+<h4>Timers</h4>
+<p>Titanium has built-in support for one-off and repeating timers:</p>
+<ul>
+<li>
+<p>Use <a href="Global.setTimeout-method.html">setTimeout</a> to start a one-off timer.</p>
+</li>
+<li>
+<p>Use <a href="Global.setInterval-method.html">setInterval</a> to start a repeating timer.</p>
+</li>
+</ul>
+<h4>Alert</h4>
+<p>Titanium has a built-in convenience function <a href="Global.alert-method.html">alert</a> which can be used as an alias 
+for the <a href="Titanium.UI.AlertDialog-object.html">AlertDialog</a> module.</p>
+<h4>Locale</h4>
+<p>The <code>L</code> macro can also be used as an alias for the <a href="Titanium.Locale.getString-method.html"><code>Titanium.Locale.getString</code></a> method.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#L-method">L <span class="params">(key, hint)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#alert-method">alert <span class="params">(message)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#clearInterval-method">clearInterval <span class="params">(timerId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#clearTimeout-method">clearTimeout <span class="params">(timerId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#decodeURIComponent-method">decodeURIComponent <span class="params">(encodedURI)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#encodeURIComponent-method">encodeURIComponent <span class="params">(string)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#require-method">require <span class="params">(moduleId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setInterval-method">setInterval <span class="params">(function, delay)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTimeout-method">setTimeout <span class="params">(function, delay)</span></a></li>
+            </ul>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="L-method">
+        <a name="L-method"></a><b>L</b> <span class="params">(key, hint)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>An alias for <a href="Titanium.Locale.getString-method.html"><code>Titanium.Locale.getString</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>key</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Key used to lookup the localized string.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>hint</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Text to return if key is not found.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="alert-method">
+        <a name="alert-method"></a><b>alert</b> <span class="params">(message)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Displays a pop-up alert dialog with the passed in <code>message</code>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>message</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Alert message.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="clearInterval-method">
+        <a name="clearInterval-method"></a><b>clearInterval</b> <span class="params">(timerId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Cancels an interval timer.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>timerId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Unique timer identifier returned by setInterval.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="clearTimeout-method">
+        <a name="clearTimeout-method"></a><b>clearTimeout</b> <span class="params">(timerId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Cancels a one-time timer.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>timerId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Unique timer identifier returned by setTimeout.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="decodeURIComponent-method">
+        <a name="decodeURIComponent-method"></a><b>decodeURIComponent</b> <span class="params">(encodedURI)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Replaces each escape sequence in the specified string, created using the <code>encodedURI</code> 
+method, with the character that it represents. </p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>encodedURI</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Text that optionally contains encoded escape sequences.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="encodeURIComponent-method">
+        <a name="encodeURIComponent-method"></a><b>encodeURIComponent</b> <span class="params">(string)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Replaces each special character in the specified string with the equivalent URI escape 
+sequence. Useful for encoding URIs.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>string</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Text that optionally contains special characters.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="require-method">
+        <a name="require-method"></a><b>require</b> <span class="params">(moduleId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Loads either a native Titanium module, or a CommonJS module.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>moduleId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Native module ID, or local path to a JavaScript file, minus the .js extension.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setInterval-method">
+        <a name="setInterval-method"></a><b>setInterval</b> <span class="params">(function, delay)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Executes a function repeatedly with a fixed time delay between each call to that function.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>function</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Callback]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Function to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>delay</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Time in milliseconds to wait between calls to function.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTimeout-method">
+        <a name="setTimeout-method"></a><b>setTimeout</b> <span class="params">(function, delay)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Executes code or a function after a delay.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>function</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Callback]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Code or function to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>delay</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Time in milliseconds to wait before the function is called.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

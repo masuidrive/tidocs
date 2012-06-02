@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.App.iOS.BackgroundService</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.App.iOS.BackgroundService 
+        </h1>
+      	<ul class="files">
+      	  <li>iPhone(1.5+), iPad(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>A service that runs when the application is placed in the background.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A background service is created by <a href="Titanium.App.iOS.registerBackgroundService-method.html"><code>Titanium.App.iOS.registerBackgroundService</code></a>.<br />
+</p>
+<p>At creation, a local URL to a JavaScript file must be defined. The code it contains is executed 
+each time the application is no longer in the foreground, along with all other services that have 
+been registered in the same way. When this happens, all background services continue to run until 
+one of the following occurs:</p>
+<ul>
+<li>A service is stopped with the <code>stop</code> method.</li>
+<li>The application resumes, at which points all background services are stopped.</li>
+<li>The OS terminates the service for one of the reasons discussed in 
+"Background Service Limitations", below.</li>
+</ul>
+<p>A background service can invoke a <a href="Titanium.App.iOS.LocalNotification-object.html"><code>Titanium.App.iOS.LocalNotification</code></a>, which prompts users via 
+a dialog to return to the application and provides a button that brings it back into the 
+foreground.</p>
+<h4>Background Service Limitations</h4>
+<p>A background service is subject to limitations imposed by the operating system, such as</p>
+<ul>
+<li>The OS limits the total amount of time a background service can run for after the application 
+is paused, typically to no more than 10 minutes.</li>
+<li>The OS may terminate the background service at any point to reclaim resources.</li>
+</ul>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getUrl-method">getUrl <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#stop-method">stop <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#unregister-method">unregister <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="url-property"></a>url</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A local URL to a JavaScript file containing the code to run in the background.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Background Services Example</div>
+	<div class="code"><p>Two background services are registered in the following application.</p>
+<p>The first service logs a message every time the application is paused and then is stopped to 
+release the service from memory. The service is not unregistered, and so will continue to be 
+invoked.</p>
+<p>The second creates an application property where it stores a run count value. For the first 4 
+times the application is paused, a local notification is invoked that gives the user the 
+opportunity to bring the application back to the foreground. Once the run count reaches 5, 
+the service is unregistered and is not invoked again until the application is relaunched.</p>
+<h4>app.js</h4>
+<pre><code>var win1 = Ti.UI.createWindow({  
+  title:'Background Services Example',
+  backgroundColor:'#4186cd',
+  modal:true
+});
+
+Ti.API.info('Registering background services');
+var service = Ti.App.iOS.registerBackgroundService({url:'bg-service1.js'});
+var service2 = Ti.App.iOS.registerBackgroundService({url:'bg-service2.js'});
+Ti.API.info('*** Press home button to pause application ***');
+
+win1.open();
+</code></pre>
+<h4>bg-service1.js</h4>
+<pre><code>Ti.API.info('bg-service1: service has been invoked once, and will now be stopped to release it from memory. ');
+Ti.App.currentService.stop();
+
+var listener = Ti.App.currentService.addEventListener('stop',function(){
+  Ti.API.info('bg-service1: Although the service has been stopped, it is still registered and will be executed again on next pause');
+  Ti.API.info('bg-service1: As all background services are automatically stopped on resume, it is not always necessary to explicitly stop a service');
+});
+</code></pre>
+<h4>bg-service2.js</h4>
+<pre><code>var count = Ti.App.Properties.getInt('bg-svc2-count', 0);
+
+if (count &gt; 4){
+  // reset count after 4 invocations
+  count = 0;
+}
+
+count++;
+
+Ti.App.Properties.setInt('bg-svc2-count', count);
+
+Ti.API.info('bg-service2 has been run ' + count + ' times');
+
+if (count &gt; 4){
+  Ti.App.currentService.unregister();
+  var finalNotif = Ti.App.iOS.scheduleLocalNotification({
+    alertBody:'bg-service2: As service has been invoked more than 4 times, it has been unregistered and will NOT run again. Relaunch the app to re-register it',
+    date:new Date(new Date().getTime() + 1000) // 1 second after unregister
+  });   
+} else {
+  var curNotif = Ti.App.iOS.scheduleLocalNotification({
+    alertBody:'bg-service2: has been invoked ' + count + ' times. It is still registered and will run again when the app is transitioned to the background',
+    date:new Date(new Date().getTime() + 1000) // 1 second after pause
+  });   
+}
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getUrl-method">
+        <a name="getUrl-method"></a><b>getUrl</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.App.iOS.BackgroundService.url-property.html">url</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="stop-method">
+        <a name="stop-method"></a><b>stop</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Stops the service from running during the current background session to conserve resources.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="unregister-method">
+        <a name="unregister-method"></a><b>unregister</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Unregisters the background service.</p></div>
+      
+
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

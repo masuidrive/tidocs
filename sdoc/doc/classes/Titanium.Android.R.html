@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.R</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Android.R 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Titanium binding of the Android system-wide resources class.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>To access your application's resources, use <a href="Titanium.App.Android.R-object.html"><code>Titanium.App.Android.R</code></a>.</p>
+<p>These properties and sub-properties correspond directly to the properties of the the <code>android.R</code> 
+class, and should have the same syntax. For example, to retrieve the "OK" string in Android:</p>
+<pre><code>Ti.Android.currentActivity.getString(Ti.Android.R.string.ok);
+</code></pre>
+<p>See also: <a href="http://developer.android.com/reference/android/R.html">android.R</a> in the
+Android Developer Reference.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="anim-property"></a>anim</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Animation resources. See 
+R.anim 
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="array-property"></a>array</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Array resources. See R.array
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="attr-property"></a>attr</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Attribute resources. See 
+R.attr
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="color-property"></a>color</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Color resources. See 
+R.color
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="dimen-property"></a>dimen</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Dimension resources.  See 
+http://developer.android.com/reference/android/R.dimen.html
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="drawable-property"></a>drawable</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Drawable resources. See 
+R.drawable
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="id-property"></a>id</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>ID resources.  See 
+R.id
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="integer-property"></a>integer</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Integer resources. See 
+R.integer
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="layout-property"></a>layout</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Layout resources. See 
+R.layout
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="string-property"></a>string</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>String resources. See 
+R.string
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="style-property"></a>style</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Style resources. See 
+R.style
+in the Android Developer Reference.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="styleable-property"></a>styleable</td>
+            <td class='attr-rw'>
+                [Object]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Styleable reosurces. See 
+R.styleable
+in the Android Developer Reference.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

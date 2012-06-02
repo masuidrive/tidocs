@@ -35,23 +35,29 @@
             <span class="type">Object</span> 
             Titanium.Database.DB 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The Database instance returned by <a href="Titanium.Database.open-method.html">Titanium.Database.open</a> or <a href="Titanium.Database.install-method.html">Titanium.Database.install</a>. </p>
+        <p>The <code>Database</code> instance returned by <a href="Titanium.Database.open-method.html"><code>Titanium.Database.open</code></a> or <a href="Titanium.Database.install-method.html"><code>Titanium.Database.install</code></a>.</p>
     </div>
+    
+    
     
 
     
     
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
     
             <ul>
                 <li><a href="#close-method">close <span class="params">()</span></a></li>
@@ -62,7 +68,43 @@
             </ul>
     
             <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFile-method">getFile <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLastInsertRowId-method">getLastInsertRowId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getName-method">getName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRowsAffected-method">getRowsAffected <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#remove-method">remove <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLastInsertRowId-method">setLastInsertRowId <span class="params">(lastInsertRowId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setName-method">setName <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRowsAffected-method">setRowsAffected <span class="params">(rowsAffected)</span></a></li>
             </ul>
     
     
@@ -72,27 +114,40 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="file-property"></a>file</td>
+            <td class='attr-rw'>
+                [Titanium.Filesystem.File]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A File object representing the file where this database is stored. Must only be used for 
+setting file properties.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="lastInsertRowId-property"></a>lastInsertRowId</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the last row identifier by the last INSERT query</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The identifier of the last populated row.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="name-property"></a>name</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the name of the database</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The name of the database.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="rowsAffected-property"></a>rowsAffected</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the number of rows affected by the last query</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The number of rows affected by the last query.</td>
         </tr>
         
     </table>
@@ -109,77 +164,331 @@
     <div class="sectiontitle">Methods</div>
     
     <div class="method">
-      <div class="title" id="close-method">
-        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>close the database and release resources from memory. once closed, this instance is no longer valid and must no longer be used.</p>
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="close-method">
+        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Closes the database and releases resources from memory. Once closed, this instance is no 
+longer valid and should not be used. On iOS, also closes all <a href="Titanium.Database.ResultSet-object.html"><code>Titanium.Database.ResultSet</code></a> 
+instances that exist.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="execute-method">
         <a name="execute-method"></a><b>execute</b> <span class="params">(sql, vararg)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>execute a SQL statement against the database and returns a ResultSet</p>
-      </div>
+      <div class="description"><p>Executes an SQL statement against the database and returns a <code>ResultSet</code>.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>sql</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the SQL to execute</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>vararg</td>
-            <td class='attr-rw'>
-              [array,...]
-            </td>
-            <td class='attr-desc'>one or more optional variable arguments passed to this function or an array of objects to be replaced in the query using ? substitution.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sql</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>SQL to execute. May include placeholders for parameter substitution.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>vararg</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringArray&lt;String&gt;ObjectArray&lt;Object&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Either a variable ordered list of zero or more values, or an array of values,
+to be substituted with the respective ? placeholder of the query.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFile-method">
+        <a name="getFile-method"></a><b>getFile</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Database.DB.file-property.html">file</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLastInsertRowId-method">
+        <a name="getLastInsertRowId-method"></a><b>getLastInsertRowId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Database.DB.lastInsertRowId-property.html">lastInsertRowId</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getName-method">
+        <a name="getName-method"></a><b>getName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Database.DB.name-property.html">name</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRowsAffected-method">
+        <a name="getRowsAffected-method"></a><b>getRowsAffected</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Database.DB.rowsAffected-property.html">rowsAffected</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="remove-method">
         <a name="remove-method"></a><b>remove</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Removes the database files for this instance from disk. WARNING: this is a destructive 
+operation and cannot be reversed. All data in the database will be lost; use with caution.</p></div>
       
-      <div class="description">
-        <p>remove the database files for this instance from disk. WARNING: this is a destructive operation and cannot be reversed. All data in the database will be lost upon calling this function. Use with caution.</p>
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLastInsertRowId-method">
+        <a name="setLastInsertRowId-method"></a><b>setLastInsertRowId</b> <span class="params">(lastInsertRowId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Database.DB.lastInsertRowId-property.html">lastInsertRowId</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>lastInsertRowId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setName-method">
+        <a name="setName-method"></a><b>setName</b> <span class="params">(name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Database.DB.name-property.html">name</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRowsAffected-method">
+        <a name="setRowsAffected-method"></a><b>setRowsAffected</b> <span class="params">(rowsAffected)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Database.DB.rowsAffected-property.html">rowsAffected</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>rowsAffected</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     

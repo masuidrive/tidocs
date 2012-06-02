@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>GeocodedAddress</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            GeocodedAddress 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Simple object representing a place, returned in the callback from the 
+<a href="Titanium.Geolocation.reverseGeocoder-method.html">reverseGeocoder</a> method.</p>
+    </div>
+    
+    
+    
+
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="address-property"></a>address</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Full address.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="city-property"></a>city</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>City name.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="country-property"></a>country</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Country name.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="countryCode-property"></a>countryCode</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Country code. On iOS, use country_code.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="country_code-property"></a>country_code</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Country code. Same as country_code.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="displayAddress-property"></a>displayAddress</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Display address. Identical to address.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="latitude-property"></a>latitude</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Latitude of the geocoded point.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="longitude-property"></a>longitude</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Longitude of the geocoded point.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="postalCode-property"></a>postalCode</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Postal code. On iOS, use zipcode.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="region1-property"></a>region1</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>First line of region.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="region2-property"></a>region2</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Not used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="street-property"></a>street</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Street name, without street address.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="street1-property"></a>street1</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Street name.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="zipcode-property"></a>zipcode</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Postal code. On Android, use postalCode.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

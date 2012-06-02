@@ -35,16 +35,33 @@
             <span class="type">Object</span> 
             Titanium.Database.ResultSet 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The ResultSet instance returned by invoking a database SQL <tt>execute</tt>.</p>
+        <p>The ResultSet instance returned by <a href="Titanium.Database.DB.execute-method.html"><code>Titanium.Database.DB.execute</code></a>.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A result set represents the results returned by a database query.</p>
+<p>The <a href="Titanium.Database.ResultSet.rowCount-property.html">rowCount</a> property identifies the number of
+rows in the result set. The <code>ResultSet</code> object maintains an internal record of the 
+current row. As shown in the example, you can use the 
+<a href="Titanium.Database.ResultSet.next-method.html">next</a> method to iterate through the rows in the set.</p>
+<p>Use the <a href="Titanium.Database.ResultSet.field-method.html">field</a> or
+<a href="Titanium.Database.ResultSet.fieldByName-method.html">fieldByName</a> methods to query the fields for
+the current row.</p>
+<h4>Platform Implementation Notes</h4>
+<p>Note that <code>fieldCount</code> is exposed as a <em>method</em> on iOS, but as a <em>property</em> on
+Android. This is a known parity issue
+(<a href="https://jira.appcelerator.org/browse/TIMOB-2945">TIMOB-2945</a>).</p>
     </div>
     
 
@@ -54,15 +71,19 @@
     <dl class="methods">
     
             <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#close-method">close <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#field-method">field <span class="params">(index)</span></a></li>
+                <li><a href="#field-method">field <span class="params">(index, type)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#fieldByName-method">fieldByName <span class="params">(name)</span></a></li>
+                <li><a href="#fieldByName-method">fieldByName <span class="params">(name, type)</span></a></li>
             </ul>
     
             <ul>
@@ -74,11 +95,35 @@
             </ul>
     
             <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFieldCount-method">getFieldCount <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFieldName-method">getFieldName <span class="params">(index)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRowCount-method">getRowCount <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getValidRow-method">getValidRow <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#isValidRow-method">isValidRow <span class="params">()</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#next-method">next <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
     
@@ -88,19 +133,30 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="fieldCount-property"></a>fieldCount</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The number of columns in this result set.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="rowCount-property"></a>rowCount</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the number of rows in the result set</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The number of rows in this result set.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="validRow-property"></a>validRow</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>returns true if the current row is still valid</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether the current row is valid.</td>
         </tr>
         
     </table>
@@ -111,173 +167,405 @@
     
 
     
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Using ResultSet</div>
+	<div class="code"><p>The following code will create a database and execute SQL statements that will create a 
+table, insert data into it, query the table and iterate through the returned
+<code>ResultSet</code>.</p>
+<pre><code>var db = Ti.Database.open('mydb1Installed');
+db.execute('CREATE TABLE IF NOT EXISTS people (name TEXT, phone_number TEXT, city TEXT)');
+db.execute('DELETE FROM people');
+
+var thisName = 'Arthur';
+var thisPhoneNo = '1-617-000-0000';
+var thisCity = 'Mountain View';
+db.execute('INSERT INTO people (name, phone_number, city) VALUES (?, ?, ?)', thisName, thisPhoneNo, thisCity);
+
+var personArray = ['Paul','020 7000 0000', 'London'];
+db.execute('INSERT INTO people (name, phone_number, city) VALUES (?, ?, ?)', personArray);
+
+var rows = db.execute('SELECT rowid,name,phone_number,city FROM people');
+db.close();
+
+Ti.API.info('Row count: ' + rows.rowCount);
+var fieldCount;
+// fieldCount is a property on Android.
+if (Ti.Platform.name === 'android') {
+    fieldCount = rows.fieldCount;
+} else {
+    fieldCount = rows.fieldCount();
+}
+Ti.API.info('Field count: ' + fieldCount);
+
+while (rows.isValidRow()){
+  Ti.API.info('Person ---&gt; ROWID: ' + rows.fieldByName('rowid') + ', name:' + rows.field(1) + ', phone_number: ' + rows.fieldByName('phone_number') + ', city: ' + rows.field(3));
+  rows.next();
+}
+rows.close();
+</code></pre>
+<p>Note that the above <code>SELECT</code> query contains the <a href="http://www.sqlite.org/lang_createtable.html#rowid">rowid</a>
+field, which contains an SQLite-specific unique identifier for each row.</p></div>
+        
+    </table>
+    
 
 
     
     <div class="sectiontitle">Methods</div>
     
     <div class="method">
-      <div class="title" id="close-method">
-        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>close the result set and release resources. once closed, this result set must no longer be used</p>
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="close-method">
+        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Closes this result set and release resources. Once closed, the result set must no longer 
+be used.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="field-method">
-        <a name="field-method"></a><b>field</b> <span class="params">(index)</span>
+        <a name="field-method"></a><b>field</b> <span class="params">(index, type)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>retrieve a row value by field index</p>
-      </div>
+      <div class="description"><p>Retrieves the value for the specified field in the current row, 
+and casts it to the specified type (String, Integer, Float or Double.)</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>index</td>
-            <td class='attr-rw'>
-              [int]
-            </td>
-            <td class='attr-desc'>column index (which is zero based)</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>index</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A zero-based column index.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>type</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>One of (Titanium.Database.FIELD_TYPE_STRING | Titanium.Database.FIELD_TYPE_INT | 
+Titanium.Database.FIELD_TYPE_FLOAT | Titanium.Database.FIELD_TYPE_DOUBLE)</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fieldByName-method">
-        <a name="fieldByName-method"></a><b>fieldByName</b> <span class="params">(name)</span>
+        <a name="fieldByName-method"></a><b>fieldByName</b> <span class="params">(name, type)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>retrieve a row value by field name</p>
-      </div>
+      <div class="description"><p>Retrieves the value for the specified field in the current row, 
+and casts it to the specified type (String, Integer, Float or Double.)</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>column name from SQL query</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A column name or alias used in the SQL query.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>type</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>One of (Titanium.Database.FIELD_TYPE_STRING | Titanium.Database.FIELD_TYPE_INT | 
+Titanium.Database.FIELD_TYPE_FLOAT | Titanium.Database.FIELD_TYPE_DOUBLE)</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fieldCount-method">
         <a name="fieldCount-method"></a><b>fieldCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the number of columns in the result set</p>
-      </div>
+      <div class="description"><p>Returns the number of columns in this result set.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>int</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fieldName-method">
         <a name="fieldName-method"></a><b>fieldName</b> <span class="params">(index)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the field name for field index</p>
-      </div>
+      <div class="description"><p>Returns the field name for the specified field index.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>index</td>
-            <td class='attr-rw'>
-              [int]
-            </td>
-            <td class='attr-desc'>field name column index (which is zero based)</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>index</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A zero-based column index for the field.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFieldCount-method">
+        <a name="getFieldCount-method"></a><b>getFieldCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Database.ResultSet.fieldCount-method.html">fieldCount</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFieldName-method">
+        <a name="getFieldName-method"></a><b>getFieldName</b> <span class="params">(index)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the field name for the specified field index.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>index</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A zero-based column index for the field.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRowCount-method">
+        <a name="getRowCount-method"></a><b>getRowCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Database.ResultSet.rowCount-property.html">rowCount</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getValidRow-method">
+        <a name="getValidRow-method"></a><b>getValidRow</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Database.ResultSet.validRow-property.html">validRow</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="isValidRow-method">
         <a name="isValidRow-method"></a><b>isValidRow</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return true if the row is a valid row</p>
-      </div>
+      <div class="description"><p>Returns whether the current row is valid.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="next-method">
         <a name="next-method"></a><b>next</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Advances to the next row in the result set and returns <code>true</code> if one exists, 
+or <code>false</code> otherwise.</p></div>
       
-      <div class="description">
-        <p>iterate to the next row in the result set. returns false if no more results are available</p>
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
     </div>
     
     

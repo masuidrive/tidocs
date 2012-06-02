@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.MenuItem</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Android.MenuItem 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Titanium binding of an Android menu item.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A menu item for an Android <a href="Titanium.Android.Menu-object.html">Menu</a>. Use
+<a href="Titanium.Android.Menu.add-method.html">Menu.add</a> to create a new menu item.</p>
+<p>See also:
+<a href="http://developer.android.com/reference/android/view/MenuItem.html">MenuItem</a> in the
+Android Developer Reference.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getGroupId-method">getGroupId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getIcon-method">getIcon <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getItemId-method">getItemId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOrder-method">getOrder <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitle-method">getTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitleCondensed-method">getTitleCondensed <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isCheckable-method">isCheckable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isChecked-method">isChecked <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isEnabled-method">isEnabled <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isVisible-method">isVisible <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCheckable-method">setCheckable <span class="params">(checkable)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setChecked-method">setChecked <span class="params">(enabled)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setEnabled-method">setEnabled <span class="params">(enabled)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setIcon-method">setIcon <span class="params">(icon)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitle-method">setTitle <span class="params">(title)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTitleCondensed-method">setTitleCondensed <span class="params">(titleCondensed)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setVisible-method">setVisible <span class="params">(visible)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="checkable-property"></a>checkable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines if the item can be checked.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="checked-property"></a>checked</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines if the item is checked.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="enabled-property"></a>enabled</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines if the item is enabled.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="groupId-property"></a>groupId</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Group ID for this item.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="icon-property"></a>icon</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Icon to display for the this menu item.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="itemId-property"></a>itemId</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Item ID for this item.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="order-property"></a>order</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Integer used for controlling the category and sort order for menu items.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="title-property"></a>title</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Title of the item.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="titleCondensed-property"></a>titleCondensed</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Shortened version of the item's title.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="visible-property"></a>visible</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the menu item is visible.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#click-event">click</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the user clicks the menu item.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getGroupId-method">
+        <a name="getGroupId-method"></a><b>getGroupId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getIcon-method">
+        <a name="getIcon-method"></a><b>getIcon</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.icon-property.html">icon</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getItemId-method">
+        <a name="getItemId-method"></a><b>getItemId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.itemId-property.html">itemId</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOrder-method">
+        <a name="getOrder-method"></a><b>getOrder</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.order-property.html">order</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitle-method">
+        <a name="getTitle-method"></a><b>getTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.title-property.html">title</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitleCondensed-method">
+        <a name="getTitleCondensed-method"></a><b>getTitleCondensed</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.titleCondensed-property.html">titleCondensed</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isCheckable-method">
+        <a name="isCheckable-method"></a><b>isCheckable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.checkable-property.html">checkable</a> state of the menu item.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isChecked-method">
+        <a name="isChecked-method"></a><b>isChecked</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.checked-property.html">checked</a> state of the menu item.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isEnabled-method">
+        <a name="isEnabled-method"></a><b>isEnabled</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.enabled-property.html">enabled</a> state of the menu item.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isVisible-method">
+        <a name="isVisible-method"></a><b>isVisible</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.visible-property.html">visible</a> state of the menu item.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCheckable-method">
+        <a name="setCheckable-method"></a><b>setCheckable</b> <span class="params">(checkable)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.checkable-property.html">checkable</a> state of the menu item.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>checkable</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True enable checking and unchecking this item, false to disable it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setChecked-method">
+        <a name="setChecked-method"></a><b>setChecked</b> <span class="params">(enabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.checked-property.html">checked</a> state of the menu item.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>enabled</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True to check the item, false to uncheck it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setEnabled-method">
+        <a name="setEnabled-method"></a><b>setEnabled</b> <span class="params">(enabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.enabled-property.html">enabled</a> state of the menu item.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>enabled</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True to enable item, false to disable it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setIcon-method">
+        <a name="setIcon-method"></a><b>setIcon</b> <span class="params">(icon)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.icon-property.html">icon</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>icon</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitle-method">
+        <a name="setTitle-method"></a><b>setTitle</b> <span class="params">(title)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.title-property.html">title</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>title</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTitleCondensed-method">
+        <a name="setTitleCondensed-method"></a><b>setTitleCondensed</b> <span class="params">(titleCondensed)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.titleCondensed-property.html">titleCondensed</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>titleCondensed</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setVisible-method">
+        <a name="setVisible-method"></a><b>setVisible</b> <span class="params">(visible)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.visible-property.html">visible</a> state of the menu item.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>visible</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True to show the item, false to hide it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="click-event">
+        <a name="click-method"></a><b>click</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

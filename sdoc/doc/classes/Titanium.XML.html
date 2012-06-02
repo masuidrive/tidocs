@@ -35,16 +35,27 @@
             <span class="type">Module</span> 
             Titanium.XML 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level XML module.  The XML module is used parsing and processing XML-based content.</p>
+        <p>The top level XML module.  The XML module is used for parsing and processing XML-based content.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The API for this module is based on the W3C DOM specification.</p>
+<p>Android and iOS implement the <a href="http://www.w3.org/TR/DOM-Level-2-Core/core.html">DOM Level 2</a> specification
+with some non-standard extensions, which are documented in the appropriate places.</p>
+<p>Mobile Web directly exposes the <a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html">DOM Level 3</a> implementation 
+in the browser. New features introduced in DOM Level 3 are not documented here for brevity. For information on
+these features, please use the W3C documentation.</p>
     </div>
     
 
@@ -69,6 +80,10 @@
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
+            <ul>
+                <li><a href="#serializeToString-method">serializeToString <span class="params">(node)</span></a></li>
+            </ul>
+    
     
 
     
@@ -86,153 +101,189 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="parseString-method">
         <a name="parseString-method"></a><b>parseString</b> <span class="params">(xml)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>parse an XML string into a DOMDocument</p>
-      </div>
+      <div class="description"><p>Parses an XML string into a <a href="Titanium.XML.Document-object.html"><code>Titanium.XML.Document</code></a> object.
+Throws an exception if the string is unable to be parsed into a valid
+document.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>xml</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>the XML content as a string</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>xml</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>the XML content as a string</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>object</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="serializeToString-method">
+        <a name="serializeToString-method"></a><b>serializeToString</b> <span class="params">(node)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Serializes a <a href="Titanium.XML.Document-object.html"><code>Titanium.XML.Document</code></a> object into a string.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>node</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The XML DOMNode or DOMDocument to serialize</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.NotificationManager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Android.NotificationManager 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Module for managing status bar notifications.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This module provides methods for sending and canceling status bar notifications,
+which are represented by the <a href="Titanium.Android.Notification-object.html"><code>Titanium.Android.Notification</code></a> object.</p>
+<p>The <code>NotificationManager</code> module is a thin wrapper on the Android <code>NotificationManager</code>
+class. The constants in this module are derived from the Android <code>Notification</code> class.</p>
+<p>See also:</p>
+<ul>
+<li>
+<p><a href="http://docs.appcelerator.com/titanium/2.0/#!/guide/Android_Notifications">Android Notifications in the Titanium Mobile Guides</a></p>
+</li>
+<li>
+<p><a href="http://developer.android.com/guide/topics/ui/notifiers/notifications.html">Status Bar Notifications in the Android Developer Guide</a></p>
+</li>
+<li>
+<p><a href="http://developer.android.com/reference/android/app/NotificationManager.html">NotificationManager in the Android API Reference</a> </p>
+</li>
+<li>
+<p><a href="http://developer.android.com/reference/android/app/Notification.html">Notification in the Android API Reference</a> </p>
+</li>
+</ul>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#cancel-method">cancel <span class="params">(id)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#cancelAll-method">cancelAll <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#notify-method">notify <span class="params">(id, notification)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_ALL-property"></a>DEFAULT_ALL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use all default settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_LIGHTS-property"></a>DEFAULT_LIGHTS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the default light settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_SOUND-property"></a>DEFAULT_SOUND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the default sound settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DEFAULT_VIBRATE-property"></a>DEFAULT_VIBRATE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use the default vibration settings for a notification; see
+Notification.defaults.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_AUTO_CANCEL-property"></a>FLAG_AUTO_CANCEL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Cancel the notification when it is clicked by the user.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_INSISTENT-property"></a>FLAG_INSISTENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Repeat audio until the notification is cancelled or the notification window
+is opened.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_NO_CLEAR-property"></a>FLAG_NO_CLEAR</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Do not cancel the notification when the user clicks the Clear All button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ONGOING_EVENT-property"></a>FLAG_ONGOING_EVENT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Specifies that a notification is in reference to something that is ongoing, like a phone call.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_ONLY_ALERT_ONCE-property"></a>FLAG_ONLY_ALERT_ONCE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Play an alert (sound, lights, and/or vibration) once each time the notification is sent, even 
+if it has not been canceled before that.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="FLAG_SHOW_LIGHTS-property"></a>FLAG_SHOW_LIGHTS</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use LED lights to alert the user to the notification.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_DEFAULT-property"></a>STREAM_DEFAULT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to request that the default stream type for notifications be used.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Simple Notification Example</div>
+	<div class="code"><p>The following example shows how to create a notification that launches the
+application when the user clicks on the notification.</p>
+<p>The <a href="Titanium.Android.Intent-object.html">Intent</a> object associated with the notification determines 
+what happens when the user clicks on the notification. In this case, we simply launch the application.
+The intent in this sample uses a className to identify the activity to launch. </p>
+<p>A Titanium application's main activity generally has the class name:</p>
+<p><i>&lt;app_id&gt;.&lt;Appname&gt;</i><b>Activity</b> </p>
+<p>where <i>&lt;app_id&gt;</i> is the application's app ID, and <i>&lt;Appname&gt;</i>
+is the application's name, with the first letter capitalized and all other letters
+lowercase.</p>
+<p>For example, in this case the test application has the app ID
+<code>com.appcelerator.notificationsample</code> and app name <code>NotificationSample</code>, so the 
+activity class name is:</p>
+<pre><code>com.appcelerator.notificationsample.NotificationsampleActivity
+</code></pre>
+<p>You can also find the activity's class name by looking in the <code>build/android</code> folder of your 
+Titanium project.</p>
+<p>The notification icon must be specified as an Android resource ID. In this case,
+the icon, <code>my_icon.png</code> would be placed in
+<code>platforms/android/res/drawable/my_icon.png</code>.
+See <a href="Titanium.App.Android.R-object.html"><code>Titanium.App.Android.R</code></a> for more information.</p>
+<pre><code>// Intent object to launch the application 
+var intent = Ti.Android.createIntent({
+    flags : Ti.Android.FLAG_ACTIVITY_CLEAR_TOP | Ti.Android.FLAG_ACTIVITY_NEW_TASK,
+    // Substitute the correct classname for your application
+    className : 'com.appcelerator.notificationsample.NotificationsampleActivity',
+});
+intent.addCategory(Ti.Android.CATEGORY_LAUNCHER);
+
+// Create a PendingIntent to tie together the Activity and Intent
+var pending = Titanium.Android.createPendingIntent({
+    intent: intent,
+    flags: Titanium.Android.FLAG_UPDATE_CURRENT
+});
+
+// Create the notification
+var notification = Titanium.Android.createNotification({
+    // icon is passed as an Android resource ID -- see Ti.App.Android.R.
+    icon: Ti.App.Android.R.drawable.my_icon,
+    contentTitle: 'Something Happened',
+    contentText : 'Click to return to the application.',
+    contentIntent: pending
+});
+// Send the notification.
+Titanium.Android.NotificationManager.notify(1, notification);
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="cancel-method">
+        <a name="cancel-method"></a><b>cancel</b> <span class="params">(id)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Cancels a previously displayed notification.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>id</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The ID passed to notify.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="cancelAll-method">
+        <a name="cancelAll-method"></a><b>cancelAll</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Cancels all previously displayed notifications.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="notify-method">
+        <a name="notify-method"></a><b>notify</b> <span class="params">(id, notification)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds a persistent notification to the status bar.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>id</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>An ID that may be used to cancel a shown notification.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>notification</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.Notification]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Notification to display.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    
