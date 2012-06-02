@@ -35,16 +35,45 @@
             <span class="type">Module</span> 
             Titanium 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The top level Titanium module.</p>
+        <p>The top-level Titanium module.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The Titanium module provides the Titanium Mobile API, allowing developers to access native 
+features of each target environment. Currently, the Android, iOS and Mobile Web (beta) 
+environments are supported.</p>
+<h4>Titanium Namespace</h4>
+<p>The complete Titanium API is accessible from the <code>Titanium</code> namespace but, for convenience and 
+brevity, the alias <code>Ti</code> is also provided. As the <code>Titanium</code> namespace is functionally-identical 
+to its <code>Ti</code> alias, it is always recommended to use <code>Ti</code> in your code.</p>
+<p>For example, the following pairs of Titanium calls behave exactly the same.</p>
+<pre><code>Titanium.API.info('Hello Titanium!');
+Ti.API.info('Hello Titanium!');
+
+Titanium.Utils.sha256('Hello Titanium!');
+Ti.Utils.sha256('Hello Titanium!');
+
+Titanium.App.Properties.setString('hello_msg','Hello Titanium!');
+Ti.App.Properties.setString('hello_msg','Hello Titanium!');
+
+Titanium.Database.open('mydb');
+Ti.Database.open('mydb');
+</code></pre>
+<h4>Global APIs</h4>
+<p>Titanium includes a number of built-in JavaScript objects that are not part of the Titanium 
+namespace, including JSON parsing, String formatting, timers, and the CommonJS <code>require</code> function. 
+See <a href="Global-object.html">Global APIs</a> for details.</p>
     </div>
     
 
@@ -58,7 +87,27 @@
             </ul>
     
             <ul>
+                <li><a href="#createBuffer-method">createBuffer <span class="params">(params)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBuildDate-method">getBuildDate <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBuildHash-method">getBuildHash <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getUserAgent-method">getUserAgent <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getVersion-method">getVersion <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -69,6 +118,10 @@
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
+            <ul>
+                <li><a href="#setUserAgent-method">setUserAgent <span class="params">(userAgent)</span></a></li>
+            </ul>
+    
     
 
     
@@ -76,19 +129,39 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="buildDate-property"></a>buildDate</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Date of the Titanium build.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="buildHash-property"></a>buildHash</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Git hash of the Titanium build.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="userAgent-property"></a>userAgent</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the user-agent string used by Titanium</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>User-agent string used by Titanium.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="version-property"></a>version</td>
             <td class='attr-rw'>
-                [string]
+                [Number]
             </td>
-            <td class='attr-desc'>the version of Titanium that is executing</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Version of Titanium that is executing.</td>
         </tr>
         
     </table>
@@ -96,17 +169,6 @@
 
     
 
-    
-    <div class="sectiontitle">Notes</div>
-    <table border='0' cellpadding='5'>
-	<div class="code"><p>Titanium provides a number of built-in objects in the Javascript that are not part of the Titanium namespace.  Specifically, the following are available.</p>
-<h4 id="json">JSON</h4>
-<p>Titanium has a built-in JSON parser with two main functions: <tt>parse</tt> and <tt>stringify</tt>.  <tt>JSON.parse</tt> will safely evaluate a string encoded as Javascript into a Javascript object.  <tt>JSON.stringify</tt> will encode a Javascript object into a string.</p>
-<h4 id="timers">Timers</h4>
-<p>Titanium has built-in support for one-shot and repeating timers with two main functions: <tt>setTimeout</tt> and <tt>setInterval</tt>.  <tt>setTimeout</tt> takes 2 arguments: function and timeout in milliseconds after which the function should be executed and returns a timer handle that can be used to cancel a pending timer with <tt>clearTimeout</tt>.  <tt>setInterval</tt> takes 2 arguments: function and timeout in milliseconds for how often the function should be executed until cancelled and returns a timer handle that can be used to cancel a timer with <tt>clearInterval</tt>.</p>
-<h4 id="alert">Alert</h4>
-<p>Titanium has a built-in convenience function <tt>alert</tt> which can be used as a shortcut to <a href="Titanium.UI.createAlertDialog.html">Titanium.UI.createAlertDialog</a> for creating a message box.  Note that unlike a web browser-based version of <tt>alert</tt>, the method is asynchronous.</p></div>
-    </table>
     
 
     
@@ -118,153 +180,261 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createBuffer-method">
+        <a name="createBuffer-method"></a><b>createBuffer</b> <span class="params">(params)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Creates a new buffer based on the params.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>params</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [CreateBufferArgs]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>creation arguments</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBuildDate-method">
+        <a name="getBuildDate-method"></a><b>getBuildDate</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.buildDate-property.html">buildDate</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBuildHash-method">
+        <a name="getBuildHash-method"></a><b>getBuildHash</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.buildHash-property.html">buildHash</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getUserAgent-method">
+        <a name="getUserAgent-method"></a><b>getUserAgent</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.userAgent-property.html">userAgent</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getVersion-method">
+        <a name="getVersion-method"></a><b>getVersion</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.version-property.html">version</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="include-method">
         <a name="include-method"></a><b>include</b> <span class="params">(name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>one or more filenames to include as if the Javascript code was written in place.  This is similar to a C <tt>#include</tt> function.</p>
-      </div>
+      <div class="description"><p>Includes JavaScript code from one or more files.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>filename to include</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Filename(s) to include.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setUserAgent-method">
+        <a name="setUserAgent-method"></a><b>setUserAgent</b> <span class="params">(userAgent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.userAgent-property.html">userAgent</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>userAgent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     

@@ -22,11 +22,11 @@ def search_string(string)
 end
 
 def strip_tags(str)
-  str.gsub( %r{</?[^>]+?>}, '' )
+  str.to_s.gsub( %r{</?[^>]+?>}, '' )
 end
 
 def strip_p(str)
-  str.gsub( %r{</?[^>]+?>}, '' )
+  str.to_s.gsub( %r{</?[^>]+?>}, '' )
 end
 
 ### Strip comments on a space after 100 chars

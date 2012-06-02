@@ -35,16 +35,54 @@
             <span class="type">Object</span> 
             Titanium.Filesystem.File 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.1+), iPhone(0.1+), iPad(0.1+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The File object which support various filesystem based operations.</p>
+        <p>Object representing a path to a file or directory in the device's persistent storage.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Use the <a href="Titanium.Filesystem.getFile-method.html"><code>Titanium.Filesystem.getFile</code></a> method to get a handle to a <code>File</code> object,
+which represents a given path.  There does not need to be an existing file or directory 
+does not need to exist before <code>getFile</code> is called. If the file doesn't exist, and 
+the file path identifies a file in a writable directory, writing to the file 
+creates the file implicitly. </p>
+<p>See <a href="Titanium.Filesystem.html"><code>Titanium.Filesystem</code></a> for constants identifying commonly-used device directories.</p>
+<p>Use the <a href="Titanium.Filesystem.File.exists-method.html">exists</a> method to test whether the file exists.</p>
+<p>A file object can point to an ordinary file, a directory or a symbolic link.
+Use <a href="Titanium.Filesystem.File.createDirectory-method.html">createDirectory</a> to create a directory.
+Use the <a href="Titanium.Filesystem.File.getDirectoryListing-method.html">getDirectoryListing</a> method to
+retrieve a list of the directory's contents.</p>
+<p>The <code>File</code> object doesn't provide methods for random access into the file.
+The <code>read</code> method reads the file's entire contents into a <code>Blob</code> object.
+The <code>write</code> method can either overwrite the entire file or append to an
+existing file. </p>
+<p>For random access to a file, such as accessing a small portion of a larger file, 
+you can open a file as a <a href="Titanium.Filesystem.FileStream-object.html">FileStream</a> object. Use the 
+<a href="Titanium.Filesystem.File.open-method.html">open</a> method to get a <code>FileStream</code> for an 
+existing <code>File</code> object, or use the <a href="Titanium.Filesystem.openStream-method.html"><code>Titanium.Filesystem.openStream</code></a> method 
+to get a <code>FileStream</code> directly without calling <code>getFile</code> first.</p>
+<p>The <a href="Titanium.Filesystem.html"><code>Titanium.Filesystem</code></a> module defines a number of properties and methods related to 
+filesystem access, including properties that specify paths for application-specific 
+directories, and methods for creating temporary files and directories.</p>
+<p>On Android, files may be stored on external storage (that is, removable media such as 
+SD Cards).</p>
+<p>Note that once created with <code>getFile</code>, the path associated with a file object is
+immutable. If you move the underlying file using <a href="Titanium.Filesystem.File.move-method.html">move</a> 
+or <a href="Titanium.Filesystem.File.rename-method.html">rename</a>, you can no longer access it with the 
+original <code>File</code> object. You must use <code>getFile</code> to get a handle to the new path.</p>
+<h4>Resource Files</h4>
+<p>The <code>Resources</code> directory and all the files in it are read-only. On Android, resource
+files are stored in the resource bundle and do not have all of the properties of
+normal files. In particular, they do not have creation or modification timestamps.</p>
     </div>
     
 
@@ -55,6 +93,14 @@
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#append-method">append <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#copy-method">copy <span class="params">(destinationPath)</span></a></li>
             </ul>
     
             <ul>
@@ -78,10 +124,6 @@
             </ul>
     
             <ul>
-                <li><a href="#executable-method">executable <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#exists-method">exists <span class="params">()</span></a></li>
             </ul>
     
@@ -98,11 +140,55 @@
             </ul>
     
             <ul>
+                <li><a href="#getExecutable-method">getExecutable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHidden-method">getHidden <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getName-method">getName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNativePath-method">getNativePath <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getParent-method">getParent <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#hidden-method">hidden <span class="params">()</span></a></li>
+                <li><a href="#getReadonly-method">getReadonly <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRemoteBackup-method">getRemoteBackup <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSize-method">getSize <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSymbolicLink-method">getSymbolicLink <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWritable-method">getWritable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWriteable-method">getWriteable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isDirectory-method">isDirectory <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isFile-method">isFile <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -114,19 +200,11 @@
             </ul>
     
             <ul>
-                <li><a href="#name-method">name <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#nativePath-method">nativePath <span class="params">()</span></a></li>
+                <li><a href="#open-method">open <span class="params">(mode)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#read-method">read <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#readonly-method">readonly <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -138,15 +216,15 @@
             </ul>
     
             <ul>
-                <li><a href="#setExecutable-method">setExecutable <span class="params">()</span></a></li>
+                <li><a href="#resolve-method">resolve <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#setHidden-method">setHidden <span class="params">()</span></a></li>
+                <li><a href="#setHidden-method">setHidden <span class="params">(hidden)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#setReadonly-method">setReadonly <span class="params">()</span></a></li>
+                <li><a href="#setRemoteBackup-method">setRemoteBackup <span class="params">(remoteBackup)</span></a></li>
             </ul>
     
             <ul>
@@ -154,25 +232,163 @@
             </ul>
     
             <ul>
-                <li><a href="#symbolicLink-method">symbolicLink <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#write-method">write <span class="params">(contents)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#writeable-method">writeable <span class="params">()</span></a></li>
+                <li><a href="#write-method">write <span class="params">(data, append)</span></a></li>
             </ul>
     
     
 
     
-
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="executable-property"></a>executable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>true if the file is executable.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="hidden-property"></a>hidden</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Set to true if the file is hidden.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="name-property"></a>name</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Name of the file.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="nativePath-property"></a>nativePath</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Native path associated with this file object, as a file URL.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="parent-property"></a>parent</td>
+            <td class='attr-rw'>
+                [Titanium.Filesystem.File]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A File object representing the parent directory of the file identified by this object.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="readonly-property"></a>readonly</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>true if the file identified by this object is read-only.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="remoteBackup-property"></a>remoteBackup</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Value indicating whether or not to back up to a cloud service.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="size-property"></a>size</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Size, in bytes, of the file identified by this object.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="symbolicLink-property"></a>symbolicLink</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>true if the file identified by this object is a symbolic link.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="writable-property"></a>writable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>true if the file identified by this object is writable.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="writeable-property"></a>writeable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use writable instead.</td>
+        </tr>
+        
+    </table>
     
 
     
 
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Reading a File</div>
+	<div class="code"><p>Data files shipped with the application are stored in the resources directory.</p>
+<p>This example reads string data from a text file.</p>
+<pre><code>// resourcesDirectory is actually the default location, so the first 
+// argument could be omitted here.
+file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "textfile.txt");
+var blob = file.read();
+var readText = blob.text;
+// dispose of file handle &amp; blob.
+file = null;
+blob = null;
+</code></pre></div>
+        
+	<div class="subsectiontitle">Creating a Subdirectory</div>
+	<div class="code"><p>Files that the application writes to need to be stored outside of the 
+resources directory, since that directory is read-only.</p>
+<p>This example creates a subdirectory to store downloaded images.
+The example assumes that two variables are defined elsewhere in the code:
+myImageID, a string containing some kind of ID for the downloaded image, 
+and myImageData, a <code>Blob</code> containing JPEG image data.</p>
+<pre><code>var imageDir = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,            
+    'downloaded_images');
+if (! imageDir.exists()) {
+    imageDir.createDirectory();
+}
+
+// .resolve() provides the resolved native path for the directory.
+var imageFile  = Ti.Filesystem.getFile(imageDir.resolve(), myImageID + '.jpg');
+Ti.API.info("ImageFile path is: " + imageFile.resolve());
+if (imageFile.write(myImageData)===false) {
+    // handle write error
+}
+// dispose of file handles
+imageFile = null;
+imageDir = null;
+</code></pre></div>
+        
+    </table>
     
 
 
@@ -182,606 +398,674 @@
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="append-method">
+        <a name="append-method"></a><b>append</b> <span class="params">(data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Appends data to the file identified by this file object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.BlobTitanium.Filesystem.File]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to append.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="copy-method">
+        <a name="copy-method"></a><b>copy</b> <span class="params">(destinationPath)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Copies the file identified by this file object to a new path.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>destinationPath</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Destination path to copy to.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="createDirectory-method">
         <a name="createDirectory-method"></a><b>createDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>create a directory at the path for the file object</p>
-      </div>
+      <div class="description"><p>Creates a directory at the path identified by this file object.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createFile-method">
         <a name="createFile-method"></a><b>createFile</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>create a file path at the path for the file object</p>
-      </div>
+      <div class="description"><p>Creates a file at the path identified by this file object.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="createTimestamp-method">
         <a name="createTimestamp-method"></a><b>createTimestamp</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the created timestamp for the file</p>
-      </div>
+      <div class="description"><p>Returns the creation timestamp for the file identified by this file object.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>long</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="deleteDirectory-method">
         <a name="deleteDirectory-method"></a><b>deleteDirectory</b> <span class="params">(recursive)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>delete the file directory path</p>
-      </div>
+      <div class="description"><p>Deletes the directory identified by this file object.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>recursive</td>
-            <td class='attr-rw'>
-              [boolean]
-            </td>
-            <td class='attr-desc'>pass true to recursively delete any contents. defaults to false</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>recursive</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Pass true to recursively delete any directory contents.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="deleteFile-method">
         <a name="deleteFile-method"></a><b>deleteFile</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>delete the file</p>
-      </div>
+      <div class="description"><p>Deletes the file identified by this file object.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="executable-method">
-        <a name="executable-method"></a><b>executable</b> <span class="params">()</span>
-      </div>
-      
-      <div class="description">
-        <p>returns true if the file is executable</p>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="exists-method">
         <a name="exists-method"></a><b>exists</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>returns true if the file or directory exists on the device</p>
-      </div>
+      <div class="description"><p>Returns <code>true</code> if the file or directory identified by this file object exists on the device.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="extension-method">
         <a name="extension-method"></a><b>extension</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the file extension</p>
-      </div>
+      <div class="description"><p>Returns the extension for the file identified by this file object.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="getDirectoryListing-method">
         <a name="getDirectoryListing-method"></a><b>getDirectoryListing</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return an array of paths in the directory of the file object</p>
-      </div>
+      <div class="description"><p>Returns a listing of the directory identified by this file object, or <code>null</code>
+if this object doesn't identify a directory.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>array</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getExecutable-method">
+        <a name="getExecutable-method"></a><b>getExecutable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.executable-property.html">executable</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHidden-method">
+        <a name="getHidden-method"></a><b>getHidden</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.hidden-property.html">hidden</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getName-method">
+        <a name="getName-method"></a><b>getName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.name-property.html">name</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNativePath-method">
+        <a name="getNativePath-method"></a><b>getNativePath</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.nativePath-property.html">nativePath</a> property.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="getParent-method">
         <a name="getParent-method"></a><b>getParent</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the file parent</p>
-      </div>
+      <div class="description"><p>Returns the path of the parent directory holding the file identified by this file object, as a String <strong>or</strong> as a <code>File</code> object.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>Titanium.Filesystem.File</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="hidden-method">
-        <a name="hidden-method"></a><b>hidden</b> <span class="params">()</span>
+      <div class="title" id="getReadonly-method">
+        <a name="getReadonly-method"></a><b>getReadonly</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>returns true if the file is hidden</p>
-      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.readonly-property.html">readonly</a> property.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRemoteBackup-method">
+        <a name="getRemoteBackup-method"></a><b>getRemoteBackup</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.remoteBackup-property.html">remoteBackup</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSize-method">
+        <a name="getSize-method"></a><b>getSize</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.size-property.html">size</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSymbolicLink-method">
+        <a name="getSymbolicLink-method"></a><b>getSymbolicLink</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.symbolicLink-property.html">symbolicLink</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWritable-method">
+        <a name="getWritable-method"></a><b>getWritable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.writable-property.html">writable</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWriteable-method">
+        <a name="getWriteable-method"></a><b>getWriteable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Filesystem.File.writeable-property.html">writeable</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isDirectory-method">
+        <a name="isDirectory-method"></a><b>isDirectory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns <code>true</code> if this file object represents a directory.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isFile-method">
+        <a name="isFile-method"></a><b>isFile</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns <code>true</code> if this file object represents an ordinary file.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="modificationTimestamp-method">
         <a name="modificationTimestamp-method"></a><b>modificationTimestamp</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the last modification timestamp for the file</p>
-      </div>
+      <div class="description"><p>Returns the last modification time for this file.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>long</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="move-method">
         <a name="move-method"></a><b>move</b> <span class="params">(newpath)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>move the file to another path</p>
-      </div>
+      <div class="description"><p>Moves the file identified by this file object to another path.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>newpath</td>
-            <td class='attr-rw'>
-              [string|object]
-            </td>
-            <td class='attr-desc'>new location</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>newpath</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New location for the file.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="name-method">
-        <a name="name-method"></a><b>name</b> <span class="params">()</span>
+      <div class="title" id="open-method">
+        <a name="open-method"></a><b>open</b> <span class="params">(mode)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>the name of the file</p>
-      </div>
+      <div class="description"><p>Opens the file identified by this file object for random access.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="nativePath-method">
-        <a name="nativePath-method"></a><b>nativePath</b> <span class="params">()</span>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>mode</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Mode to open the file in: MODE_READ, MODE_WRITE, or MODE_APPEND.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-        <p>returns the fully resolved native path</p>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>string</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="read-method">
         <a name="read-method"></a><b>read</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return the contents of file as blob</p>
-      </div>
+      <div class="description"><p>Returns the contents of the file identified by this file object as a <code>Blob</code>.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>Titanium.Blob</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="readonly-method">
-        <a name="readonly-method"></a><b>readonly</b> <span class="params">()</span>
-      </div>
-      
-      <div class="description">
-        <p>returns true if the file is readonly</p>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="rename-method">
         <a name="rename-method"></a><b>rename</b> <span class="params">(newname)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>rename the file</p>
-      </div>
+      <div class="description"><p>Renames the file identified by this file object.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>newname</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>new name</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>newname</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New name for the file.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
-      <div class="title" id="setExecutable-method">
-        <a name="setExecutable-method"></a><b>setExecutable</b> <span class="params">()</span>
+      <div class="title" id="resolve-method">
+        <a name="resolve-method"></a><b>resolve</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>make the file executable</p>
-      </div>
+      <div class="description"><p>Returns the fully-resolved native path associated with this file object.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="setHidden-method">
-        <a name="setHidden-method"></a><b>setHidden</b> <span class="params">()</span>
+        <a name="setHidden-method"></a><b>setHidden</b> <span class="params">(hidden)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>make the file hidden</p>
-      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Filesystem.File.hidden-property.html">hidden</a> property.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>hidden</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
     </div>
     
     <div class="method">
-      <div class="title" id="setReadonly-method">
-        <a name="setReadonly-method"></a><b>setReadonly</b> <span class="params">()</span>
+      <div class="title" id="setRemoteBackup-method">
+        <a name="setRemoteBackup-method"></a><b>setRemoteBackup</b> <span class="params">(remoteBackup)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>make the file readonly</p>
-      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Filesystem.File.remoteBackup-property.html">remoteBackup</a> property.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>remoteBackup</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="spaceAvailable-method">
         <a name="spaceAvailable-method"></a><b>spaceAvailable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>return boolean to indicate if the path has space available for storage</p>
-      </div>
+      <div class="description"><p>Returns the amount of free space available on the device where the file identified by this file object is stored.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="symbolicLink-method">
-        <a name="symbolicLink-method"></a><b>symbolicLink</b> <span class="params">()</span>
-      </div>
-      
-      <div class="description">
-        <p>returns true if the file points to a symbolic link</p>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="write-method">
-        <a name="write-method"></a><b>write</b> <span class="params">(contents)</span>
+        <a name="write-method"></a><b>write</b> <span class="params">(data, append)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>write the contents to file</p>
-      </div>
+      <div class="description"><p>Writes the specified data to the file identified by this file object.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>contents</td>
-            <td class='attr-rw'>
-              [string|object]
-            </td>
-            <td class='attr-desc'>write the contents of string, blob or [[Titanium.Filesystem.File]] to file</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [StringTitanium.Filesystem.FileTitanium.Blob]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Data to write, as a String, Blob or File object.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>append</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>If true, append the data to the end of the file.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
-    </div>
-    
-    <div class="method">
-      <div class="title" id="writeable-method">
-        <a name="writeable-method"></a><b>writeable</b> <span class="params">()</span>
-      </div>
-      
-      <div class="description">
-        <p>returns true if the file is writeable</p>
-      </div>
-      
-
-      
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>boolean</div>
-      </div>
     </div>
     
     

@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.Calendar.Event</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Android.Calendar.Event 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>An object that represents a single event in an Android calendar.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The API supports retrieving information about existing events and creating new events.<br />
+Be aware that modifying or deleting existing events is not yet supported. Additionally, recurring 
+events are not yet supported.</p>
+<p>See <a href="Titanium.Android.Calendar.html"><code>Titanium.Android.Calendar</code></a> for examples of retrieving event information and creating events.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createAlert-method">createAlert <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createReminder-method">createReminder <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAlerts-method">getAlerts <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAllDay-method">getAllDay <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBegin-method">getBegin <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDescription-method">getDescription <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getEnd-method">getEnd <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getExtendedProperties-method">getExtendedProperties <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getExtendedProperty-method">getExtendedProperty <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHasAlarm-method">getHasAlarm <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHasExtendedProperties-method">getHasExtendedProperties <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getId-method">getId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLocation-method">getLocation <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getReminders-method">getReminders <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getStatus-method">getStatus <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitle-method">getTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getVisibility-method">getVisibility <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setExtendedProperty-method">setExtendedProperty <span class="params">(name, value)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="alerts-property"></a>alerts</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.Android.Calendar.Alert&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Existing alerts for this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="allDay-property"></a>allDay</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether this event is all day.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="begin-property"></a>begin</td>
+            <td class='attr-rw'>
+                [Date]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Start date/time of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="description-property"></a>description</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Description of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="end-property"></a>end</td>
+            <td class='attr-rw'>
+                [Date]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>End date/time of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="extendedProperties-property"></a>extendedProperties</td>
+            <td class='attr-rw'>
+                [Dictionary]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Extended properties of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="hasAlarm-property"></a>hasAlarm</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether an alarm is scheduled for this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="hasExtendedProperties-property"></a>hasExtendedProperties</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether extendedProperties 
+exists for this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="id-property"></a>id</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Identifier of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="location-property"></a>location</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Location of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="reminders-property"></a>reminders</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.Android.Calendar.Reminder&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Existing reminders for this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="status-property"></a>status</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Status of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="title-property"></a>title</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Title of this event.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="visibility-property"></a>visibility</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Visibility of this event.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createAlert-method">
+        <a name="createAlert-method"></a><b>createAlert</b> <span class="params">(data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an alert for this event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Android.Calendar.Alert&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties for the alert.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createReminder-method">
+        <a name="createReminder-method"></a><b>createReminder</b> <span class="params">(data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates a reminder for this event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Android.Calendar.Reminder&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties for the reminder.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAlerts-method">
+        <a name="getAlerts-method"></a><b>getAlerts</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.alerts-property.html">alerts</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAllDay-method">
+        <a name="getAllDay-method"></a><b>getAllDay</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.allDay-property.html">allDay</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBegin-method">
+        <a name="getBegin-method"></a><b>getBegin</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.begin-property.html">begin</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDescription-method">
+        <a name="getDescription-method"></a><b>getDescription</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.description-property.html">description</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getEnd-method">
+        <a name="getEnd-method"></a><b>getEnd</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.end-property.html">end</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getExtendedProperties-method">
+        <a name="getExtendedProperties-method"></a><b>getExtendedProperties</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.extendedProperties-property.html">extendedProperties</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getExtendedProperty-method">
+        <a name="getExtendedProperty-method"></a><b>getExtendedProperty</b> <span class="params">(name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the specified extended property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of an existing extended property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHasAlarm-method">
+        <a name="getHasAlarm-method"></a><b>getHasAlarm</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.hasAlarm-property.html">hasAlarm</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHasExtendedProperties-method">
+        <a name="getHasExtendedProperties-method"></a><b>getHasExtendedProperties</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.hasExtendedProperties-property.html">hasExtendedProperties</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getId-method">
+        <a name="getId-method"></a><b>getId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.id-property.html">id</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLocation-method">
+        <a name="getLocation-method"></a><b>getLocation</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.location-property.html">location</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getReminders-method">
+        <a name="getReminders-method"></a><b>getReminders</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.reminders-property.html">reminders</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getStatus-method">
+        <a name="getStatus-method"></a><b>getStatus</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.status-property.html">status</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitle-method">
+        <a name="getTitle-method"></a><b>getTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.title-property.html">title</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getVisibility-method">
+        <a name="getVisibility-method"></a><b>getVisibility</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Calendar.Event.visibility-property.html">visibility</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setExtendedProperty-method">
+        <a name="setExtendedProperty-method"></a><b>setExtendedProperty</b> <span class="params">(name, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the specified extended property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Property name.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Property value.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

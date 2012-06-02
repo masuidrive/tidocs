@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.Menu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Android.Menu 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.5+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Titanium binding of an Android Options Menu.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Currently, <code>Menu</code> only supports menus displayed when the <strong>Menu</strong> button is pressed, 
+not the newer Action Bar style menu display.</p>
+<p>See also: <a href="http://developer.android.com/reference/android/view/Menu.html">Menu</a>
+in the Android Developer Reference.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#add-method">add <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#clear-method">clear <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#close-method">close <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#findItem-method">findItem <span class="params">(item)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getItem-method">getItem <span class="params">(index)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getItems-method">getItems <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hasVisibleItems-method">hasVisibleItems <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeGroup-method">removeGroup <span class="params">(groupId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeItem-method">removeItem <span class="params">(itemId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setGroupEnabled-method">setGroupEnabled <span class="params">(groupId, enabled)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setGroupVisible-method">setGroupVisible <span class="params">(groupId, visible)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#size-method">size <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="items-property"></a>items</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.Android.MenuItem&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Array of menu items in this menu.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Creating a Simple Menu</div>
+	<div class="code"><p>This sample creates an Android menu that displays a menu item named "Item 1", 
+which logs a debug message when clicked.</p>
+<pre><code>var win = Ti.UI.createWindow({
+  fullscreen: true
+});
+
+var activity = win.activity;
+
+activity.onCreateOptionsMenu = function(e){
+  var menu = e.menu;
+  var menuItem = menu.add({ title: "Item 1" });
+  menuItem.icon = "item1.png";
+  menuItem.addEventListener("click", function(e) {
+    Ti.API.debug("I was clicked");
+  });
+};
+
+win.open();
+</code></pre></div>
+        
+	<div class="subsectiontitle">Creating a Dynamic Menu</div>
+	<div class="code"><p>This sample creates an Android menu that displays a menu item named 
+"Login" or "Logout", depending on the value of a <code>loggedIn</code> Boolean variable. 
+Click on the item to toggle the variable's value.</p>
+<pre><code>var win = Ti.UI.createWindow({
+  fullscreen: true
+});
+var LOGIN = 1, LOGOUT = 2;
+var loggedIn = false;
+
+var activity = win.activity;
+
+activity.onCreateOptionsMenu = function(e){
+  var menu = e.menu;
+  var login = menu.add({ title: "Login", itemId: LOGIN });
+  login.setIcon("login.png");
+  login.addEventListener("click", function(e) {
+    loggedIn = true;
+  });
+  var logout = menu.add({ title: "Logout", itemId: LOGOUT });
+  logout.setIcon("logout.png");
+  logout.addEventListener("click", function(e) {
+    loggedIn = false;
+  });
+};
+
+activity.onPrepareOptionsMenu = function(e) {
+  var menu = e.menu;
+  menu.findItem(LOGIN).setVisible(!loggedIn);
+  menu.findItem(LOGOUT).setVisible(loggedIn);
+};
+win.open();
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="add-method">
+        <a name="add-method"></a><b>add</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates a <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> from the passed creation options.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Creation options. Supported options are
+itemId,
+groupId,
+title, and
+order.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="clear-method">
+        <a name="clear-method"></a><b>clear</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Clears all items from this menu.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="close-method">
+        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Closes the menu, if visible.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="findItem-method">
+        <a name="findItem-method"></a><b>findItem</b> <span class="params">(item)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Locates a <a href="Titanium.Android.MenuItem-object.html">MenuItem</a> in this menu, by item ID or reference.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>item</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberTitanium.Android.MenuItem]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Integer itemId or a reference to a MenuItem object.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getItem-method">
+        <a name="getItem-method"></a><b>getItem</b> <span class="params">(index)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem-object.html">MenuItem</a> at a specific index.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>index</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Index of the menu item to return.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getItems-method">
+        <a name="getItems-method"></a><b>getItems</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Menu.items-property.html">items</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hasVisibleItems-method">
+        <a name="hasVisibleItems-method"></a><b>hasVisibleItems</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns <code>true</code> if this menu has visible items.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeGroup-method">
+        <a name="removeGroup-method"></a><b>removeGroup</b> <span class="params">(groupId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes all menu items with the specified 
+<a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>groupId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Group ID of items to remove.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeItem-method">
+        <a name="removeItem-method"></a><b>removeItem</b> <span class="params">(itemId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes a specific <a href="Titanium.Android.MenuItem-object.html">MenuItem</a> identified by its
+<a href="Titanium.Android.MenuItem.itemId-property.html">itemId</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>itemId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Item ID of item to remove.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setGroupEnabled-method">
+        <a name="setGroupEnabled-method"></a><b>setGroupEnabled</b> <span class="params">(groupId, enabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Enables or disables a group of menu items identified by a 
+<a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>groupId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>ID of the group to enable or disable.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>enabled</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True to enable the specified group, false to disable it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setGroupVisible-method">
+        <a name="setGroupVisible-method"></a><b>setGroupVisible</b> <span class="params">(groupId, visible)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Shows or hides a group of menu items identified by a
+<a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>groupId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Group ID to enable or disable.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>visible</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True to show the group, false to hide it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="size-method">
+        <a name="size-method"></a><b>size</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Number of items in this menu.</p></div>
+      
+
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

@@ -35,16 +35,25 @@
             <span class="type">Object</span> 
             Titanium.UI.EmailDialog 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>The Email Dialog is created by <a href="Titanium.UI.createEmailDialog.html">Titanium.UI.createEmailDialog</a> and allows you to send in application emails on behalf of the application user.</p>
+        <p>An email dialog is a modal window that allows users to compose and send an email.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The Email Dialog is created by <a href="Titanium.UI.createEmailDialog-method.html"><code>Titanium.UI.createEmailDialog</code></a>.</p>
+<p>On Mobile Web, the <code>to</code> addresses, <code>cc</code> addresses, <code>bcc</code> addresses, <code>subject</code>, and <code>body</code> are 
+appended together and formatted into a <code>mailto:</code> URL. This URL typically has a limit of 
+approximately 2000 characters.</p>
     </div>
     
 
@@ -66,11 +75,71 @@
             </ul>
     
             <ul>
+                <li><a href="#getBarColor-method">getBarColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBccRecipients-method">getBccRecipients <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCcRecipients-method">getCcRecipients <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHtml-method">getHtml <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMessageBody-method">getMessageBody <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSubject-method">getSubject <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getToRecipients-method">getToRecipients <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isSupported-method">isSupported <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#open-method">open <span class="params">(properties)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBarColor-method">setBarColor <span class="params">(barColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBccRecipients-method">setBccRecipients <span class="params">(bccRecipients)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCcRecipients-method">setCcRecipients <span class="params">(ccRecipients)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHtml-method">setHtml <span class="params">(html)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMessageBody-method">setMessageBody <span class="params">(messageBody)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSubject-method">setSubject <span class="params">(subject)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setToRecipients-method">setToRecipients <span class="params">(toRecipients)</span></a></li>
             </ul>
     
     
@@ -82,89 +151,102 @@
         <tr valign='top'>
             <td class='attr-name'><a name="CANCELLED-property"></a>CANCELLED</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant for the CANCELLED status result</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant for the CANCELLED status result. On Android, this property exists but is not used.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="FAILED-property"></a>FAILED</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant for the FAILED status result</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant for the FAILED status result.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="SAVED-property"></a>SAVED</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant for the SAVED status result</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant for the SAVED status result. On Android, this property exists but is not used.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="SENT-property"></a>SENT</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>constant for the SENT status result</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant for the SENT status result.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="barColor-property"></a>barColor</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the bar color of the email dialog window when opened</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Bar color of the email dialog window, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="bccRecipients-property"></a>bccRecipients</td>
             <td class='attr-rw'>
-                [array]
+                [Array&lt;String&gt;]
             </td>
-            <td class='attr-desc'>array of email BCC: recipients</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Recipients of the email included via the BCC (Blind Carbon Copy) field.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="ccRecipients-property"></a>ccRecipients</td>
             <td class='attr-rw'>
-                [array]
+                [Array&lt;String&gt;]
             </td>
-            <td class='attr-desc'>array of email CC: recipients</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Recipients of the email included via the CC (Carbon Copy) field.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="html-property"></a>html</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>boolean to indicate whether the email messageBody should be sent as HTML content type. defaults to false</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the email message, specifically the contents of 
+messageBody, should be sent as HTML content type 
+rather than plain text.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="messageBody-property"></a>messageBody</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the email message body</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Email message body.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="subject-property"></a>subject</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the subject line for the email</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Subject line for the email.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="toRecipients-property"></a>toRecipients</td>
             <td class='attr-rw'>
-                [array]
+                [Array&lt;String&gt;]
             </td>
-            <td class='attr-desc'>array of email recipients</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Recipients of the email included via the main TO field.</td>
         </tr>
         
     </table>
@@ -176,7 +258,8 @@
         
         <tr valign='top'>
             <td class='attr-name'><a href="#complete-event">complete</a></td>
-            <td class='attr-desc'>fired when the email dialog has completed sending the email</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when this email dialog has completed sending an email.</td>
         </tr>
         
     </table>
@@ -189,11 +272,11 @@
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Email Dialog with Attachment</div>
-	<div class="code"><p>In this example, we send an email with a file attachment.</p>
-<pre><code>var emailDialog = Titanium.UI.createEmailDialog()
+	<div class="code"><p>Create and send an email with a file attachment.</p>
+<pre><code>var emailDialog = Ti.UI.createEmailDialog()
 emailDialog.subject = "Hello from Titanium";
 emailDialog.toRecipients = ['foo@yahoo.com'];
-emailDialog.messageBody = '<b>Appcelerator Titanium Rocks!</b>';
+emailDialog.messageBody = '&lt;b&gt;Appcelerator Titanium Rocks!&lt;/b&gt;';
 var f = Ti.Filesystem.getFile('cricket.wav');
 emailDialog.addAttachment(f);
 emailDialog.open();
@@ -209,185 +292,486 @@ emailDialog.open();
     <div class="method">
       <div class="title" id="addAttachment-method">
         <a name="addAttachment-method"></a><b>addAttachment</b> <span class="params">(attachment)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>add an attachment to the email. the attachment can either be a Blob or File object. (Note: Android will only accept one attachment at this time.)</p>
-      </div>
+      <div class="description"><p>Adds an attachment.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>attachment</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>attachment object as either a Blob or File object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>attachment</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.BlobTitanium.Filesystem.File]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Attachment to include in the email.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        add an event listener for the instance to receive view triggered events
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function to invoke when the event is fired</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        fire a synthesized event to the views listener
-      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>event</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>event object</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBarColor-method">
+        <a name="getBarColor-method"></a><b>getBarColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.EmailDialog.barColor-property.html">barColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBccRecipients-method">
+        <a name="getBccRecipients-method"></a><b>getBccRecipients</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.EmailDialog.bccRecipients-property.html">bccRecipients</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCcRecipients-method">
+        <a name="getCcRecipients-method"></a><b>getCcRecipients</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.EmailDialog.ccRecipients-property.html">ccRecipients</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHtml-method">
+        <a name="getHtml-method"></a><b>getHtml</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.EmailDialog.html-property.html">html</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMessageBody-method">
+        <a name="getMessageBody-method"></a><b>getMessageBody</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.EmailDialog.messageBody-property.html">messageBody</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSubject-method">
+        <a name="getSubject-method"></a><b>getSubject</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.EmailDialog.subject-property.html">subject</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getToRecipients-method">
+        <a name="getToRecipients-method"></a><b>getToRecipients</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.EmailDialog.toRecipients-property.html">toRecipients</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isSupported-method">
+        <a name="isSupported-method"></a><b>isSupported</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Indicates whether sending email is supported by the system.</p></div>
+      
+
+      
     </div>
     
     <div class="method">
       <div class="title" id="open-method">
         <a name="open-method"></a><b>open</b> <span class="params">(properties)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>open the email dialog. the email dialog itself is a modal window</p>
-      </div>
+      <div class="description"><p>Opens this email dialog.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>properties</td>
-            <td class='attr-rw'>
-              [object]
-            </td>
-            <td class='attr-desc'>object of animation properties. pass animated property (as boolean) to indicate if the dialog should be animated on open.</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>properties</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Animation properties. Set animated Boolean property to true to animate dialog 
+on open. (iPhone, iPad only)</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        remove a previously added event listener
-      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Arguments</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>name</td>
-            <td class='attr-rw'>
-              [string]
-            </td>
-            <td class='attr-desc'>name of the event</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>callback</td>
-            <td class='attr-rw'>
-              [function]
-            </td>
-            <td class='attr-desc'>callback function passed in addEventListener</td>
-          </tr>
-          
-	</table>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
       </div>
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBarColor-method">
+        <a name="setBarColor-method"></a><b>setBarColor</b> <span class="params">(barColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.EmailDialog.barColor-property.html">barColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>barColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBccRecipients-method">
+        <a name="setBccRecipients-method"></a><b>setBccRecipients</b> <span class="params">(bccRecipients)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.EmailDialog.bccRecipients-property.html">bccRecipients</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>bccRecipients</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Array&lt;String&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCcRecipients-method">
+        <a name="setCcRecipients-method"></a><b>setCcRecipients</b> <span class="params">(ccRecipients)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.EmailDialog.ccRecipients-property.html">ccRecipients</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ccRecipients</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Array&lt;String&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHtml-method">
+        <a name="setHtml-method"></a><b>setHtml</b> <span class="params">(html)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.EmailDialog.html-property.html">html</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>html</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMessageBody-method">
+        <a name="setMessageBody-method"></a><b>setMessageBody</b> <span class="params">(messageBody)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.EmailDialog.messageBody-property.html">messageBody</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>messageBody</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSubject-method">
+        <a name="setSubject-method"></a><b>setSubject</b> <span class="params">(subject)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.EmailDialog.subject-property.html">subject</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>subject</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setToRecipients-method">
+        <a name="setToRecipients-method"></a><b>setToRecipients</b> <span class="params">(toRecipients)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.EmailDialog.toRecipients-property.html">toRecipients</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>toRecipients</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Array&lt;String&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     
@@ -402,39 +786,63 @@ emailDialog.open();
       </div>
       
       
-      <div class="description">
-        <p>fired when the email dialog has completed sending the email</p>
-      </div>
-      
-
       
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
+            <td class='attr-name'>error</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Error message generated during an email send failure, or null if successful.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
             <td class='attr-name'>result</td>
-            <td class='attr-desc'>result status either as SENT, SAVED, CANCELLED or FAILED. (Note: Android result will be SENT even if user discards or saves the message.  SAVED and CANCELLED are not supported on Android.)</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>the name of the event fired</td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>success</td>
-            <td class='attr-desc'>boolean to indicate if the email was successfully sent</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Status of the email send process. One of <a href="Titanium.UI.EmailDialog.SENT-property.html">SENT</a>, 
+<a href="Titanium.UI.EmailDialog.FAILED-property.html">FAILED</a>, <a href="Titanium.UI.EmailDialog.SAVED-property.html">SAVED</a> (iOS only) 
+or <a href="Titanium.UI.EmailDialog.CANCELLED-property.html">CANCELLED</a> (iOS only).</p>
+<p>Note that on Android this property will return <code>SENT</code> when the user discards or saves 
+a message.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
-            <td class='attr-desc'>the source object that fired the event</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>error</td>
-            <td class='attr-desc'>string message of the error or null if successfully sent</td>
+            <td class='attr-name'>success</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Boolean]</span><br /> 
+              
+              <p>Indicates whether sending the email was successful.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
           </tr>
           
 	</table>

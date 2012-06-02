@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Android.RemoteViews</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Android.RemoteViews 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.6+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The Titanium binding of <a href="http://developer.android.com/reference/android/widget/RemoteViews.html">Android RemoteViews</a>. </p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p><code>RemoteViews</code> is an API for referencing and updating a remote view hierarchy that
+lives in another process, for example, in a <a href="Titanium.Android.Notification-object.html">Notification</a>.</p>
+<p>To create a remote view hierarchy, you must define an Android XML layout for the views
+you want to display, and place the XML file in the <code>platform/android/res/layout</code> inside your
+project folder. See the examples for a sample XML layout and sample code for creating a
+remote view.</p>
+<p>To use a remote view hierarchy in a notification, see
+<a href="Titanium.Android.Notification.contentView-property.html">Notification.contentView</a>.</p>
+<p>Because the remote view hierarchy belongs to another process, you cannot call methods on it
+directly, but you can call methods on the <code>RemoteViews</code> object to update views in the
+heirarchy by ID. To reference a view inside the layout, use the
+<a href="Titanium.App.Android.R-object.html"><code>Titanium.App.Android.R</code></a> object to reference the view's ID. For example, if you have a 
+view with the ID <code>notify_imageview</code>, you can refer to it using:</p>
+<pre><code>Ti.App.Android.R.id.notify_imageview
+</code></pre>
+<p>See also: </p>
+<ul>
+<li>
+<p><a href="http://developer.android.com/reference/android/widget/RemoteViews.html">RemoteViews</a>
+    in the Android Developer Reference.</p>
+</li>
+<li>
+<p><a href="http://developer.android.com/guide/topics/ui/declaring-layout.html">XML Layouts</a>
+    in the Android Developer Guide.</p>
+</li>
+</ul>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLayoutId-method">getLayoutId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPackageName-method">getPackageName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBoolean-method">setBoolean <span class="params">(viewId, methodName, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setChronometer-method">setChronometer <span class="params">(viewId, base, format, started)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDouble-method">setDouble <span class="params">(viewId, methodName, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setImageViewResource-method">setImageViewResource <span class="params">(viewId, srcId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setImageViewUri-method">setImageViewUri <span class="params">(viewId, uri)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setInt-method">setInt <span class="params">(viewId, methodName, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnClickPendingIntent-method">setOnClickPendingIntent <span class="params">(viewId, pendingIntent)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setProgressBar-method">setProgressBar <span class="params">(viewId, max, progress, indeterminate)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setString-method">setString <span class="params">(viewId, methodName, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTextColor-method">setTextColor <span class="params">(viewId, color)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTextViewText-method">setTextViewText <span class="params">(viewId, text)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setUri-method">setUri <span class="params">(viewId, methodName, value)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setViewVisibility-method">setViewVisibility <span class="params">(viewId, visibility)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="layoutId-property"></a>layoutId</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android layout resource ID for the view to display. Required.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="packageName-property"></a>packageName</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Package name that the resource ID lives in. Optional.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Create a Remote View</div>
+	<div class="code"><p>The following code excerpt creates a <code>RemoteViews</code> object based on a custom layout 
+called <code>custom_layout.xml</code>, and set a label's text.</p>
+<pre><code>var AppR = Ti.App.Android.R;
+var customLayout = Ti.Android.createRemoteViews({ layoutId: AppR.layout.custom_layout });
+customLayout.setTextViewText(AppR.id.custom_text, "Click Me!");
+</code></pre>
+<p>This example uses a simple custom layout:</p>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:orientation="vertical" &gt;
+    &lt;TextView android:id="@+id/custom_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff"
+            android:textColor="#aaff0000"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:text="Hello, I am a TextView" /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>The layout file for this example must be placed in
+<code>platform/android/res/layout/custom_layout.xml</code>. </p></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLayoutId-method">
+        <a name="getLayoutId-method"></a><b>getLayoutId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.RemoteViews.layoutId-property.html">layoutId</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPackageName-method">
+        <a name="getPackageName-method"></a><b>getPackageName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.RemoteViews.packageName-property.html">packageName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBoolean-method">
+        <a name="setBoolean-method"></a><b>setBoolean</b> <span class="params">(viewId, methodName, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Calls a method taking a single <code>boolean</code> argument on a view in the remote view
+hierarchy.  See Android's documentation for
+<a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setBoolean(int, java.lang.String, boolean)">setBoolean</a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to invoke the method on.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>methodName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the method to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Value to pass to the method.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setChronometer-method">
+        <a name="setChronometer-method"></a><b>setChronometer</b> <span class="params">(viewId, base, format, started)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the base time, format string, and started flag for a chronometer
+in the remote view hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the Chronometer to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>base</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Date]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Time at which the timer would have read 0:00.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>format</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Chronometer format string, or null to simply display the timer value.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>started</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True if you want the clock to be started, false if not.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDouble-method">
+        <a name="setDouble-method"></a><b>setDouble</b> <span class="params">(viewId, methodName, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Calls a method taking a single <code>double</code> argument on a view in the remote view
+hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>methodName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the method to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Value to pass to the method.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setImageViewResource-method">
+        <a name="setImageViewResource-method"></a><b>setImageViewResource</b> <span class="params">(viewId, srcId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the image for an image view in the remote view hierarchy using an Android drawable resource.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the ImageView to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>srcId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the new image.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setImageViewUri-method">
+        <a name="setImageViewUri-method"></a><b>setImageViewUri</b> <span class="params">(viewId, uri)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the image for an image view in the remote view hierarchy using a URI.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the ImageView to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>uri</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>URI of the image (both Android and Titanium URLs are supported).</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setInt-method">
+        <a name="setInt-method"></a><b>setInt</b> <span class="params">(viewId, methodName, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Calls a method taking a single <code>int</code> argument on a view in the remote view hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>methodName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the method to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Value to pass to the method.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOnClickPendingIntent-method">
+        <a name="setOnClickPendingIntent-method"></a><b>setOnClickPendingIntent</b> <span class="params">(viewId, pendingIntent)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Launches a <a href="Titanium.Android.PendingIntent-object.html"><code>Titanium.Android.PendingIntent</code></a> when the specified view is clicked.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to add a click listener to.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>pendingIntent</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Android.PendingIntent]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The PendingIntent to execute when this view is clicked.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setProgressBar-method">
+        <a name="setProgressBar-method"></a><b>setProgressBar</b> <span class="params">(viewId, max, progress, indeterminate)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the progress, max value, and indeterminate flag of a progress bar in the
+remote view hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the progress bar to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>max</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The new maximum value of the progress bar.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>progress</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The new progress value of the progress bar (from 0..max).</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>indeterminate</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Determines whether the progress bar is indeterminate.
+If true, the progress bar displays an infinite looping animation.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setString-method">
+        <a name="setString-method"></a><b>setString</b> <span class="params">(viewId, methodName, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Calls a method taking a single String argument on a view in the remote view
+hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>methodName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the method to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>String to pass to the method.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTextColor-method">
+        <a name="setTextColor-method"></a><b>setTextColor</b> <span class="params">(viewId, color)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the text color of a view in the remote view hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>color</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Color as an integer.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTextViewText-method">
+        <a name="setTextViewText-method"></a><b>setTextViewText</b> <span class="params">(viewId, text)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the text of a text view in the remote view hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the text view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>text</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New text for the text view.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setUri-method">
+        <a name="setUri-method"></a><b>setUri</b> <span class="params">(viewId, methodName, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Calls a method taking one URI on a view in the remote view hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>methodName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the method to call.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>URI (as a string) to pass to the method.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setViewVisibility-method">
+        <a name="setViewVisibility-method"></a><b>setViewVisibility</b> <span class="params">(viewId, visibility)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the visibility of a view in the remote view hierarchy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>viewId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Resource ID of the view to show or hide.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>visibility</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The visibility. Either 0 (VISIBLE), 4 (INVISIBLE) or 8 (GONE).</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

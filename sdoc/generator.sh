@@ -1,5 +1,5 @@
 #!/bin/sh
 
-curl http://developer.appcelerator.com/apidoc/mobile/1.4/api.json -o - | ruby ./generator.rb 
+curl http://docs.appcelerator.com/titanium/data/2.0.2/api.json -o - | ruby ./generator.rb 
 scp -r doc/* www:/www/domains/tidocs.com/public_html/mobile/latest/
 

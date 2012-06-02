@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Codec</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Codec 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.7+), iPhone(1.7+), iPad(1.7+), Mobile Web(1.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>A module for translating between primitive types and raw byte streams.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>The <code>Codec</code> module can be used for encoding strings and numbers into <a href="Titanium.Buffer-object.html">Buffer</a> 
+objects, and decoding primitive types from buffers. </p>
+<h4>Byte Order</h4>
+<p>Multi-byte data can be stored in two different byte orders: big-endian or
+little-endian. In big-endian byte order, the most significant or highest-value
+byte is stored first. For example, the 4-byte integer 0xFEDCBA98 is made up of the
+bytes 0xFE, 0xDC, 0xBA and 0x98, from most-significant to least-significant.<br />
+</p>
+<p>If we represent a buffer as an array of byte values, a big-endian encoding of
+0xFEDCBA98 would look like this:</p>
+<pre><code>[ 0xFE, 0xDC, 0xBA, 0x98 ]
+</code></pre>
+<p>In little-endian order, the bytes would be stored in this order:</p>
+<pre><code>[ 0x98, 0xBA, 0xDC, 0xFE ]
+</code></pre>
+<p>For 8-bit character encodings, including ASCII, Latin-1 and UTF-8, byte order is not
+significant: the text is a sequence of individual bytes.</p>
+<p>For UTF-16, text is represented as a sequence of 16-bit values. For example,
+a capital T in UTF-16 is 0x0054, and lowercase i is 0x0069. If we encode the string
+"Ti" with UTF-16 in big-endian byte order, we get:</p>
+<pre><code>[ 0x00, 0x54, 0x00, 0x69 ]
+</code></pre>
+<p>In UTF-16 with little-endian byte order, "Ti" is encoded as:</p>
+<pre><code>[ 0x54, 0x00, 0x69, 0x00 ]
+</code></pre>
+<p>Note that the bytes for each character are stored least-significant byte first, but
+the order of the characters is unchanged.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#decodeNumber-method">decodeNumber <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#decodeString-method">decodeString <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#encodeNumber-method">encodeNumber <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#encodeString-method">encodeString <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNativeByteOrder-method">getNativeByteOrder <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="BIG_ENDIAN-property"></a>BIG_ENDIAN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Big endian (network) byte order -- that is, the most significant byte first.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CHARSET_ASCII-property"></a>CHARSET_ASCII</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>ascii</td>
+            <td class='attr-desc'>ASCII character encoding..</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CHARSET_ISO_LATIN_1-property"></a>CHARSET_ISO_LATIN_1</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>iso-latin-1</td>
+            <td class='attr-desc'>ISO 8859-1 (Latin-1) character encoding.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CHARSET_UTF16-property"></a>CHARSET_UTF16</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>utf16</td>
+            <td class='attr-desc'>UTF-16 character encoding with default byte order.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CHARSET_UTF16BE-property"></a>CHARSET_UTF16BE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>utf16be</td>
+            <td class='attr-desc'>UTF-16 character encoding with big endian byte order.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CHARSET_UTF16LE-property"></a>CHARSET_UTF16LE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>utf16le</td>
+            <td class='attr-desc'>UTF-16 character encoding with little endian byte order.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CHARSET_UTF8-property"></a>CHARSET_UTF8</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>utf8</td>
+            <td class='attr-desc'>UTF-8 character encoding.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="LITTLE_ENDIAN-property"></a>LITTLE_ENDIAN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Little endian byte order -- that is, the least significant byte first.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TYPE_BYTE-property"></a>TYPE_BYTE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>byte</td>
+            <td class='attr-desc'>8-bit integer encoding type.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TYPE_DOUBLE-property"></a>TYPE_DOUBLE</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>double</td>
+            <td class='attr-desc'>64-bit double precision floating-point type.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TYPE_FLOAT-property"></a>TYPE_FLOAT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>float</td>
+            <td class='attr-desc'>32-bit single precision floating-point type.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TYPE_INT-property"></a>TYPE_INT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>int</td>
+            <td class='attr-desc'>32-bit integer encoding type.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TYPE_LONG-property"></a>TYPE_LONG</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>long</td>
+            <td class='attr-desc'>64-bit integer encoding type.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TYPE_SHORT-property"></a>TYPE_SHORT</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'>short</td>
+            <td class='attr-desc'>16-bit integer encoding type.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="decodeNumber-method">
+        <a name="decodeNumber-method"></a><b>decodeNumber</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Decodes a number from the <code>source</code> buffer using the specified data type.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [DecodeNumberDict]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Named parameters.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="decodeString-method">
+        <a name="decodeString-method"></a><b>decodeString</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Decodes the source buffer into a String using the supplied character set.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [DecodeStringDict]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Named parameters.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="encodeNumber-method">
+        <a name="encodeNumber-method"></a><b>encodeNumber</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Encodes a number and writes it to a buffer.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [EncodeNumberDict]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Named parameters.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="encodeString-method">
+        <a name="encodeString-method"></a><b>encodeString</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Encodes a string into a series of bytes in a buffer using the specified character set.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;EncodeStringDict&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Named parameters.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNativeByteOrder-method">
+        <a name="getNativeByteOrder-method"></a><b>getNativeByteOrder</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Get the OS native byte order (either <a href="Titanium.Codec.BIG_ENDIAN-property.html"><code>Titanium.Codec.BIG_ENDIAN</code></a> or
+<a href="Titanium.Codec.LITTLE_ENDIAN-property.html"><code>Titanium.Codec.LITTLE_ENDIAN</code></a>).</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

@@ -35,16 +35,38 @@
             <span class="type">Object</span> 
             Titanium.UI.ActivityIndicator 
         </h1>
-	<ul class="files">
-	  <li>Android, iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>An Activity Indicator is created by the method <a href="Titanium.UI.createActivityIndicator.html">Titanium.UI.createActivityIndicator</a>.  An activity indicator can be used to show the progress of an operation in the UI to let the user know some action is taking place.</p>
+        <p>An activity indicator that lets the user know an action is taking place.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>An activity indicator can be used to show the progress of an operation in the UI to let the 
+user know that some action is taking place. An activity indicator consists of a spinning 
+animation and an optional text message, and is used to indicate an ongoing activity of 
+indeterminate length. To show progress, use <a href="Titanium.UI.ProgressBar-object.html"><code>Titanium.UI.ProgressBar</code></a> instead.</p>
+<p>Use the <a href="Titanium.UI.createActivityIndicator-method.html"><code>Titanium.UI.createActivityIndicator</code></a> method to create an Activity Indicator. </p>
+<p>Activity indicators must be used differently on Android and iOS:</p>
+<ul>
+<li>
+<p>On Android, the activity indicator is a modal dialog that blocks the UI. Calling <code>show</code> 
+displays the indicator, and calling <code>hide</code> removes it. </p>
+</li>
+<li>
+<p>On iOS and Mobile Web, the activity indicator is a view like any other view, and must be 
+added to a window or other top-level view before it can be shown. Note that, unlike most views, 
+the activity indicator is hidden by default and must be shown explicitly.</p>
+</li>
+</ul>
     </div>
     
 
@@ -54,7 +76,107 @@
     <dl class="methods">
     
             <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getBottom-method">getBottom <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getColor-method">getColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFont-method">getFont <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLeft-method">getLeft <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMessage-method">getMessage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMessageid-method">getMessageid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRight-method">getRight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getStyle-method">getStyle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTop-method">getTop <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getWidth-method">getWidth <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#hide-method">hide <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBottom-method">setBottom <span class="params">(bottom)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setColor-method">setColor <span class="params">(color)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setFont-method">setFont <span class="params">(font)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHeight-method">setHeight <span class="params">(height)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLeft-method">setLeft <span class="params">(left)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMessage-method">setMessage <span class="params">(message)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMessageid-method">setMessageid <span class="params">(messageid)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setRight-method">setRight <span class="params">(right)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setStyle-method">setStyle <span class="params">(style)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTop-method">setTop <span class="params">(top)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setWidth-method">setWidth <span class="params">(width)</span></a></li>
             </ul>
     
             <ul>
@@ -68,35 +190,104 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="bottom-property"></a>bottom</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Bottom position of the view.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="color-property"></a>color</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the color of the message label</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Color of the message text, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="font-property"></a>font</td>
             <td class='attr-rw'>
-                [object]
+                [Font]
             </td>
-            <td class='attr-desc'>the font object for the activity message label</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Font used for the message text.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="height-property"></a>height</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Width of the view. Only accepts value of auto, which must be explicitly set in order to 
+display the message and to position the view correctly.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="left-property"></a>left</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Left position of the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="message-property"></a>message</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the activity message label text</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Message text.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="messageid-property"></a>messageid</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Key identifying a string in the locale file to use for the message text.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="right-property"></a>right</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Right position of the view.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="style-property"></a>style</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the style constant of the activity indicator</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The style for the activity indicator.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="top-property"></a>top</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Top position of the view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="width-property"></a>width</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Width of the view. Only accepts value of auto, which must be explicitly set in order to 
+display the message and to position the view correctly.</td>
         </tr>
         
     </table>
@@ -104,11 +295,6 @@
 
     
 
-    
-    <div class="sectiontitle">Notes</div>
-    <table border='0' cellpadding='5'>
-	<div class="code"><p>For iPhone, the style can be set from the constants <a href="Titanium.UI.iPhone.ActivityIndicatorStyle.html">Titanium.UI.iPhone.ActivityIndicatorStyle</a>.</p></div>
-    </table>
     
 
     
@@ -116,12 +302,49 @@
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Activity Indicator</div>
-	<div class="code"><p>In this example, we create a basic activity indicator and start it.</p>
-<pre><code>var actInd = Titanium.UI.createActivityIndicator({
-    height:50,
-    width:10
+	<div class="code"><p>Open a yellow window immediately after a blue window. Show an activity indicator while 
+some code executes and hide it on completion. Then close the yellow window.</p>
+<pre><code>Ti.UI.backgroundColor = 'white';
+
+var win1 = Ti.UI.createWindow({
+  backgroundColor: 'blue'
 });
-actInd.show();
+
+var win2 = Ti.UI.createWindow({
+  backgroundColor: 'yellow',
+  fullscreen: true
+});
+
+var activityIndicator = Ti.UI.createActivityIndicator({
+  color: 'green',
+  font: {fontFamily:'Helvetica Neue', fontSize:26, fontWeight:'bold'},
+  message: 'Loading...',
+  style:Ti.UI.iPhone.ActivityIndicatorStyle.DARK,
+  top:10,
+  left:10,
+  height:'auto',
+  width:'auto'
+});
+
+// On iOS, the activity indicator must be added to a window or view for it to appear
+if (Ti.Platform.name === 'iPhone OS'){
+  win2.add(activityIndicator);
+}
+
+// eventListeners must always be loaded before the event is likely to fire
+// hence, the open() method must be positioned before the window is opened
+win2.addEventListener('open', function (e) {
+  activityIndicator.show();
+  // do some work that takes 6 seconds
+  // ie. replace the following setTimeout block with your code
+  setTimeout(function(){
+    e.source.close();
+    activityIndicator.hide();
+  }, 6000);
+});
+
+win1.open();
+win2.open();
 </code></pre></div>
         
     </table>
@@ -132,37 +355,602 @@ actInd.show();
     <div class="sectiontitle">Methods</div>
     
     <div class="method">
-      <div class="title" id="hide-method">
-        <a name="hide-method"></a><b>hide</b> <span class="params">()</span>
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>call hide to make the activity indicator hidden and stop spinning</p>
-      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
       
 
       
       <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getBottom-method">
+        <a name="getBottom-method"></a><b>getBottom</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.bottom-property.html">bottom</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getColor-method">
+        <a name="getColor-method"></a><b>getColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.color-property.html">color</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFont-method">
+        <a name="getFont-method"></a><b>getFont</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.font-property.html">font</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHeight-method">
+        <a name="getHeight-method"></a><b>getHeight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.height-property.html">height</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLeft-method">
+        <a name="getLeft-method"></a><b>getLeft</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.left-property.html">left</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMessage-method">
+        <a name="getMessage-method"></a><b>getMessage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.message-property.html">message</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMessageid-method">
+        <a name="getMessageid-method"></a><b>getMessageid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.messageid-property.html">messageid</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRight-method">
+        <a name="getRight-method"></a><b>getRight</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.right-property.html">right</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getStyle-method">
+        <a name="getStyle-method"></a><b>getStyle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.style-property.html">style</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTop-method">
+        <a name="getTop-method"></a><b>getTop</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.top-property.html">top</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getWidth-method">
+        <a name="getWidth-method"></a><b>getWidth</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.width-property.html">width</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hide-method">
+        <a name="hide-method"></a><b>hide</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Hides the activity indicator and stops the animation.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBottom-method">
+        <a name="setBottom-method"></a><b>setBottom</b> <span class="params">(bottom)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.bottom-property.html">bottom</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>bottom</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setColor-method">
+        <a name="setColor-method"></a><b>setColor</b> <span class="params">(color)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.color-property.html">color</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>color</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setFont-method">
+        <a name="setFont-method"></a><b>setFont</b> <span class="params">(font)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.font-property.html">font</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>font</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Font]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHeight-method">
+        <a name="setHeight-method"></a><b>setHeight</b> <span class="params">(height)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.height-property.html">height</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>height</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLeft-method">
+        <a name="setLeft-method"></a><b>setLeft</b> <span class="params">(left)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.left-property.html">left</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>left</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMessage-method">
+        <a name="setMessage-method"></a><b>setMessage</b> <span class="params">(message)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.message-property.html">message</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>message</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMessageid-method">
+        <a name="setMessageid-method"></a><b>setMessageid</b> <span class="params">(messageid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.messageid-property.html">messageid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>messageid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setRight-method">
+        <a name="setRight-method"></a><b>setRight</b> <span class="params">(right)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.right-property.html">right</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>right</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setStyle-method">
+        <a name="setStyle-method"></a><b>setStyle</b> <span class="params">(style)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.style-property.html">style</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>style</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTop-method">
+        <a name="setTop-method"></a><b>setTop</b> <span class="params">(top)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.top-property.html">top</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>top</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setWidth-method">
+        <a name="setWidth-method"></a><b>setWidth</b> <span class="params">(width)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.width-property.html">width</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>width</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
     </div>
     
     <div class="method">
       <div class="title" id="show-method">
         <a name="show-method"></a><b>show</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      
-      <div class="description">
-        <p>call show to make the activity indicator visible and start spinning</p>
-      </div>
+      <div class="description"><p>Shows the activity indicator and starts the animation.</p></div>
       
 
       
-      <div class="description">
-	<h4>Return Type</h4>
-	<div>void</div>
-      </div>
     </div>
     
     

@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Network.Socket.TCP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.Network.Socket.TCP 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(1.7+), iPhone(1.7+), iPad(1.7+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>TCP socket that implements the <code>Titanium.IOStream</code> interface.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Most socket operations are asynchronous. When you create a socket, you can define
+callback funtions to receive the results of API calls, as well as to handle incoming
+data.</p>
+<p>For example, for a client-side socket, you define 
+<a href="Titanium.Network.Socket.TCP.connected-property.html">connected</a> and
+<a href="Titanium.Network.Socket.TCP.error-property.html">error</a> callback functions.</p>
+<p>To connect to a remote host, call the socket's
+<a href="Titanium.Network.Socket.TCP.connect-method.html">connect</a> method. If the socket connects
+successfully, your <code>connected</code> callback is invoked, and you can send and receive data
+on the socket. If the socket connection fails, your <code>error</code> callback is invoked. </p>
+<p>After a socket is connected, you can access it like any other <a href="Titanium.IOStream-object.html"><code>Titanium.IOStream</code></a>.
+Note that the socket's <code>read</code> and <code>write</code> methods may block, so in most cases
+you should use the asynchronous <a href="Titanium.Stream.read-method.html">read</a>, <a href="Titanium.Stream.write-method.html">write</a> 
+and <a href="Titanium.Stream.pump-method.html">pump</a> methods provided by the <a href="Titanium.Stream.html"><code>Titanium.Stream</code></a> module,
+rather than using the socket object's <code>read</code> and <code>write</code> methods directly.</p>
+<p>A familiarity with the basics of BSD socket programming is a recommended before using 
+sockets with Titanium.</p>
+<p>Use the <a href="Titanium.Network.Socket.createTCP-method.html"><code>Titanium.Network.Socket.createTCP</code></a> method to create a TCP socket.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#accept-method">accept <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#close-method">close <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#connect-method">connect <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAccepted-method">getAccepted <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getConnected-method">getConnected <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getError-method">getError <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHost-method">getHost <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getListenQueueSize-method">getListenQueueSize <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPort-method">getPort <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getState-method">getState <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTimeout-method">getTimeout <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isReadable-method">isReadable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isWriteable-method">isWriteable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#listen-method">listen <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#read-method">read <span class="params">(buffer, offset, length)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setAccepted-method">setAccepted <span class="params">(accepted)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setConnected-method">setConnected <span class="params">(connected)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setError-method">setError <span class="params">(error)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHost-method">setHost <span class="params">(host)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setListenQueueSize-method">setListenQueueSize <span class="params">(listenQueueSize)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPort-method">setPort <span class="params">(port)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTimeout-method">setTimeout <span class="params">(timeout)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#write-method">write <span class="params">(buffer, offset, length)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="accepted-property"></a>accepted</td>
+            <td class='attr-rw'>
+                [Callback&lt;AcceptedCallbackArgs&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Callback to be fired when a listener accepts a connection.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="connected-property"></a>connected</td>
+            <td class='attr-rw'>
+                [Callback&lt;ConnectedCallbackArgs&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Callback to be fired when the socket enters the "connected" state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="error-property"></a>error</td>
+            <td class='attr-rw'>
+                [Callback&lt;ErrorCallbackArgs&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Callback to be fired when the socket enters the ERROR state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="host-property"></a>host</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The host to connect to or listen on.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="listenQueueSize-property"></a>listenQueueSize</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Max number of pending incoming connections to be allowed when the socket is in the LISTENING state.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="port-property"></a>port</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The port to connect to or listen on.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="state-property"></a>state</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Current state of the socket.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="timeout-property"></a>timeout</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Timeout, in milliseconds, for connect and all write operations.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Simple Socket IO using Stream.pump</div>
+	<div class="code"><p>The following example uses the <a href="Titanium.Stream.pump-method.html">pump</a> method from the <a href="Titanium.Stream.html"><code>Titanium.Stream</code></a> 
+module to read data from a socket. The <code>pump</code> method registers a callback that is 
+called repeatedly to process incoming data from the socket.</p>
+<pre><code>var socket = Ti.Network.Socket.createTCP({
+    host: 'blog.example.com', port: 80,
+    connected: function (e) {
+        Ti.API.info('Socket opened!');
+        Ti.Stream.pump(e.socket, readCallback, 1024, true);
+        Ti.Stream.write(socket, Ti.createBuffer({
+            value: 'GET http://blog.example.com/index.html HTTP/1.1\r\n\r\n'
+        }), writeCallback);
+    },
+        error: function (e) {
+        Ti.API.info('Error (' + e.errorCode + '): ' + e.error);
+    },
+});
+socket.connect();
+
+function writeCallback(e) {
+    Ti.API.info('Successfully wrote to socket.');
+}
+
+function readCallback(e) {
+    if (e.bytesProcessed == -1)
+    {
+        // Error / EOF on socket. Do any cleanup here.
+        ...
+    }
+    try {
+        if(e.buffer) {
+            var received = e.buffer.toString();
+            Ti.API.info('Received: ' + received);
+        } else {
+            Ti.API.error('Error: read callback called with no buffer!');
+        }
+    } catch (ex) {
+        Ti.API.error(ex);
+    }
+}
+</code></pre></div>
+        
+	<div class="subsectiontitle">Listening Socket Example</div>
+	<div class="code"><p>The following sample shows a trivial example of using a listening 
+socket. In this case, the application simply sends messages to itself,
+using the loopback address.</p>
+<pre><code>// Hostname to listen on/connect to. Here we use the loopback
+// address. iOS also supports Ti.Platform.address (the address of
+// the WiFi interface).
+// Android supports only the loopback address.
+
+var hostname = '127.0.0.1';
+
+var clientSocket = Ti.Network.Socket.createTCP({
+    host : hostname,
+    port : 40404,
+    connected : function(e) {
+        Ti.API.info('Client socket connected!');
+        Ti.Stream.pump(e.socket, pumpCallback, 1024, true);
+        e.socket.write(Ti.createBuffer({
+            value : 'A message from a connecting socket.'
+        }));
+    },
+    error : function(e) {
+        Ti.API.info('Error (' + e.errorCode + '): ' + e.error);
+    }
+});
+
+function writeCallback(e) {
+    Ti.API.info('Successfully wrote to socket.');
+}
+
+function pumpCallback(e) {
+    // Has the remote socket closed its end?
+    if (e.bytesProcessed &lt; 0) {
+        Ti.API.info("Closing client socket.");
+        clientSocket.close();
+        return;
+    }
+    try {
+        if(e.buffer) {
+            var received = e.buffer.toString();
+            Ti.API.info('Received: ' + received);
+        } else {
+            Ti.API.error('Error: read callback called with no buffer!');
+        }
+    } catch (ex) {
+        Ti.API.error(ex);
+    }
+}
+
+//Create a socket and listen for incoming connections
+var listenSocket = Ti.Network.Socket.createTCP({
+    host : hostname,
+    port : 40404,
+    accepted : function(e) {
+        // This where you would usually store the newly-connected socket, e.inbound
+        // so it can be used for read / write operations elsewhere in the app.
+        // In this case, we simply send a message then close the socket.
+        Ti.API.info("Listening socket &lt;" + e.socket + "&gt; accepted incoming connection &lt;" + e.inbound + "&gt;");
+        e.inbound.write(Ti.createBuffer({
+            value : 'You have been connected to a listening socket.\r\n'
+        }));
+        e.inbound.close();
+        // close the accepted socket
+
+    },
+    error : function(e) {
+        Ti.API.error("Socket &lt;" + e.socket + "&gt; encountered error when listening");
+        Ti.API.error(" error code &lt;" + e.errorCode + "&gt;");
+        Ti.API.error(" error description &lt;" + e.error + "&gt;");
+    }
+});
+// Starts the socket listening for connections, does not accept them
+listenSocket.listen();
+Ti.API.info("Listening now...");
+
+// Tells socket to accept the next inbound connection. listenSocket.accepted gets
+// called when a connection is accepted via accept()
+Ti.API.info("Calling accept.");
+listenSocket.accept({
+    timeout : 10000
+});
+
+// Call connect after a short timeout to ensure the listening socket is ready to go.
+Ti.API.info("Setting timer to connect.");
+setTimeout(function(e)
+{
+    Ti.API.info("Calling connect on client socket.");
+   clientSocket.connect();
+}, 500);
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="accept-method">
+        <a name="accept-method"></a><b>accept</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Tells a <a href="Titanium.Network.Socket.LISTENING-property.html">LISTENING</a> socket to accept a connection request at the top of a listener's request queue when one becomes available.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [AcceptDict]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Options to be set on next accepted socket.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="close-method">
+        <a name="close-method"></a><b>close</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Closes a socket.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="connect-method">
+        <a name="connect-method"></a><b>connect</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Attempts to connect the socket to its host/port.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAccepted-method">
+        <a name="getAccepted-method"></a><b>getAccepted</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.accepted-property.html">accepted</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getConnected-method">
+        <a name="getConnected-method"></a><b>getConnected</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.connected-property.html">connected</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getError-method">
+        <a name="getError-method"></a><b>getError</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.error-property.html">error</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHost-method">
+        <a name="getHost-method"></a><b>getHost</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.host-property.html">host</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getListenQueueSize-method">
+        <a name="getListenQueueSize-method"></a><b>getListenQueueSize</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.listenQueueSize-property.html">listenQueueSize</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPort-method">
+        <a name="getPort-method"></a><b>getPort</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.port-property.html">port</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getState-method">
+        <a name="getState-method"></a><b>getState</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.state-property.html">state</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTimeout-method">
+        <a name="getTimeout-method"></a><b>getTimeout</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Network.Socket.TCP.timeout-property.html">timeout</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isReadable-method">
+        <a name="isReadable-method"></a><b>isReadable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Indicates whether this stream is readable.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isWriteable-method">
+        <a name="isWriteable-method"></a><b>isWriteable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Indicates whether this stream is writeable.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="listen-method">
+        <a name="listen-method"></a><b>listen</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Attempts to start listening on the socket's host/port.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="read-method">
+        <a name="read-method"></a><b>read</b> <span class="params">(buffer, offset, length)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Reads data from this stream into a buffer.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>buffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer to read stream data into.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset into the buffer to start writing stream data.
+If specified, length must also be specified.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>length</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Maximum number of bytes to read.
+If specified, offset must also be specified.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAccepted-method">
+        <a name="setAccepted-method"></a><b>setAccepted</b> <span class="params">(accepted)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.Socket.TCP.accepted-property.html">accepted</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>accepted</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="AcceptedCallbackArgs.html">[Callback&lt;AcceptedCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setConnected-method">
+        <a name="setConnected-method"></a><b>setConnected</b> <span class="params">(connected)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.Socket.TCP.connected-property.html">connected</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>connected</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="ConnectedCallbackArgs.html">[Callback&lt;ConnectedCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setError-method">
+        <a name="setError-method"></a><b>setError</b> <span class="params">(error)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.Socket.TCP.error-property.html">error</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>error</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="ErrorCallbackArgs.html">[Callback&lt;ErrorCallbackArgs&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHost-method">
+        <a name="setHost-method"></a><b>setHost</b> <span class="params">(host)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.Socket.TCP.host-property.html">host</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>host</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setListenQueueSize-method">
+        <a name="setListenQueueSize-method"></a><b>setListenQueueSize</b> <span class="params">(listenQueueSize)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.Socket.TCP.listenQueueSize-property.html">listenQueueSize</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>listenQueueSize</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPort-method">
+        <a name="setPort-method"></a><b>setPort</b> <span class="params">(port)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.Socket.TCP.port-property.html">port</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>port</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setTimeout-method">
+        <a name="setTimeout-method"></a><b>setTimeout</b> <span class="params">(timeout)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Network.Socket.TCP.timeout-property.html">timeout</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>timeout</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="write-method">
+        <a name="write-method"></a><b>write</b> <span class="params">(buffer, offset, length)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Writes data from a buffer to this stream.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>buffer</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.Buffer]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Buffer to write to this stream.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>offset</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Offset in the buffer of the first byte to write to the stream.
+If specified, length must also be specified.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>length</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Maximum number of bytes to write to the stream.
+If specified, offset must also be specified.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

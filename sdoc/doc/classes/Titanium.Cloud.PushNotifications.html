@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Cloud.PushNotifications</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Cloud.PushNotifications 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Provides methods for accessing ACS push notification channels.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Please refer to <a href="http://cloud.appcelerator.com/docs/ios#pushn">configure push notifications for iOS</a>
+and <a href="http://cloud.appcelerator.com/docs/android#pushn">configure push notifications for Android</a> 
+to set up your app for push notifications. To receive push notifications on Android, please 
+refer to the <a href="Titanium.CloudPush.html"><code>Titanium.CloudPush</code></a> module.</p>
+<p>The methods in this module are used to subscribe and unsubscribe from ACS push notification 
+channels, and to generate ACS push notifications. Push notifications are received using 
+platform-specific mechanisms:</p>
+<ul>
+<li>On iOS, push notifications are received through the standard iOS push notification
+    mechanism. When you register for push notifications, incoming push notifications
+    are passed to the <code>callback</code> callback. See
+    <a href="Titanium.Network.registerForPushNotifications-method.html">Network.registerForPushNotifications</a>
+    for details.</li>
+<li>On Android, push notifications are received through the <a href="Titanium.CloudPush.html"><code>Titanium.CloudPush</code></a> module.
+    Add a listener for the <a href="Titanium.CloudPush.callback-event.html">callback</a> event to receive push notifications.</li>
+</ul>
+<p>To register for push notifications, you need to obtain an application-specific <em>device
+token</em>. To obtain a device token:</p>
+<ul>
+<li>On iOS, when you successfully register for push notifications, the device token is 
+    passed to the <code>success</code> callback.</li>
+<li>On Android, use
+    <a href="Titanium.CloudPush.retrieveDeviceToken-method.html">CloudPush.retrieveDeviceToken</a> to request
+    a device token. The device token is passed to the <code>success</code> callback.</li>
+</ul>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#notify-method">notify <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#subscribe-method">subscribe <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#unsubscribe-method">unsubscribe <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Subscribe to Channel</div>
+	<div class="code"><p>This example subscribes to a push notification channel and checks the response.</p>
+<pre><code>Cloud.PushNotifications.subscribe({
+    channel: 'friend_request',
+    device_token: myPushDeviceToken
+}, function (e) {
+    if (e.success) {
+        alert('Success');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Unsubscribe to Channel</div>
+	<div class="code"><p>This example unsubscribes from a push notification channel and checks the response.</p>
+<pre><code>Cloud.PushNotifications.unsubscribe({
+    channel: 'friend_request',
+    device_token: myPushDeviceToken
+}, function (e) {
+    if (e.success) {
+        alert('Success');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Notify Channel</div>
+	<div class="code"><p>This example sends a push notification to a channel and checks the response.</p>
+<pre><code>Cloud.PushNotifications.notify({
+    channel: 'friend_request',
+    payload: 'Welcome to push notifications'
+}, function (e) {
+    if (e.success) {
+        alert('Success');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="notify-method">
+        <a name="notify-method"></a><b>notify</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Send a push notification to a channel.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPushNotificationsResponse.html">[Callback&lt;CloudPushNotificationsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="subscribe-method">
+        <a name="subscribe-method"></a><b>subscribe</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Subscribe a mobile device to a push notification channel.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPushNotificationsResponse.html">[Callback&lt;CloudPushNotificationsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="unsubscribe-method">
+        <a name="unsubscribe-method"></a><b>unsubscribe</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Unsubscribe a mobile device from a push notification channel.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudPushNotificationsResponse.html">[Callback&lt;CloudPushNotificationsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

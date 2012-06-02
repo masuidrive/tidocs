@@ -1,0 +1,1636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.XML.Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.XML.Document 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+), Mobile Web(1.8+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The DOM Document returned from <a href="Titanium.XML.parseString-method.html"><code>Titanium.XML.parseString</code></a>.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Implements the <a href="http://www.w3.org/TR/DOM-Level-2-Core/core.html#i-Document">DOM Level 2 API</a> on
+Android and iOS. Exposes the 
+<a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html#i-Document">DOM Level 3 API</a> implementation on Mobile Web.</p>
+<p>As of version 3.1, Android still does not truly support DTDs.  A document with a DTD can be
+parsed, however it is not validated, none of its default attributes will automatically be put
+into the tree, etc.  <a href="http://code.google.com/p/android/issues/detail?id=7395">Google is aware of the issue</a>.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#appendChild-method">appendChild <span class="params">(newChild)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#cloneNode-method">cloneNode <span class="params">(deep)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createAttribute-method">createAttribute <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createAttributeNS-method">createAttributeNS <span class="params">(namespaceURI, name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createCDATASection-method">createCDATASection <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createComment-method">createComment <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createDocumentFragment-method">createDocumentFragment <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createElement-method">createElement <span class="params">(tagName)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createElementNS-method">createElementNS <span class="params">(namespaceURI, name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createEntityReference-method">createEntityReference <span class="params">(name)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createProcessingInstruction-method">createProcessingInstruction <span class="params">(target, data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createTextNode-method">createTextNode <span class="params">(data)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAttributes-method">getAttributes <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getChildNodes-method">getChildNodes <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDoctype-method">getDoctype <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDocumentElement-method">getDocumentElement <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getElementById-method">getElementById <span class="params">(elementId)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getElementsByTagName-method">getElementsByTagName <span class="params">(tagname)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getElementsByTagNameNS-method">getElementsByTagNameNS <span class="params">(namespaceURI, localname)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFirstChild-method">getFirstChild <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getImplementation-method">getImplementation <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLastChild-method">getLastChild <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLocalName-method">getLocalName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNamespaceURI-method">getNamespaceURI <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNextSibling-method">getNextSibling <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNodeName-method">getNodeName <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNodeType-method">getNodeType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getNodeValue-method">getNodeValue <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOwnerDocument-method">getOwnerDocument <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getParentNode-method">getParentNode <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPrefix-method">getPrefix <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPreviousSibling-method">getPreviousSibling <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getText-method">getText <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTextContent-method">getTextContent <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hasAttributes-method">hasAttributes <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hasChildNodes-method">hasChildNodes <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#importNode-method">importNode <span class="params">(importedNode, deep)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#insertBefore-method">insertBefore <span class="params">(newChild, refChild)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isSupported-method">isSupported <span class="params">(feature, version)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#normalize-method">normalize <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeChild-method">removeChild <span class="params">(oldChild)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#replaceChild-method">replaceChild <span class="params">(newChild, oldChild)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLocalName-method">setLocalName <span class="params">(localName)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ATTRIBUTE_NODE-property"></a>ATTRIBUTE_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>2</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Attr</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="CDATA_SECTION_NODE-property"></a>CDATA_SECTION_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>4</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.CDATASection (a type of Titanium.XML.Text)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="COMMENT_NODE-property"></a>COMMENT_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>8</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Comment</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DOCUMENT_FRAGMENT_NODE-property"></a>DOCUMENT_FRAGMENT_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>11</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.DocumentFragment</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DOCUMENT_NODE-property"></a>DOCUMENT_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>9</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Document</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="DOCUMENT_TYPE_NODE-property"></a>DOCUMENT_TYPE_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>10</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.DocumentType</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ELEMENT_NODE-property"></a>ELEMENT_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>1</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Element</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ENTITY_NODE-property"></a>ENTITY_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>6</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Entity</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ENTITY_REFERENCE_NODE-property"></a>ENTITY_REFERENCE_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>5</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.EntityReference (a type of Titanium.XML.Node)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="NOTATION_NODE-property"></a>NOTATION_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>12</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Notation</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PROCESSING_INSTRUCTION_NODE-property"></a>PROCESSING_INSTRUCTION_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>7</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.ProcessingInstruction</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="TEXT_NODE-property"></a>TEXT_NODE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'>3</td>
+            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Text</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="attributes-property"></a>attributes</td>
+            <td class='attr-rw'>
+                [Titanium.XML.NamedNodeMap]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A map of this node's attributes</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="childNodes-property"></a>childNodes</td>
+            <td class='attr-rw'>
+                [Titanium.XML.NodeList]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A Titanium.XML.NodeList of this node's children</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="doctype-property"></a>doctype</td>
+            <td class='attr-rw'>
+                [Titanium.XML.DocumentType]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>An interface to the list of entities that are defined for the document, such as via a Document Type Definition (DTD). See note about Android and DTDs.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="documentElement-property"></a>documentElement</td>
+            <td class='attr-rw'>
+                [Titanium.XML.Element]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>the root element in the document.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="firstChild-property"></a>firstChild</td>
+            <td class='attr-rw'>
+                [Titanium.XML.Node]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This node's first child</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="implementation-property"></a>implementation</td>
+            <td class='attr-rw'>
+                [Titanium.XML.DOMImplementation]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>the DOMImplementation that handles this document</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="lastChild-property"></a>lastChild</td>
+            <td class='attr-rw'>
+                [Titanium.XML.Node]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This node's last child</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="localName-property"></a>localName</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The local part of the qualified name of this node</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="namespaceURI-property"></a>namespaceURI</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The namespace URI of this node</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="nextSibling-property"></a>nextSibling</td>
+            <td class='attr-rw'>
+                [Titanium.XML.Node]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This node's next sibling</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="nodeName-property"></a>nodeName</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The name of this node</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="nodeType-property"></a>nodeType</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This node's type. One of ELEMENT_NODE, ATTRIBUTE_NODE, TEXT_NODE, CDATA_SECTION_NODE,
+ENTITY_REFERENCE_NODE, ENTITY_NODE, PROCESSING_INSTRUCTION_NODE, COMMENT_NODE,
+DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="nodeValue-property"></a>nodeValue</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The content (value) of this node</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ownerDocument-property"></a>ownerDocument</td>
+            <td class='attr-rw'>
+                [Titanium.XML.Document]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This node's owning Document</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="parentNode-property"></a>parentNode</td>
+            <td class='attr-rw'>
+                [Titanium.XML.Node]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This node's parent node</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="prefix-property"></a>prefix</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The namespace prefix of this node</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="previousSibling-property"></a>previousSibling</td>
+            <td class='attr-rw'>
+                [Titanium.XML.Node]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This node's previous sibling</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="text-property"></a>text</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The content (value) of all text nodes within this node.
+Use textContent instead.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="textContent-property"></a>textContent</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The content (value) of all text nodes within this node</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="appendChild-method">
+        <a name="appendChild-method"></a><b>appendChild</b> <span class="params">(newChild)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Appends the node <code>newChild</code> as a child of this node</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>newChild</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The new node to append</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="cloneNode-method">
+        <a name="cloneNode-method"></a><b>cloneNode</b> <span class="params">(deep)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns a duplicate of this node</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>deep</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Whether or not to perform a deep copy of this node</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createAttribute-method">
+        <a name="createAttribute-method"></a><b>createAttribute</b> <span class="params">(name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an attribute with the given name.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name for the new attribute</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createAttributeNS-method">
+        <a name="createAttributeNS-method"></a><b>createAttributeNS</b> <span class="params">(namespaceURI, name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an attribute with the given name and namespace.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>namespaceURI</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Namespace URI for the new attribute.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name for the new attribute.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createCDATASection-method">
+        <a name="createCDATASection-method"></a><b>createCDATASection</b> <span class="params">(data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns a <a href="Titanium.XML.CDATASection-object.html"><code>Titanium.XML.CDATASection</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The String data to go into the CDATA section.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createComment-method">
+        <a name="createComment-method"></a><b>createComment</b> <span class="params">(data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates a <a href="Titanium.XML.Comment-object.html"><code>Titanium.XML.Comment</code></a> with the supplied string data.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The textual comment itself.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createDocumentFragment-method">
+        <a name="createDocumentFragment-method"></a><b>createDocumentFragment</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an empty <a href="Titanium.XML.DocumentFragment-object.html"><code>Titanium.XML.DocumentFragment</code></a>.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createElement-method">
+        <a name="createElement-method"></a><b>createElement</b> <span class="params">(tagName)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an element with the given tag name.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tagName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The name for the created element.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createElementNS-method">
+        <a name="createElementNS-method"></a><b>createElementNS</b> <span class="params">(namespaceURI, name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Create a new element with the given namespace and name.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>namespaceURI</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>URI for the namespace the new element belongs to.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The name for the new element.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createEntityReference-method">
+        <a name="createEntityReference-method"></a><b>createEntityReference</b> <span class="params">(name)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an <a href="Titanium.XML.EntityReference-object.html"><code>Titanium.XML.EntityReference</code></a> with the given name.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name for the new entity reference.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createProcessingInstruction-method">
+        <a name="createProcessingInstruction-method"></a><b>createProcessingInstruction</b> <span class="params">(target, data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates a processing instruction for inserting into the DOM tree.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>target</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The target part for the processing instruction.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The data for the processing instruction node.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createTextNode-method">
+        <a name="createTextNode-method"></a><b>createTextNode</b> <span class="params">(data)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates a text node.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>data</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The string value for the text node.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAttributes-method">
+        <a name="getAttributes-method"></a><b>getAttributes</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.attributes-property.html">attributes</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getChildNodes-method">
+        <a name="getChildNodes-method"></a><b>getChildNodes</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.childNodes-property.html">childNodes</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDoctype-method">
+        <a name="getDoctype-method"></a><b>getDoctype</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.doctype-property.html">doctype</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDocumentElement-method">
+        <a name="getDocumentElement-method"></a><b>getDocumentElement</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.documentElement-property.html">documentElement</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getElementById-method">
+        <a name="getElementById-method"></a><b>getElementById</b> <span class="params">(elementId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns an <a href="Titanium.XML.Element-object.html"><code>Titanium.XML.Element</code></a> that has an ID attribute with the given value.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>elementId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A unique ID value for an element to search for.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getElementsByTagName-method">
+        <a name="getElementsByTagName-method"></a><b>getElementsByTagName</b> <span class="params">(tagname)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Return a node list of elements in the document which have the given tag.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>tagname</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>the tag name to search for.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getElementsByTagNameNS-method">
+        <a name="getElementsByTagNameNS-method"></a><b>getElementsByTagNameNS</b> <span class="params">(namespaceURI, localname)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Return a node list of elements in the document which belong to the given namespace and have the given tag name.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>namespaceURI</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A namespace URI used for matching elements.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>localname</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The tag name to search for.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFirstChild-method">
+        <a name="getFirstChild-method"></a><b>getFirstChild</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.firstChild-property.html">firstChild</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getImplementation-method">
+        <a name="getImplementation-method"></a><b>getImplementation</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.implementation-property.html">implementation</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLastChild-method">
+        <a name="getLastChild-method"></a><b>getLastChild</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.lastChild-property.html">lastChild</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLocalName-method">
+        <a name="getLocalName-method"></a><b>getLocalName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.localName-property.html">localName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNamespaceURI-method">
+        <a name="getNamespaceURI-method"></a><b>getNamespaceURI</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.namespaceURI-property.html">namespaceURI</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNextSibling-method">
+        <a name="getNextSibling-method"></a><b>getNextSibling</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.nextSibling-property.html">nextSibling</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNodeName-method">
+        <a name="getNodeName-method"></a><b>getNodeName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.nodeName-property.html">nodeName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNodeType-method">
+        <a name="getNodeType-method"></a><b>getNodeType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.nodeType-property.html">nodeType</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getNodeValue-method">
+        <a name="getNodeValue-method"></a><b>getNodeValue</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.nodeValue-property.html">nodeValue</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOwnerDocument-method">
+        <a name="getOwnerDocument-method"></a><b>getOwnerDocument</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.ownerDocument-property.html">ownerDocument</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getParentNode-method">
+        <a name="getParentNode-method"></a><b>getParentNode</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.parentNode-property.html">parentNode</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPrefix-method">
+        <a name="getPrefix-method"></a><b>getPrefix</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.prefix-property.html">prefix</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPreviousSibling-method">
+        <a name="getPreviousSibling-method"></a><b>getPreviousSibling</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.previousSibling-property.html">previousSibling</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getText-method">
+        <a name="getText-method"></a><b>getText</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.text-property.html">text</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTextContent-method">
+        <a name="getTextContent-method"></a><b>getTextContent</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.XML.Document.textContent-property.html">textContent</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hasAttributes-method">
+        <a name="hasAttributes-method"></a><b>hasAttributes</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Whether or not this node has attributes</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hasChildNodes-method">
+        <a name="hasChildNodes-method"></a><b>hasChildNodes</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Whether or not this node has child nodes</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="importNode-method">
+        <a name="importNode-method"></a><b>importNode</b> <span class="params">(importedNode, deep)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Imports a node from another document to this document, without altering or removing the source node from the original document; this method creates a new copy of the source node. The returned node has no parent.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>importedNode</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The node to import.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>deep</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>If true, recursively import the subtree under the specified node; if false, import only the node itself.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="insertBefore-method">
+        <a name="insertBefore-method"></a><b>insertBefore</b> <span class="params">(newChild, refChild)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Inserts the node <code>newChild</code> before the node <code>refChild</code>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>newChild</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The node to insert</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>refChild</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The node to insert newChild before</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isSupported-method">
+        <a name="isSupported-method"></a><b>isSupported</b> <span class="params">(feature, version)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Tests whether the DOM implementation supports a specific feature</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>feature</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The name of the feature</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>version</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The version number of the feature</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="normalize-method">
+        <a name="normalize-method"></a><b>normalize</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Normalizes text and attribute nodes in this node's child hierarchy</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeChild-method">
+        <a name="removeChild-method"></a><b>removeChild</b> <span class="params">(oldChild)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes a child node from this node</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>oldChild</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The node to remove</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="replaceChild-method">
+        <a name="replaceChild-method"></a><b>replaceChild</b> <span class="params">(newChild, oldChild)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Replaces the node <code>oldChild</code> with the node <code>newChild</code></p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>newChild</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The new node</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>oldChild</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.XML.Node]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>The node being replaced</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLocalName-method">
+        <a name="setLocalName-method"></a><b>setLocalName</b> <span class="params">(localName)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.XML.Document.localName-property.html">localName</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>localName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

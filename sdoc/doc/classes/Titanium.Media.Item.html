@@ -35,19 +35,122 @@
             <span class="type">Object</span> 
             Titanium.Media.Item 
         </h1>
-	<ul class="files">
-	  <li>iPhone, iPad</li>
-	</ul>
+      	<ul class="files">
+      	  <li>iPhone(1.4.0+), iPad(1.4.0+)</li>
+      	</ul>
     </div>
     <div id="bodyContent">
 
 <div id="content">
     
     <div class="description">
-        <p>A representation of a media item returned by the music picker as part of the <tt>items</tt> array in the dictionary passed to its <tt>success</tt> function.</p>
+        <p>A representation of a media item returned by <a href="Titanium.Media.openMusicLibrary-method.html">openMusicLibrary</a> or <a href="Titanium.Media.queryMusicLibrary-method.html">queryMusicLibrary</a>.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>This is a read-only object that describes a single media item, not a playlist. 
+Titanium does not support access to playlists.</p>
+<p><code>Item</code> objects cannot be created explicitly.  The 
+<a href="Titanium.Media.openMusicLibrary-method.html">openMusicLibrary</a> returns <code>Item</code> objects in its
+<code>success</code> callback function, while <a href="Titanium.Media.queryMusicLibrary-method.html">queryMusicLibrary</a>
+returns an array of <code>Item</code> objects.</p>
     </div>
     
 
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAlbumArtist-method">getAlbumArtist <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAlbumTitle-method">getAlbumTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAlbumTrackCount-method">getAlbumTrackCount <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAlbumTrackNumber-method">getAlbumTrackNumber <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getArtist-method">getArtist <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getArtwork-method">getArtwork <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getComposer-method">getComposer <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDiscCount-method">getDiscCount <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDiscNumber-method">getDiscNumber <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getGenre-method">getGenre <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getIsCompilation-method">getIsCompilation <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLyrics-method">getLyrics <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMediaType-method">getMediaType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPlayCount-method">getPlayCount <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPlaybackDuration-method">getPlaybackDuration <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPodcastTitle-method">getPodcastTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getRating-method">getRating <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSkipCount-method">getSkipCount <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTitle-method">getTitle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
     
     
 
@@ -58,153 +161,173 @@
         <tr valign='top'>
             <td class='attr-name'><a name="albumArtist-property"></a>albumArtist</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the artist for the album of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Artist credited for the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="albumTitle-property"></a>albumTitle</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the album title of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Title of the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="albumTrackCount-property"></a>albumTrackCount</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the number of tracks for the album of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Number of tracks for the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="albumTrackNumber-property"></a>albumTrackNumber</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the track number of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Track number for this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="artist-property"></a>artist</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the artist of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Artist credited for this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="artwork-property"></a>artwork</td>
             <td class='attr-rw'>
-                [object]
+                [Titanium.Blob]
             </td>
-            <td class='attr-desc'>a blob object containing the image for the item's artwork, or null if none</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Image for the item's artwork as a Blob object,  or null if no artwork is
+available.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="composer-property"></a>composer</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the composer of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Composer of this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="discCount-property"></a>discCount</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the total number of discs of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Total number of discs for the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="discNumber-property"></a>discNumber</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the disc number of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Disc number for this item in the album.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="genre-property"></a>genre</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the genre of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Genre of this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="isCompilation-property"></a>isCompilation</td>
             <td class='attr-rw'>
-                [boolean]
+                [Boolean]
             </td>
-            <td class='attr-desc'>true if the item is part of a compilation album</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>True if this item is part of a compilation album.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="lyrics-property"></a>lyrics</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the lyrics of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Lyrics for this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="mediaType-property"></a>mediaType</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the type of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The type of the media. </td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="playCount-property"></a>playCount</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the number of times the item has been played</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Number of times the item has been played.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="playbackDuration-property"></a>playbackDuration</td>
             <td class='attr-rw'>
-                [double]
+                [Number]
             </td>
-            <td class='attr-desc'>the length (in seconds) of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Length (in seconds) of this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="podcastTitle-property"></a>podcastTitle</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the title of a podcast item.  Only for media types of Titanium.Media.MUSIC_MEDIA_TYPE_PODCAST.</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Title of a podcast item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="rating-property"></a>rating</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the rating of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Rating for this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="skipCount-property"></a>skipCount</td>
             <td class='attr-rw'>
-                [int]
+                [Number]
             </td>
-            <td class='attr-desc'>the number of times the item has been skipped</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Number of times this item has been skipped.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="title-property"></a>title</td>
             <td class='attr-rw'>
-                [string]
+                [String]
             </td>
-            <td class='attr-desc'>the title of the item</td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Title of this item.</td>
         </tr>
         
     </table>
@@ -217,6 +340,344 @@
     
 
 
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAlbumArtist-method">
+        <a name="getAlbumArtist-method"></a><b>getAlbumArtist</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.albumArtist-property.html">albumArtist</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAlbumTitle-method">
+        <a name="getAlbumTitle-method"></a><b>getAlbumTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.albumTitle-property.html">albumTitle</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAlbumTrackCount-method">
+        <a name="getAlbumTrackCount-method"></a><b>getAlbumTrackCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.albumTrackCount-property.html">albumTrackCount</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAlbumTrackNumber-method">
+        <a name="getAlbumTrackNumber-method"></a><b>getAlbumTrackNumber</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.albumTrackNumber-property.html">albumTrackNumber</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getArtist-method">
+        <a name="getArtist-method"></a><b>getArtist</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.artist-property.html">artist</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getArtwork-method">
+        <a name="getArtwork-method"></a><b>getArtwork</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.artwork-property.html">artwork</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getComposer-method">
+        <a name="getComposer-method"></a><b>getComposer</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.composer-property.html">composer</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDiscCount-method">
+        <a name="getDiscCount-method"></a><b>getDiscCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.discCount-property.html">discCount</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDiscNumber-method">
+        <a name="getDiscNumber-method"></a><b>getDiscNumber</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.discNumber-property.html">discNumber</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getGenre-method">
+        <a name="getGenre-method"></a><b>getGenre</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.genre-property.html">genre</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getIsCompilation-method">
+        <a name="getIsCompilation-method"></a><b>getIsCompilation</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.isCompilation-property.html">isCompilation</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLyrics-method">
+        <a name="getLyrics-method"></a><b>getLyrics</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.lyrics-property.html">lyrics</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMediaType-method">
+        <a name="getMediaType-method"></a><b>getMediaType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.mediaType-property.html">mediaType</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPlayCount-method">
+        <a name="getPlayCount-method"></a><b>getPlayCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.playCount-property.html">playCount</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPlaybackDuration-method">
+        <a name="getPlaybackDuration-method"></a><b>getPlaybackDuration</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.playbackDuration-property.html">playbackDuration</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPodcastTitle-method">
+        <a name="getPodcastTitle-method"></a><b>getPodcastTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.podcastTitle-property.html">podcastTitle</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getRating-method">
+        <a name="getRating-method"></a><b>getRating</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.rating-property.html">rating</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSkipCount-method">
+        <a name="getSkipCount-method"></a><b>getSkipCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.skipCount-property.html">skipCount</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTitle-method">
+        <a name="getTitle-method"></a><b>getTitle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.Item.title-property.html">title</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
     
 
 

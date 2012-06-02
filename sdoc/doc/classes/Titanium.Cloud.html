@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Cloud</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Cloud 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(2.0+), iPhone(2.0+), iPad(2.0+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>The top level Cloud module.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>Appcelerator Cloud Services (ACS) provides a wide array of automatically-scaled data storage 
+and web services, such as user logins, photo uploads, checkins, status updates, and push 
+notifications, without the need to learn multiple third-party SDKs or do any 
+server-side programming. Remote calls to ACS are done via a single 
+<a href="http://cloud.appcelerator.com/docs/docmenu_info">REST API</a>, which may be used with almost any 
+web technology that has access to an HTTP client.</p>
+<p>The <code>Titanium.Cloud</code> module makes accessing ACS as simple as using any of Titanium's other APIs, 
+due to its familiar and intuitive API schema. </p>
+<p>For a more detailed overview of ACS and how to configure an application to use it, refer to the 
+<a href="http://docs.appcelerator.com/titanium/2.0/#!/guide/Integrating_with_Appcelerator_Cloud_Services">Integrating with Appcelerator Cloud Services</a> 
+and <a href="http://cloud.appcelerator.com/docs/quickstart">ACS Quickstart</a> guides. </p>
+<h4>Beta ACS APIs</h4>
+<p>Be aware that ACS APIs that are in pre-release form (marked "Beta" in the 
+<a href="http://cloud.appcelerator.com/docs/docmenu_info">ACS documentation</a>) may be subject to change. 
+During this period, while they are not supported directly by the Titanium.Cloud module, 
+they may be accessed using the REST API. </p>
+<h4>Using the Titanium.Cloud Module</h4>
+<p>This module is not included in the Titanium namespace, but it is bundled with the 
+Titanium SDK as of version 2.0.0. To use it, it must be registered like this: </p>
+<pre><code>var Cloud = require('ti.cloud');
+</code></pre>
+<p>Your app must prove that it is allowed to talk to ACS. This keeps your data secure by 
+preventing anyone from making requests to ACS that impersonate your app. ACS provides secure 
+authentication via 2-Legged OAuth. This is a process by which a key and secret are used to sign 
+each request made by your app. When the ACS server receives your request, the secret is used 
+along with the data sent in the request to calculate another signature. If sent signature and 
+calculated signature match, the request will be processed. </p>
+<p>An alternate method to authenticate API requests to ACS is to supply an app key with each 
+request. </p>
+<p>Titanium Studio will create a pair of keys (Development and Production) for each Titanium 
+application depending on the user preference specified during new project creation. This pair 
+of keys will be stored in <code>tiapp.xml</code> and one of the keys will be used during application build 
+depending on the build type (development or production). </p>
+<p>The supported properties in <code>tiapp.xml</code> are: </p>
+<pre><code>&lt;property name="acs-api-key-development" type="string"&gt;YOUR DEVELOPMENT API KEY HERE&lt;/property&gt;
+&lt;property name="acs-oauth-key-development" type="string"&gt;YOUR DEVELOPMENT OAUTH KEY HERE&lt;/property&gt;
+&lt;property name="acs-oauth-secret-development" type="string"&gt;YOUR DEVELOPMENT OAUTH SECRET HERE&lt;/property&gt;
+
+&lt;property name="acs-api-key-production" type="string"&gt;YOUR PRODUCTION API KEY HERE&lt;/property&gt;
+&lt;property name="acs-oauth-key-production" type="string"&gt;YOUR PRODUCTION OAUTH KEY HERE&lt;/property&gt;
+&lt;property name="acs-oauth-secret-production" type="string"&gt;YOUR PRODUCTION OAUTH SECRET HERE&lt;/property&gt;
+
+&lt;property name="acs-api-key" type="string"&gt;YOUR API KEY HERE&lt;/property&gt;
+&lt;property name="acs-oauth-key" type="string"&gt;YOUR OAUTH KEY HERE&lt;/property&gt;
+&lt;property name="acs-oauth-secret" type="string"&gt;YOUR OAUTH SECRET HERE&lt;/property&gt;&lt;property name="acs-base-url" type="string"&gt;API URL HERE&lt;/property&gt;
+</code></pre>
+<p>The value for each setting that will be used is based on the following rules: </p>
+<ul>
+<li>OAuth is preferred over apiKey. If both the OAuth key and OAuth secret are provided then 
+  OAuth will be used; otherwise, apiKey will be used.</li>
+<li>If a deployment-specific setting is provided (production or development) then that value will 
+  be used for the current deployment environment.</li>
+</ul>
+<p>There is also an optional setting to allow you to change the base URL for ACS requests. You 
+will most likely never need to specify this. It can be specified deployment-specific, or 
+generic: </p>
+<pre><code>&lt;property name="acs-base-url-development" type="string"&gt;DEVELOPMENT API URL HERE&lt;/property&gt;
+&lt;property name="acs-base-url-production" type="string"&gt;PRODUCTION API URL HERE&lt;/property&gt;
+&lt;property name="acs-base-url" type="string"&gt;API URL HERE&lt;/property&gt;
+</code></pre>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#getDebug-method">getDebug <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOndatastream-method">getOndatastream <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOnsendstream-method">getOnsendstream <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getUseSecure-method">getUseSecure <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hasStoredSession-method">hasStoredSession <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#retrieveStoredSession-method">retrieveStoredSession <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setDebug-method">setDebug <span class="params">(debug)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOndatastream-method">setOndatastream <span class="params">(ondatastream)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnsendstream-method">setOnsendstream <span class="params">(onsendstream)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setUseSecure-method">setUseSecure <span class="params">(useSecure)</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="debug-property"></a>debug</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether internal debug logging should be output to the console.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="ondatastream-property"></a>ondatastream</td>
+            <td class='attr-rw'>
+                [Callback&lt;CloudStreamProgress&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Function to be called at regular intervals as the request data is being received.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="onsendstream-property"></a>onsendstream</td>
+            <td class='attr-rw'>
+                [Callback&lt;CloudStreamProgress&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Function to be called at regular intervals as the request data is being transmitted.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="useSecure-property"></a>useSecure</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether to use SSL when sending requests to ACS.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="getDebug-method">
+        <a name="getDebug-method"></a><b>getDebug</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.debug-property.html">debug</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOndatastream-method">
+        <a name="getOndatastream-method"></a><b>getOndatastream</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.ondatastream-property.html">ondatastream</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOnsendstream-method">
+        <a name="getOnsendstream-method"></a><b>getOnsendstream</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.onsendstream-property.html">onsendstream</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getUseSecure-method">
+        <a name="getUseSecure-method"></a><b>getUseSecure</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.useSecure-property.html">useSecure</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hasStoredSession-method">
+        <a name="hasStoredSession-method"></a><b>hasStoredSession</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Checks if there is a stored user session.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="retrieveStoredSession-method">
+        <a name="retrieveStoredSession-method"></a><b>retrieveStoredSession</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the stored user session identifier.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setDebug-method">
+        <a name="setDebug-method"></a><b>setDebug</b> <span class="params">(debug)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Cloud.debug-property.html">debug</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>debug</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOndatastream-method">
+        <a name="setOndatastream-method"></a><b>setOndatastream</b> <span class="params">(ondatastream)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Cloud.ondatastream-property.html">ondatastream</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>ondatastream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudStreamProgress.html">[Callback&lt;CloudStreamProgress&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOnsendstream-method">
+        <a name="setOnsendstream-method"></a><b>setOnsendstream</b> <span class="params">(onsendstream)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Cloud.onsendstream-property.html">onsendstream</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>onsendstream</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudStreamProgress.html">[Callback&lt;CloudStreamProgress&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setUseSecure-method">
+        <a name="setUseSecure-method"></a><b>setUseSecure</b> <span class="params">(useSecure)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Cloud.useSecure-property.html">useSecure</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>useSecure</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    
