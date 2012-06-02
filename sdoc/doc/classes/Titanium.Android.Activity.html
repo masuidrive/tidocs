@@ -44,10 +44,30 @@
 <div id="content">
     
     <div class="description">
-        <p>The Titanium binding of an <a href="http://developer.android.com/reference/android/app/Activity.html">Android Activity</a></p>
+        <p>The Titanium binding of an Android Activity.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>According to the Android API Reference, an activity is "a single, focused thing that a
+user can do."</p>
+<p>In almost all cases, an activity is associated with a window.  Activities are central
+to the Android <strong>Back</strong> button navigation -- the <strong>Back</strong> button closes the current
+activity and returns to whatever activity was open previously.</p>
+<p>In Titanium, you can create either "lightweight" or a "heavyweight" windows, as
+described on the <a href="Titanium.UI.Window-object.html"><code>Titanium.UI.Window</code></a> reference page. A <em>heavyweight</em> window creates a 
+new <code>Activity</code>. A <em>lightweight</em> window runs inside the same activity as the code that
+created it. </p>
+<p>See: <a href="http://developer.android.com/reference/android/app/Activity.html">android.app.Activity</a>
+in the Android API Reference.</p>
+<h4>Activity Lifecycle</h4>
+<p>In Android, activities are started, stopped, paused and resumed. Titanium generates
+lifecycle events for activities, but doesn't generate application-level start, stop, 
+pause and resume events. To be notified when
+an application is paused and resumed, you must add event listeners to its individual
+activities.</p>
+    </div>
     
 
     
@@ -72,11 +92,27 @@
             </ul>
     
             <ul>
+                <li><a href="#getOnCreateOptionsMenu-method">getOnCreateOptionsMenu <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getOnPrepareOptionsMenu-method">getOnPrepareOptionsMenu <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getString-method">getString <span class="params">(resourceId, format)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnCreateOptionsMenu-method">setOnCreateOptionsMenu <span class="params">(onCreateOptionsMenu)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setOnPrepareOptionsMenu-method">setOnPrepareOptionsMenu <span class="params">(onPrepareOptionsMenu)</span></a></li>
             </ul>
     
             <ul>
@@ -107,7 +143,7 @@
                 [Titanium.Android.Intent]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The Titanium.Android.Intent that was used to start this Activity</td>
+            <td class='attr-desc'>The Intent that was used to start this Activity.</td>
         </tr>
         
         <tr valign='top'>
@@ -116,7 +152,8 @@
                 [Callback&lt;Object&gt;]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>A callback function that is called to initially create an Android Options Menu for this Activity when the user presses the Menu button. See the menu examples in Titanium.Android.Menu</td>
+            <td class='attr-desc'>Callback function called to initially create an Android options menu
+for this Activity when the user presses the Menu button.</td>
         </tr>
         
         <tr valign='top'>
@@ -125,7 +162,8 @@
                 [Callback&lt;Object&gt;]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>A callback function that is called to prepare an Options Menu for displaying on this Activity when the user presses the Menu button. See the menu examples in Titanium.Android.Menu</td>
+            <td class='attr-desc'>Callback function called to prepare an options menu for display when the user presses
+the Menu button. </td>
         </tr>
         
         <tr valign='top'>
@@ -134,7 +172,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Can be one of Titanium.Android.SCREEN_ORIENTATION_BEHIND, Titanium.Android.SCREEN_ORIENTATION_LANDSCAPE, Titanium.Android.SCREEN_ORIENTATION_NOSENSOR, Titanium.Android.SCREEN_ORIENTATION_PORTRAIT, Titanium.Android.SCREEN_ORIENTATION_SENSOR, Titanium.Android.SCREEN_ORIENTATION_UNSPECIFIED, Titanium.Android.SCREEN_ORIENTATION_USER</td>
+            <td class='attr-desc'>Specifies a specific orientation for this activity.</td>
         </tr>
         
     </table>
@@ -147,43 +185,43 @@
         <tr valign='top'>
             <td class='attr-name'><a href="#create-event">create</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired from the Activity's onCreate</td>
+            <td class='attr-desc'>Fired from the activity's onCreate method.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#destroy-event">destroy</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired from the Activity's onDestroy</td>
+            <td class='attr-desc'>Fired from the activity's onDestroy method.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#newIntent-event">newIntent</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired when the application is already running and certain flags are set in the Intent. Fired from the Activity's onNewIntent</td>
+            <td class='attr-desc'>Fired when the activity is already running and certain flags are set in its intent.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#pause-event">pause</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired from the Activity's onPause</td>
+            <td class='attr-desc'>Fired when the activity is paused.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#resume-event">resume</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired from the Activity's onResume</td>
+            <td class='attr-desc'>Fired when the activity is resumed.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#start-event">start</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired from the Activity's onStart</td>
+            <td class='attr-desc'>Fired when the activity is started.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#stop-event">stop</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired from the Activity's onStop</td>
+            <td class='attr-desc'>Fired when the activity is stopped.</td>
         </tr>
         
     </table>
@@ -195,17 +233,21 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Callback example</div>
-	<div class="code"><p>activity.startActivityForResult(intent, function(e) {
+	<div class="subsectiontitle">Callback Example</div>
+	<div class="code"><p>The following example shows how to start an activity and retrieve a result code
+and optional data intent when the activity ends.</p>
+<pre><code>activity.startActivityForResult(intent, function(e) {
     // The request code used to start this Activity
     var requestCode = e.requestCode;
-    // The result code returned from the Activity (http://developer.android.com/reference/android/app/Activity.html#StartingActivities)
+    // The result code returned from the activity 
+    // (http://developer.android.com/reference/android/app/Activity.html#StartingActivities)
     var resultCode = e.resultCode;
     // A Titanium.Android.Intent filled with data returned from the Activity
     var intent = e.intent;
     // The Activity the received the result
     var source = e.source;
-});</p></div>
+});
+</code></pre></div>
         
     </table>
     
@@ -261,7 +303,7 @@
         <a name="finish-method"></a><b>finish</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Called when the activity is done and should be closed. Also see Android's documentation for <a href="http://developer.android.com/reference/android/app/Activity.html#finish()">finish</a></p></div>
+      <div class="description"><p>Closes this activity.</p></div>
       
 
       
@@ -321,11 +363,33 @@
     </div>
     
     <div class="method">
+      <div class="title" id="getOnCreateOptionsMenu-method">
+        <a name="getOnCreateOptionsMenu-method"></a><b>getOnCreateOptionsMenu</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Activity.onCreateOptionsMenu-property.html">onCreateOptionsMenu</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getOnPrepareOptionsMenu-method">
+        <a name="getOnPrepareOptionsMenu-method"></a><b>getOnPrepareOptionsMenu</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.Activity.onPrepareOptionsMenu-property.html">onPrepareOptionsMenu</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getString-method">
         <a name="getString-method"></a><b>getString</b> <span class="params">(resourceId, format)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get an Android or Application string using the passed-in Resource ID and optional format arguments. Also see Android's documentation for <a href="http://developer.android.com/reference/android/content/Context.html#getString(int)">getString</a> and <a href="http://developer.android.com/guide/topics/resources/string-resource.html#String">String Resources</a></p></div>
+      <div class="description"><p>Gets an Android or Application string using the specified Resource ID and optional format arguments.</p></div>
       
 
       
@@ -342,7 +406,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>A Resource ID from the Application or Android.</td>
+                  <td class='attr-desc'>Resource ID from the Application or Android.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -350,11 +414,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Array&lt;Object&gt;]
+                        [Object]
                       
                     
                   </td>
-                  <td class='attr-desc'>Optional format arguments for the String resource</td>
+                  <td class='attr-desc'>Optional format arguments for the String resource. May be repeated.</td>
                 </tr>
                 
       	</table>
@@ -405,11 +469,71 @@
     </div>
     
     <div class="method">
+      <div class="title" id="setOnCreateOptionsMenu-method">
+        <a name="setOnCreateOptionsMenu-method"></a><b>setOnCreateOptionsMenu</b> <span class="params">(onCreateOptionsMenu)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Activity.onCreateOptionsMenu-property.html">onCreateOptionsMenu</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>onCreateOptionsMenu</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setOnPrepareOptionsMenu-method">
+        <a name="setOnPrepareOptionsMenu-method"></a><b>setOnPrepareOptionsMenu</b> <span class="params">(onPrepareOptionsMenu)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.Activity.onPrepareOptionsMenu-property.html">onPrepareOptionsMenu</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>onPrepareOptionsMenu</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setRequestedOrientation-method">
         <a name="setRequestedOrientation-method"></a><b>setRequestedOrientation</b> <span class="params">(orientation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Set the requested Activity orientation. Also see Android's documentation for <a href="http://developer.android.com/reference/android/app/Activity.html#setRequestedOrientation(int)">setRequestedOrientation</a></p></div>
+      <div class="description"><p>Sets the requested Activity orientation.</p></div>
       
 
       
@@ -426,7 +550,13 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>Can be one of Titanium.Android.SCREEN_ORIENTATION_BEHIND, Titanium.Android.SCREEN_ORIENTATION_LANDSCAPE, Titanium.Android.SCREEN_ORIENTATION_NOSENSOR, Titanium.Android.SCREEN_ORIENTATION_PORTRAIT, Titanium.Android.SCREEN_ORIENTATION_SENSOR, Titanium.Android.SCREEN_ORIENTATION_UNSPECIFIED, Titanium.Android.SCREEN_ORIENTATION_USER</td>
+                  <td class='attr-desc'>Can be one of Titanium.Android.SCREEN_ORIENTATION_BEHIND,
+Titanium.Android.SCREEN_ORIENTATION_LANDSCAPE,
+Titanium.Android.SCREEN_ORIENTATION_NOSENSOR,
+Titanium.Android.SCREEN_ORIENTATION_PORTRAIT,
+Titanium.Android.SCREEN_ORIENTATION_SENSOR,
+Titanium.Android.SCREEN_ORIENTATION_UNSPECIFIED,
+Titanium.Android.SCREEN_ORIENTATION_USER.</td>
                 </tr>
                 
       	</table>
@@ -439,7 +569,7 @@
         <a name="setResult-method"></a><b>setResult</b> <span class="params">(resultCode, intent)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the result of this Activity using an Intent. This should be used in the case when the Activity responds to startActivityForResult. Also see Android's documentation for <a href="http://developer.android.com/reference/android/app/Activity.html#setResult(int)">setResult</a></p></div>
+      <div class="description"><p>Sets the result of this activity using an <code>Intent</code>.</p></div>
       
 
       
@@ -456,7 +586,8 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The result code for this Activity. Must be one of Titanium.Android.RESULT_OK, Titanium.Android.RESULT_CANCELED, Titanium.Android.RESULT_FIRST_USER</td>
+                  <td class='attr-desc'>Result code for this activity. Can be Titanium.Android.RESULT_OK, 
+Titanium.Android.RESULT_CANCELED, or Titanium.Android.RESULT_FIRST_USER.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -468,7 +599,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>An optional Titanium.Android.Intent with extra result data</td>
+                  <td class='attr-desc'>An optional Intent with extra result data.</td>
                 </tr>
                 
       	</table>
@@ -481,7 +612,7 @@
         <a name="startActivity-method"></a><b>startActivity</b> <span class="params">(intent)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Starts a new Activity, using the passed in Intent as the description. Also see Android's documentation for <a href="http://developer.android.com/reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity</a></p></div>
+      <div class="description"><p>Starts a new activity, using the passed in <code>Intent</code> as the description.</p></div>
       
 
       
@@ -498,7 +629,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>Description of the Activity to start</td>
+                  <td class='attr-desc'>Description of the activity to start.</td>
                 </tr>
                 
       	</table>
@@ -511,7 +642,7 @@
         <a name="startActivityForResult-method"></a><b>startActivityForResult</b> <span class="params">(intent, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>The same as <code>startActivity</code>, but also accepts a callback function for handling the result of the started Activity. Also see Android's documentation for <a href="http://developer.android.com/reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult</a></p></div>
+      <div class="description"><p>The same as <code>startActivity</code>, but also accepts a callback function for handling the result of the started Activity.</p></div>
       
 
       
@@ -528,7 +659,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>Description of the Activity to start</td>
+                  <td class='attr-desc'>Description of the activity to start.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -536,11 +667,12 @@
                   <td class='attr-rw'>
                     
                       
-                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                        <a href="ActivityResult.html">[Callback&lt;ActivityResult&gt;]</a>
                       
                     
                   </td>
-                  <td class='attr-desc'>A callback function that is executed when the Activity has set it's result. See example in Titanium.Android.Activity.</td>
+                  <td class='attr-desc'>Callback function to be executed when the activity sets result. See
+examples.</td>
                 </tr>
                 
       	</table>
@@ -641,7 +773,9 @@
             <td class='attr-name'>intent</td>
             <td class='attr-desc'>
               
-              <p>the <a href="Titanium.Android.Intent-object.html"><code>Titanium.Android.Intent</code></a> passed to the native <code>onNewIntent</code> method.</p>
+              <span class="attr-rw">[Titanium.Android.Intent]</span><br /> 
+              
+              <p>The <code>Intent</code> passed to the native <code>onNewIntent</code> method.</p>
             </td>
           </tr>
           

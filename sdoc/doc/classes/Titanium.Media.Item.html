@@ -44,10 +44,19 @@
 <div id="content">
     
     <div class="description">
-        <p>A representation of a media item returned by the music picker as part of the <code>items</code> array in the dictionary passed to its <code>success</code> function.</p>
+        <p>A representation of a media item returned by <a href="Titanium.Media.openMusicLibrary-method.html">openMusicLibrary</a> or <a href="Titanium.Media.queryMusicLibrary-method.html">queryMusicLibrary</a>.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>This is a read-only object that describes a single media item, not a playlist. 
+Titanium does not support access to playlists.</p>
+<p><code>Item</code> objects cannot be created explicitly.  The 
+<a href="Titanium.Media.openMusicLibrary-method.html">openMusicLibrary</a> returns <code>Item</code> objects in its
+<code>success</code> callback function, while <a href="Titanium.Media.queryMusicLibrary-method.html">queryMusicLibrary</a>
+returns an array of <code>Item</code> objects.</p>
+    </div>
     
 
     
@@ -143,82 +152,6 @@
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
-            <ul>
-                <li><a href="#setAlbumArtist-method">setAlbumArtist <span class="params">(albumArtist)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setAlbumTitle-method">setAlbumTitle <span class="params">(albumTitle)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setAlbumTrackCount-method">setAlbumTrackCount <span class="params">(albumTrackCount)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setAlbumTrackNumber-method">setAlbumTrackNumber <span class="params">(albumTrackNumber)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setArtist-method">setArtist <span class="params">(artist)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setArtwork-method">setArtwork <span class="params">(artwork)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setComposer-method">setComposer <span class="params">(composer)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setDiscCount-method">setDiscCount <span class="params">(discCount)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setDiscNumber-method">setDiscNumber <span class="params">(discNumber)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setGenre-method">setGenre <span class="params">(genre)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setIsCompilation-method">setIsCompilation <span class="params">(isCompilation)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setLyrics-method">setLyrics <span class="params">(lyrics)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setMediaType-method">setMediaType <span class="params">(mediaType)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setPlayCount-method">setPlayCount <span class="params">(playCount)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setPlaybackDuration-method">setPlaybackDuration <span class="params">(playbackDuration)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setPodcastTitle-method">setPodcastTitle <span class="params">(podcastTitle)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setRating-method">setRating <span class="params">(rating)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setSkipCount-method">setSkipCount <span class="params">(skipCount)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setTitle-method">setTitle <span class="params">(title)</span></a></li>
-            </ul>
-    
     
 
     
@@ -231,7 +164,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the artist for the album of the item</td>
+            <td class='attr-desc'>Artist credited for the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -240,7 +173,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the album title of the item</td>
+            <td class='attr-desc'>Title of the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -249,7 +182,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the number of tracks for the album of the item</td>
+            <td class='attr-desc'>Number of tracks for the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -258,7 +191,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the track number of the item</td>
+            <td class='attr-desc'>Track number for this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -267,16 +200,17 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the artist of the item</td>
+            <td class='attr-desc'>Artist credited for this item.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="artwork-property"></a>artwork</td>
             <td class='attr-rw'>
-                [Object]
+                [Titanium.Blob]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>a blob object containing the image for the item's artwork, or null if none</td>
+            <td class='attr-desc'>Image for the item's artwork as a Blob object,  or null if no artwork is
+available.</td>
         </tr>
         
         <tr valign='top'>
@@ -285,7 +219,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the composer of the item</td>
+            <td class='attr-desc'>Composer of this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -294,7 +228,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the total number of discs of the item</td>
+            <td class='attr-desc'>Total number of discs for the album containing this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -303,7 +237,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the disc number of the item</td>
+            <td class='attr-desc'>Disc number for this item in the album.</td>
         </tr>
         
         <tr valign='top'>
@@ -312,7 +246,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the genre of the item</td>
+            <td class='attr-desc'>Genre of this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -321,7 +255,7 @@
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>true if the item is part of a compilation album</td>
+            <td class='attr-desc'>True if this item is part of a compilation album.</td>
         </tr>
         
         <tr valign='top'>
@@ -330,7 +264,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the lyrics of the item</td>
+            <td class='attr-desc'>Lyrics for this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -339,7 +273,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the type of the item</td>
+            <td class='attr-desc'>The type of the media. </td>
         </tr>
         
         <tr valign='top'>
@@ -348,7 +282,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the number of times the item has been played</td>
+            <td class='attr-desc'>Number of times the item has been played.</td>
         </tr>
         
         <tr valign='top'>
@@ -357,7 +291,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the length (in seconds) of the item</td>
+            <td class='attr-desc'>Length (in seconds) of this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -366,7 +300,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the title of a podcast item.  Only for media types of Titanium.Media.MUSIC_MEDIA_TYPE_PODCAST.</td>
+            <td class='attr-desc'>Title of a podcast item.</td>
         </tr>
         
         <tr valign='top'>
@@ -375,7 +309,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the rating of the item</td>
+            <td class='attr-desc'>Rating for this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -384,7 +318,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the number of times the item has been skipped</td>
+            <td class='attr-desc'>Number of times this item has been skipped.</td>
         </tr>
         
         <tr valign='top'>
@@ -393,7 +327,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the title of the item</td>
+            <td class='attr-desc'>Title of this item.</td>
         </tr>
         
     </table>
@@ -737,576 +671,6 @@
                     
                   </td>
                   <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setAlbumArtist-method">
-        <a name="setAlbumArtist-method"></a><b>setAlbumArtist</b> <span class="params">(albumArtist)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.albumArtist-property.html">albumArtist</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>albumArtist</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setAlbumTitle-method">
-        <a name="setAlbumTitle-method"></a><b>setAlbumTitle</b> <span class="params">(albumTitle)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.albumTitle-property.html">albumTitle</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>albumTitle</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setAlbumTrackCount-method">
-        <a name="setAlbumTrackCount-method"></a><b>setAlbumTrackCount</b> <span class="params">(albumTrackCount)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.albumTrackCount-property.html">albumTrackCount</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>albumTrackCount</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setAlbumTrackNumber-method">
-        <a name="setAlbumTrackNumber-method"></a><b>setAlbumTrackNumber</b> <span class="params">(albumTrackNumber)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.albumTrackNumber-property.html">albumTrackNumber</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>albumTrackNumber</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setArtist-method">
-        <a name="setArtist-method"></a><b>setArtist</b> <span class="params">(artist)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.artist-property.html">artist</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>artist</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setArtwork-method">
-        <a name="setArtwork-method"></a><b>setArtwork</b> <span class="params">(artwork)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.artwork-property.html">artwork</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>artwork</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Object]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setComposer-method">
-        <a name="setComposer-method"></a><b>setComposer</b> <span class="params">(composer)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.composer-property.html">composer</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>composer</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setDiscCount-method">
-        <a name="setDiscCount-method"></a><b>setDiscCount</b> <span class="params">(discCount)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.discCount-property.html">discCount</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>discCount</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setDiscNumber-method">
-        <a name="setDiscNumber-method"></a><b>setDiscNumber</b> <span class="params">(discNumber)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.discNumber-property.html">discNumber</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>discNumber</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setGenre-method">
-        <a name="setGenre-method"></a><b>setGenre</b> <span class="params">(genre)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.genre-property.html">genre</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>genre</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setIsCompilation-method">
-        <a name="setIsCompilation-method"></a><b>setIsCompilation</b> <span class="params">(isCompilation)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.isCompilation-property.html">isCompilation</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>isCompilation</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Boolean]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setLyrics-method">
-        <a name="setLyrics-method"></a><b>setLyrics</b> <span class="params">(lyrics)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.lyrics-property.html">lyrics</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>lyrics</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setMediaType-method">
-        <a name="setMediaType-method"></a><b>setMediaType</b> <span class="params">(mediaType)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.mediaType-property.html">mediaType</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>mediaType</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setPlayCount-method">
-        <a name="setPlayCount-method"></a><b>setPlayCount</b> <span class="params">(playCount)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.playCount-property.html">playCount</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>playCount</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setPlaybackDuration-method">
-        <a name="setPlaybackDuration-method"></a><b>setPlaybackDuration</b> <span class="params">(playbackDuration)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.playbackDuration-property.html">playbackDuration</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>playbackDuration</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setPodcastTitle-method">
-        <a name="setPodcastTitle-method"></a><b>setPodcastTitle</b> <span class="params">(podcastTitle)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.podcastTitle-property.html">podcastTitle</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>podcastTitle</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setRating-method">
-        <a name="setRating-method"></a><b>setRating</b> <span class="params">(rating)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.rating-property.html">rating</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>rating</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setSkipCount-method">
-        <a name="setSkipCount-method"></a><b>setSkipCount</b> <span class="params">(skipCount)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.skipCount-property.html">skipCount</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>skipCount</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setTitle-method">
-        <a name="setTitle-method"></a><b>setTitle</b> <span class="params">(title)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.Item.title-property.html">title</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>title</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
                 </tr>
                 
       	</table>

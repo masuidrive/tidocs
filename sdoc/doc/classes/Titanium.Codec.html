@@ -44,10 +44,40 @@
 <div id="content">
     
     <div class="description">
-        <p>A module for converting Numbers and Strings to and from a <a href="Titanium.Buffer-object.html"><code>Titanium.Buffer</code></a>.</p>
+        <p>A module for translating between primitive types and raw byte streams.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>The <code>Codec</code> module can be used for encoding strings and numbers into <a href="Titanium.Buffer-object.html">Buffer</a> 
+objects, and decoding primitive types from buffers. </p>
+<h4>Byte Order</h4>
+<p>Multi-byte data can be stored in two different byte orders: big-endian or
+little-endian. In big-endian byte order, the most significant or highest-value
+byte is stored first. For example, the 4-byte integer 0xFEDCBA98 is made up of the
+bytes 0xFE, 0xDC, 0xBA and 0x98, from most-significant to least-significant.<br />
+</p>
+<p>If we represent a buffer as an array of byte values, a big-endian encoding of
+0xFEDCBA98 would look like this:</p>
+<pre><code>[ 0xFE, 0xDC, 0xBA, 0x98 ]
+</code></pre>
+<p>In little-endian order, the bytes would be stored in this order:</p>
+<pre><code>[ 0x98, 0xBA, 0xDC, 0xFE ]
+</code></pre>
+<p>For 8-bit character encodings, including ASCII, Latin-1 and UTF-8, byte order is not
+significant: the text is a sequence of individual bytes.</p>
+<p>For UTF-16, text is represented as a sequence of 16-bit values. For example,
+a capital T in UTF-16 is 0x0054, and lowercase i is 0x0069. If we encode the string
+"Ti" with UTF-16 in big-endian byte order, we get:</p>
+<pre><code>[ 0x00, 0x54, 0x00, 0x69 ]
+</code></pre>
+<p>In UTF-16 with little-endian byte order, "Ti" is encoded as:</p>
+<pre><code>[ 0x54, 0x00, 0x69, 0x00 ]
+</code></pre>
+<p>Note that the bytes for each character are stored least-significant byte first, but
+the order of the characters is unchanged.</p>
+    </div>
     
 
     
@@ -99,7 +129,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Big Endian (network) byte order, i.e. most significant byte first.</td>
+            <td class='attr-desc'>Big endian (network) byte order -- that is, the most significant byte first.</td>
         </tr>
         
         <tr valign='top'>
@@ -108,7 +138,7 @@
                 [String]
             </td>
             <td class='attr-desc'>ascii</td>
-            <td class='attr-desc'>The ASCII Character Set</td>
+            <td class='attr-desc'>ASCII character encoding..</td>
         </tr>
         
         <tr valign='top'>
@@ -117,7 +147,7 @@
                 [String]
             </td>
             <td class='attr-desc'>iso-latin-1</td>
-            <td class='attr-desc'>The ISO 8859-1 (LATIN-1) Character Set</td>
+            <td class='attr-desc'>ISO 8859-1 (Latin-1) character encoding.</td>
         </tr>
         
         <tr valign='top'>
@@ -126,7 +156,7 @@
                 [String]
             </td>
             <td class='attr-desc'>utf16</td>
-            <td class='attr-desc'>The UTF-16 Character Set</td>
+            <td class='attr-desc'>UTF-16 character encoding with default byte order.</td>
         </tr>
         
         <tr valign='top'>
@@ -135,7 +165,7 @@
                 [String]
             </td>
             <td class='attr-desc'>utf16be</td>
-            <td class='attr-desc'>The UTF-16 Character Set with Big Endian byte order</td>
+            <td class='attr-desc'>UTF-16 character encoding with big endian byte order.</td>
         </tr>
         
         <tr valign='top'>
@@ -144,7 +174,7 @@
                 [String]
             </td>
             <td class='attr-desc'>utf16le</td>
-            <td class='attr-desc'>The UTF-16 Character Set with Little Endian byte order</td>
+            <td class='attr-desc'>UTF-16 character encoding with little endian byte order.</td>
         </tr>
         
         <tr valign='top'>
@@ -153,7 +183,7 @@
                 [String]
             </td>
             <td class='attr-desc'>utf8</td>
-            <td class='attr-desc'>The UTF-8 Character Set</td>
+            <td class='attr-desc'>UTF-8 character encoding.</td>
         </tr>
         
         <tr valign='top'>
@@ -162,7 +192,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Little Endian byte order, i.e. least significant byte first.</td>
+            <td class='attr-desc'>Little endian byte order -- that is, the least significant byte first.</td>
         </tr>
         
         <tr valign='top'>
@@ -171,7 +201,7 @@
                 [String]
             </td>
             <td class='attr-desc'>byte</td>
-            <td class='attr-desc'>8 bit integer encoding type</td>
+            <td class='attr-desc'>8-bit integer encoding type.</td>
         </tr>
         
         <tr valign='top'>
@@ -180,7 +210,7 @@
                 [String]
             </td>
             <td class='attr-desc'>double</td>
-            <td class='attr-desc'>64 bit double precision floating-point type</td>
+            <td class='attr-desc'>64-bit double precision floating-point type.</td>
         </tr>
         
         <tr valign='top'>
@@ -189,7 +219,7 @@
                 [String]
             </td>
             <td class='attr-desc'>float</td>
-            <td class='attr-desc'>32 bit single precision floating-point type</td>
+            <td class='attr-desc'>32-bit single precision floating-point type.</td>
         </tr>
         
         <tr valign='top'>
@@ -198,7 +228,7 @@
                 [String]
             </td>
             <td class='attr-desc'>int</td>
-            <td class='attr-desc'>32 bit integer encoding type</td>
+            <td class='attr-desc'>32-bit integer encoding type.</td>
         </tr>
         
         <tr valign='top'>
@@ -207,7 +237,7 @@
                 [String]
             </td>
             <td class='attr-desc'>long</td>
-            <td class='attr-desc'>64 bit integer encoding type</td>
+            <td class='attr-desc'>64-bit integer encoding type.</td>
         </tr>
         
         <tr valign='top'>
@@ -216,7 +246,7 @@
                 [String]
             </td>
             <td class='attr-desc'>short</td>
-            <td class='attr-desc'>16 bit integer encoding type</td>
+            <td class='attr-desc'>16-bit integer encoding type.</td>
         </tr>
         
     </table>
@@ -279,8 +309,7 @@
         <a name="decodeNumber-method"></a><b>decodeNumber</b> <span class="params">(options)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Decodes the <code>source</code> buffer (starting at the optional <code>position</code>) using the passed in data <code>type</code>.
-Throws an Exception if <code>source</code> is null, or <code>position</code> is greater than <code>source.length</code></p></div>
+      <div class="description"><p>Decodes a number from the <code>source</code> buffer using the specified data type.</p></div>
       
 
       
@@ -293,11 +322,11 @@ Throws an Exception if <code>source</code> is null, or <code>position</code> is 
                   <td class='attr-rw'>
                     
                       
-                        [Dictionary&lt;DecodeNumberDict&gt;]
+                        [DecodeNumberDict]
                       
                     
                   </td>
-                  <td class='attr-desc'>decodeNumber named options</td>
+                  <td class='attr-desc'>Named parameters.</td>
                 </tr>
                 
       	</table>
@@ -310,10 +339,7 @@ Throws an Exception if <code>source</code> is null, or <code>position</code> is 
         <a name="decodeString-method"></a><b>decodeString</b> <span class="params">(options)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Decodes the <code>source</code> buffer into a String starting at <code>position</code>, with <code>length</code> bytes,
-using the supplied character set <code>charset</code>. Throws an Exception if <code>charset</code> is not
-a valid character set, <code>source</code> is null, or either <code>position</code>, <code>length</code>, or
-<code>position</code>+<code>length</code> is greater than <code>source.length</code>.</p></div>
+      <div class="description"><p>Decodes the source buffer into a String using the supplied character set.</p></div>
       
 
       
@@ -326,11 +352,11 @@ a valid character set, <code>source</code> is null, or either <code>position</co
                   <td class='attr-rw'>
                     
                       
-                        [Dictionary&lt;DecodeStringDict&gt;]
+                        [DecodeStringDict]
                       
                     
                   </td>
-                  <td class='attr-desc'>decodeString named options</td>
+                  <td class='attr-desc'>Named parameters.</td>
                 </tr>
                 
       	</table>
@@ -343,7 +369,7 @@ a valid character set, <code>source</code> is null, or either <code>position</co
         <a name="encodeNumber-method"></a><b>encodeNumber</b> <span class="params">(options)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Encodes the Number <code>source</code> into <code>dest</code> using the passed in data <code>type</code>.</p></div>
+      <div class="description"><p>Encodes a number and writes it to a buffer.</p></div>
       
 
       
@@ -356,11 +382,11 @@ a valid character set, <code>source</code> is null, or either <code>position</co
                   <td class='attr-rw'>
                     
                       
-                        [Dictionary&lt;EncodeNumberDict&gt;]
+                        [EncodeNumberDict]
                       
                     
                   </td>
-                  <td class='attr-desc'>encodeNumber named options</td>
+                  <td class='attr-desc'>Named parameters.</td>
                 </tr>
                 
       	</table>
@@ -373,10 +399,7 @@ a valid character set, <code>source</code> is null, or either <code>position</co
         <a name="encodeString-method"></a><b>encodeString</b> <span class="params">(options)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Encodes the String <code>source</code> into <code>dest</code> using <code>charset</code>.
-Throws an Exception if <code>charset</code> is not a valid character set,
-<code>source</code> is null, or either <code>sourcePosition</code>, <code>sourceLength</code>, or
-<code>sourcePosition</code>+<code>sourceLength</code> is greater than <code>source.length</code>.</p></div>
+      <div class="description"><p>Encodes a string into a series of bytes in a buffer using the specified character set.</p></div>
       
 
       
@@ -393,7 +416,7 @@ Throws an Exception if <code>charset</code> is not a valid character set,
                       
                     
                   </td>
-                  <td class='attr-desc'>encodeString named options</td>
+                  <td class='attr-desc'>Named parameters.</td>
                 </tr>
                 
       	</table>
@@ -448,7 +471,8 @@ Throws an Exception if <code>charset</code> is not a valid character set,
         <a name="getNativeByteOrder-method"></a><b>getNativeByteOrder</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get the OS native byte order (either <a href="Titanium.Codec.BIG_ENDIAN-property.html"><code>Titanium.Codec.BIG_ENDIAN</code></a> or <a href="Titanium.Codec.LITTLE_ENDIAN-property.html"><code>Titanium.Codec.LITTLE_ENDIAN</code></a>)</p></div>
+      <div class="description"><p>Get the OS native byte order (either <a href="Titanium.Codec.BIG_ENDIAN-property.html"><code>Titanium.Codec.BIG_ENDIAN</code></a> or
+<a href="Titanium.Codec.LITTLE_ENDIAN-property.html"><code>Titanium.Codec.LITTLE_ENDIAN</code></a>).</p></div>
       
 
       

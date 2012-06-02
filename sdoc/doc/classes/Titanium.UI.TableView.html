@@ -44,22 +44,87 @@
 <div id="content">
     
     <div class="description">
-        <p>A Table View allows you to create a scrollable table of content in a list-based fashion.</p>
+        <p>A table view is used to present information, organized in sections and rows, in a 
+vertically-scrolling view.</p>
     </div>
     
     
     
     <div class="description">
-        <p>A table view can contain a set of <a href="Titanium.UI.TableViewRow-object.html">TableViewRow</a>s, each displaying 
-an item of data. The default <code>TableViewRow</code> has properties for adding text, as well as 
-optional images on the left and right sides, and various system-provided indicators, 
-such as check marks. Table view rows can also be fully customized by adding child views, 
-such as labels, buttons, or image views.</p>
-<p>When adding rows to a table view, each row can be passed as a 
-<a href="Titanium.UI.TableViewRow-object.html">TableViewRow</a> object, or as dictionary specifying 
-the properties for a table row, in which case the <code>TableView</code> will create 
-<code>TableViewRow</code> objects as needed. </p>
-<p>Use the <a href="Titanium.UI.createTableView-method.html"><code>Titanium.UI.createTableView</code></a> method to create a table view.</p>
+        <p>Use the <a href="Titanium.UI.createTableView-method.html"><code>Titanium.UI.createTableView</code></a> method to create a <code>TableView</code>.</p>
+<p>A <code>TableView</code> object is a container for <a href="Titanium.UI.TableViewSection-object.html">TableViewSection</a> 
+objects that are, in turn, containers for <a href="Titanium.UI.TableViewRow-object.html">TableViewRow</a> objects. </p>
+<h4>Creating Tables</h4>
+<p>Tables may be created in the following ways.</p>
+<p>The simplest approach is to pass dictionaries of <code>TableViewRow</code> properties, such as 
+<a href="Titanium.UI.TableViewRow.backgroundColor-property.html">backgroundColor</a>, 
+<a href="Titanium.UI.TableViewRow.color-property.html">color</a>, and <a href="Titanium.UI.TableViewRow.title-property.html">title</a>, to the 
+<a href="Titanium.UI.createTableView-method.html">createTableView</a> method, which causes the rows to be implictly 
+created, added to a single <a href="Titanium.UI.TableViewSection-object.html">TableViewSection</a>, and then added to 
+the <code>TableView</code>. Refer to the "Simple Table View with Basic Rows" example.</p>
+<p>For more control over the layout of each row, however, <a href="Titanium.UI.TableViewRow-object.html">TableViewRow</a> 
+objects can be created explicitly using the <a href="Titanium.UI.createTableViewRow-method.html"><code>Titanium.UI.createTableViewRow</code></a> method. Child views, 
+such as <a href="Titanium.UI.Label-object.html">labels</a>, <a href="Titanium.UI.ImageView-object.html">images</a>, and 
+<a href="Titanium.UI.Button-object.html">buttons</a>, may be added to each row. When passed passed to the table view, a 
+single <a href="Titanium.UI.TableViewSection-object.html">TableViewSection</a> is automatically created to hold the 
+rows. See the "Table View with Composite Layout" example.</p>
+<p>Lastly, sets of rows may be explicitly created and added to a their own 
+<a href="Titanium.UI.TableViewSection-object.html">TableViewSection</a> objects, which are then added to a <code>TableView</code>, 
+to enable the rows to be organized. Headers and footers titles or views must be configured 
+in order for the sections to be visible.</p>
+<h4>Tables and Scroll Views</h4>
+<p>As a table view inherently scrolls, it creates a very poor user experience when one contains 
+other scrolling views, such as a <a href="Titanium.UI.ScrollableView-object.html">ScrollableView</a> or 
+<a href="Titanium.UI.TextArea-object.html">TextArea</a>. Thus, this layout is strongly discouraged. </p>
+<h4>TextFields in Tables with SOFT_INPUT_ADJUST_PAN (Android)</h4>
+<p>When a <a href="Titanium.UI.TextField-object.html">TextField</a> is placed in a row near the bottom of a <code>TableView</code>, 
+in a window that is configured with 
+<a href="Titanium.UI.Android.SOFT_INPUT_ADJUST_PAN-property.html">SOFT_INPUT_ADJUST_PAN</a>, it is expected for the 
+text field to automatically move to a visible position after it is focused and the software 
+keyboard displayed. However, due to a known problem caused by native Android's ListView behavior, 
+the keyboard is likely to completely obscure the text field. </p>
+<p>To mitigate this, a <code>ScrollView</code> may be used instead of a table view, as demonstrated in the 
+<a href="Titanium.UI.ScrollView-object.html">ScrollView</a>, "Scroll View as a Table View", example. </p>
+<h4>Row Editing and Moving Modes (iOS only)</h4>
+<p>On iOS, table views have an <code>editing</code> and a <code>moving</code> mode that may be activated to using their 
+respective <a href="Titanium.UI.TableView.editing-property.html">editing</a> and <a href="Titanium.UI.TableView.moving-property.html">moving</a> 
+properties. These allow rows to be deleted or re-ordered by the user, depending on each row's 
+<a href="Titanium.UI.TableViewRow.editable-property.html">editable</a> and <a href="Titanium.UI.TableViewRow.moveable-property.html">moveable</a> 
+property that are either explicitly set or inherited from the table.</p>
+<p>There are two UI controls available for deleting table view rows, depending on the combination 
+of editing and moving modes enabled:</p>
+<ul>
+<li>"red icon delete" - a circular red icon is displayed on the left-hand side of a row, which 
+reveals a delete button on the right-hand side of that row when clicked.</li>
+<li>"swipe delete" - without either of the table editing or moving modes enabled, a left or right 
+swipe gesture on a row reveals a delete button on the right-hand side of the row.</li>
+</ul>
+<p>When <code>editable</code> and <code>moveable</code> properties are set on the table view, they are known as <code>inherited</code>, 
+whereas when set on a row, they are known as <code>explicit</code>. As their resulting behavior may not 
+follow their literal meaning, depending on the combination of <code>editing</code> and <code>moving</code> modes that 
+are enabled, a detailed description of the behavior follows.</p>
+<p>With <code>editing:false</code> and <code>moving:true</code>:</p>
+<ul>
+<li>For red icon delete and swipe delete, inherited and explicit <code>editable</code> properties may be set.</li>
+<li>Inherited <code>moveable</code> property is always <code>true</code>. Explicit <code>moveable</code> property may be set.</li>
+</ul>
+<p>With <code>editing:true</code> and <code>moving:false</code>:</p>
+<ul>
+<li>For red icon delete and swipe delete, inherited <code>editable</code> property is always <code>true</code>. Explicit 
+<code>editable</code> property may be set.</li>
+<li>Inherited and explicit <code>moveable</code> properties may be set.</li>
+</ul>
+<p>With <code>editing:false</code> and <code>moving: false</code>:</p>
+<ul>
+<li>For red icon delete, inherited and explicit <code>editable</code> properties always <code>false</code>. For 
+swipe delete, inherited and explicit <code>editable</code> properties may be set.</li>
+<li>Inherited <code>moveable</code> property is always <code>false</code>.</li>
+</ul>
+<p>With <code>editing:true</code> and <code>moving:true</code>:</p>
+<ul>
+<li>For red icon delete and swipe delete, inherited and explicit <code>editable</code> properties may be set.</li>
+<li>Inherited <code>moveable</code> property is always <code>true</code>. Explicit <code>moveable</code> property may be set.</li>
+</ul>
     </div>
     
 
@@ -81,7 +146,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#appendRow-method">appendRow <span class="params">(row, properties)</span></a></li>
+                <li><a href="#appendRow-method">appendRow <span class="params">(row, animation)</span></a></li>
             </ul>
     
             <ul>
@@ -89,7 +154,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#deleteRow-method">deleteRow <span class="params">(row, properties)</span></a></li>
+                <li><a href="#deleteRow-method">deleteRow <span class="params">(row, animation)</span></a></li>
             </ul>
     
             <ul>
@@ -157,14 +222,6 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#getBackgroundSelectedColor-method">getBackgroundSelectedColor <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundSelectedImage-method">getBackgroundSelectedImage <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#getBackgroundTopCap-method">getBackgroundTopCap <span class="params">()</span></a></li>
             </ul>
     
@@ -225,6 +282,10 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
+                <li><a href="#getHeaderPullView-method">getHeaderPullView <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getHeaderTitle-method">getHeaderTitle <span class="params">()</span></a></li>
             </ul>
     
@@ -262,6 +323,10 @@ the properties for a table row, in which case the <code>TableView</code> will cr
     
             <ul>
                 <li><a href="#getMinRowHeight-method">getMinRowHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMoveable-method">getMoveable <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -349,11 +414,11 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#insertRowAfter-method">insertRowAfter <span class="params">(index, row, properties)</span></a></li>
+                <li><a href="#insertRowAfter-method">insertRowAfter <span class="params">(index, row, animation)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#insertRowBefore-method">insertRowBefore <span class="params">(index, row, properties)</span></a></li>
+                <li><a href="#insertRowBefore-method">insertRowBefore <span class="params">(index, row, animation)</span></a></li>
             </ul>
     
             <ul>
@@ -365,11 +430,11 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#scrollToIndex-method">scrollToIndex <span class="params">(index, properties)</span></a></li>
+                <li><a href="#scrollToIndex-method">scrollToIndex <span class="params">(index, animation)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#scrollToTop-method">scrollToTop <span class="params">(top, properties)</span></a></li>
+                <li><a href="#scrollToTop-method">scrollToTop <span class="params">(top, animation)</span></a></li>
             </ul>
     
             <ul>
@@ -425,14 +490,6 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#setBackgroundSelectedColor-method">setBackgroundSelectedColor <span class="params">(backgroundSelectedColor)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundSelectedImage-method">setBackgroundSelectedImage <span class="params">(backgroundSelectedImage)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#setBackgroundTopCap-method">setBackgroundTopCap <span class="params">(backgroundTopCap)</span></a></li>
             </ul>
     
@@ -461,7 +518,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#setData-method">setData <span class="params">(data, properties)</span></a></li>
+                <li><a href="#setData-method">setData <span class="params">(data, animation)</span></a></li>
             </ul>
     
             <ul>
@@ -490,6 +547,10 @@ the properties for a table row, in which case the <code>TableView</code> will cr
     
             <ul>
                 <li><a href="#setFooterView-method">setFooterView <span class="params">(footerView)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHeaderPullView-method">setHeaderPullView <span class="params">(view)</span></a></li>
             </ul>
     
             <ul>
@@ -530,6 +591,10 @@ the properties for a table row, in which case the <code>TableView</code> will cr
     
             <ul>
                 <li><a href="#setMinRowHeight-method">setMinRowHeight <span class="params">(minRowHeight)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMoveable-method">setMoveable <span class="params">(moveable)</span></a></li>
             </ul>
     
             <ul>
@@ -621,7 +686,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </ul>
     
             <ul>
-                <li><a href="#updateRow-method">updateRow <span class="params">(index, row, properties)</span></a></li>
+                <li><a href="#updateRow-method">updateRow <span class="params">(index, row, animation)</span></a></li>
             </ul>
     
     
@@ -636,7 +701,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>True if the rows can be selected.</td>
+            <td class='attr-desc'>Determines whether this table's rows can be selected.</td>
         </tr>
         
         <tr valign='top'>
@@ -645,7 +710,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>True if the rows can be selected while editing the table.</td>
+            <td class='attr-desc'>Determines whether this table's rows can be selected while editing the table.</td>
         </tr>
         
         <tr valign='top'>
@@ -748,24 +813,6 @@ the properties for a table row, in which case the <code>TableView</code> will cr
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="backgroundSelectedColor-property"></a>backgroundSelectedColor</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Selected background color of the view, as a color name or hex triplet.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundSelectedImage-property"></a>backgroundSelectedImage</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Selected background image url for the view, specified as a local file path or URL.</td>
-        </tr>
-        
-        <tr valign='top'>
             <td class='attr-name'><a name="backgroundTopCap-property"></a>backgroundTopCap</td>
             <td class='attr-rw'>
                 [Number]
@@ -831,10 +878,10 @@ the properties for a table row, in which case the <code>TableView</code> will cr
         <tr valign='top'>
             <td class='attr-name'><a name="data-property"></a>data</td>
             <td class='attr-rw'>
-                [Array&lt;Titanium.UI.TableViewRow&gt;Array&lt;Titanium.UI.TableViewSection&gt;]
+                [DictionaryArray&lt;Titanium.UI.TableViewRow&gt;Array&lt;Titanium.UI.TableViewSection&gt;]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Array of objects to be used for the rows of the table view.</td>
+            <td class='attr-desc'>Rows of the table view.</td>
         </tr>
         
         <tr valign='top'>
@@ -843,7 +890,8 @@ the properties for a table row, in which case the <code>TableView</code> will cr
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Allow the user to edit the table view (this must be true for swipe-to-delete).</td>
+            <td class='attr-desc'>Determines the rows' default editable behavior, which allows them to be deleted by the user 
+when the table is in editing or moving mode.</td>
         </tr>
         
         <tr valign='top'>
@@ -852,7 +900,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean to control the editing state of the table view.</td>
+            <td class='attr-desc'>Determines whether row editing mode is active.</td>
         </tr>
         
         <tr valign='top'>
@@ -870,7 +918,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean to indicate if the search should be case sensitive or case insensitive.</td>
+            <td class='attr-desc'>Determines whether the search is case insensitive.</td>
         </tr>
         
         <tr valign='top'>
@@ -898,6 +946,16 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Table view footer as a view that will be rendered instead of a label.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="headerPullView-property"></a>headerPullView</td>
+            <td class='attr-rw'>
+                [Titanium.UI.View]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>View positioned above the first row that is only revealed when the user drags the table 
+contents down.</td>
         </tr>
         
         <tr valign='top'>
@@ -933,7 +991,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean to indicate whether or not the search field should hide on completion.</td>
+            <td class='attr-desc'>Determines whether the search field should hide on completion.</td>
         </tr>
         
         <tr valign='top'>
@@ -961,7 +1019,7 @@ the properties for a table row, in which case the <code>TableView</code> will cr
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -992,12 +1050,22 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="moveable-property"></a>moveable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines the rows' default moveable behavior, which allows them to be re-ordered by the 
+user when the table is in editing or moving mode.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="moving-property"></a>moving</td>
             <td class='attr-rw'>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean to control the moveable state of the table view.</td>
+            <td class='attr-desc'>Determines whether row moving mode is active.</td>
         </tr>
         
         <tr valign='top'>
@@ -1015,7 +1083,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -1060,7 +1128,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean to control the visibility of the search field.</td>
+            <td class='attr-desc'>Determines whether the search field is visible.</td>
         </tr>
         
         <tr valign='top'>
@@ -1087,7 +1155,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether table view displays vertical scroll indicator</td>
+            <td class='attr-desc'>Determines whether this table view displays a vertical scroll indicator.</td>
         </tr>
         
         <tr valign='top'>
@@ -1096,7 +1164,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -1114,7 +1182,8 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Style of the table view, specified using one of the constants from Titanium.UI.iPhone.TableViewStyle.</td>
+            <td class='attr-desc'>Style of the table view, specified using one of the constants from 
+Titanium.UI.iPhone.TableViewStyle.</td>
         </tr>
         
         <tr valign='top'>
@@ -1168,7 +1237,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -1233,6 +1302,12 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a href="#pinch-event">pinch</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a pinch gesture.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a href="#postlayout-event">postlayout</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when a layout cycle is finished.</td>
@@ -1275,6 +1350,12 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a href="#touchmove-event">touchmove</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired as soon as the device detects movement of a touch.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a href="#touchstart-event">touchstart</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired as soon as the device detects a touch gesture against this view.</td>
@@ -1295,11 +1376,123 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Simple Table View with Basic Rows</div>
-	<div class="code"><p>The most basic example of a table view.</p>
-<pre><code>var data = [{title:"Row 1"},{title:"Row 2"}];
-var table = Titanium.UI.createTableView({data:data});
+	<div class="subsectiontitle">Simple Table View</div>
+	<div class="code"><p>A basic table view.</p>
+<pre><code>Ti.UI.backgroundColor = 'white';
+var win = Ti.UI.createWindow();
+
+var tableData = [ {title: 'Apples'}, {title: 'Bananas'}, {title: 'Carrots'}, {title: 'Potatoes'} ];
+
+var table = Ti.UI.createTableView({
+  data: tableData
+});
 win.add(table);
+win.open();
+</code></pre></div>
+        
+	<div class="subsectiontitle">Table View Sections</div>
+	<div class="code"><p>A table containing two sections with header titles, each with two rows.</p>
+<pre><code>Ti.UI.backgroundColor = 'white';
+var win = Ti.UI.createWindow();
+
+var sectionFruit = Ti.UI.createTableViewSection({ headerTitle: 'Fruit' });
+var row1 = Ti.UI.createTableViewRow({ title: 'Apples' });
+var row2 = Ti.UI.createTableViewRow({ title: 'Bananas' });
+sectionFruit.add(row1);
+sectionFruit.add(row2);
+
+var sectionVeg = Ti.UI.createTableViewSection({ headerTitle: 'Vegetables' });
+var row3 = Ti.UI.createTableViewRow({ title: 'Carrots' });
+var row4 = Ti.UI.createTableViewRow({ title: 'Potatoes' });
+sectionVeg.add(row3);
+sectionVeg.add(row4);
+
+var table = Ti.UI.createTableView({
+  data: [sectionFruit, sectionVeg]
+});
+win.add(table);
+win.open();
+</code></pre></div>
+        
+	<div class="subsectiontitle">Table View with Composite Layout</div>
+	<div class="code"><p>A table created using rows that contain a custom child-view layout.</p>
+<pre><code>Ti.UI.setBackgroundColor('#000');
+var win = Ti.UI.createWindow({
+  backgroundColor: 'black',
+  exitOnClose: true,
+  fullscreen: false,
+  title: 'TableView Demo'
+});
+
+// generate random number, used to make each row appear distinct for this example
+function randomInt(max){
+  return Math.floor(Math.random() * max) + 1;
+}
+
+var IMG_BASE = 'https://github.com/appcelerator/titanium_mobile/raw/master/demos/KitchenSink/Resources/images/';
+var defaultFontSize = Ti.Platform.name === 'android' ? 16 : 14;
+
+var tableData = [];
+
+for (var i=1; i&lt;=20; i++){
+  var row = Ti.UI.createTableViewRow({
+    className:'forumEvent', // used to improve table performance
+    selectedBackgroundColor:'white',
+    rowIndex:i, // custom property, useful for determining the row during events
+    height:110
+  });
+
+  var imageAvatar = Ti.UI.createImageView({
+    image: IMG_BASE + 'custom_tableview/user.png',
+    left:10, top:5,
+    width:50, height:50
+  });
+  row.add(imageAvatar);
+
+  var labelUserName = Ti.UI.createLabel({
+    color:'#576996',
+    font:{fontFamily:'Arial', fontSize:defaultFontSize+6, fontWeight:'bold'},
+    text:'Fred Smith ' + i,
+    left:70, top: 6,
+    width:200, height: 30
+  });
+  row.add(labelUserName);
+
+  var labelDetails = Ti.UI.createLabel({
+    color:'#222',
+    font:{fontFamily:'Arial', fontSize:defaultFontSize+2, fontWeight:'normal'},
+    text:'Replied to post with id ' + randomInt(1000) + '.',
+    left:70, top:44,
+    width:360
+  });
+  row.add(labelDetails);
+
+  var imageCalendar = Ti.UI.createImageView({
+    image:IMG_BASE + 'custom_tableview/eventsButton.png',
+    left:70, bottom: 2,
+    width:32, height: 32
+  });
+  row.add(imageCalendar);
+
+  var labelDate = Ti.UI.createLabel({
+    color:'#999',
+    font:{fontFamily:'Arial', fontSize:defaultFontSize, fontWeight:'normal'},
+    text:'on ' + randomInt(30) + ' Nov 2012',
+    left:105, bottom:10,
+    width:200, height:20
+  });
+  row.add(labelDate);
+
+  tableData.push(row);
+}
+
+var tableView = Ti.UI.createTableView({
+  backgroundColor:'white',
+  data:tableData
+});
+
+win.add(tableView);
+win.open();
 </code></pre></div>
         
     </table>
@@ -1426,7 +1619,7 @@ Animation object.</td>
     
     <div class="method">
       <div class="title" id="appendRow-method">
-        <a name="appendRow-method"></a><b>appendRow</b> <span class="params">(row, properties)</span>
+        <a name="appendRow-method"></a><b>appendRow</b> <span class="params">(row, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Appends one or more rows to the table.</p></div>
@@ -1446,11 +1639,11 @@ Animation object.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>If appending a single row, this should contain only the row being appended. If appending multiple rows, this should be an array of the rows being appended.</td>
+                  <td class='attr-desc'>Row or rows to add to the table.</td>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -1458,7 +1651,7 @@ Animation object.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties, only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -1514,7 +1707,7 @@ If this argument is not a view, an exception will be raised.</td>
     
     <div class="method">
       <div class="title" id="deleteRow-method">
-        <a name="deleteRow-method"></a><b>deleteRow</b> <span class="params">(row, properties)</span>
+        <a name="deleteRow-method"></a><b>deleteRow</b> <span class="params">(row, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Deletes an existing row.</p></div>
@@ -1538,7 +1731,7 @@ If this argument is not a view, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -1546,7 +1739,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties. Only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -1781,28 +1974,6 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getBackgroundSelectedColor-method">
-        <a name="getBackgroundSelectedColor-method"></a><b>getBackgroundSelectedColor</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.backgroundSelectedColor-property.html">backgroundSelectedColor</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundSelectedImage-method">
-        <a name="getBackgroundSelectedImage-method"></a><b>getBackgroundSelectedImage</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.backgroundSelectedImage-property.html">backgroundSelectedImage</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="getBackgroundTopCap-method">
         <a name="getBackgroundTopCap-method"></a><b>getBackgroundTopCap</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1968,6 +2139,17 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="getHeaderPullView-method">
+        <a name="getHeaderPullView-method"></a><b>getHeaderPullView</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.headerPullView-property.html">headerPullView</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getHeaderTitle-method">
         <a name="getHeaderTitle-method"></a><b>getHeaderTitle</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2072,6 +2254,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.minRowHeight-property.html">minRowHeight</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMoveable-method">
+        <a name="getMoveable-method"></a><b>getMoveable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.moveable-property.html">moveable</a> property.</p></div>
       
 
       
@@ -2310,7 +2503,7 @@ If this argument is not a view, an exception will be raised.</td>
     
     <div class="method">
       <div class="title" id="insertRowAfter-method">
-        <a name="insertRowAfter-method"></a><b>insertRowAfter</b> <span class="params">(index, row, properties)</span>
+        <a name="insertRowAfter-method"></a><b>insertRowAfter</b> <span class="params">(index, row, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Inserts a row after another row.</p></div>
@@ -2346,7 +2539,7 @@ If this argument is not a view, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -2354,7 +2547,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties. Only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -2364,7 +2557,7 @@ If this argument is not a view, an exception will be raised.</td>
     
     <div class="method">
       <div class="title" id="insertRowBefore-method">
-        <a name="insertRowBefore-method"></a><b>insertRowBefore</b> <span class="params">(index, row, properties)</span>
+        <a name="insertRowBefore-method"></a><b>insertRowBefore</b> <span class="params">(index, row, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Inserts a row before another row.</p></div>
@@ -2400,7 +2593,7 @@ If this argument is not a view, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -2408,7 +2601,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties. Only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -2490,7 +2683,7 @@ If this argument is not a view, an exception will be raised.</td>
     
     <div class="method">
       <div class="title" id="scrollToIndex-method">
-        <a name="scrollToIndex-method"></a><b>scrollToIndex</b> <span class="params">(index, properties)</span>
+        <a name="scrollToIndex-method"></a><b>scrollToIndex</b> <span class="params">(index, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Scrolls the table view to ensure that the specified row is on screen.</p></div>
@@ -2514,7 +2707,7 @@ If this argument is not a view, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -2532,10 +2725,11 @@ If this argument is not a view, an exception will be raised.</td>
     
     <div class="method">
       <div class="title" id="scrollToTop-method">
-        <a name="scrollToTop-method"></a><b>scrollToTop</b> <span class="params">(top, properties)</span>
+        <a name="scrollToTop-method"></a><b>scrollToTop</b> <span class="params">(top, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Scrolls the table to a specific top position where 0 is the topmost y position in the table view.</p></div>
+      <div class="description"><p>Scrolls the table to a specific top position where 0 is the topmost y position in the 
+table view.</p></div>
       
 
       
@@ -2556,7 +2750,7 @@ If this argument is not a view, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -2564,7 +2758,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties. Only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -2963,66 +3157,6 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="setBackgroundSelectedColor-method">
-        <a name="setBackgroundSelectedColor-method"></a><b>setBackgroundSelectedColor</b> <span class="params">(backgroundSelectedColor)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableView.backgroundSelectedColor-property.html">backgroundSelectedColor</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundSelectedColor</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundSelectedImage-method">
-        <a name="setBackgroundSelectedImage-method"></a><b>setBackgroundSelectedImage</b> <span class="params">(backgroundSelectedImage)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableView.backgroundSelectedImage-property.html">backgroundSelectedImage</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundSelectedImage</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="setBackgroundTopCap-method">
         <a name="setBackgroundTopCap-method"></a><b>setBackgroundTopCap</b> <span class="params">(backgroundTopCap)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -3207,7 +3341,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="setContentInsets-method"></a><b>setContentInsets</b> <span class="params">(edgeInsets, animated)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the tableviews content insets.</p></div>
+      <div class="description"><p>Sets this tableview's content insets.</p></div>
       
 
       
@@ -3224,7 +3358,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Dictionary of values specifying the top , bottom, left, right insets.</td>
+                  <td class='attr-desc'>Dictionary to describe the insets.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -3236,7 +3370,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Determines whether the content inset change should be animated.</td>
+                  <td class='attr-desc'>Determines whether, and how, the content inset change should be animated.</td>
                 </tr>
                 
       	</table>
@@ -3246,7 +3380,7 @@ If this argument is not a view, an exception will be raised.</td>
     
     <div class="method">
       <div class="title" id="setData-method">
-        <a name="setData-method"></a><b>setData</b> <span class="params">(data, properties)</span>
+        <a name="setData-method"></a><b>setData</b> <span class="params">(data, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Sets the data in the table.</p></div>
@@ -3266,11 +3400,11 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Array of rows (or sections).</td>
+                  <td class='attr-desc'>Rows or sections to add to this table.</td>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -3278,7 +3412,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties. Only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -3489,6 +3623,36 @@ If this argument is not a view, an exception will be raised.</td>
                     
                   </td>
                   <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHeaderPullView-method">
+        <a name="setHeaderPullView-method"></a><b>setHeaderPullView</b> <span class="params">(view)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the [Titanium.UI.TableView.headerPullView] property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>view</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>View to display.</td>
                 </tr>
                 
       	</table>
@@ -3785,6 +3949,36 @@ If this argument is not a view, an exception will be raised.</td>
                     
                       
                         [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMoveable-method">
+        <a name="setMoveable-method"></a><b>setMoveable</b> <span class="params">(moveable)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableView.moveable-property.html">moveable</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>moveable</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
                       
                     
                   </td>
@@ -4436,7 +4630,7 @@ layout pass after they have been updated.</p></div>
     
     <div class="method">
       <div class="title" id="updateRow-method">
-        <a name="updateRow-method"></a><b>updateRow</b> <span class="params">(index, row, properties)</span>
+        <a name="updateRow-method"></a><b>updateRow</b> <span class="params">(index, row, animation)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Updates an existing row, optionally with animation</p></div>
@@ -4472,7 +4666,7 @@ layout pass after they have been updated.</p></div>
                 </tr>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>properties</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -4511,7 +4705,8 @@ layout pass after they have been updated.</p></div>
               
               <span class="attr-rw">[Boolean]</span><br /> 
               
-              <p>Boolean to indicate if the detail button was clicked. Only <code>true</code> if <code>row.hasDetail</code> is <code>true</code> and the detail button was clicked.</p>
+              <p>Indicates whether the detail button was clicked. Only <code>true</code> if <code>row.hasDetail</code> is 
+<code>true</code> and the detail button was clicked.</p>
             </td>
           </tr>
           
@@ -4552,7 +4747,8 @@ coordinates.</p>
               
               <span class="attr-rw">[Dictionary<Titanium.UI.TableViewRow>]</span><br /> 
               
-              <p>Dictionary containing the properties set on the row.</p>
+              <p>Properties of the row.  Use this property rather than <code>row</code> to access any custom row 
+properties.</p>
             </td>
           </tr>
           
@@ -4562,7 +4758,7 @@ coordinates.</p>
               
               <span class="attr-rw">[Boolean]</span><br /> 
               
-              <p>Boolean to indicate if the table is in search mode.</p>
+              <p>Indicates whether the table is in search mode.</p>
             </td>
           </tr>
           
@@ -4705,7 +4901,7 @@ coordinates.</p>
               
               <span class="attr-rw">[Boolean]</span><br /> 
               
-              <p>Boolean to indicate if the delete button was clicked. Always <code>false</code> for this event.</p>
+              <p>Indicates whether the delete button was clicked. Always <code>false</code> for this event.</p>
             </td>
           </tr>
           
@@ -4746,7 +4942,8 @@ coordinates.</p>
               
               <span class="attr-rw">[Dictionary<Titanium.UI.TableViewRow>]</span><br /> 
               
-              <p>Dictionary containing the properties set on the row.</p>
+              <p>Properties of the row. Use this property rather than <code>row</code> to access any custom row 
+properties.</p>
             </td>
           </tr>
           
@@ -4756,7 +4953,7 @@ coordinates.</p>
               
               <span class="attr-rw">[Boolean]</span><br /> 
               
-              <p>Boolean to indicate if the table is in search mode. Always <code>false</code> for this event.</p>
+              <p>Indicates whether the table is in search mode. Always <code>false</code> for this event.</p>
             </td>
           </tr>
           
@@ -5115,7 +5312,8 @@ coordinates.</p>
               
               <span class="attr-rw">[Dictionary<Titanium.UI.TableViewRow>]</span><br /> 
               
-              <p>Dictionary containing the properties set on the row.</p>
+              <p>Properties of the row. Use this property rather than <code>row</code> to access any custom row 
+properties.</p>
             </td>
           </tr>
           
@@ -5176,6 +5374,62 @@ coordinates.</p>
               <span class="attr-rw">[Number]</span><br /> 
               
               <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="pinch-event">
+        <a name="pinch-method"></a><b>pinch</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>scale</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>The scale factor relative to the points of the two touches in screen coordinates.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>velocity</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>The velocity of the pinch in scale factor per second.</p>
             </td>
           </tr>
           
@@ -5247,7 +5501,8 @@ coordinates.</p>
               
               <span class="attr-rw">[Dictionary]</span><br /> 
               
-              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the content (regardless of the display size in the case of scrolling).</p>
+              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the content 
+(regardless of the display size in the case of scrolling).</p>
             </td>
           </tr>
           
@@ -5278,7 +5533,8 @@ coordinates.</p>
               
               <span class="attr-rw">[Dictionary]</span><br /> 
               
-              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the visible table view</p>
+              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the visible 
+table view</p>
             </td>
           </tr>
           
@@ -5374,7 +5630,8 @@ coordinates.</p>
               
               <span class="attr-rw">[Dictionary]</span><br /> 
               
-              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the content (regardless of the display size in the case of scrolling).</p>
+              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the content 
+(regardless of the display size in the case of scrolling).</p>
             </td>
           </tr>
           
@@ -5395,7 +5652,8 @@ coordinates.</p>
               
               <span class="attr-rw">[Dictionary]</span><br /> 
               
-              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the visible table view.</p>
+              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the visible 
+table view.</p>
             </td>
           </tr>
           
@@ -5517,7 +5775,7 @@ coordinates.</p>
               
               <span class="attr-rw">[String]</span><br /> 
               
-              <p>Direction of the swipe--either 'left' or 'right'.</p>
+              <p>Direction of the swipe, either <code>left</code> or <code>right</code>.</p>
             </td>
           </tr>
           
@@ -5665,6 +5923,62 @@ coordinates.</p>
 coordinates.</p>
             </td>
           </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="touchmove-event">
+        <a name="touchmove-method"></a><b>touchmove</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

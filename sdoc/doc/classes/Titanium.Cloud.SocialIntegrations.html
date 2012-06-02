@@ -83,7 +83,7 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Log in External Account Example</div>
+	<div class="subsectiontitle">Log in External Account</div>
 	<div class="code"><p>This example logs a user in using an external account and checks the response</p>
 <pre><code>Cloud.SocialIntegrations.externalAccountLogin({
     type: 'facebook',
@@ -102,7 +102,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Link in External Account Example</div>
+	<div class="subsectiontitle">Link in External Account</div>
 	<div class="code"><p>This example links an external account and checks the response</p>
 <pre><code>Cloud.SocialIntegrations.externalAccountLink({
     type: 'facebook',
@@ -121,9 +121,9 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Search for Facebook Friends Example</div>
+	<div class="subsectiontitle">Search for Facebook Friends</div>
 	<div class="code"><p>This example retrieves a list of Facebook Friends and checks the response</p>
-<pre><code>Cloud.SocialIntegrations.searchFacebookFriends({function (e) {
+<pre><code>Cloud.SocialIntegrations.searchFacebookFriends(function (e){
     if (e.success) {
         alert('Success:\\n' +
             'Count: ' + e.users.length);
@@ -165,11 +165,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -207,11 +207,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -249,11 +249,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>

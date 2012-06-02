@@ -44,7 +44,7 @@
 <div id="content">
     
     <div class="description">
-        <p>An individual row for a <a href="Titanium.UI.TableView-object.html">TableView</a>.</p>
+        <p>A table view row is an individual item in a table, organized into table view sections.</p>
     </div>
     
     
@@ -63,13 +63,16 @@ as a single line of text, or the row can be a completely customized with its own
 <p>If a custom layout is needed, such as multiple lines of text, different fonts, or additional 
 images or controls, child views may be added to the row. In this case, row <code>title</code> property 
 should not be set.</p>
-<p>In order to enable good performance, each group of rows with the same layout should be given a 
-<code>className</code> of the same value. The content of the elements inside the rows may be different so, 
-for example, if the text is the only thing different between two cells but the layout is the 
-same, both row instances should have the same value for <code>className</code>.</p>
 <p>As events automatically bubble/propogate to parent views, a listener may be placed on the table 
 view to detect events fired from the rows. The benefit is that it is not necessary to 
 explicitly create a listener for every individual row.</p>
+<p>See the <a href="Titanium.UI.TableView-object.html">TableView</a> description and examples section for more information 
+about creating table rows.</p>
+<h4>Improved Table Performance (Android and iOS)</h4>
+<p>When rows contain child views, improved performance may be obtained by giving rows with the same 
+layout a <a href="Titanium.UI.TableViewRow-object.html">className</a> of the same value. The content of the rows may 
+be different without the need for a new class name, though. For example, if the text is the only 
+difference between two rows, both row instances should have identical class names.</p>
 <h4>Platform Implementation Notes</h4>
 <p>The <code>top</code>, <code>left</code> and other positional parameters are not used for their usual purposes, because 
 the table view row is automatically positioned by its parent.</p>
@@ -81,6 +84,14 @@ setting <code>top</code> to 20 moves the title down from the top of the row.<br 
 were a horizontal layout.</p>
 <p>Also, note that the selected text color, <code>selectedColor</code>, can only be set on iOS and 
 Mobile Web. On Android, the text color does not change when the row is selected.</p>
+<h4>Row Swipe Gestures (Android and iOS)</h4>
+<p>A common requirement is to enable the user to interact with table rows using swipe gestures. 
+As this event is not available for the <code>TableViewRow</code> object, it will not "bubble up" to the 
+<code>TableView</code>, where a <a href="Titanium.UI.TableView.swipe-event.html"><code>Titanium.UI.TableView.swipe</code></a> is recognized. </p>
+<p>A typical solution is to use a standard view as a container, or wrapper, for all each row's child 
+views, because it recognizes <a href="Titanium.UI.View.swipe-event.html"><code>Titanium.UI.View.swipe</code></a> events and allows them to pass to the table. 
+Each child view should have touch events disabled, so that the container view provides a reliable 
+source for these events. Refer to the "Row Swipe Gestures" example for a demonstration. </p>
     </div>
     
 
@@ -243,6 +254,10 @@ Mobile Web. On Android, the text color does not change when the row is selected.
     
             <ul>
                 <li><a href="#getLeftImage-method">getLeftImage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMoveable-method">getMoveable <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -451,6 +466,10 @@ Mobile Web. On Android, the text color does not change when the row is selected.
     
             <ul>
                 <li><a href="#setLeftImage-method">setLeftImage <span class="params">(leftImage)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMoveable-method">setMoveable <span class="params">(moveable)</span></a></li>
             </ul>
     
             <ul>
@@ -739,7 +758,8 @@ Mobile Web. On Android, the text color does not change when the row is selected.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Determines whether this row can be deleted when the table is in edit mode.</td>
+            <td class='attr-desc'>Determines the rows' editable behavior, which allows them to be deleted by the user when the 
+table is in editing or moving mode.</td>
         </tr>
         
         <tr valign='top'>
@@ -766,7 +786,8 @@ Mobile Web. On Android, the text color does not change when the row is selected.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Render a system-provided check mark in the right image area of the row.</td>
+            <td class='attr-desc'>Determines whether a system-provided checkmark is displayed on the right-hand side of 
+the row.</td>
         </tr>
         
         <tr valign='top'>
@@ -775,7 +796,7 @@ Mobile Web. On Android, the text color does not change when the row is selected.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Render a system provided arrow in the right image area of the row.</td>
+            <td class='attr-desc'>Determines whether a system-provided arrow is displayed on the right-hand side of the row.</td>
         </tr>
         
         <tr valign='top'>
@@ -784,7 +805,8 @@ Mobile Web. On Android, the text color does not change when the row is selected.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Render a system-provided detail disclosure button in the right image area of the row.</td>
+            <td class='attr-desc'>Determines whether a system-provided detail disclosure button is displayed on the right-hand 
+side of the row.</td>
         </tr>
         
         <tr valign='top'>
@@ -821,7 +843,7 @@ Mobile Web. On Android, the text color does not change when the row is selected.
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -843,6 +865,16 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="moveable-property"></a>moveable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines the rows' moveable behavior, which allows them to be re-ordered by the user when 
+the table is in editing or moving mode.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="opacity-property"></a>opacity</td>
             <td class='attr-rw'>
                 [Number]
@@ -857,7 +889,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -920,7 +952,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -992,7 +1024,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -1018,6 +1050,12 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
             <td class='attr-name'><a href="#postlayout-event">postlayout</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when a layout cycle is finished.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#swipe-event">swipe</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the device detects a swipe gesture against the view.</td>
         </tr>
         
         <tr valign='top'>
@@ -1048,11 +1086,74 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Table View Row example</div>
-	<div class="code"><p>In this simple example, we create a table view row with a red square in the cell.</p>
+	<div class="code"><p>Create a table view row containing a red square view.</p>
 <pre><code>var row = Titanium.UI.createTableViewRow();
-var view = Titanium.UI.createView({backgroundColor:'red',width:20,height:20});
+var view = Titanium.UI.createView({
+  backgroundColor:'red',
+  width: 20, height: 20
+});
 row.height = 'auto';
 row.add(view);
+</code></pre></div>
+        
+	<div class="subsectiontitle">Row Swipe Gestures</div>
+	<div class="code"><p>Create a table of rows. When a row is swiped, output its ID to the log. </p>
+<pre><code>var tableData = [];
+
+var win = Ti.UI.createWindow({ backgroundColor: 'white' });
+
+var table = Ti.UI.createTableView({ objName: 'table' });
+
+for (var i = 0; i &lt;= 20; i++){
+  var row = Ti.UI.createTableViewRow({
+    className: 'row',
+    objName: 'row',
+    touchEnabled: true,
+    height: 100
+  });
+
+  var enabledWrapperView = Ti.UI.createView({
+    backgroundColor:'#008FD5',
+    objName: 'enabledWrapperView',
+    rowID: i,
+    width: Ti.UI.FILL, height: '100%'
+  });
+
+  var disabledWrapperView = Ti.UI.createView({
+    backgroundColor:'#A2E0FF',
+    objName: 'disabledWarpperView',
+    touchEnabled: false,
+    width: 300, height: '80%'
+  });
+  enabledWrapperView.add(disabledWrapperView);
+
+  var label = Ti.UI.createLabel({
+    backgroundColor:'#313F48',
+    color: 'white',
+    objName: 'label',
+    text: i,
+    touchEnabled: false,
+    left: 0,
+    width: 200
+  });
+  disabledWrapperView.add(label);
+
+  row.add(enabledWrapperView);
+  tableData.push(row);
+}
+
+table.setData(tableData);
+
+table.addEventListener('swipe', function(e){
+  if (e.source &amp;&amp; e.source.objName !== 'table'){
+    Ti.API.info('Row swiped: ' + e.source);
+    Ti.API.info('Row swiped: ' + e.source.objName);
+    Ti.API.info('Row ID : ' + e.source.rowID);
+  }
+});
+
+win.add(table);
+win.open();
 </code></pre></div>
         
     </table>
@@ -1602,6 +1703,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableViewRow.leftImage-property.html">leftImage</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMoveable-method">
+        <a name="getMoveable-method"></a><b>getMoveable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableViewRow.moveable-property.html">moveable</a> property.</p></div>
       
 
       
@@ -2838,6 +2950,36 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="setMoveable-method">
+        <a name="setMoveable-method"></a><b>setMoveable</b> <span class="params">(moveable)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableViewRow.moveable-property.html">moveable</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>moveable</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setOpacity-method">
         <a name="setOpacity-method"></a><b>setOpacity</b> <span class="params">(opacity)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -3408,7 +3550,19 @@ layout pass after they have been updated.</p></div>
               
               <span class="attr-rw">[Boolean]</span><br /> 
               
-              <p>Boolean to indicate if the detail button was clicked. Only <code>true</code> if <code>row.hasDetail</code> is <code>true</code> and the detail button was clicked.</p>
+              <p>Indicates whether the detail button was clicked. Only <code>true</code> if <code>row.hasDetail</code> is 
+<code>true</code> and the detail button was clicked.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Dictionary]</span><br /> 
+              
+              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
+coordinates.</p>
             </td>
           </tr>
           
@@ -3580,6 +3734,81 @@ layout pass after they have been updated.</p></div>
     </div>
     
     <div class="method">
+      <div class="title" id="swipe-event">
+        <a name="swipe-method"></a><b>swipe</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>direction</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Direction of the swipe--either 'left' or 'right'. Android also supports 'up' and 'down'.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>
+              
+              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location of the event's endpoint 
+in screen coordinates.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event's endpoint from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event's endpoint from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="touchcancel-event">
         <a name="touchcancel-method"></a><b>touchcancel</b>
       </div>
@@ -3589,6 +3818,17 @@ layout pass after they have been updated.</p></div>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Dictionary]</span><br /> 
+              
+              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
+coordinates.</p>
+            </td>
+          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -3647,6 +3887,17 @@ layout pass after they have been updated.</p></div>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Dictionary]</span><br /> 
+              
+              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
+coordinates.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3701,6 +3952,17 @@ layout pass after they have been updated.</p></div>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>globalPoint</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Dictionary]</span><br /> 
+              
+              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
+coordinates.</p>
+            </td>
+          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

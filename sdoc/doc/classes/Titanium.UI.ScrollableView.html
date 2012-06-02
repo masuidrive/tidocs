@@ -181,6 +181,10 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </ul>
     
             <ul>
+                <li><a href="#getClipViews-method">getClipViews <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getCurrentPage-method">getCurrentPage <span class="params">()</span></a></li>
             </ul>
     
@@ -676,6 +680,16 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="clipViews-property"></a>clipViews</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the content which is being scrolled will be clipped to the
+bounding box of the view.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="currentPage-property"></a>currentPage</td>
             <td class='attr-rw'>
                 [Number]
@@ -727,7 +741,7 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -782,7 +796,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -819,7 +833,7 @@ If this property is not set, scrolling is enabled.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -891,7 +905,7 @@ If this property is not set, scrolling is enabled.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -1485,6 +1499,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.children-property.html">children</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getClipViews-method">
+        <a name="getClipViews-method"></a><b>getClipViews</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.clipViews-property.html">clipViews</a> property.</p></div>
       
 
       

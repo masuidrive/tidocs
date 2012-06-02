@@ -657,7 +657,7 @@ to a tab group. In this case, the result of which tab is initially selected is u
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Default background disabled color for the active tab.</td>
+            <td class='attr-desc'>Default background disabled color for the active tab, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
@@ -956,7 +956,7 @@ tab.</td>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -983,7 +983,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -1001,7 +1001,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -1192,7 +1192,7 @@ is displayed.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>

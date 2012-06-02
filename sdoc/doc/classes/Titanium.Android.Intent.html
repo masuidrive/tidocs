@@ -44,10 +44,16 @@
 <div id="content">
     
     <div class="description">
-        <p>The Titanium binding of an <a href="http://developer.android.com/reference/android/content/Intent.html">Android Intent</a>.</p>
+        <p>The Titanium binding of an Android <code>Intent</code>.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>See also: 
+<a href="http://developer.android.com/reference/android/content/Intent.html">Intent</a> in the
+Android Developer Reference.</p>
+    </div>
     
 
     
@@ -73,10 +79,6 @@
     
             <ul>
                 <li><a href="#getAction-method">getAction <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBlobExtra-method">getBlobExtra <span class="params">(name)</span></a></li>
             </ul>
     
             <ul>
@@ -164,7 +166,8 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The Java class name of the activity associated with this intent (packageName must also be set).</td>
+            <td class='attr-desc'>The Java class name of the activity associated with this intent
+(packageName must also be set).</td>
         </tr>
         
         <tr valign='top'>
@@ -224,62 +227,70 @@
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Create an Intent for Launching an Activity</div>
-	<div class="code"><p>var intent = Ti.Android.createIntent({
+	<div class="code"><p>This example creates an intent and uses it to launch a new activity.</p>
+<pre><code>var intent = Ti.Android.createIntent({
     action: Ti.Android.ACTION_MAIN,
     url: 'activity1.js'
 });
 intent.addCategory(Ti.Android.CATEGORY_LAUNCHER);
-Ti.Android.currentActivity.startActivity(intent);</p></div>
+Ti.Android.currentActivity.startActivity(intent);
+</code></pre></div>
         
-	<div class="subsectiontitle">Create an Intent to get a Contact URI from the user's contacts</div>
-	<div class="code"><p>var intent = Ti.Android.createIntent({
+	<div class="subsectiontitle">Create an Intent to get a Contact URI</div>
+	<div class="code"><p>This example creates an intent to retrieve contact information from the user's
+contacts. </p>
+<pre><code>var intent = Ti.Android.createIntent({
     action: Ti.Android.ACTION_GET_CONTENT,
     type: "vnd.android.cursor.item/phone"
-});</p></div>
+});
+</code></pre></div>
         
 	<div class="subsectiontitle">Pick a Photo from the Photo Gallery</div>
-	<div class="code"><p>var intent = Ti.Android.createIntent({
-    action: Ti.Android.ACTION_PICK,
-    type: "image/*"
-});
-intent.addCategory(Ti.Android.CATEGORY_DEFAULT);</p></div>
+	<div class="code"><p>This example creates an intent to pick an image from the photo gallery.
+    var intent = Ti.Android.createIntent({
+        action: Ti.Android.ACTION_PICK,
+        type: "image/*"
+    });
+    intent.addCategory(Ti.Android.CATEGORY_DEFAULT);</p></div>
         
-	<div class="subsectiontitle">Create an ImageView from an image SEND Intent</div>
+	<div class="subsectiontitle">Create an ImageView from an Image Send Intent</div>
 	<div class="code"><p>This example requires that an intent filter be set up in a
 custom AndroidManifest.xml. The following intent filter should
 be added to your app's main activity. You can trigger this 
 intent filter by long pressing on an image in the Android gallery
-and selecting "share".
-AndroidManifest.xml
-    &lt;intent-filter&gt;
-        &lt;action android:name="android.intent.action.SEND" /&gt;
-        &lt;category android:name="android.intent.category.DEFAULT" /&gt;
-        &lt;data android:mimeType="image/*" /&gt;
-    &lt;/intent-filter&gt;
-Sample code
-    var win = Ti.UI.createWindow({
-        backgroundColor: '#fff',
-        fullscreen: false,
-        exitOnClose: true
-    });
-    win.addEventListener('open', function(e) {
-        var intent = Ti.Android.currentActivity.getIntent();
-        var iname = Ti.Android.EXTRA_STREAM;
-        if (intent &amp;&amp; intent.hasExtra(iname)) {
-            // Create ImageView from TiBlob
-            var blob = intent.getBlobExtra(iname);
-            win.add(Ti.UI.createImageView({
-                image: blob,
-                height: 300,
-                width: 300,
-                left: 0,
-                top: 0
-            }));
-        } else {
-            Ti.API.info('No extra named "' + iname + '" found in Intent');
-        }
-    });      <br />
-    win.open();</p></div>
+and selecting "share".</p>
+<p>AndroidManifest.xml</p>
+<pre><code> &lt;intent-filter&gt;
+     &lt;action android:name="android.intent.action.SEND" /&gt;
+     &lt;category android:name="android.intent.category.DEFAULT" /&gt;
+     &lt;data android:mimeType="image/*" /&gt;
+ &lt;/intent-filter&gt;
+</code></pre>
+<p>Sample code</p>
+<pre><code> var win = Ti.UI.createWindow({
+     backgroundColor: '#fff',
+     fullscreen: false,
+     exitOnClose: true
+ });
+ win.addEventListener('open', function(e) {
+     var intent = Ti.Android.currentActivity.getIntent();
+     var iname = Ti.Android.EXTRA_STREAM;
+     if (intent &amp;&amp; intent.hasExtra(iname)) {
+         // Create ImageView from TiBlob
+         var blob = intent.getBlobExtra(iname);
+         win.add(Ti.UI.createImageView({
+             image: blob,
+             height: 300,
+             width: 300,
+             left: 0,
+             top: 0
+         }));
+     } else {
+         Ti.API.info('No extra named "' + iname + '" found in Intent');
+     }
+ });        
+ win.open();
+</code></pre></div>
         
     </table>
     
@@ -365,7 +376,7 @@ Sample code
         <a name="addFlags-method"></a><b>addFlags</b> <span class="params">(flags)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Adds to the existing flags on the Intent.</p></div>
+      <div class="description"><p>Adds to the existing flags on the <code>Intent</code>.</p></div>
       
 
       
@@ -444,36 +455,6 @@ Sample code
     </div>
     
     <div class="method">
-      <div class="title" id="getBlobExtra-method">
-        <a name="getBlobExtra-method"></a><b>getBlobExtra</b> <span class="params">(name)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Get a <a href="Titanium.Blob-object.html"><code>Titanium.Blob</code></a> property from this Intent</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>name</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>The Titanium.Blob extra to get, most commonly Titanium.Android.EXTRA_STREAM.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="getBooleanExtra-method">
         <a name="getBooleanExtra-method"></a><b>getBooleanExtra</b> <span class="params">(name)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -519,7 +500,7 @@ Sample code
         <a name="getData-method"></a><b>getData</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get the Data URI from this Intent.</p></div>
+      <div class="description"><p>Get the Data URI from this <code>Intent</code>.</p></div>
       
 
       
@@ -530,7 +511,7 @@ Sample code
         <a name="getDoubleExtra-method"></a><b>getDoubleExtra</b> <span class="params">(name)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get a double property from this Intent.</p></div>
+      <div class="description"><p>Get a double property from this <code>Intent</code>.</p></div>
       
 
       
@@ -571,7 +552,7 @@ Sample code
         <a name="getIntExtra-method"></a><b>getIntExtra</b> <span class="params">(name)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get an int property from this Intent.</p></div>
+      <div class="description"><p>Get an int property from this <code>Intent</code>.</p></div>
       
 
       
@@ -601,7 +582,7 @@ Sample code
         <a name="getLongExtra-method"></a><b>getLongExtra</b> <span class="params">(name)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get a long property from this Intent.</p></div>
+      <div class="description"><p>Get a long property from this <code>Intent</code>.</p></div>
       
 
       
@@ -694,7 +675,7 @@ Sample code
         <a name="hasExtra-method"></a><b>hasExtra</b> <span class="params">(name)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns <code>true</code> if this Intent has the specified property.</p></div>
+      <div class="description"><p>Returns <code>true</code> if this <code>Intent</code> has the specified property.</p></div>
       
 
       
@@ -724,7 +705,7 @@ Sample code
         <a name="putExtra-method"></a><b>putExtra</b> <span class="params">(name, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Puts an extra property on this Intent.</p></div>
+      <div class="description"><p>Puts an extra property on this <code>Intent</code>.</p></div>
       
 
       
@@ -766,7 +747,7 @@ Sample code
         <a name="putExtraUri-method"></a><b>putExtraUri</b> <span class="params">(name, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Put a URI property on this Intent (useful for <a href="Titanium.Android.EXTRA_STREAM-property.html"><code>Titanium.Android.EXTRA_STREAM</code></a>).</p></div>
+      <div class="description"><p>Put a URI property on this <code>Intent</code> (useful for <a href="Titanium.Android.EXTRA_STREAM-property.html"><code>Titanium.Android.EXTRA_STREAM</code></a>).</p></div>
       
 
       
@@ -795,7 +776,7 @@ Sample code
                       
                     
                   </td>
-                  <td class='attr-desc'>The URI string.</td>
+                  <td class='attr-desc'>The URI, as a string.</td>
                 </tr>
                 
       	</table>

@@ -50,11 +50,11 @@
     
     
     <div class="description">
-        <p>You use popovers to present information temporarily but in a way that does not take over 
-the entire screen like a modal view does. The popover content is layered on top of your 
-existing content in a special type of window. The popover remains visible until the user 
-taps outside of the popover window or you explicitly dismiss it. The Popover is created 
-by the method <a href="Titanium.UI.iPad.createPopover-method.html"><code>Titanium.UI.iPad.createPopover</code></a>.</p>
+        <p>A popover is created using the <a href="Titanium.UI.iPad.createPopover-method.html"><code>Titanium.UI.iPad.createPopover</code></a> method. </p>
+<p>Popovers are used to present information temporarily, but in a way that does not take over 
+the entire screen in the way that a modal view does. The popover content is layered on top of 
+the existing content in a special type of window. The popover remains visible until the user 
+taps outside of the popover window or it is explicitly dismissed.</p>
 <p><img alt="popover" src="http://img.skitch.com/20100406-pmssjk1a3a65s6ui8qnbqi59c4.png" /></p>
     </div>
     
@@ -261,10 +261,6 @@ by the method <a href="Titanium.UI.iPad.createPopover-method.html"><code>Titaniu
             </ul>
     
             <ul>
-                <li><a href="#setArrowDirection-method">setArrowDirection <span class="params">(arrowDirection)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#setBackgroundColor-method">setBackgroundColor <span class="params">(backgroundColor)</span></a></li>
             </ul>
     
@@ -446,7 +442,7 @@ by the method <a href="Titanium.UI.iPad.createPopover-method.html"><code>Titaniu
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>return the arrow direction of the popover</td>
+            <td class='attr-desc'>Indicates the arrow direction of the popover.</td>
         </tr>
         
         <tr valign='top'>
@@ -645,7 +641,7 @@ by the method <a href="Titanium.UI.iPad.createPopover-method.html"><code>Titaniu
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -663,7 +659,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Object]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the left button in the nav area of the popover</td>
+            <td class='attr-desc'>Left button in the navigation area of the popover.</td>
         </tr>
         
         <tr valign='top'>
@@ -681,7 +677,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -699,7 +695,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -717,7 +713,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the title of the nav area of the popover</td>
+            <td class='attr-desc'>Title of the navigation area of the popover.</td>
         </tr>
         
         <tr valign='top'>
@@ -771,7 +767,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -802,7 +798,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         <tr valign='top'>
             <td class='attr-name'><a href="#hide-event">hide</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>fired when the popover is hidden</td>
+            <td class='attr-desc'>Fired when the popover is hidden.</td>
         </tr>
         
         <tr valign='top'>
@@ -881,19 +877,19 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Popover</div>
-	<div class="code"><p>In this example, we create a simple popover and position it near the button</p>
-<pre><code>var popover = Ti.UI.iPad.createPopover({height:100,width:100});
+	<div class="code"><p>In this example, we create a simple popover and position it near the button.</p>
+<pre><code>var popover = Ti.UI.iPad.createPopover({ height: 100, width: 100 });
 popover.add(view);
-popover.show({view:button});
+popover.show({ view: button });
 </code></pre></div>
         
 	<div class="subsectiontitle">Popover with title and nav button</div>
 	<div class="code"><p>In this example, we create a popover with a title and right navigation button.</p>
-<pre><code>var popover = Ti.UI.iPad.createPopover({ 
-    width:250, 
-    height:100,
-    title: "Yo Yo",
-    rightNavButton:button
+<pre><code>var popover = Ti.UI.iPad.createPopover({
+    width: 250, 
+    height: 100,
+    title: 'Yo Yo',
+    rightNavButton: button
 });
 </code></pre></div>
         
@@ -1661,36 +1657,6 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="setArrowDirection-method">
-        <a name="setArrowDirection-method"></a><b>setArrowDirection</b> <span class="params">(arrowDirection)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iPad.Popover.arrowDirection-property.html">arrowDirection</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>arrowDirection</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="setBackgroundColor-method">
         <a name="setBackgroundColor-method"></a><b>setBackgroundColor</b> <span class="params">(backgroundColor)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2235,7 +2201,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="setHeight-method"></a><b>setHeight</b> <span class="params">(height)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>change the height of the popover</p></div>
+      <div class="description"><p>Change the height of the popover.</p></div>
       
 
       
@@ -2252,7 +2218,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>height of the popover</td>
+                  <td class='attr-desc'>Height of the popover.</td>
                 </tr>
                 
       	</table>
@@ -2415,7 +2381,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="setPassthroughViews-method"></a><b>setPassthroughViews</b> <span class="params">(passthroughViews)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>set the passthrough views for the popover</p></div>
+      <div class="description"><p>Set the passthrough views for the popover.</p></div>
       
 
       
@@ -2428,11 +2394,12 @@ If this argument is not a view, an exception will be raised.</td>
                   <td class='attr-rw'>
                     
                       
-                        [Array&lt;Object&gt;]
+                        [Array&lt;Titanium.UI.View&gt;]
                       
                     
                   </td>
-                  <td class='attr-desc'>array of views which the user can interact with while the popover is open (i.e. clicking on these views will interact with these views, and not dismiss the popover).</td>
+                  <td class='attr-desc'>View or views that the user can interact with while the popover is open (i.e. clicking 
+on these views will interact with these views, and not dismiss the popover.)</td>
                 </tr>
                 
       	</table>
@@ -2655,7 +2622,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="setWidth-method"></a><b>setWidth</b> <span class="params">(width)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>change the width of the popover</p></div>
+      <div class="description"><p>Set the width of the popover</p></div>
       
 
       
@@ -2672,7 +2639,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>width of the popover</td>
+                  <td class='attr-desc'>Width of the popover</td>
                 </tr>
                 
       	</table>
@@ -3024,7 +2991,7 @@ of the event in screen coordinates.</p>
             <td class='attr-name'>globalPoint</td>
             <td class='attr-desc'>
               
-              <p>a dictionary with properties x and y describing the point of the event in screen coordinates</p>
+              <p>Coordinates <code>x</code> and <code>y</code> of the event from the <code>source</code> view's coordinate system.</p>
             </td>
           </tr>
           

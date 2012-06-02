@@ -44,10 +44,20 @@
 <div id="content">
     
     <div class="description">
-        <p>The Titanium binding of an <a href="http://developer.android.com/reference/android/app/Service.html">Android Service</a>.  Can be used to start/stop the service directly and listen for service-specific events.  In the Javascript-based services you write, this can be referenced with <a href="Titanium.Android.currentService-property.html"><code>Titanium.Android.currentService</code></a>.  You can create an instance of the service with <a href="Titanium.Android.createService-method.html"><code>Titanium.Android.createService</code></a>.</p>
+        <p>The Titanium binding of an Android service.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>This object can be used to start or stop a service directly and listen for service-specific events.<br />
+</p>
+<p>From a JavaScript-based service, this can be referenced with <a href="Titanium.Android.currentService-property.html"><code>Titanium.Android.currentService</code></a>.<br />
+</p>
+<p>Use the <a href="Titanium.Android.createService-method.html"><code>Titanium.Android.createService</code></a> method to create an instance of a service.</p>
+<p>See also <a href="http://developer.android.com/reference/android/app/Service.html">Service</a>
+in the Android Developer Reference.</p>
+    </div>
     
 
     
@@ -95,7 +105,7 @@
                 [Titanium.Android.Intent]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The Titanium.Android.Intent used to start or bind to the Service.</td>
+            <td class='attr-desc'>The intent used to start or bind to the Service.</td>
         </tr>
         
         <tr valign='top'>
@@ -104,7 +114,8 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>A service can be started more than once -- this number (based on an incrementing integer) indicates which "start number" in the sequence the current service instance is.</td>
+            <td class='attr-desc'>A service can be started more than once -- this number (based on an incrementing integer) 
+indicates which "start number" in the sequence the current service instance is.</td>
         </tr>
         
     </table>
@@ -117,25 +128,28 @@
         <tr valign='top'>
             <td class='attr-name'><a href="#pause-event">pause</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>For Javascript-based Services which you create, pause fires after each time the Javascript code executes.  resume and pause happen in pairs, with resume firing just before your Javascript service code executes, and pause just after.</td>
+            <td class='attr-desc'>For Javascript-based services that you create, pause fires after each time the JavaScript 
+code executes.
+</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#resume-event">resume</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>For Javascript-based Services which you create, resume fires each time the Javascript code executes.  For example, if your Service runs on an interval of 10000 (10 seconds), you would expect to see resume fired every 10 seconds, just as the Javascript service code you wrote is about to execute.</td>
+            <td class='attr-desc'>For JavaScript-based Services which you create, resume fires each time the JavaScript 
+code executes. </td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#start-event">start</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired when the bound Service instance starts.  Bound service instances are created via Titanium.Android.createService.</td>
+            <td class='attr-desc'>Fired when the bound service instance starts.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#stop-event">stop</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired when the bound Service instance stops, meaning Titanium.Android.Service.stop or Titanium.Android.stopService has been called and there are no more bound, un-stopped clients.</td>
+            <td class='attr-desc'>Fired when the bound service instance stops.</td>
         </tr>
         
     </table>
@@ -148,7 +162,11 @@
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Hello World Service</div>
-	<div class="code"><p>Your service code in its own Javascript file.  It reads the <a href="Titanium.Android.Intent-object.html"><code>Titanium.Android.Intent</code></a> which created it, to see what it should say besides "Hello World".</p>
+	<div class="code"><p>This example shows how to create a service in JavaScript.
+Your service code is included in its own JavaScript file.<br />
+</p>
+<p>In this example, the service reads data from the <a href="Titanium.Android.Intent-object.html"><code>Titanium.Android.Intent</code></a> which created it, 
+to see what it should say besides "Hello World".</p>
 <p>File: myservice.js:</p>
 <pre><code>var service = Titanium.Android.currentService;
 var intent = service.intent;
@@ -162,7 +180,8 @@ Titanium.API.info("Hello World!  I am a Service.  I have this to say: " + messag
     &lt;/services&gt;
 &lt;/android&gt;
 </code></pre>
-<p>Code in "regular" Titanium file to launch the service and listen for pause/resume events.  Code also stops the service after its code runs 3 times.</p>
+<p>Code in "regular" Titanium file to launch the service and listen for pause/resume events.<br />
+Code also stops the service after its code runs 3 times.</p>
 <pre><code>var intent = Titanium.Android.createServiceIntent( { url: 'myservice.js' } );
 // Service should run its code every 2 seconds.
 intent.putExtra('interval', 2000);
@@ -355,7 +374,7 @@ service.start();
         <a name="start-method"></a><b>start</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Start the Service.  Effective only if this instance of <a href="Titanium.Android.Service-object.html"><code>Titanium.Android.Service</code></a> was created with <a href="Titanium.Android.createService-method.html"><code>Titanium.Android.createService</code></a>.</p></div>
+      <div class="description"><p>Starts the Service.</p></div>
       
 
       
@@ -366,7 +385,7 @@ service.start();
         <a name="stop-method"></a><b>stop</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Stop this running instance of the Service.</p></div>
+      <div class="description"><p>Stops this running instance of the Service.</p></div>
       
 
       
@@ -393,7 +412,10 @@ service.start();
             <td class='attr-name'>iteration</td>
             <td class='attr-desc'>
               
-              <p>incrementing integer indicating which iteration of an interval-based Service is pausing.  For example, if you have an interval-based Service running every 10 seconds, iteration 3 would occur at about 30 seconds after you start the instance (assuming your service code runs quickly.)</p>
+              <p>Incrementing integer indicating which iteration of an interval-based Service is pausing. 
+For example, if you have an interval-based Service running every 10 seconds, iteration 
+3 would occur at about 30 seconds after you start the instance (assuming your service 
+code runs quickly).</p>
             </td>
           </tr>
           
@@ -437,7 +459,10 @@ service.start();
             <td class='attr-name'>iteration</td>
             <td class='attr-desc'>
               
-              <p>incrementing integer indicating which iteration of an interval-based Service is resuming.  For example, if you have an interval-based Service running every 10 seconds, iteration 3 would occur at about 30 seconds after you start the instance (assuming your service code runs quickly.)</p>
+              <p>Incrementing integer indicating which iteration of an interval-based Service is pausing. 
+For example, if you have an interval-based Service running every 10 seconds, iteration 
+3 would occur at about 30 seconds after you start the instance (assuming your service 
+code runs quickly).</p>
             </td>
           </tr>
           

@@ -712,10 +712,15 @@ win.open();
             <td class='attr-name'>cancel</td>
             <td class='attr-desc'>
               
-              <span class="attr-rw">[Boolean]</span><br /> 
+              <span class="attr-rw">[BooleanNumber]</span><br /> 
               
-              <p>Indicates whether the button pressed was the cancel button, defined by the <code>cancel</code> 
-property.</p>
+              <p>Boolean type on Android and Mobile Web; Number on iOS. </p>
+<p>On Android and Mobile Web, indicates whether the cancel button was clicked, in which 
+case returns <code>true</code>. </p>
+<p>On iOS, the value of the <a href="Titanium.UI.AlertDialog.cancel-property.html">cancel</a> property is 
+returned, if defined, or <code>-1</code> otherwise. </p>
+<p>See the <code>Three-button Alert Dialog</code> example for a cross-platform workaround for this 
+parity issue.</p>
             </td>
           </tr>
           

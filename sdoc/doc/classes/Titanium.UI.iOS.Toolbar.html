@@ -50,16 +50,16 @@
     
     
     <div class="description">
-        <p>A toolbar can contain buttons, as well as certain other widgets, including 
-text fields and labels.</p>
-<p>To provide spacing between items in the toolbar, you can use the special iOS system
-button types, <a href="Titanium.UI.iPhone.SystemButton.FIXED_SPACE-property.html">FIXED_SPACE</a> and 
+        <p>The toolbar is created by the <a href="Titanium.UI.iOS.createToolbar-method.html"><code>Titanium.UI.iOS.createToolbar</code></a> method. </p>
+<p>A toolbar can contain buttons, as well as certain other widgets, including text fields and 
+labels. </p>
+<p>To provide spacing between items in the toolbar, you can use the special iOS system button types, 
+<a href="Titanium.UI.iPhone.SystemButton.FIXED_SPACE-property.html">FIXED_SPACE</a> and 
 <a href="Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE-property.html">FLEXIBLE_SPACE</a>.</p>
 <p>Note that toolbars are positioned like other views (using the <code>top</code> and <code>bottom</code> properties, 
-for example), but the iOS Human Interface Guidelines have specific requirements for
-placing toolbars: on iPhone, a toolbar should be at the bottom 
-of the window. On the iPad, a toolbar should appear at the top or bottom of a window.</p>
-<p>Use the <a href="Titanium.UI.iOS.createToolbar-method.html"><code>Titanium.UI.iOS.createToolbar</code></a> method to create a toolbar.</p>
+for example), but the iOS Human Interface Guidelines have specific requirements for placing 
+toolbars: on iPhone, a toolbar should be at the bottom of the window. On the iPad, a toolbar 
+should appear at the top or bottom of a window.</p>
     </div>
     
 
@@ -688,7 +688,7 @@ of the window. On the iPad, a toolbar should appear at the top or bottom of a wi
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -715,7 +715,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -733,7 +733,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -805,7 +805,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -909,8 +909,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Toolbar</div>
-	<div class="code"><p>The following code excerpt creates a simple toolbar, placed at the bottom of the
-window. </p>
+	<div class="code"><p>The following code excerpt creates a simple toolbar, placed at the bottom of the window. </p>
 <pre><code>var send = Titanium.UI.createButton({
     title: 'Send',
     style: Titanium.UI.iPhone.SystemButtonStyle.DONE,
@@ -937,11 +936,10 @@ var toolbar = Titanium.UI.createToolbar({
 win.add(toolbar);
 </code></pre>
 <p>Note the use of the flexible space for positioning the toolbar buttons -- the 
-<code>FLEXIBLE_SPACE</code> button doesn't appear as a button, but a variable space between the
-controls on either side of it. Available space in the toolbar is divided between 
-all of the flexible space buttons in the toolbar. Without the flexible spaces in
-this example, the toolbar buttons would be grouped tightly together on the left 
-side of the toolbar.</p></div>
+<code>FLEXIBLE_SPACE</code> button doesn't appear as a button, but a variable space between the 
+controls on either side of it. Available space in the toolbar is divided between all of the 
+flexible space buttons in the toolbar. Without the flexible spaces in this example, 
+the toolbar buttons would be grouped tightly together on the left side of the toolbar.</p></div>
         
     </table>
     

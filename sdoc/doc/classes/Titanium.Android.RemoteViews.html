@@ -44,10 +44,39 @@
 <div id="content">
     
     <div class="description">
-        <p>The Titanium binding of <a href="http://developer.android.com/reference/android/widget/RemoteViews.html">Android RemoteViews</a>. RemoteViews are an API for referencing and updating views that live in another process (i.e. in a <a href="Titanium.Android.Notification-object.html"><code>Titanium.Android.Notification</code></a>)</p>
+        <p>The Titanium binding of <a href="http://developer.android.com/reference/android/widget/RemoteViews.html">Android RemoteViews</a>. </p>
     </div>
     
     
+    
+    <div class="description">
+        <p><code>RemoteViews</code> is an API for referencing and updating a remote view hierarchy that
+lives in another process, for example, in a <a href="Titanium.Android.Notification-object.html">Notification</a>.</p>
+<p>To create a remote view hierarchy, you must define an Android XML layout for the views
+you want to display, and place the XML file in the <code>platform/android/res/layout</code> inside your
+project folder. See the examples for a sample XML layout and sample code for creating a
+remote view.</p>
+<p>To use a remote view hierarchy in a notification, see
+<a href="Titanium.Android.Notification.contentView-property.html">Notification.contentView</a>.</p>
+<p>Because the remote view hierarchy belongs to another process, you cannot call methods on it
+directly, but you can call methods on the <code>RemoteViews</code> object to update views in the
+heirarchy by ID. To reference a view inside the layout, use the
+<a href="Titanium.App.Android.R-object.html"><code>Titanium.App.Android.R</code></a> object to reference the view's ID. For example, if you have a 
+view with the ID <code>notify_imageview</code>, you can refer to it using:</p>
+<pre><code>Ti.App.Android.R.id.notify_imageview
+</code></pre>
+<p>See also: </p>
+<ul>
+<li>
+<p><a href="http://developer.android.com/reference/android/widget/RemoteViews.html">RemoteViews</a>
+    in the Android Developer Reference.</p>
+</li>
+<li>
+<p><a href="http://developer.android.com/guide/topics/ui/declaring-layout.html">XML Layouts</a>
+    in the Android Developer Guide.</p>
+</li>
+</ul>
+    </div>
     
 
     
@@ -61,6 +90,14 @@
     
             <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLayoutId-method">getLayoutId <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPackageName-method">getPackageName <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -122,6 +159,29 @@
     
 
     
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="layoutId-property"></a>layoutId</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Android layout resource ID for the view to display. Required.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="packageName-property"></a>packageName</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Package name that the resource ID lives in. Optional.</td>
+        </tr>
+        
+    </table>
+    
 
     
 
@@ -131,10 +191,31 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Create a RemoteViews based on a custom layout called &quot;custom_layout.xml&quot;, and set a label's text.</div>
-	<div class="code"><p>var AppR = Ti.App.Android.R;
-var customLayout = Ti.Android.createRemoteViews(AppR.layout.custom_layout);
-customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
+	<div class="subsectiontitle">Create a Remote View</div>
+	<div class="code"><p>The following code excerpt creates a <code>RemoteViews</code> object based on a custom layout 
+called <code>custom_layout.xml</code>, and set a label's text.</p>
+<pre><code>var AppR = Ti.App.Android.R;
+var customLayout = Ti.Android.createRemoteViews({ layoutId: AppR.layout.custom_layout });
+customLayout.setTextViewText(AppR.id.custom_text, "Click Me!");
+</code></pre>
+<p>This example uses a simple custom layout:</p>
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent" 
+        android:orientation="vertical" &gt;
+    &lt;TextView android:id="@+id/custom_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff"
+            android:textColor="#aaff0000"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:text="Hello, I am a TextView" /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+<p>The layout file for this example must be placed in
+<code>platform/android/res/layout/custom_layout.xml</code>. </p></div>
         
     </table>
     
@@ -228,6 +309,28 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
     </div>
     
     <div class="method">
+      <div class="title" id="getLayoutId-method">
+        <a name="getLayoutId-method"></a><b>getLayoutId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.RemoteViews.layoutId-property.html">layoutId</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPackageName-method">
+        <a name="getPackageName-method"></a><b>getPackageName</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.RemoteViews.packageName-property.html">packageName</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="removeEventListener-method">
         <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -274,7 +377,9 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setBoolean-method"></a><b>setBoolean</b> <span class="params">(viewId, methodName, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Call a method taking one boolean on a view in the layout for this RemoteViews. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setBoolean(int, java.lang.String, boolean)">setBoolean</a></p></div>
+      <div class="description"><p>Calls a method taking a single <code>boolean</code> argument on a view in the remote view
+hierarchy.  See Android's documentation for
+<a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setBoolean(int, java.lang.String, boolean)">setBoolean</a>.</p></div>
       
 
       
@@ -291,7 +396,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to invoke the method on.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -303,7 +409,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The name of the method to call</td>
+                  <td class='attr-desc'>Name of the method to call.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -315,7 +421,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The boolean to pass to the method</td>
+                  <td class='attr-desc'>Value to pass to the method.</td>
                 </tr>
                 
       	</table>
@@ -328,7 +434,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setChronometer-method"></a><b>setChronometer</b> <span class="params">(viewId, base, format, started)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets a chronometer's base, format, and started flag. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setChronometer(int, long, java.lang.String, boolean)">setChronometer</a></p></div>
+      <div class="description"><p>Sets the base time, format string, and started flag for a chronometer
+in the remote view hierarchy.</p></div>
       
 
       
@@ -345,7 +452,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the Chronometer whose values will change (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the Chronometer to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -357,7 +465,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The time at which the timer would have read 0:00</td>
+                  <td class='attr-desc'>Time at which the timer would have read 0:00.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -369,7 +477,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The Chronometer format string, or null to simply display the timer value</td>
+                  <td class='attr-desc'>Chronometer format string, or null to simply display the timer value.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -381,7 +489,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>True if you want the clock to be started, false if not</td>
+                  <td class='attr-desc'>True if you want the clock to be started, false if not.</td>
                 </tr>
                 
       	</table>
@@ -394,7 +502,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setDouble-method"></a><b>setDouble</b> <span class="params">(viewId, methodName, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Call a method taking one double on a view in the layout for this RemoteViews. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setDouble(int, java.lang.String, double)">setDouble</a></p></div>
+      <div class="description"><p>Calls a method taking a single <code>double</code> argument on a view in the remote view
+hierarchy.</p></div>
       
 
       
@@ -411,7 +520,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -423,7 +533,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The name of the method to call</td>
+                  <td class='attr-desc'>Name of the method to call.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -435,7 +545,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The double to pass to the method</td>
+                  <td class='attr-desc'>Value to pass to the method.</td>
                 </tr>
                 
       	</table>
@@ -448,7 +558,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setImageViewResource-method"></a><b>setImageViewResource</b> <span class="params">(viewId, srcId)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets an ImageView's source given a Resource ID. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setImageViewResource(int, int)">setImageViewResource</a></p></div>
+      <div class="description"><p>Sets the image for an image view in the remote view hierarchy using an Android drawable resource.</p></div>
       
 
       
@@ -465,7 +575,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the ImageView whose image should change (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the ImageView to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -477,7 +588,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the image</td>
+                  <td class='attr-desc'>Resource ID of the new image.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
       	</table>
@@ -490,7 +602,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setImageViewUri-method"></a><b>setImageViewUri</b> <span class="params">(viewId, uri)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets an ImageView's source given a URI (supports both Android and Titanium URLs). See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setImageViewUri(int, android.net.Uri)">setImageViewUri</a></p></div>
+      <div class="description"><p>Sets the image for an image view in the remote view hierarchy using a URI.</p></div>
       
 
       
@@ -507,7 +619,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the ImageView whose image should change (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the ImageView to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -519,7 +632,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The URI of the image (both Android and Titanium URLs are supported)</td>
+                  <td class='attr-desc'>URI of the image (both Android and Titanium URLs are supported).</td>
                 </tr>
                 
       	</table>
@@ -532,7 +645,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setInt-method"></a><b>setInt</b> <span class="params">(viewId, methodName, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Call a method taking one int on a view in the layout for this RemoteViews. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setInt(int, java.lang.String, int)">setInt</a></p></div>
+      <div class="description"><p>Calls a method taking a single <code>int</code> argument on a view in the remote view hierarchy.</p></div>
       
 
       
@@ -549,7 +662,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -561,7 +675,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The name of the method to call</td>
+                  <td class='attr-desc'>Name of the method to call.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -573,7 +687,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The int to pass to the method</td>
+                  <td class='attr-desc'>Value to pass to the method.</td>
                 </tr>
                 
       	</table>
@@ -586,7 +700,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setOnClickPendingIntent-method"></a><b>setOnClickPendingIntent</b> <span class="params">(viewId, pendingIntent)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Launches a <a href="Titanium.Android.PendingIntent-object.html"><code>Titanium.Android.PendingIntent</code></a> when the specified view is clicked. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setOnClickPendingIntent(int, android.app.PendingIntent)">setOnClickPendingIntent</a></p></div>
+      <div class="description"><p>Launches a <a href="Titanium.Android.PendingIntent-object.html"><code>Titanium.Android.PendingIntent</code></a> when the specified view is clicked.</p></div>
       
 
       
@@ -603,7 +717,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View to add a click listener to (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to add a click listener to.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -615,7 +730,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The PendingIntent to execute when this view is clicked</td>
+                  <td class='attr-desc'>The PendingIntent to execute when this view is clicked.</td>
                 </tr>
                 
       	</table>
@@ -628,7 +743,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setProgressBar-method"></a><b>setProgressBar</b> <span class="params">(viewId, max, progress, indeterminate)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the progress, max value, and indeterminate flag of a ProgressBar. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setProgressBar(int, int, int, boolean)">setProgressBar</a></p></div>
+      <div class="description"><p>Sets the progress, max value, and indeterminate flag of a progress bar in the
+remote view hierarchy.</p></div>
       
 
       
@@ -645,7 +761,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the ProgressBar to change (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the progress bar to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -657,7 +774,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The new max value of the ProgressBar</td>
+                  <td class='attr-desc'>The new maximum value of the progress bar.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -669,7 +786,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The new progress value of the ProgressBar (from 0..max)</td>
+                  <td class='attr-desc'>The new progress value of the progress bar (from 0..max).</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -681,7 +798,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>Whether or not the progress in indeterminate</td>
+                  <td class='attr-desc'>Determines whether the progress bar is indeterminate.
+If true, the progress bar displays an infinite looping animation.</td>
                 </tr>
                 
       	</table>
@@ -694,7 +812,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setString-method"></a><b>setString</b> <span class="params">(viewId, methodName, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Call a method taking one String on a view in the layout for this RemoteViews. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setString(int, java.lang.String, java.lang.String)">setString</a></p></div>
+      <div class="description"><p>Calls a method taking a single String argument on a view in the remote view
+hierarchy.</p></div>
       
 
       
@@ -711,7 +830,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -723,7 +843,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The name of the method to call</td>
+                  <td class='attr-desc'>Name of the method to call.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -735,7 +855,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The String to pass to the method</td>
+                  <td class='attr-desc'>String to pass to the method.</td>
                 </tr>
                 
       	</table>
@@ -748,7 +868,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setTextColor-method"></a><b>setTextColor</b> <span class="params">(viewId, color)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the text color of a view. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setTextColor(int, int)">setTextColor</a></p></div>
+      <div class="description"><p>Sets the text color of a view in the remote view hierarchy.</p></div>
       
 
       
@@ -765,7 +885,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View whose text color will change (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -777,7 +898,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>A color as an integer</td>
+                  <td class='attr-desc'>Color as an integer.</td>
                 </tr>
                 
       	</table>
@@ -790,7 +911,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setTextViewText-method"></a><b>setTextViewText</b> <span class="params">(viewId, text)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the text of a TextView. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setTextViewText(int, java.lang.CharSequence)">setTextViewText</a></p></div>
+      <div class="description"><p>Sets the text of a text view in the remote view hierarchy.</p></div>
       
 
       
@@ -807,7 +928,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the TextView whose text will change (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the text view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -819,7 +941,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The new text of the TextView</td>
+                  <td class='attr-desc'>New text for the text view.</td>
                 </tr>
                 
       	</table>
@@ -832,7 +954,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setUri-method"></a><b>setUri</b> <span class="params">(viewId, methodName, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Call a method taking one Uri on a view in the layout for this RemoteViews. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setUri(int, java.lang.String, android.net.Uri)">setUri</a></p></div>
+      <div class="description"><p>Calls a method taking one URI on a view in the remote view hierarchy.</p></div>
       
 
       
@@ -849,7 +971,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to update.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -861,7 +984,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The name of the method to call</td>
+                  <td class='attr-desc'>Name of the method to call.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -873,7 +996,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The URI (as a string) to pass to the method</td>
+                  <td class='attr-desc'>URI (as a string) to pass to the method.</td>
                 </tr>
                 
       	</table>
@@ -886,7 +1009,7 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
         <a name="setViewVisibility-method"></a><b>setViewVisibility</b> <span class="params">(viewId, visibility)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the visibility of a View. See Android's documentation for <a href="http://developer.android.com/reference/android/widget/RemoteViews.html#setViewVisibility(int, int)">setViewVisibility</a></p></div>
+      <div class="description"><p>Sets the visibility of a view in the remote view hierarchy.</p></div>
       
 
       
@@ -903,7 +1026,8 @@ customLayout.setTextViewText(AppR.id.custom_text, "Hello World");</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The resource id of the View whose visibility will change (also see Titanium.App.Android.R)</td>
+                  <td class='attr-desc'>Resource ID of the view to show or hide.
+Application-specific resource IDs can be specified using Titanium.App.Android.R.</td>
                 </tr>
                 
                 <tr valign='top'>

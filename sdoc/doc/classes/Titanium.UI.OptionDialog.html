@@ -703,9 +703,13 @@ than an option item.</p>
             <td class='attr-name'>cancel</td>
             <td class='attr-desc'>
               
-              <span class="attr-rw">[Number]</span><br /> 
+              <span class="attr-rw">[BooleanNumber]</span><br /> 
               
-              <p>Index of the cancel option if defined or <code>-1</code> otherwise.</p>
+              <p>Boolean type on Android; Number on iOS and Mobile Web. </p>
+<p>On Android, indicates whether the cancel button was clicked, in which 
+case returns <code>true</code>. </p>
+<p>On iOS and Mobile Web, the value of the <a href="Titanium.UI.OptionDialog.cancel-property.html">cancel</a> 
+property is returned, if defined, or <code>-1</code> otherwise. </p>
             </td>
           </tr>
           

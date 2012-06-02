@@ -44,10 +44,17 @@
 <div id="content">
     
     <div class="description">
-        <p>The Titanium binding of an <a href="http://developer.android.com/reference/android/view/Menu.html">Android Menu</a></p>
+        <p>The Titanium binding of an Android Options Menu.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>Currently, <code>Menu</code> only supports menus displayed when the <strong>Menu</strong> button is pressed, 
+not the newer Action Bar style menu display.</p>
+<p>See also: <a href="http://developer.android.com/reference/android/view/Menu.html">Menu</a>
+in the Android Developer Reference.</p>
+    </div>
     
 
     
@@ -127,7 +134,7 @@
                 [Array&lt;Titanium.Android.MenuItem&gt;]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>array of Titanium.Android.MenuItem</td>
+            <td class='attr-desc'>Array of menu items in this menu.</td>
         </tr>
         
     </table>
@@ -141,9 +148,9 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Simple menu create</div>
-	<div class="code"><p>Create an Android menu that displays a menu item named "Item 1", which logs a debug message 
-when clicked.</p>
+	<div class="subsectiontitle">Creating a Simple Menu</div>
+	<div class="code"><p>This sample creates an Android menu that displays a menu item named "Item 1", 
+which logs a debug message when clicked.</p>
 <pre><code>var win = Ti.UI.createWindow({
   fullscreen: true
 });
@@ -153,7 +160,7 @@ var activity = win.activity;
 activity.onCreateOptionsMenu = function(e){
   var menu = e.menu;
   var menuItem = menu.add({ title: "Item 1" });
-  menuItem.setIcon("item1.png");
+  menuItem.icon = "item1.png";
   menuItem.addEventListener("click", function(e) {
     Ti.API.debug("I was clicked");
   });
@@ -162,9 +169,10 @@ activity.onCreateOptionsMenu = function(e){
 win.open();
 </code></pre></div>
         
-	<div class="subsectiontitle">Dynamic menu create</div>
-	<div class="code"><p>Create an Android menu that displays a menu item named "Login" or "Logout", depending on the 
-value of a <code>loggedIn</code> Boolean variable. Click on the item to toggle the variable's value.</p>
+	<div class="subsectiontitle">Creating a Dynamic Menu</div>
+	<div class="code"><p>This sample creates an Android menu that displays a menu item named 
+"Login" or "Logout", depending on the value of a <code>loggedIn</code> Boolean variable. 
+Click on the item to toggle the variable's value.</p>
 <pre><code>var win = Ti.UI.createWindow({
   fullscreen: true
 });
@@ -207,7 +215,7 @@ win.open();
         <a name="add-method"></a><b>add</b> <span class="params">(options)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>creates a <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> from the passed creation options.</p></div>
+      <div class="description"><p>Creates a <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> from the passed creation options.</p></div>
       
 
       
@@ -224,7 +232,11 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>creation options. Supported options are itemId, groupId, title, and order.</td>
+                  <td class='attr-desc'>Creation options. Supported options are
+itemId,
+groupId,
+title, and
+order.</td>
                 </tr>
                 
       	</table>
@@ -279,7 +291,7 @@ win.open();
         <a name="clear-method"></a><b>clear</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>clear all items from the menu. You should release all references you have retained to <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> previously created.</p></div>
+      <div class="description"><p>Clears all items from this menu.</p></div>
       
 
       
@@ -290,7 +302,7 @@ win.open();
         <a name="close-method"></a><b>close</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>close the menu if visible</p></div>
+      <div class="description"><p>Closes the menu, if visible.</p></div>
       
 
       
@@ -301,7 +313,7 @@ win.open();
         <a name="findItem-method"></a><b>findItem</b> <span class="params">(item)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>locate a <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a></p></div>
+      <div class="description"><p>Locates a <a href="Titanium.Android.MenuItem-object.html">MenuItem</a> in this menu, by item ID or reference.</p></div>
       
 
       
@@ -314,11 +326,11 @@ win.open();
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [NumberTitanium.Android.MenuItem]
                       
                     
                   </td>
-                  <td class='attr-desc'>integer itemId or Titanium.Android.MenuItem</td>
+                  <td class='attr-desc'>Integer itemId or a reference to a MenuItem object.</td>
                 </tr>
                 
       	</table>
@@ -373,7 +385,7 @@ win.open();
         <a name="getItem-method"></a><b>getItem</b> <span class="params">(index)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>return the <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> at a specific index</p></div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem-object.html">MenuItem</a> at a specific index.</p></div>
       
 
       
@@ -390,7 +402,7 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>item at index where index &lt; size()</td>
+                  <td class='attr-desc'>Index of the menu item to return.</td>
                 </tr>
                 
       	</table>
@@ -414,7 +426,7 @@ win.open();
         <a name="hasVisibleItems-method"></a><b>hasVisibleItems</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>query for any visible menu items</p></div>
+      <div class="description"><p>Returns <code>true</code> if this menu has visible items.</p></div>
       
 
       
@@ -467,7 +479,8 @@ win.open();
         <a name="removeGroup-method"></a><b>removeGroup</b> <span class="params">(groupId)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>remove all <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> with the specified groupId</p></div>
+      <div class="description"><p>Removes all menu items with the specified 
+<a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a>.</p></div>
       
 
       
@@ -484,7 +497,7 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>groupId of items to remove.</td>
+                  <td class='attr-desc'>Group ID of items to remove.</td>
                 </tr>
                 
       	</table>
@@ -497,7 +510,8 @@ win.open();
         <a name="removeItem-method"></a><b>removeItem</b> <span class="params">(itemId)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>remove a specific <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> by the specified itemId</p></div>
+      <div class="description"><p>Removes a specific <a href="Titanium.Android.MenuItem-object.html">MenuItem</a> identified by its
+<a href="Titanium.Android.MenuItem.itemId-property.html">itemId</a>.</p></div>
       
 
       
@@ -514,7 +528,7 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>itemId of item to remove.</td>
+                  <td class='attr-desc'>Item ID of item to remove.</td>
                 </tr>
                 
       	</table>
@@ -527,7 +541,8 @@ win.open();
         <a name="setGroupEnabled-method"></a><b>setGroupEnabled</b> <span class="params">(groupId, enabled)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>enable or disable a group of <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> by groupId</p></div>
+      <div class="description"><p>Enables or disables a group of menu items identified by a 
+<a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a>.</p></div>
       
 
       
@@ -544,7 +559,7 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>groupId to enable or disable</td>
+                  <td class='attr-desc'>ID of the group to enable or disable.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -556,7 +571,7 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>true to enable, false to disable.</td>
+                  <td class='attr-desc'>True to enable the specified group, false to disable it.</td>
                 </tr>
                 
       	</table>
@@ -569,7 +584,8 @@ win.open();
         <a name="setGroupVisible-method"></a><b>setGroupVisible</b> <span class="params">(groupId, visible)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>show or hide a group of <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> by groupId</p></div>
+      <div class="description"><p>Shows or hides a group of menu items identified by a
+<a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a>.</p></div>
       
 
       
@@ -586,7 +602,7 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>groupId to enable or disable</td>
+                  <td class='attr-desc'>Group ID to enable or disable.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -598,7 +614,7 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>true to show, false to hide</td>
+                  <td class='attr-desc'>True to show the group, false to hide it.</td>
                 </tr>
                 
       	</table>
@@ -611,7 +627,7 @@ win.open();
         <a name="size-method"></a><b>size</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>number of <a href="Titanium.Android.MenuItem-object.html"><code>Titanium.Android.MenuItem</code></a> in this menu</p></div>
+      <div class="description"><p>Number of items in this menu.</p></div>
       
 
       

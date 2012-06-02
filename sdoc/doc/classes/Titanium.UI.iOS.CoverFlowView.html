@@ -44,13 +44,14 @@
 <div id="content">
     
     <div class="description">
-        <p>The cover flow View is container for showing  animated, three dimensional images in a nice UI.</p>
+        <p>The cover flow view is a container showing animated three-dimensional images in a style 
+consistent with the cover flow presentation style used for iPod, iTunes, and file browsing.</p>
     </div>
     
     
     
     <div class="description">
-        <p>Use the <a href="Titanium.UI.iOS.createCoverFlowView-method.html"><code>Titanium.UI.iOS.createCoverFlowView</code></a> method to create a cover flow view.</p>
+        <p>The cover flow view is created by the <a href="Titanium.UI.iOS.createCoverFlowView-method.html"><code>Titanium.UI.iOS.createCoverFlowView</code></a> method.</p>
     </div>
     
 
@@ -613,7 +614,7 @@
                 [Array&lt;String&gt;Array&lt;Titanium.Blob&gt;Array&lt;Titanium.Filesystem.File&gt;Array&lt;CoverFlowImageType&gt;]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Array of images to display in the view.</td>
+            <td class='attr-desc'>Images to display in the view.</td>
         </tr>
         
         <tr valign='top'>
@@ -632,7 +633,7 @@
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -659,7 +660,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -686,7 +687,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -749,7 +750,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -789,8 +790,8 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
 	<div class="subsectiontitle">Simple 3 image cover flow example</div>
 	<div class="code"><p>Create a simple cover flow view.</p>
 <pre><code>var view = Titanium.UI.iOS.createCoverFlowView({
-    images:['a.png','b.png','c.png'],
-    backgroundColor:'#000'
+    backgroundColor:'#000',
+    images:['a.png','b.png','c.png']
 });
 window.add(view);
 </code></pre></div>

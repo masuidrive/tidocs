@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# VERSION: 20120526.170202
+# VERSION: 20120602.202308
 NETWORK:
 http://tidocs-comments.appspot.com/
 http://www.google-analytics.com/
@@ -7,6 +7,7 @@ CACHE:
 _index.html
 classes/AcceptDict.html
 classes/AcceptedCallbackArgs.html
+classes/ActivityResult.html
 classes/BarItemType.html
 classes/CameraMediaItemType.html
 classes/CameraOptionsType.html
@@ -91,6 +92,7 @@ classes/MediaQueryType.html
 classes/MediaScannerResponse.html
 classes/MovieSize.html
 classes/MusicLibraryOptionsType.html
+classes/MusicLibraryResponseType.html
 classes/NotificationParams.html
 classes/openWindowParams.html
 classes/PhotoGalleryOptionsType.html
@@ -135,9 +137,13 @@ classes/Titanium.Android.Activity.addEventListener.html
 classes/Titanium.Android.Activity.finish.html
 classes/Titanium.Android.Activity.fireEvent.html
 classes/Titanium.Android.Activity.getIntent.html
+classes/Titanium.Android.Activity.getOnCreateOptionsMenu.html
+classes/Titanium.Android.Activity.getOnPrepareOptionsMenu.html
 classes/Titanium.Android.Activity.getString.html
 classes/Titanium.Android.Activity.html
 classes/Titanium.Android.Activity.removeEventListener.html
+classes/Titanium.Android.Activity.setOnCreateOptionsMenu.html
+classes/Titanium.Android.Activity.setOnPrepareOptionsMenu.html
 classes/Titanium.Android.Activity.setRequestedOrientation.html
 classes/Titanium.Android.Activity.setResult.html
 classes/Titanium.Android.Activity.startActivity.html
@@ -209,6 +215,7 @@ classes/Titanium.Android.createIntent.html
 classes/Titanium.Android.createIntentChooser.html
 classes/Titanium.Android.createNotification.html
 classes/Titanium.Android.createPendingIntent.html
+classes/Titanium.Android.createRemoteViews.html
 classes/Titanium.Android.createService.html
 classes/Titanium.Android.createServiceIntent.html
 classes/Titanium.Android.fireEvent.html
@@ -259,15 +266,20 @@ classes/Titanium.Android.MenuItem.addEventListener.html
 classes/Titanium.Android.MenuItem.fireEvent.html
 classes/Titanium.Android.MenuItem.getEnabled.html
 classes/Titanium.Android.MenuItem.getGroupId.html
+classes/Titanium.Android.MenuItem.getIcon.html
 classes/Titanium.Android.MenuItem.getItemId.html
 classes/Titanium.Android.MenuItem.getOrder.html
 classes/Titanium.Android.MenuItem.getTitle.html
 classes/Titanium.Android.MenuItem.getTitleCondensed.html
 classes/Titanium.Android.MenuItem.getVisible.html
 classes/Titanium.Android.MenuItem.html
+classes/Titanium.Android.MenuItem.isCheckable.html
+classes/Titanium.Android.MenuItem.isChecked.html
 classes/Titanium.Android.MenuItem.isEnabled.html
 classes/Titanium.Android.MenuItem.isVisible.html
 classes/Titanium.Android.MenuItem.removeEventListener.html
+classes/Titanium.Android.MenuItem.setCheckable.html
+classes/Titanium.Android.MenuItem.setChecked.html
 classes/Titanium.Android.MenuItem.setEnabled.html
 classes/Titanium.Android.MenuItem.setIcon.html
 classes/Titanium.Android.MenuItem.setTitle.html
@@ -296,6 +308,7 @@ classes/Titanium.Android.Notification.setAudioStreamType.html
 classes/Titanium.Android.Notification.setContentIntent.html
 classes/Titanium.Android.Notification.setContentText.html
 classes/Titanium.Android.Notification.setContentTitle.html
+classes/Titanium.Android.Notification.setContentView.html
 classes/Titanium.Android.Notification.setDefaults.html
 classes/Titanium.Android.Notification.setDeleteIntent.html
 classes/Titanium.Android.Notification.setFlags.html
@@ -328,6 +341,8 @@ classes/Titanium.Android.R.html
 classes/Titanium.Android.R.removeEventListener.html
 classes/Titanium.Android.RemoteViews.addEventListener.html
 classes/Titanium.Android.RemoteViews.fireEvent.html
+classes/Titanium.Android.RemoteViews.getLayoutId.html
+classes/Titanium.Android.RemoteViews.getPackageName.html
 classes/Titanium.Android.RemoteViews.html
 classes/Titanium.Android.RemoteViews.removeEventListener.html
 classes/Titanium.Android.RemoteViews.setBoolean.html
@@ -437,6 +452,7 @@ classes/Titanium.App.setProximityDetection.html
 classes/Titanium.Blob.addEventListener.html
 classes/Titanium.Blob.append.html
 classes/Titanium.Blob.fireEvent.html
+classes/Titanium.Blob.getFile.html
 classes/Titanium.Blob.getHeight.html
 classes/Titanium.Blob.getLength.html
 classes/Titanium.Blob.getMimeType.html
@@ -506,6 +522,7 @@ classes/Titanium.Cloud.getDebug.html
 classes/Titanium.Cloud.getOndatastream.html
 classes/Titanium.Cloud.getOnsendstream.html
 classes/Titanium.Cloud.getUseSecure.html
+classes/Titanium.Cloud.hasStoredSession.html
 classes/Titanium.Cloud.html
 classes/Titanium.Cloud.KeyValues.append.html
 classes/Titanium.Cloud.KeyValues.get.html
@@ -551,6 +568,7 @@ classes/Titanium.Cloud.PushNotifications.html
 classes/Titanium.Cloud.PushNotifications.notify.html
 classes/Titanium.Cloud.PushNotifications.subscribe.html
 classes/Titanium.Cloud.PushNotifications.unsubscribe.html
+classes/Titanium.Cloud.retrieveStoredSession.html
 classes/Titanium.Cloud.Reviews.create.html
 classes/Titanium.Cloud.Reviews.html
 classes/Titanium.Cloud.Reviews.query.html
@@ -1027,6 +1045,7 @@ classes/Titanium.Map.addEventListener.html
 classes/Titanium.Map.Annotation.addEventListener.html
 classes/Titanium.Map.Annotation.fireEvent.html
 classes/Titanium.Map.Annotation.getAnimate.html
+classes/Titanium.Map.Annotation.getDraggable.html
 classes/Titanium.Map.Annotation.getImage.html
 classes/Titanium.Map.Annotation.getLatitude.html
 classes/Titanium.Map.Annotation.getLeftButton.html
@@ -1043,6 +1062,7 @@ classes/Titanium.Map.Annotation.getTitleid.html
 classes/Titanium.Map.Annotation.html
 classes/Titanium.Map.Annotation.removeEventListener.html
 classes/Titanium.Map.Annotation.setAnimate.html
+classes/Titanium.Map.Annotation.setDraggable.html
 classes/Titanium.Map.Annotation.setImage.html
 classes/Titanium.Map.Annotation.setLatitude.html
 classes/Titanium.Map.Annotation.setLeftButton.html
@@ -1332,6 +1352,7 @@ classes/Titanium.Media.MusicPlayer.skipToNext.html
 classes/Titanium.Media.MusicPlayer.skipToPrevious.html
 classes/Titanium.Media.MusicPlayer.stop.html
 classes/Titanium.Media.MusicPlayer.stopSeeking.html
+classes/Titanium.Media.openMusicLibrary.html
 classes/Titanium.Media.openPhotoGallery.html
 classes/Titanium.Media.previewImage.html
 classes/Titanium.Media.queryMusicLibrary.html
@@ -4086,6 +4107,7 @@ classes/Titanium.UI.ScrollableView.getBottom.html
 classes/Titanium.UI.ScrollableView.getCacheSize.html
 classes/Titanium.UI.ScrollableView.getCenter.html
 classes/Titanium.UI.ScrollableView.getChildren.html
+classes/Titanium.UI.ScrollableView.getClipViews.html
 classes/Titanium.UI.ScrollableView.getCurrentPage.html
 classes/Titanium.UI.ScrollableView.getDisableBounce.html
 classes/Titanium.UI.ScrollableView.getFocusable.html
@@ -4958,6 +4980,7 @@ classes/Titanium.UI.TableView.getFilterCaseInsensitive.html
 classes/Titanium.UI.TableView.getFocusable.html
 classes/Titanium.UI.TableView.getFooterTitle.html
 classes/Titanium.UI.TableView.getFooterView.html
+classes/Titanium.UI.TableView.getHeaderPullView.html
 classes/Titanium.UI.TableView.getHeaderTitle.html
 classes/Titanium.UI.TableView.getHeaderView.html
 classes/Titanium.UI.TableView.getHeight.html
@@ -4968,6 +4991,7 @@ classes/Titanium.UI.TableView.getLayout.html
 classes/Titanium.UI.TableView.getLeft.html
 classes/Titanium.UI.TableView.getMaxRowHeight.html
 classes/Titanium.UI.TableView.getMinRowHeight.html
+classes/Titanium.UI.TableView.getMoveable.html
 classes/Titanium.UI.TableView.getMoving.html
 classes/Titanium.UI.TableView.getOpacity.html
 classes/Titanium.UI.TableView.getRect.html
@@ -5026,6 +5050,7 @@ classes/Titanium.UI.TableView.setFilterCaseInsensitive.html
 classes/Titanium.UI.TableView.setFocusable.html
 classes/Titanium.UI.TableView.setFooterTitle.html
 classes/Titanium.UI.TableView.setFooterView.html
+classes/Titanium.UI.TableView.setHeaderPullView.html
 classes/Titanium.UI.TableView.setHeaderTitle.html
 classes/Titanium.UI.TableView.setHeaderView.html
 classes/Titanium.UI.TableView.setHeight.html
@@ -5036,6 +5061,7 @@ classes/Titanium.UI.TableView.setLayout.html
 classes/Titanium.UI.TableView.setLeft.html
 classes/Titanium.UI.TableView.setMaxRowHeight.html
 classes/Titanium.UI.TableView.setMinRowHeight.html
+classes/Titanium.UI.TableView.setMoveable.html
 classes/Titanium.UI.TableView.setMoving.html
 classes/Titanium.UI.TableView.setOpacity.html
 classes/Titanium.UI.TableView.setRight.html
@@ -5099,6 +5125,7 @@ classes/Titanium.UI.TableViewRow.getKeepScreenOn.html
 classes/Titanium.UI.TableViewRow.getLayout.html
 classes/Titanium.UI.TableViewRow.getLeft.html
 classes/Titanium.UI.TableViewRow.getLeftImage.html
+classes/Titanium.UI.TableViewRow.getMoveable.html
 classes/Titanium.UI.TableViewRow.getOpacity.html
 classes/Titanium.UI.TableViewRow.getRect.html
 classes/Titanium.UI.TableViewRow.getRight.html
@@ -5152,6 +5179,7 @@ classes/Titanium.UI.TableViewRow.setKeepScreenOn.html
 classes/Titanium.UI.TableViewRow.setLayout.html
 classes/Titanium.UI.TableViewRow.setLeft.html
 classes/Titanium.UI.TableViewRow.setLeftImage.html
+classes/Titanium.UI.TableViewRow.setMoveable.html
 classes/Titanium.UI.TableViewRow.setOpacity.html
 classes/Titanium.UI.TableViewRow.setRight.html
 classes/Titanium.UI.TableViewRow.setRightImage.html

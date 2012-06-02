@@ -79,7 +79,7 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Create Chat Message Example</div>
+	<div class="subsectiontitle">Create Chat Message</div>
 	<div class="code"><p>This example sends a chat message to a list of users and checks the response.</p>
 <pre><code>Cloud.Chats.create({
     to_ids: ids.join(','),
@@ -100,7 +100,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Query for Chat Message Example</div>
+	<div class="subsectiontitle">Query for Chat Message</div>
 	<div class="code"><p>This example requests a list of chat messages and checks the response.</p>
 <pre><code>Cloud.Chats.query({
     participate_ids: ids.join(','),
@@ -123,8 +123,9 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Get Chat Groups Example</div>
-	<div class="code"><p>This example requests a lists of chat groups that the current user belongs to and checks the response.</p>
+	<div class="subsectiontitle">Get Chat Groups</div>
+	<div class="code"><p>This example requests a lists of chat groups that the current user belongs to and checks 
+the response.</p>
 <pre><code>Cloud.Chats.getChatGroups(function (e) {
     if (e.success) {
         for (var i = 0; i &lt; e.chats.length; i++) {
@@ -166,11 +167,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -208,11 +209,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -250,11 +251,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>

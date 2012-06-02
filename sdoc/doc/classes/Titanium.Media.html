@@ -161,6 +161,10 @@ as playing audio or recording video.</p>
             </ul>
     
             <ul>
+                <li><a href="#openMusicLibrary-method">openMusicLibrary <span class="params">(options)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#openPhotoGallery-method">openPhotoGallery <span class="params">(options)</span></a></li>
             </ul>
     
@@ -202,10 +206,6 @@ as playing audio or recording video.</p>
     
             <ul>
                 <li><a href="#showCamera-method">showCamera <span class="params">(options)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#showMusicLibrary-method">showMusicLibrary <span class="params">(options)</span></a></li>
             </ul>
     
             <ul>
@@ -1770,6 +1770,36 @@ as playing audio or recording video.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="openMusicLibrary-method">
+        <a name="openMusicLibrary-method"></a><b>openMusicLibrary</b> <span class="params">(options)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Shows the music library and allows the user to select one or more tracks.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>options</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [MusicLibraryOptionsType]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of options as described in MusicLibraryOptionsType.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="openPhotoGallery-method">
         <a name="openPhotoGallery-method"></a><b>openPhotoGallery</b> <span class="params">(options)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2118,36 +2148,6 @@ called upon receiving an error.</td>
                     
                   </td>
                   <td class='attr-desc'>A dictionary of camera options as described in CameraOptionsType.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="showMusicLibrary-method">
-        <a name="showMusicLibrary-method"></a><b>showMusicLibrary</b> <span class="params">(options)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Shows the music library and allows the user to select one or more tracks.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>options</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [MusicLibraryOptionsType]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>A dictionary of options as described in MusicLibraryOptionsType.</td>
                 </tr>
                 
       	</table>

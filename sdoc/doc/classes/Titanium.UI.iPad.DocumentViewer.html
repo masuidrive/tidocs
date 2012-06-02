@@ -44,16 +44,17 @@
 <div id="content">
     
     <div class="description">
-        <p>A DocumentViewer provides in-app support for managing user interactions with files in the local system.</p>
+        <p>A DocumentViewer provides in-app support for managing user interactions with files on the 
+local system. </p>
     </div>
     
     
     
     <div class="description">
-        <p>For example, an email program might use this class to allow the user to preview 
-attachments and open them in other apps. Use this class to present an appropriate 
-user interface for previewing or printing a specified file. The DocumentViewer is 
-created by the method <a href="Titanium.UI.iPad.createDocumentViewer-method.html"><code>Titanium.UI.iPad.createDocumentViewer</code></a>.</p>
+        <p>The DocumentViewer is created by the method <a href="Titanium.UI.iPad.createDocumentViewer-method.html"><code>Titanium.UI.iPad.createDocumentViewer</code></a>. </p>
+<p>For example, an email program might use this class to allow the user to preview attachments and 
+open them in other apps. Use this class to present an appropriate user interface for previewing 
+or printing a specified file. </p>
     </div>
     
 
@@ -610,7 +611,7 @@ created by the method <a href="Titanium.UI.iPad.createDocumentViewer-method.html
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -637,7 +638,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -655,7 +656,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -718,7 +719,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -823,40 +824,40 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         
 	<div class="subsectiontitle">Document Viewer Example</div>
 	<div class="code"><p>In this example, we create a document viewer with a window button and right navigation button.</p>
-<p>//-----------example--------
-    Titanium.UI.setBackgroundColor('#000');
-    //creating the window
-    var win1 = Titanium.UI.createWindow({
-        title:'win 1',
-        backgroundColor:'#fff'
-        });
-     //add window - navigation bar
-     var modalWin = Ti.UI.createWindow();
-     //nav bar
-     var navmodal = Ti.UI.iPhone.createNavigationGroup({
-        window:modalWin
-        });
-     win1.add(navmodal);
-     //button for the nav bar
-     var b2t = Titanium.UI.createButton({
-       title:'Launch'
-       });
-     modalWin.RightNavButton = b2t;
-     //button for the window
-     var b1t = Titanium.UI.createButton({
-       title:'Launch',
-       height:40,
-       width:200,
-       top:270
-       });
-     win1.add(b1t);
-     //Setting up the documentviewer
-     z = Ti.UI.iPad.createDocumentViewer({url:'Example.pdf'});
-     //documentviewer with animation set on and a quicklook view poping up next to a view
-     b1t.addEventListener('click', function(){z.show({animated:false,view:b2t});});
-     //documentviewer with animation set off
-     b2t.addEventListener('click', function(){z.show();});
-     win1.open();</p></div>
+<pre><code>Titanium.UI.setBackgroundColor('#000');
+//creating the window
+var win1 = Titanium.UI.createWindow({
+    title:'win 1',
+    backgroundColor:'#fff'
+    });
+ //add window - navigation bar
+ var modalWin = Ti.UI.createWindow();
+ //nav bar
+ var navmodal = Ti.UI.iPhone.createNavigationGroup({
+    window:modalWin
+    });
+ win1.add(navmodal);
+ //button for the nav bar
+ var b2t = Titanium.UI.createButton({
+   title:'Launch'
+   });
+ modalWin.RightNavButton = b2t;
+ //button for the window
+ var b1t = Titanium.UI.createButton({
+   title:'Launch',
+   height:40,
+   width:200,
+   top:270
+   });
+ win1.add(b1t);
+ //Setting up the documentviewer
+ z = Ti.UI.iPad.createDocumentViewer({url:'Example.pdf'});
+ //documentviewer with animation set on and a quicklook view poping up next to a view
+ b1t.addEventListener('click', function(){z.show({animated:false,view:b2t});});
+ //documentviewer with animation set off
+ b2t.addEventListener('click', function(){z.show();});
+ win1.open();
+</code></pre></div>
         
     </table>
     
@@ -2433,7 +2434,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="setUrl-method"></a><b>setUrl</b> <span class="params">(url)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>change the url of the document viewer</p></div>
+      <div class="description"><p>Sets the url of the document viewer.</p></div>
       
 
       
@@ -2450,7 +2451,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>the new url</td>
+                  <td class='attr-desc'>The new url</td>
                 </tr>
                 
       	</table>
@@ -2553,7 +2554,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="show-method"></a><b>show</b> <span class="params">(animated, view)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>to display the document viewer over the current view.</p></div>
+      <div class="description"><p>Displays the document viewer over the current view.</p></div>
       
 
       
@@ -2570,7 +2571,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>is a boolean indicating if the showing of the viewer should be animated.</td>
+                  <td class='attr-desc'>Indicates whether the show transition should be animated.</td>
                 </tr>
                 
                 <tr valign='top'>

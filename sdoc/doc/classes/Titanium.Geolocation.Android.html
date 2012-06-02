@@ -50,8 +50,12 @@
     
     
     <div class="description">
-        <p>This module is used for manually configuring geolocation settings on Android. 
-Manual configuration involves managing <em>providers</em> and <em>rules</em>:</p>
+        <p>This module is used for manually configuring geolocation settings on Android. </p>
+<p>Manual configuration is recommended for applications that have more demanding 
+geolocation needs (for example, driving directions). However, for basic geolocation
+information, <em>simple mode</em> geolocation may be sufficient. For information on simple 
+mode, see <a href="Titanium.Geolocation.html"><code>Titanium.Geolocation</code></a>.</p>
+<p>Manual configuration involves managing <em>providers</em> and <em>rules</em>:</p>
 <ul>
 <li>
 <p><em>Location providers</em>, such as GPS, provide location updates.</p>
@@ -126,7 +130,7 @@ with <a href="Titanium.Geolocation.Android.createLocationProvider-method.html">a
     minUpdateTime: 60, 
     minUpdateDistance: 100
 });
-Ti.Geolocation.Android.addProvider(gpsProvider);
+Ti.Geolocation.Android.addLocationProvider(gpsProvider);
 </code></pre>
 <p>As shown above, when you create a location provider, you can specify two
 properties to limit update frequency:</p>
@@ -167,7 +171,7 @@ specify a location rule, create a new rule object, then register it with
     // But  no more frequent than once per 10 seconds
     minAge: 10000
 });
-Ti.Geolocation.Android.addRule(gpsRule);
+Ti.Geolocation.Android.addLocationRule(gpsRule);
 </code></pre>
 <p>Each rule can specify any combination of the following criteria:</p>
 <ul>

@@ -44,10 +44,18 @@
 <div id="content">
     
     <div class="description">
-        <p>The Titanium binding of an <a href="http://developer.android.com/reference/android/view/MenuItem.html">Android MenuItem</a></p>
+        <p>The Titanium binding of an Android menu item.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>A menu item for an Android <a href="Titanium.Android.Menu-object.html">Menu</a>. Use
+<a href="Titanium.Android.Menu.add-method.html">Menu.add</a> to create a new menu item.</p>
+<p>See also:
+<a href="http://developer.android.com/reference/android/view/MenuItem.html">MenuItem</a> in the
+Android Developer Reference.</p>
+    </div>
     
 
     
@@ -64,11 +72,11 @@
             </ul>
     
             <ul>
-                <li><a href="#getEnabled-method">getEnabled <span class="params">()</span></a></li>
+                <li><a href="#getGroupId-method">getGroupId <span class="params">()</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#getGroupId-method">getGroupId <span class="params">()</span></a></li>
+                <li><a href="#getIcon-method">getIcon <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -88,7 +96,11 @@
             </ul>
     
             <ul>
-                <li><a href="#getVisible-method">getVisible <span class="params">()</span></a></li>
+                <li><a href="#isCheckable-method">isCheckable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#isChecked-method">isChecked <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -104,6 +116,14 @@
             </ul>
     
             <ul>
+                <li><a href="#setCheckable-method">setCheckable <span class="params">(checkable)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setChecked-method">setChecked <span class="params">(enabled)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setEnabled-method">setEnabled <span class="params">(enabled)</span></a></li>
             </ul>
     
@@ -116,7 +136,7 @@
             </ul>
     
             <ul>
-                <li><a href="#setTitleCondensed-method">setTitleCondensed <span class="params">(condensedTitle)</span></a></li>
+                <li><a href="#setTitleCondensed-method">setTitleCondensed <span class="params">(titleCondensed)</span></a></li>
             </ul>
     
             <ul>
@@ -130,12 +150,30 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="checkable-property"></a>checkable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines if the item can be checked.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="checked-property"></a>checked</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines if the item is checked.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="enabled-property"></a>enabled</td>
             <td class='attr-rw'>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>set the enabled state of the item</td>
+            <td class='attr-desc'>Determines if the item is enabled.</td>
         </tr>
         
         <tr valign='top'>
@@ -144,7 +182,16 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>groupId for this item</td>
+            <td class='attr-desc'>Group ID for this item.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="icon-property"></a>icon</td>
+            <td class='attr-rw'>
+                [NumberString]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Icon to display for the this menu item.</td>
         </tr>
         
         <tr valign='top'>
@@ -153,7 +200,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>itemId for this item</td>
+            <td class='attr-desc'>Item ID for this item.</td>
         </tr>
         
         <tr valign='top'>
@@ -162,7 +209,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>integer used for controlling sort order</td>
+            <td class='attr-desc'>Integer used for controlling the category and sort order for menu items.</td>
         </tr>
         
         <tr valign='top'>
@@ -171,7 +218,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>item title</td>
+            <td class='attr-desc'>Title of the item.</td>
         </tr>
         
         <tr valign='top'>
@@ -180,7 +227,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>condensed item title</td>
+            <td class='attr-desc'>Shortened version of the item's title.</td>
         </tr>
         
         <tr valign='top'>
@@ -189,7 +236,7 @@
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>set the visible state of the item</td>
+            <td class='attr-desc'>Determines whether the menu item is visible.</td>
         </tr>
         
     </table>
@@ -202,7 +249,7 @@
         <tr valign='top'>
             <td class='attr-name'><a href="#click-event">click</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>fired when the user presses the button</td>
+            <td class='attr-desc'>Fired when the user clicks the menu item.</td>
         </tr>
         
     </table>
@@ -301,22 +348,22 @@
     </div>
     
     <div class="method">
-      <div class="title" id="getEnabled-method">
-        <a name="getEnabled-method"></a><b>getEnabled</b> <span class="params">()</span>
+      <div class="title" id="getGroupId-method">
+        <a name="getGroupId-method"></a><b>getGroupId</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.enabled-property.html">enabled</a> property.</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.groupId-property.html">groupId</a> property.</p></div>
       
 
       
     </div>
     
     <div class="method">
-      <div class="title" id="getGroupId-method">
-        <a name="getGroupId-method"></a><b>getGroupId</b> <span class="params">()</span>
+      <div class="title" id="getIcon-method">
+        <a name="getIcon-method"></a><b>getIcon</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>retrieve the groupId for this item</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.icon-property.html">icon</a> property.</p></div>
       
 
       
@@ -327,7 +374,7 @@
         <a name="getItemId-method"></a><b>getItemId</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>retrieve the itemId for this item</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.itemId-property.html">itemId</a> property.</p></div>
       
 
       
@@ -338,7 +385,7 @@
         <a name="getOrder-method"></a><b>getOrder</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>retrieve the sort order</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.order-property.html">order</a> property.</p></div>
       
 
       
@@ -349,7 +396,7 @@
         <a name="getTitle-method"></a><b>getTitle</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>retrieve the title of the item</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.title-property.html">title</a> property.</p></div>
       
 
       
@@ -360,18 +407,29 @@
         <a name="getTitleCondensed-method"></a><b>getTitleCondensed</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>retrieve the condensed title of the item</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.titleCondensed-property.html">titleCondensed</a> property.</p></div>
       
 
       
     </div>
     
     <div class="method">
-      <div class="title" id="getVisible-method">
-        <a name="getVisible-method"></a><b>getVisible</b> <span class="params">()</span>
+      <div class="title" id="isCheckable-method">
+        <a name="isCheckable-method"></a><b>isCheckable</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.visible-property.html">visible</a> property.</p></div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.checkable-property.html">checkable</a> state of the menu item.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="isChecked-method">
+        <a name="isChecked-method"></a><b>isChecked</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.checked-property.html">checked</a> state of the menu item.</p></div>
       
 
       
@@ -382,7 +440,7 @@
         <a name="isEnabled-method"></a><b>isEnabled</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>retrieve the enabled state of the menu</p></div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.enabled-property.html">enabled</a> state of the menu item.</p></div>
       
 
       
@@ -393,7 +451,7 @@
         <a name="isVisible-method"></a><b>isVisible</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>retrieve the visible state of the menu</p></div>
+      <div class="description"><p>Returns the <a href="Titanium.Android.MenuItem.visible-property.html">visible</a> state of the menu item.</p></div>
       
 
       
@@ -442,11 +500,41 @@
     </div>
     
     <div class="method">
-      <div class="title" id="setEnabled-method">
-        <a name="setEnabled-method"></a><b>setEnabled</b> <span class="params">(enabled)</span>
+      <div class="title" id="setCheckable-method">
+        <a name="setCheckable-method"></a><b>setCheckable</b> <span class="params">(checkable)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>set the enabled state of the item</p></div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.checkable-property.html">checkable</a> state of the menu item.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>checkable</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True enable checking and unchecking this item, false to disable it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setChecked-method">
+        <a name="setChecked-method"></a><b>setChecked</b> <span class="params">(enabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.checked-property.html">checked</a> state of the menu item.</p></div>
       
 
       
@@ -463,7 +551,37 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>true to enable item, false to disable</td>
+                  <td class='attr-desc'>True to check the item, false to uncheck it.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setEnabled-method">
+        <a name="setEnabled-method"></a><b>setEnabled</b> <span class="params">(enabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.enabled-property.html">enabled</a> state of the menu item.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>enabled</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>True to enable item, false to disable it.</td>
                 </tr>
                 
       	</table>
@@ -476,7 +594,7 @@
         <a name="setIcon-method"></a><b>setIcon</b> <span class="params">(icon)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>set the icon for the item</p></div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.icon-property.html">icon</a> property.</p></div>
       
 
       
@@ -489,11 +607,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [NumberString]
                       
                     
                   </td>
-                  <td class='attr-desc'>icon to use with the item</td>
+                  <td class='attr-desc'>New value for the property.</td>
                 </tr>
                 
       	</table>
@@ -506,7 +624,7 @@
         <a name="setTitle-method"></a><b>setTitle</b> <span class="params">(title)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>set the title for the item</p></div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.title-property.html">title</a> property.</p></div>
       
 
       
@@ -523,7 +641,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>new title</td>
+                  <td class='attr-desc'>New value for the property.</td>
                 </tr>
                 
       	</table>
@@ -533,10 +651,10 @@
     
     <div class="method">
       <div class="title" id="setTitleCondensed-method">
-        <a name="setTitleCondensed-method"></a><b>setTitleCondensed</b> <span class="params">(condensedTitle)</span>
+        <a name="setTitleCondensed-method"></a><b>setTitleCondensed</b> <span class="params">(titleCondensed)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>set the condensed title for the item</p></div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.titleCondensed-property.html">titleCondensed</a> property.</p></div>
       
 
       
@@ -545,7 +663,7 @@
       	<table border='0' cellpadding='5'>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>condensedTitle</td>
+                  <td class='attr-name'>titleCondensed</td>
                   <td class='attr-rw'>
                     
                       
@@ -553,7 +671,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>new condensed title</td>
+                  <td class='attr-desc'>New value for the property.</td>
                 </tr>
                 
       	</table>
@@ -566,7 +684,7 @@
         <a name="setVisible-method"></a><b>setVisible</b> <span class="params">(visible)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>set the visible state of the item</p></div>
+      <div class="description"><p>Sets the <a href="Titanium.Android.MenuItem.visible-property.html">visible</a> state of the menu item.</p></div>
       
 
       
@@ -583,7 +701,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>true to show the item, false to hide</td>
+                  <td class='attr-desc'>True to show the item, false to hide it.</td>
                 </tr>
                 
       	</table>

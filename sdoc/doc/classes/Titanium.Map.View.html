@@ -787,7 +787,7 @@ value for the <code>&lt;mobileweb&gt;&lt;map&gt;&lt;apikey&gt;</code> tag.</p>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -832,7 +832,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -869,7 +869,7 @@ to fit the map view's aspect ratio.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -942,7 +942,7 @@ map.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -974,6 +974,12 @@ map.</td>
             <td class='attr-name'><a href="#loading-event">loading</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the map begins loading.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#pinchangedragstate-event">pinchangedragstate</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the user interacts with a draggable annotation.</td>
         </tr>
         
         <tr valign='top'>
@@ -3585,6 +3591,112 @@ layout pass after they have been updated.</p></div>
               <span class="attr-rw">[Object]</span><br /> 
               
               <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="pinchangedragstate-event">
+        <a name="pinchangedragstate-method"></a><b>pinchangedragstate</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>annotation</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.Map.Annotation]</span><br /> 
+              
+              <p>Annotation being dragged.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>index</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the annotation.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>map</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.Map.View]</span><br /> 
+              
+              <p>This map view.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>newState</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>New drag state for the annotation, one of
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_NONE-property.html">ANNOTATION_DRAG_STATE_NONE</a>,
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_START-property.html">ANNOTATION_DRAG_STATE_START</a>,
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_DRAG-property.html">ANNOTATION_DRAG_STATE_DRAG</a>,
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_CANCEL-property.html">ANNOTATION_DRAG_STATE_CANCEL</a> or
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_END-property.html">ANNOTATION_DRAG_STATE_END</a>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>oldState</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Previous drag state for the annotation, one of
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_NONE-property.html">ANNOTATION_DRAG_STATE_NONE</a>,
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_START-property.html">ANNOTATION_DRAG_STATE_START</a>,
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_DRAG-property.html">ANNOTATION_DRAG_STATE_DRAG</a>,
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_CANCEL-property.html">ANNOTATION_DRAG_STATE_CANCEL</a> or
+<a href="Titanium.Map.ANNOTATION_DRAG_STATE_END-property.html">ANNOTATION_DRAG_STATE_END</a>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>title</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Annotation title.</p>
             </td>
           </tr>
           

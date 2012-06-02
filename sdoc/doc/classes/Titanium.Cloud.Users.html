@@ -107,7 +107,7 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Create User Example</div>
+	<div class="subsectiontitle">Create User</div>
 	<div class="code"><p>This example creates a new user and checks the response.</p>
 <pre><code>Cloud.Users.create({
     email: 'test@mycompany.com',
@@ -129,7 +129,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Log in User Example</div>
+	<div class="subsectiontitle">Log in User</div>
 	<div class="code"><p>This example logs a user in and checks the response.</p>
 <pre><code>Cloud.Users.login({
     login: 'test@mycompany.com',
@@ -148,7 +148,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Show User Example</div>
+	<div class="subsectiontitle">Show User</div>
 	<div class="code"><p>This example requests information about a user and checks the response.</p>
 <pre><code>Cloud.Users.show({
     user_id: savedUserInfo.id
@@ -166,7 +166,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Show Current User Example</div>
+	<div class="subsectiontitle">Show Current User</div>
 	<div class="code"><p>This example requests information about the currently logged in user and checks the response.</p>
 <pre><code>Cloud.Users.showMe(function (e) {
     if (e.success) {
@@ -182,7 +182,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Search for Users Example</div>
+	<div class="subsectiontitle">Search for Users</div>
 	<div class="code"><p>This example requests information about particular users and checks the response.</p>
 <pre><code>Cloud.Users.search({
     q: 'test'
@@ -203,7 +203,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Query for Users Example</div>
+	<div class="subsectiontitle">Query for Users</div>
 	<div class="code"><p>This example requests information about specific users and checks the response.</p>
 <pre><code>Cloud.Users.query({
     page: 1,
@@ -230,7 +230,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Update User Example</div>
+	<div class="subsectiontitle">Update User</div>
 	<div class="code"><p>This example updates information about the currently logged in user and checks the response.</p>
 <pre><code>Cloud.Users.update({
     email: 'joeuser@mycompany.com',
@@ -254,7 +254,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Logout User Example</div>
+	<div class="subsectiontitle">Logout User</div>
 	<div class="code"><p>This example logs out the current user and checks the response.</p>
 <pre><code>Cloud.Users.logout(function (e) {
     if (e.success) {
@@ -266,7 +266,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Remove User Example</div>
+	<div class="subsectiontitle">Remove User</div>
 	<div class="code"><p>This example deletes the current user and checks the response.</p>
 <pre><code>Cloud.Users.remove(function (e) {
     if (e.success) {
@@ -278,7 +278,7 @@
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Request Reset Password User Example</div>
+	<div class="subsectiontitle">Request Reset Password User</div>
 	<div class="code"><p>This example requests a password reset for a user and checks the response.</p>
 <pre><code>Cloud.Users.requestResetPassword({
     email: 'joeuser@mycompany.com'
@@ -317,11 +317,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -359,11 +359,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -431,11 +431,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -473,11 +473,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -515,11 +515,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -557,11 +557,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -599,11 +599,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -671,11 +671,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>

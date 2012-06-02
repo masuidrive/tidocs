@@ -44,10 +44,19 @@
 <div id="content">
     
     <div class="description">
-        <p>A TableView section object created by the method <a href="Titanium.UI.createTableViewSection-method.html"><code>Titanium.UI.createTableViewSection</code></a>.</p>
+        <p>A table view section is a container within a table used to organize table view rows.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>Use the <a href="Titanium.UI.createTableViewSection-method.html"><code>Titanium.UI.createTableViewSection</code></a> method to create a <code>TableViewSection</code>, and add 
+<a href="Titanium.UI.TableViewRow-object.html">TableViewRow</a> objects to it using its 
+<a href="Titanium.UI.TableViewSection.add-method.html">add</a> method. Then apply it to a 
+<a href="Titanium.UI.TableView-object.html">TableView</a> using its <a href="Titanium.UI.TableView.data-property.html">data</a> property. </p>
+<p>See the description and examples sections of <a href="Titanium.UI.TableView-object.html">TableView</a> for details of 
+how to use <code>TableViewSection</code>.</p>
+    </div>
     
 
     
@@ -348,10 +357,6 @@
             </ul>
     
             <ul>
-                <li><a href="#setHeaderView-method">setHeaderView <span class="params">(headerView)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#setHeight-method">setHeight <span class="params">(height)</span></a></li>
             </ul>
     
@@ -620,16 +625,16 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the title of the section footer</td>
+            <td class='attr-desc'>Title of the section footer.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="footerView-property"></a>footerView</td>
             <td class='attr-rw'>
-                [Object]
+                [Titanium.UI.View]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>a view to use instead of the default label when rendering the section footer</td>
+            <td class='attr-desc'>View to use instead of the default label when rendering the section footer.</td>
         </tr>
         
         <tr valign='top'>
@@ -638,16 +643,16 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the title of the section header</td>
+            <td class='attr-desc'>Title of the section header.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="headerView-property"></a>headerView</td>
             <td class='attr-rw'>
-                [Object]
+                [Titanium.UI.View]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>a view to use instead of the default label when rendering the section header</td>
+            <td class='attr-desc'>View to use instead of the default label when rendering the section header.</td>
         </tr>
         
         <tr valign='top'>
@@ -675,7 +680,7 @@
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -702,7 +707,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -720,7 +725,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the number of rows in the section</td>
+            <td class='attr-desc'>Number of rows in the section.</td>
         </tr>
         
         <tr valign='top'>
@@ -729,7 +734,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Array&lt;Titanium.UI.TableViewRow&gt;]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Array of rows in the section.</td>
+            <td class='attr-desc'>Rows in the section.</td>
         </tr>
         
         <tr valign='top'>
@@ -738,7 +743,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -801,7 +806,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -900,22 +905,6 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
 
     
 
-    
-    <div class="sectiontitle">Code Examples</div>
-    <table border='0' cellpadding='5'>
-        
-	<div class="subsectiontitle">Simple Table View Section Example</div>
-	<div class="code"><p>In this example, we create a section with the header <code>Hello</code> and add two rows to it.</p>
-<pre><code>var section = Titanium.UI.createTableViewSection();
-section.headerTitle = "Hello";
-var row1 = Titanium.UI.createTableViewRow({title:"Hello 1"});
-var row2 = Titanium.UI.createTableViewRow({title:"Hello 2"});
-section.add(row1);
-section.add(row2);
-tableview.add(section);
-</code></pre></div>
-        
-    </table>
     
 
 
@@ -2299,7 +2288,7 @@ If this argument is not a view, an exception will be raised.</td>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Titanium.UI.View]
                       
                     
                   </td>
@@ -2330,36 +2319,6 @@ If this argument is not a view, an exception will be raised.</td>
                     
                       
                         [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setHeaderView-method">
-        <a name="setHeaderView-method"></a><b>setHeaderView</b> <span class="params">(headerView)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableViewSection.headerView-property.html">headerView</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>headerView</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Object]
                       
                     
                   </td>

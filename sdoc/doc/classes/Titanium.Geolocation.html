@@ -106,12 +106,36 @@ updates when the user is not moving.</p>
 <h4>Configurating Location Updates on Android</h4>
 <p>Prior to Titanium Mobile 2.0, Titanium attempted to follow the iOS model on Android,
 but this didn't fit the native Android model well. In Release 2.0, three different
-location service mode are supported on Android: <em>legacy</em>, <em>manual</em>, and <em>simple</em>.</p>
+location service modes are supported on Android: <em>simple</em>, <em>manual</em>, and <em>legacy</em>.</p>
 <ul>
 <li>
+<p><em>Simple mode</em> provides a compromise mode that provides adaquate support for 
+    undemanding location applications without requiring developers to
+    write a lot of Android-specific code. To use simple mode:</p>
+<ol>
+<li>
+<p>Leave the <a href="Titanium.Geolocation.Android.manualMode-property.html"><code>Titanium.Geolocation.Android.manualMode</code></a> flag set to <code>false</code> (the 
+     default value).</p>
+</li>
+<li>
+<p>Set the <a href="Titanium.Geolocation.accuracy-property.html">accuracy</a> property to 
+     either <a href="Titanium.Geolocation.ACCURACY_HIGH-property.html">ACCURACY_HIGH</a> or 
+     <a href="Titanium.Geolocation.ACCURACY_LOW-property.html">ACCURACY_LOW</a>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><em>Manual mode</em> gives developers low-level control of location updates, including
+    enabling individual location providers and filtering updates, for the best
+    combination of accuracy and battery life. </p>
+<p>Manual mode is used when the <a href="Titanium.Geolocation.Android.manualMode-property.html"><code>Titanium.Geolocation.Android.manualMode</code></a> flag is set
+to <code>true</code>. In manual mode, the <code>accuracy</code> property is not used, and all
+configuration is done through the <a href="Titanium.Geolocation.Android.html"><code>Titanium.Geolocation.Android</code></a> module.</p>
+</li>
+<li>
 <p><em>Legacy mode</em> is the mode that existed prior to 2.0. Legacy mode is 
-    used when you set the <code>accuracy</code> property to one of the iOS 
-    <code>ACCURACY</code> constants:</p>
+    used when the <code>manualMode</code> flag is <code>false</code> and the <code>accuracy</code> property is 
+    set to one of the iOS <code>ACCURACY</code> constants:</p>
 <ul>
 <li><a href="Titanium.Geolocation.ACCURACY_BEST-property.html">ACCURACY_BEST</a> (highest accuracy and power consumption)</li>
 <li><a href="Titanium.Geolocation.ACCURACY_NEAREST_TEN_METERS-property.html">ACCURACY_NEAREST_TEN_METERS</a> </li>
@@ -130,24 +154,6 @@ enabled at a time. You can specify a the location provider using the
 <p>You can also specifying a desired update frequency using the
 <a href="Titanium.Geolocation.frequency-property.html">frequency</a> property. The <code>preferredProvider</code>
 and <code>frequency</code> properties are not used in any other mode.</p>
-</li>
-<li>
-<p><em>Manual mode</em> gives developers low-level control of location updates, including
-    enabling individual location providers and filtering updates, for the best
-    combination of accuracy and battery life. </p>
-<p>Manual mode is used when the <a href="Titanium.Geolocation.Android.manualMode-property.html"><code>Titanium.Geolocation.Android.manualMode</code></a> flag is set
-to <code>true</code>. In manual mode, the <code>accuracy</code> property is not used, and all
-configuration is done through the <a href="Titanium.Geolocation.Android.html"><code>Titanium.Geolocation.Android</code></a> module.</p>
-</li>
-<li>
-<p><em>Simple mode</em> provides a compromise mode that provides adaquate support for 
-    undemanding location applications without requiring developers to
-    write a lot of Android-specific code. </p>
-<p>Setting the <a href="Titanium.Geolocation.accuracy-property.html">accuracy</a> property to 
-either <a href="Titanium.Geolocation.ACCURACY_HIGH-property.html">ACCURACY_HIGH</a> or 
-<a href="Titanium.Geolocation.ACCURACY_LOW-property.html">ACCURACY_LOW</a> enables simple mode.</p>
-<p>In this mode the platform handles enabling and disabling location providers and
-filtering location updates.</p>
 </li>
 </ul>
 <h4>Configuring Location Updates on Mobile Web</h4>
@@ -1295,7 +1301,7 @@ services.</td>
             <td class='attr-name'>heading</td>
             <td class='attr-desc'>
               
-              <span class="attr-rw">[HeadingResults]</span><br /> 
+              <span class="attr-rw">[HeadingData]</span><br /> 
               
               <p>Dictionary object containing the heading data.</p>
             </td>

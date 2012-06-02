@@ -322,7 +322,8 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Ready state constant indicating that the connection has been opened, but the request has not yet been sent.</td>
+            <td class='attr-desc'>Ready state constant indicating that the connection has been opened, but the request has 
+not yet been sent.</td>
         </tr>
         
         <tr valign='top'>
@@ -340,7 +341,7 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>All of the response headers as a single string, or an empty string if no headers are available.</td>
+            <td class='attr-desc'>All of the response headers.</td>
         </tr>
         
         <tr valign='top'>
@@ -349,7 +350,7 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Set to false to suppress URL-encoding of the specified URL.</td>
+            <td class='attr-desc'>Determines whether automatic encoding is enabled for the specified URL.</td>
         </tr>
         
         <tr valign='top'>
@@ -358,7 +359,7 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Set to false to disable automatic handling of HTTP redirects.</td>
+            <td class='attr-desc'>Determines whether automatic automatic handling of HTTP redirects is enabled.</td>
         </tr>
         
         <tr valign='top'>
@@ -367,7 +368,7 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Controls whether or not HTTP responses are cached.</td>
+            <td class='attr-desc'>Determines whether HTTP responses are cached.</td>
         </tr>
         
         <tr valign='top'>
@@ -376,7 +377,7 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>boolean to indicate that the response was successful</td>
+            <td class='attr-desc'>Indicates whether the response was successful.</td>
         </tr>
         
         <tr valign='top'>
@@ -403,8 +404,7 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>File to download contents to.  Can only be set after calling
-open.</td>
+            <td class='attr-desc'>Target local file to receive data.</td>
         </tr>
         
         <tr valign='top'>
@@ -485,7 +485,7 @@ open.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Response as text or null if an error was received or no data was returned.</td>
+            <td class='attr-desc'>Response as text.</td>
         </tr>
         
         <tr valign='top'>
@@ -521,7 +521,7 @@ open.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Timeout in milliseconds when the connection should be aborted</td>
+            <td class='attr-desc'>Timeout in milliseconds when the connection should be aborted.</td>
         </tr>
         
         <tr valign='top'>
@@ -539,7 +539,7 @@ open.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Controls how SSL certification validation is performed on connection.</td>
+            <td class='attr-desc'>Determines how SSL certification validation is performed on connection.</td>
         </tr>
         
         <tr valign='top'>
@@ -548,7 +548,7 @@ open.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Tells the request to include any cookies and HTTP authentication information.</td>
+            <td class='attr-desc'>Determines whether the request should include any cookies and HTTP authentication information.</td>
         </tr>
         
     </table>
@@ -576,7 +576,7 @@ open.</td>
          Ti.API.debug(e.error);
          alert('error');
      },
-     timeout : 5000  /* in milliseconds */
+     timeout : 5000  // in milliseconds
  });
  // Prepare the connection.
  client.open("GET", url);
@@ -1015,7 +1015,7 @@ open.</td>
         <a name="open-method"></a><b>open</b> <span class="params">(method, url, async)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Opens the request and readies the connection.</p></div>
+      <div class="description"><p>Opens the request and prepares the connection.</p></div>
       
 
       
@@ -1056,7 +1056,7 @@ open.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Whether the request should be made asynchronously. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the request should be made asynchronously. Only used on iOS.</td>
                 </tr>
                 
       	</table>
@@ -1470,7 +1470,8 @@ open.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Value to assign to the header. May be null to clear a default header value, such as X-Requested-With.</td>
+                  <td class='attr-desc'>Value to assign to the header. May be null to clear a default header value, such as 
+X-Requested-With.</td>
                 </tr>
                 
       	</table>

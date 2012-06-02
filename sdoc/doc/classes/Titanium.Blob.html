@@ -44,10 +44,33 @@
 <div id="content">
     
     <div class="description">
-        <p>The blob is an abstract data type that represents binary information, often obtained through HTTPClient or via files. It often is used to store text or the actual data of an image.</p>
+        <p>A container for binary data.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>A <code>Blob</code> represents a chunk of binary information, often obtained through 
+an <a href="Titanium.Network.HTTPClient-object.html">HTTPClient</a> or by reading a <a href="Titanium.Filesystem.File-object.html">File</a>. </p>
+<p>Blobs are often used to store text or image data. 
+The <code>Blob</code> object includes a number of properties and methods specific to image blobs.</p>
+<p>Android and Mobile Web support an <a href="Titanium.Blob.append-method.html">append</a> method, but
+otherwise blobs are immutable. </p>
+<p>The <a href="Titanium.Utils.html"><code>Titanium.Utils</code></a> module provides several utility methods for working with 
+blobs, including methods for converting between blobs and Base64-encoded strings,
+and methods for generating SHA-1 and SHA-256 hashes and MD5 digests from blob data.</p>
+<p>The <a href="Titanium.Buffer-object.html">Buffer</a> object can also contain binary data, and is
+more easily mutable. Extracting blob data to a buffer is somewhat roundabout:</p>
+<pre><code>var blobStream = Ti.Stream.createStream({ source: myBlob, mode: Ti.Stream.MODE_READ });
+var newBuffer = Ti.createBuffer({ length: myBlob.length });
+var bytes = blobStream.read(newBuffer);
+</code></pre>
+<p>Creating a blob from a buffer is much easier:</p>
+<pre><code>var newBlob = myBuffer.toBlob();
+</code></pre>
+<p>In both cases, the conversion involves copying the data from one object to another, so 
+you should be conscious of the amount of the data being copied.</p>
+    </div>
     
 
     
@@ -65,6 +88,10 @@
     
             <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getFile-method">getFile <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -134,12 +161,22 @@
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="file-property"></a>file</td>
+            <td class='attr-rw'>
+                [Titanium.Filesystem.File]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>File object represented by this blob, or null if this blob is not
+associated with a file.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="height-property"></a>height</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>When this blob represents an image, this is the height of the image in pixels. Otherwise, this is 0.</td>
+            <td class='attr-desc'>If this blob represents an image, this is the height of the image in pixels.</td>
         </tr>
         
         <tr valign='top'>
@@ -148,7 +185,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The length of this blob in bytes.</td>
+            <td class='attr-desc'>Length of this blob in bytes.</td>
         </tr>
         
         <tr valign='top'>
@@ -157,7 +194,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The mime type of this blob.</td>
+            <td class='attr-desc'>Mime type of the data in this blob.</td>
         </tr>
         
         <tr valign='top'>
@@ -166,7 +203,8 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>When this blob represents a Titanium.Filesystem.File, this is the file URL that represents it</td>
+            <td class='attr-desc'>If this blob represents a File, this is the file URL
+that represents it.</td>
         </tr>
         
         <tr valign='top'>
@@ -175,7 +213,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>When this blob represents an image, this is the total number of pixels in the image. Otherwise it returns the number of bytes in the binary data.</td>
+            <td class='attr-desc'>Size of the blob in pixels (for image blobs) or bytes (for all other blobs).</td>
         </tr>
         
         <tr valign='top'>
@@ -184,7 +222,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>A UTF-8 string representation of the data in this blob. If this blob represents pure binary data, the value will be null.</td>
+            <td class='attr-desc'>UTF-8 string representation of the data in this blob.</td>
         </tr>
         
         <tr valign='top'>
@@ -193,7 +231,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>When this blob represents an image, this is the width of the image in pixels. Otherwise, this is 0.</td>
+            <td class='attr-desc'>If this blob represents an image, this is the width of the image in pixels.</td>
         </tr>
         
     </table>
@@ -273,7 +311,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The blob to append to this blob</td>
+                  <td class='attr-desc'>Blob to append to this blob.</td>
                 </tr>
                 
       	</table>
@@ -320,6 +358,17 @@
                 
       	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getFile-method">
+        <a name="getFile-method"></a><b>getFile</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Blob.file-property.html">file</a> property.</p></div>
+      
+
       
     </div>
     
@@ -405,7 +454,7 @@
         <a name="imageAsCropped-method"></a><b>imageAsCropped</b> <span class="params">(options)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>When this blob represents an image, this creates a new blob by cropping the underlying image to the specified dimensions.</p></div>
+      <div class="description"><p>Creates a new blob by cropping the underlying image to the specified dimensions.</p></div>
       
 
       
@@ -422,7 +471,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>imageAsCropped named options</td>
+                  <td class='attr-desc'>Image cropping options.</td>
                 </tr>
                 
       	</table>
@@ -435,7 +484,7 @@
         <a name="imageAsResized-method"></a><b>imageAsResized</b> <span class="params">(width, height)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>When this blob represents an image, this creates a new blob by resizing and scaling the underlying image to the specified dimensions.</p></div>
+      <div class="description"><p>Creates a new blob by resizing and scaling the underlying image to the specified dimensions.</p></div>
       
 
       
@@ -452,7 +501,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The width to resize this image to.</td>
+                  <td class='attr-desc'>Width to resize this image to.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -464,7 +513,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The height to resize this image to.</td>
+                  <td class='attr-desc'>Height to resize this image to.</td>
                 </tr>
                 
       	</table>
@@ -477,7 +526,7 @@
         <a name="imageAsThumbnail-method"></a><b>imageAsThumbnail</b> <span class="params">(size, borderSize, cornerRadius)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Generate a thumbnail version of an image, optionally with a border and rounded corners</p></div>
+      <div class="description"><p>Returns a thumbnail version of the underlying image, optionally with a border and rounded corners.</p></div>
       
 
       
@@ -494,7 +543,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The size of the thumbnail, in either width or height</td>
+                  <td class='attr-desc'>Size of the thumbnail, in either width or height.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -506,7 +555,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The width of the thumbnail's border.</td>
+                  <td class='attr-desc'>Width of the thumbnail's border.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -518,7 +567,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The radius of the thumbnail's corners.</td>
+                  <td class='attr-desc'>Radius of the thumbnail's corners.</td>
                 </tr>
                 
       	</table>
@@ -531,7 +580,7 @@
         <a name="imageWithAlpha-method"></a><b>imageWithAlpha</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>When this blob represents an image, this adds an alpha channel to the underlying image.</p></div>
+      <div class="description"><p>Returns a copy of the underlying image with an added alpha channel.</p></div>
       
 
       
@@ -542,7 +591,7 @@
         <a name="imageWithRoundedCorner-method"></a><b>imageWithRoundedCorner</b> <span class="params">(cornerSize, borderSize)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>When this blob represents an image, this adds a rounded corner to the underlying image.</p></div>
+      <div class="description"><p>Returns a copy of the underlying image with rounded corners added.</p></div>
       
 
       
@@ -559,7 +608,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The size of the rounded corners in pixels.</td>
+                  <td class='attr-desc'>Size of the rounded corners in pixels.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -571,7 +620,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The size of the border in pixels.</td>
+                  <td class='attr-desc'>Width of the border in pixels.</td>
                 </tr>
                 
       	</table>
@@ -584,7 +633,7 @@
         <a name="imageWithTransparentBorder-method"></a><b>imageWithTransparentBorder</b> <span class="params">(size)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>When this blob represents an image, this adds a transparent border to the underlying image.</p></div>
+      <div class="description"><p>Returns a copy of the underlying image with an added transparent border.</p></div>
       
 
       
@@ -601,7 +650,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The size of the transparent border.</td>
+                  <td class='attr-desc'>Width of the transparent border in pixels.</td>
                 </tr>
                 
       	</table>
@@ -656,7 +705,7 @@
         <a name="toString-method"></a><b>toString</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Converts this blob to a String</p></div>
+      <div class="description"><p>Returns a string representation of this blob.</p></div>
       
 
       

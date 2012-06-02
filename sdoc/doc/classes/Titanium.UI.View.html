@@ -65,7 +65,7 @@ current system and/or the current project.</p>
 <p>The following units are supported:</p>
 <table cellpadding="6px" border="1" rules="all">
 <tr>
-<th align="left">Unit</th> <th align="left">Specifier</th> <th align="left">Note<th>
+<th align="left">Unit</th> <th align="left">Specifier</th> <th align="left">Note</th>
 </tr>
 <tr> <td>pixels</td> <td>px</td> <td></td> </tr>
 <tr> <td>density-independent pixels</td> <td>dip</td> <td>Equivalent to Apple "points."</td> </tr>
@@ -104,24 +104,20 @@ its density. On Mobile Web, in particular, these values are unlikely to be exact
 <li>DIPs on Mobile Web (as described above, DIPs and pixels are interchangable on
      Mobile Web).</li>
 </ul>
+<p>On Android and iOS, the default unit can be overriden on a per-application level by setting the
+<code>ti.ui.defaultunit</code> property in <code>tiapp.xml</code>. For example, to use DIPs as the 
+default on all platforms, set <code>defaultunit</code> to <code>dip</code>:</p>
+<pre><code>&lt;property name="ti.ui.defaultunit" type="string"&gt;dip&lt;/property&gt;
+</code></pre>
+<p>(This property is not supported on Mobile Web.)</p>
+<p>The value for <code>ti.ui.defaultunit</code> can be any of the unit specifiers defined above, or 
+<code>system</code> to specify that the platform's default unit should be used.</p>
 <p>Note that prior to Release 2.0, iOS ignored any specified unit, so code that specifies
-a unit may operate differently on iOS in Release 2.0.</p>
+a unit may operate differently on iOS in Release 2.0. If you set the
+<code>ti.ui.defaultunit</code> property to anything other than <code>system</code> or <code>dip</code>, your
+application should detect and handle Retina displays manually.</p>
 <p>Font sizes on iOS are treated differently than other sizes: font sizes are always 
 specified in typographical points. </p>
-<p>The <a href="Titanium.UI.View.height-property.html">height</a> and <a href="Titanium.UI.View.width-property.html">width</a> properties 
-accept several special values:</p>
-<ul>
-<li><a href="Titanium.UI.FILL-property.html"><code>Titanium.UI.FILL</code></a> specifies that the view should fill the parent in this
-    dimension.</li>
-<li><a href="Titanium.UI.SIZE-property.html"><code>Titanium.UI.SIZE</code></a> specifies that the view should adjust this size to fit its
-    contents, such as a label's text or a view's children.</li>
-<li>'auto' specifies that the view should choose either <code>FILL</code> or <code>SIZE</code> behavior.
-    In 2.0, the behavior of the 'auto' value is specified by the UI Composite Layout
-    Spec. This value is not recommended for new development and will be deprecated in
-    the future.</li>
-</ul>
-<p>Sizes and positions can also be specified as a percentage of the parent's size, for 
-example, '50%'.</p>
 <p>For more details see: </p>
 <ul>
 <li><a href="http://docs.appcelerator.com/titanium/2.0/index.html#!/guide/UI_Composite_Layout_Behavior_Spec">UI Composite Layout Spec</a></li>
@@ -131,17 +127,34 @@ example, '50%'.</p>
 properties, and sized using the <code>width</code> and <code>height</code> properties. These are
 input properties, set by the user to specify layout, and not modified by the 
 system to indicate actual calculated positions and sizes. </p>
+<p>The <a href="Titanium.UI.View.height-property.html">height</a> and <a href="Titanium.UI.View.width-property.html">width</a> properties 
+accept several special values:</p>
+<ul>
+<li><a href="Titanium.UI.FILL-property.html"><code>Titanium.UI.FILL</code></a> specifies that the view should fill the parent in this
+    dimension.</li>
+<li><a href="Titanium.UI.SIZE-property.html"><code>Titanium.UI.SIZE</code></a> specifies that the view should adjust this size to fit its
+    contents, such as a label's text or a view's children.</li>
+<li>
+<p>'auto' specifies that the view should choose either <code>FILL</code> or <code>SIZE</code> behavior.
+    In 2.0, the behavior of the 'auto' value is specified by the UI Composite Layout
+    Spec. This value is not recommended for new development and will be deprecated in
+    the future.</p>
+<p>On Mobile Web, 'auto' always selects <code>SIZE</code> behavior.</p>
+</li>
+</ul>
+<p>Sizes and positions can also be specified as a percentage of the parent's size, for 
+example, '50%'.</p>
 <p>How these properties are interpreted depends on the value of the view's <code>layout</code> 
 property. See the description of the <a href="Titanium.UI.View.layout-property.html">layout</a> property 
 for details.</p>
-<p>The <a href="Titanium.UI.View.size-property.html">size</a> property is a read-only dimension
+<p>The <a href="Titanium.UI.View.rect-property.html">rect</a> property is a read-only dictionary
+with the properties <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code>. It provides the <em>rendered</em>
+size and position of the  view, and is only available once both it and its ancestors have been
+fully drawn.</p>
+<p>The <a href="Titanium.UI.View.size-property.html">size</a> property is a read-only dictionary
 with the properties <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code>. It provides the <em>rendered</em> size
  of the  view, and is only available once both it and its ancestors have been
-fully drawn.</p>
-<p>The <a href="Titanium.UI.View.rect-property.html">rect</a> property is a read-only dimension
-with the properties <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code>. It provides the <em>rendered</em>
-position and size of the  view, and is only available once both it and its ancestors have been
-fully drawn.</p>
+fully drawn. </p>
 <p>To determine whether the <code>size</code> and <code>rect</code> values are available, add an event listener
 for the <a href="Titanium.UI.View.postlayout-event.html">postlayout</a> event, which is fired at the end of
 a layout cycle.</p>
@@ -697,7 +710,7 @@ a layout cycle.</p>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -724,7 +737,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -742,7 +755,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -805,7 +818,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>

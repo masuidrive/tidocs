@@ -50,12 +50,11 @@
     
     
     <div class="description">
-        <p>On Android, a switch can have text associated with it, and appears as either a 
-checkbox or toggle button.</p>
-<p>On iOS, the switch appears as an iOS on/off switch and doesn't have any text
-associated with it. </p>
-<p>On Mobile Web, a switch always has text associated with it, and appears as a
-toggle button, similar to Android.</p>
+        <p>On Android, a switch can have text associated with it, and appears as either a checkbox or 
+toggle button.</p>
+<p>On iOS, the switch appears as an iOS on/off switch and doesn't have any text associated with it. </p>
+<p>On Mobile Web, a switch always has text associated with it, and appears as a toggle button, 
+similar to Android.</p>
 <p>Use the <a href="Titanium.UI.createSwitch-method.html"><code>Titanium.UI.createSwitch</code></a> method to create a switch.</p>
     </div>
     
@@ -670,7 +669,7 @@ toggle button, similar to Android.</p>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Set to true to enable the switch, false to disable the switch.</td>
+            <td class='attr-desc'>Determines whether the switch is enabled.</td>
         </tr>
         
         <tr valign='top'>
@@ -716,7 +715,7 @@ toggle button, similar to Android.</p>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -743,7 +742,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -761,7 +760,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -779,7 +778,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Style of the switch, either checkbox or toggle button.</td>
+            <td class='attr-desc'>Style of the switch. Enables either the toggle button (default) or checkbox.</td>
         </tr>
         
         <tr valign='top'>
@@ -788,7 +787,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [StringNumber]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Text alignment, specified using one of the Titanium.UI text alignment constants: TEXT_ALIGNMENT_LEFT, TEXT_ALIGNMENT_CENTER, or TEXT_ALIGNMENT_RIGHT.</td>
+            <td class='attr-desc'>Horizontal text alignment of the switch title.</td>
         </tr>
         
         <tr valign='top'>
@@ -797,7 +796,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>text to display with checkbox. Used if style is Titanium.UI.Android.SWITCH_STYLE_CHECKBOX</td>
+            <td class='attr-desc'>Text to display next to the switch, when the checkbox style is in use.</td>
         </tr>
         
         <tr valign='top'>
@@ -806,7 +805,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Text to display when a toggle button-style switch is toggled on.</td>
+            <td class='attr-desc'>Text to display on the switch in its "off" state, when the toggle button style is in use.</td>
         </tr>
         
         <tr valign='top'>
@@ -815,7 +814,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Text to display when a toggle button-style switch is toggled off.</td>
+            <td class='attr-desc'>Text to display on the switch in its "on" state, when the toggle button style is in use.</td>
         </tr>
         
         <tr valign='top'>
@@ -851,7 +850,8 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Current switch value, true if the switch is on, and false if switch is off.</td>
+            <td class='attr-desc'>Indicates whether the switch has been turned on or off by the user. May also be set 
+programmatically.</td>
         </tr>
         
         <tr valign='top'>
@@ -860,11 +860,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [NumberString]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Vertical alignment for the text field, specified using one of the 
-vertical alignment constants from Titanium.UI: 
-TEXT_VERTICAL_ALIGNMENT_BOTTOM, 
-TEXT_VERTICAL_ALIGNMENT_CENTER, or 
-TEXT_VERTICAL_ALIGNMENT_TOP.</td>
+            <td class='attr-desc'>Vertical alignment for the text field.</td>
         </tr>
         
         <tr valign='top'>
@@ -891,7 +887,7 @@ TEXT_VERTICAL_ALIGNMENT_TOP.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -1001,14 +997,69 @@ TEXT_VERTICAL_ALIGNMENT_TOP.</td>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Switch Example</div>
-	<div class="code"><p>The following is a simple example of a switch and receiving <code>change</code> events.</p>
-<pre><code>var basicSwitch = Titanium.UI.createSwitch({
-    value:false
+	<div class="code"><p>Create a standard switch, using default values, and output value property on each <code>change</code> 
+event.</p>
+<pre><code>var win = Ti.UI.createWindow({
+  backgroundColor: 'white'
 });
-basicSwitch.addEventListener('change',function(e)
-{
-    Titanium.API.info('Basic Switch value = ' + e.value + ' act val ' + basicSwitch.value);
+
+var basicSwitch = Ti.UI.createSwitch({
+  value:true // mandatory property for iOS 
 });
+win.add(basicSwitch);
+
+basicSwitch.addEventListener('change',function(e){
+  Ti.API.info('Switch value: ' + basicSwitch.value);
+});
+
+win.open();
+
+// print initial value
+Ti.API.info('Switch value: ' + basicSwitch.value);
+</code></pre></div>
+        
+	<div class="subsectiontitle">Toggle Button Switch Example (Android)</div>
+	<div class="code"><p>Create a standard (toggle button) switch with a customized title for each on/off state, and 
+output value property on each <code>change</code> event.</p>
+<pre><code>var win = Ti.UI.createWindow({
+  backgroundColor: 'white'
+});
+
+var basicSwitch = Ti.UI.createSwitch({
+  titleOn:'Notifications Enabled',
+  titleOff:'Notifications Disabled',
+  value:true,
+  width: 200, height:120
+});
+win.add(basicSwitch);
+
+basicSwitch.addEventListener('change',function(e){
+  Ti.API.info('Switch value: ' + basicSwitch.value);
+});
+
+win.open();
+</code></pre></div>
+        
+	<div class="subsectiontitle">Checkbox Switch Example (Android)</div>
+	<div class="code"><p>Create a checkbox switch, and output value property on each <code>change</code> event.</p>
+<pre><code>var win = Ti.UI.createWindow({
+  backgroundColor: 'white'
+});
+
+var basicSwitch = Ti.UI.createSwitch({
+  style: Ti.UI.Android.SWITCH_STYLE_CHECKBOX,
+  textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,
+  title:'Notifications',
+  value:true,
+  width: 300 // necessary for textAlign to be effective
+});
+win.add(basicSwitch);
+
+basicSwitch.addEventListener('change',function(e){
+  Ti.API.info('Switch value: ' + basicSwitch.value);
+});
+
+win.open();
 </code></pre></div>
         
     </table>

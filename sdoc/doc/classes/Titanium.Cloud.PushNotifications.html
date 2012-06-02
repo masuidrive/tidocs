@@ -51,37 +51,29 @@
     
     <div class="description">
         <p>Please refer to <a href="http://cloud.appcelerator.com/docs/ios#pushn">configure push notifications for iOS</a>
-and <a href="http://cloud.appcelerator.com/docs/android#pushn">configure push notifications for Android</a> to 
-set up your app for push notifications. To receive push notifications on Android, please refer to 
-the <a href="Titanium.CloudPush.html"><code>Titanium.CloudPush</code></a> module.</p>
-<p>The methods in this module are used to subscribe and unsubscribe from ACS push
-notification channels, and to generate ACS push notifications. Push notifications
-are received using platform-specific mechanisms:</p>
+and <a href="http://cloud.appcelerator.com/docs/android#pushn">configure push notifications for Android</a> 
+to set up your app for push notifications. To receive push notifications on Android, please 
+refer to the <a href="Titanium.CloudPush.html"><code>Titanium.CloudPush</code></a> module.</p>
+<p>The methods in this module are used to subscribe and unsubscribe from ACS push notification 
+channels, and to generate ACS push notifications. Push notifications are received using 
+platform-specific mechanisms:</p>
 <ul>
-<li>
-<p>On iOS, push notifications are received through the standard iOS push notification
+<li>On iOS, push notifications are received through the standard iOS push notification
     mechanism. When you register for push notifications, incoming push notifications
     are passed to the <code>callback</code> callback. See
     <a href="Titanium.Network.registerForPushNotifications-method.html">Network.registerForPushNotifications</a>
-    for details.</p>
-</li>
-<li>
-<p>On Android, push notifications are received through the <a href="Titanium.CloudPush.html"><code>Titanium.CloudPush</code></a> module.
-    Add a listener for the <a href="Titanium.CloudPush.callback-event.html">callback</a> event to receive push notifications.</p>
-</li>
+    for details.</li>
+<li>On Android, push notifications are received through the <a href="Titanium.CloudPush.html"><code>Titanium.CloudPush</code></a> module.
+    Add a listener for the <a href="Titanium.CloudPush.callback-event.html">callback</a> event to receive push notifications.</li>
 </ul>
 <p>To register for push notifications, you need to obtain an application-specific <em>device
 token</em>. To obtain a device token:</p>
 <ul>
-<li>
-<p>On iOS, when you successfully register for push notifications, the device token is 
-    passed to the <code>success</code> callback.</p>
-</li>
-<li>
-<p>On Android, use
+<li>On iOS, when you successfully register for push notifications, the device token is 
+    passed to the <code>success</code> callback.</li>
+<li>On Android, use
     <a href="Titanium.CloudPush.retrieveDeviceToken-method.html">CloudPush.retrieveDeviceToken</a> to request
-    a device token. The device token is passed to the <code>success</code> callback.</p>
-</li>
+    a device token. The device token is passed to the <code>success</code> callback.</li>
 </ul>
     </div>
     
@@ -115,7 +107,7 @@ token</em>. To obtain a device token:</p>
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Subscribe to Channel Example</div>
+	<div class="subsectiontitle">Subscribe to Channel</div>
 	<div class="code"><p>This example subscribes to a push notification channel and checks the response.</p>
 <pre><code>Cloud.PushNotifications.subscribe({
     channel: 'friend_request',
@@ -130,7 +122,7 @@ token</em>. To obtain a device token:</p>
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Unsubscribe to Channel Example</div>
+	<div class="subsectiontitle">Unsubscribe to Channel</div>
 	<div class="code"><p>This example unsubscribes from a push notification channel and checks the response.</p>
 <pre><code>Cloud.PushNotifications.unsubscribe({
     channel: 'friend_request',
@@ -145,7 +137,7 @@ token</em>. To obtain a device token:</p>
 });
 </code></pre></div>
         
-	<div class="subsectiontitle">Notify Channel Example</div>
+	<div class="subsectiontitle">Notify Channel</div>
 	<div class="code"><p>This example sends a push notification to a channel and checks the response.</p>
 <pre><code>Cloud.PushNotifications.notify({
     channel: 'friend_request',
@@ -185,11 +177,11 @@ token</em>. To obtain a device token:</p>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -227,11 +219,11 @@ token</em>. To obtain a device token:</p>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -269,11 +261,11 @@ token</em>. To obtain a device token:</p>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>An ordinary JavaScript object which contains parameters to pass.</td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
                 </tr>
                 
                 <tr valign='top'>

@@ -92,6 +92,10 @@ the <code>ACTION_</code>, <code>EXTRA_</code> and <code>CATEGORY_</code> constan
             </ul>
     
             <ul>
+                <li><a href="#createRemoteViews-method">createRemoteViews <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#createService-method">createService <span class="params">(intent)</span></a></li>
             </ul>
     
@@ -1717,12 +1721,73 @@ specify that the system should use the user's preferred orientation.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_ALARM-property"></a>STREAM_ALARM</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to
+request that the alarm stream type for notifications be used.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="STREAM_DEFAULT-property"></a>STREAM_DEFAULT</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use with audioStreamType to request that the default stream type for notifications be used.</td>
+            <td class='attr-desc'>Use with audioStreamType to request that the 
+default stream type for notifications be used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_MUSIC-property"></a>STREAM_MUSIC</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to
+request that the music stream type for notifications be used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_NOTIFICATION-property"></a>STREAM_NOTIFICATION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to request that the 
+notification stream type for notifications be used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_RING-property"></a>STREAM_RING</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to request that the 
+ring stream type for notifications be used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_SYSTEM-property"></a>STREAM_SYSTEM</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to request that the 
+system stream type for notifications be used.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="STREAM_VOICE_CALL-property"></a>STREAM_VOICE_CALL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Use with audioStreamType to request that the 
+voice call stream type for notifications be used.</td>
         </tr>
         
         <tr valign='top'>
@@ -1935,6 +2000,36 @@ for an intent.</p></div>
                   </td>
                   <td class='attr-desc'>Properties to set on the new object, including any defined by
 Titanium.Android.PendingIntent, except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createRemoteViews-method">
+        <a name="createRemoteViews-method"></a><b>createRemoteViews</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.Android.RemoteViews-object.html"><code>Titanium.Android.RemoteViews</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.Android.RemoteViews&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.Android.RemoteViews except those marked not-creation or read-only.</td>
                 </tr>
                 
       	</table>

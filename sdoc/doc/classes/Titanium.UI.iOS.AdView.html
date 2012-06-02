@@ -44,10 +44,14 @@
 <div id="content">
     
     <div class="description">
-        <p>The AdView is a view for display Apple iAds. The View is created by the method <a href="Titanium.UI.iOS.createAdView-method.html"><code>Titanium.UI.iOS.createAdView</code></a>.</p>
+        <p>The AdView is a view for display Apple iAds.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>The Ad view is created by the <a href="Titanium.UI.iOS.createAdView-method.html"><code>Titanium.UI.iOS.createAdView</code></a> method.</p>
+    </div>
     
 
     
@@ -403,7 +407,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The size of the advertisement when minimized.</td>
+            <td class='attr-desc'>Size of the advertisement when minimized.</td>
         </tr>
         
         <tr valign='top'>
@@ -620,7 +624,7 @@
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -647,7 +651,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -665,7 +669,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -728,7 +732,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -741,7 +745,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         <tr valign='top'>
             <td class='attr-name'><a href="#action-event">action</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>called when a banner action is performed</td>
+            <td class='attr-desc'>Fired when a banner action is performed.</td>
         </tr>
         
         <tr valign='top'>
@@ -765,13 +769,13 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
         <tr valign='top'>
             <td class='attr-name'><a href="#error-event">error</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>called when a banner could not be loaded</td>
+            <td class='attr-desc'>Fired when a banner could not be loaded.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#load-event">load</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>called when a banner is loaded and displayed</td>
+            <td class='attr-desc'>Fired when a banner is loaded and displayed.</td>
         </tr>
         
         <tr valign='top'>
@@ -971,7 +975,7 @@ Animation object.</td>
         <a name="cancelAction-method"></a><b>cancelAction</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>A banner view action can cover your application's user interface. However, your application continues to run, and receives events normally. If your application receives an event that requires the user's attention, it can programmatically cancel the action and uncover its interface by calling cancelAction. Canceling actions frequently can cause a loss of revenue for your application.</p></div>
+      <div class="description"><p>Cancel a banner to uncover the user interface.</p></div>
       
 
       
@@ -2675,7 +2679,7 @@ layout pass after they have been updated.</p></div>
             <td class='attr-name'>globalPoint</td>
             <td class='attr-desc'>
               
-              <p>a dictionary with properties x and y describing the point of the event in screen coordinates</p>
+              <p>Properties x and y describing the point of the event in screen coordinates.</p>
             </td>
           </tr>
           
@@ -2930,7 +2934,7 @@ of the event in screen coordinates.</p>
             <td class='attr-name'>globalPoint</td>
             <td class='attr-desc'>
               
-              <p>a dictionary with properties x and y describing the point of the event in screen coordinates</p>
+              <p>Properties x and y describing the point of the event in screen coordinates.</p>
             </td>
           </tr>
           
@@ -2938,7 +2942,7 @@ of the event in screen coordinates.</p>
             <td class='attr-name'>message</td>
             <td class='attr-desc'>
               
-              <p>the error message</p>
+              <p>Error message.</p>
             </td>
           </tr>
           
@@ -2998,7 +3002,7 @@ of the event in screen coordinates.</p>
             <td class='attr-name'>globalPoint</td>
             <td class='attr-desc'>
               
-              <p>a dictionary with properties x and y describing the point of the event in screen coordinates</p>
+              <p>Properties x and y describing the point of the event in screen coordinates.</p>
             </td>
           </tr>
           

@@ -44,18 +44,20 @@
 <div id="content">
     
     <div class="description">
-        <p>The top level Accelerometer module.  The Accelerometer modules contains methods and properties for using the device accelerometer.</p>
+        <p>The top-level Accelerometer module, used to determine the device's physical position.</p>
     </div>
     
     
     
     <div class="description">
-        <p>You'll want to be selective about turning on and off the device accelerometer.  It's recommended you 
-turn off the accelerometer when you're not using it.</p>
-<p>You can turn off the accelerometer by simply removing your event listener function. </p>
-<pre><code>Titanium.Accelerometer.removeEventListener('update',myFunction);
-</code></pre>
-<p>You can turn it back on by re-adding the same function with <code>addEventListener</code>.</p>
+        <p>An accelerometer is a hardware unit integrated into a mobile device, that detects when the 
+device has moved, and returns its new orientation in a three-dimensional space. With its 
+single <code>update</code> event, this module provides an interface to access the output positional data.</p>
+<p>An accelerometer needs to be switched on in order for it to report to the operating system, 
+which consumes a lot of power that will deplete the battery over time. This is why it is 
+recommended that the accelerometer is switched off when not in use.</p>
+<p>The accelerometer may be switched on and off by simply by adding and removing the <code>update</code> 
+event listener function. See the example for a demonstration.</p>
     </div>
     
 
@@ -87,7 +89,7 @@ turn off the accelerometer when you're not using it.</p>
         <tr valign='top'>
             <td class='attr-name'><a href="#update-event">update</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>fired when the accelerometer changes</td>
+            <td class='attr-desc'>Fired when the accelerometer changes.</td>
         </tr>
         
     </table>
@@ -100,14 +102,54 @@ turn off the accelerometer when you're not using it.</p>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Basic Accelerometer Event</div>
-	<div class="code"><p>Adds an accelerometer update event listener which prints out the x, y and z axis as the 
-device is moved.  You should generally remove the event when not used to conserve device 
-resources.  If you do not have an active event listener, the accelerometer is turned off to 
-conserve device resources.</p>
-<pre><code>Titanium.Accelerometer.addEventListener('update',function(e)
-{
-    Ti.API.debug("accelerometer - x:"+e.x+",y:"+e.y+",z:"+e.z);
+	<div class="code"><p>Adds an accelerometer update event listener, and displays the x, y and z axis in the 
+window when the device is moved. On Android, the accelerometer is switched off and on when 
+the application is paused and resumed.</p>
+<pre><code>var win = Ti.UI.createWindow({
+  backgroundColor: 'white',
+  exitOnClose:true,
+  layout: 'vertical'
 });
+
+opts = {
+  color:'black',
+  font:{fontSize:20},
+  text:'-',
+  top:20, left:10,
+  width:300
+};
+var labelTimestamp = Ti.UI.createLabel(opts);
+win.add(labelTimestamp);
+var labelx = Ti.UI.createLabel(opts);
+win.add(labelx);
+var labely = Ti.UI.createLabel(opts);
+win.add(labely);
+var labelz = Ti.UI.createLabel(opts);
+win.add(labelz);
+win.open();
+
+var accelerometerCallback = function(e) {
+  labelTimestamp.text = 'timestamp: ' + e.timestamp;
+  labelx.text = 'x: ' + e.x;
+  labely.text = 'y: ' + e.y;
+  labelz.text = 'z: ' + e.z;
+};
+
+if (Ti.Platform.model === 'Simulator' || Ti.Platform.model.indexOf('sdk') !== -1 ){
+  alert('Accelerometer does not work on a virtual device');
+} else {
+  Ti.Accelerometer.addEventListener('update', accelerometerCallback);
+  if (Ti.Platform.name === 'android'){
+    Ti.Android.currentActivity.addEventListener('pause', function(e) {
+      Ti.API.info("removing accelerometer callback on pause");
+      Ti.Accelerometer.removeEventListener('update', accelerometerCallback);
+    });
+    Ti.Android.currentActivity.addEventListener('resume', function(e) {
+      Ti.API.info("adding accelerometer callback on resume");
+      Ti.Accelerometer.addEventListener('update', accelerometerCallback);
+    });
+  }
+}
 </code></pre></div>
         
     </table>
@@ -274,7 +316,8 @@ conserve device resources.</p>
             <td class='attr-name'>timestamp</td>
             <td class='attr-desc'>
               
-              <p>reference timestamp since the previous change. this is not a valid timestamp and should simply be used to determine the time between events and not an exact timestamp.</p>
+              <p>Reference timestamp since the previous change. This is not a valid timestamp and should 
+simply be used to determine the number of milliseconds between events.</p>
             </td>
           </tr>
           
@@ -292,7 +335,7 @@ conserve device resources.</p>
             <td class='attr-name'>x</td>
             <td class='attr-desc'>
               
-              <p>the x axis of the device</p>
+              <p>Current <code>x</code> axis of the device.</p>
             </td>
           </tr>
           
@@ -300,7 +343,7 @@ conserve device resources.</p>
             <td class='attr-name'>y</td>
             <td class='attr-desc'>
               
-              <p>the y axis of the device</p>
+              <p>Current <code>y</code> axis of the device.</p>
             </td>
           </tr>
           
@@ -308,7 +351,7 @@ conserve device resources.</p>
             <td class='attr-name'>z</td>
             <td class='attr-desc'>
               
-              <p>the z axis of the device</p>
+              <p>Current <code>z</code> axis of the device.</p>
             </td>
           </tr>
           

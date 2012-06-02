@@ -50,12 +50,11 @@
     
     
     <div class="description">
-        <p>A tabbed bar is a button bar that
-maintains a state (visually distinguished as a pressed or selected look).
-It is closely related to the <code>ButtonBar</code> control. See the description of 
-<a href="Titanium.UI.ButtonBar-object.html">ButtonBar</a> for information on styling tabbed bars and buttons
-bars.</p>
-<p>Use the <a href="Titanium.UI.iOS.createTabbedBar-method.html"><code>Titanium.UI.iOS.createTabbedBar</code></a> method to create a Tabbed Bar.</p>
+        <p>The tabbed bar is created by the <a href="Titanium.UI.iOS.createTabbedBar-method.html"><code>Titanium.UI.iOS.createTabbedBar</code></a> method. </p>
+<p>A tabbed bar is a button bar that maintains a state (visually distinguished as a pressed or 
+selected look). </p>
+<p>It is closely related to the <code>ButtonBar</code> control. See the description of 
+<a href="Titanium.UI.ButtonBar-object.html">ButtonBar</a> for information on styling tabbed bars and buttons bars.</p>
     </div>
     
 
@@ -650,7 +649,7 @@ bars.</p>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -677,7 +676,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -695,7 +694,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -767,7 +766,7 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -811,7 +810,8 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Tabbed Bar with 3 items</div>
-	<div class="code"><p>var bb1 = Titanium.UI.iOS.createTabbedBar({
+	<div class="code"><p>Create a tabbed bar with 3 items.</p>
+<pre><code>var bb1 = Titanium.UI.iOS.createTabbedBar({
     labels:['One', 'Two', 'Three'],
     backgroundColor:'#336699',
     top:50,
@@ -819,7 +819,8 @@ One of: 'absolute', 'vertical', or 'horizontal'.</td>
     height:25,
     width:200
 });
-win.add(bb1);</p></div>
+win.add(bb1);
+</code></pre></div>
         
     </table>
     

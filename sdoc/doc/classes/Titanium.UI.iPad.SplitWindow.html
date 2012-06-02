@@ -51,17 +51,17 @@ controllers. </p>
     
     
     <div class="description">
-        <p>You use this class to implement a master-detail interface, in which the 
-left-side view presents a list of items and the right-side presents details of the 
-selected item. The SplitView is for use exclusively on iPad devices. </p>
-<p>By default, the SplitView shows both master and detail views in landscape orientation. 
-When the device switches into portrait orientation, the detail view occupies the entire 
-screen. The user can click a button to bring up the master view as floating, "popover" 
-view. (To show the master view in both orientations, set <code>showMasterInPortrait</code> to <code>true</code>.)</p>
-<p>Use the <a href="Titanium.UI.iPad.createSplitWindow-method.html"><code>Titanium.UI.iPad.createSplitWindow</code></a> method to create a SplitWindow. The 
-<code>masterView</code> and <code>detailView</code> properties are required in the constructor of the 
-SplitWindow and cannot be changed once set.</p>
-<p>The SplitWindow inherits its methods and properties from <a href="Titanium.UI.Window-object.html"><code>Titanium.UI.Window</code></a>.</p>
+        <p>You use this class to implement a master-detail interface, in which the left-side view presents 
+a list of items and the right-side presents details of the selected item. The SplitView is for 
+use exclusively on iPad devices. </p>
+<p>By default, the SplitView shows both master and detail views in landscape orientation. When the 
+device switches into portrait orientation, the detail view occupies the entire screen. The user 
+can click a button to bring up the master view as floating, "popover" view. (To show the master 
+view in both orientations, set <code>showMasterInPortrait</code> to <code>true</code>.) </p>
+<p>Use the <a href="Titanium.UI.iPad.createSplitWindow-method.html"><code>Titanium.UI.iPad.createSplitWindow</code></a> method to create a SplitWindow. The <code>masterView</code> 
+and <code>detailView</code> properties are required in the constructor of the SplitWindow and cannot be 
+changed once set. </p>
+<p>The SplitWindow inherits its methods and properties from <a href="Titanium.UI.Window-object.html"><code>Titanium.UI.Window</code></a>. </p>
 <p>The SplitWindow is a top-level window and cannot be contained within another window or view.
 <img alt="splitview" src="http://img.skitch.com/20100406-1f85bm9cx8t768xgsjqax1ng6y.png" /></p>
     </div>
@@ -906,7 +906,7 @@ Back button is pressed while the window is being shown.</td>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'absolute', 'vertical', or 'horizontal'.</td>
+One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
@@ -988,7 +988,7 @@ constants defined in Titanium.UI.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The frame of the view (position relative to parent bounds) in system units.</td>
+            <td class='attr-desc'>The bounding box of the view relative to its parent, in system units.</td>
         </tr>
         
         <tr valign='top'>
@@ -1015,7 +1015,7 @@ constants defined in Titanium.UI.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether or not to show the master view in portrait orientation.</td>
+            <td class='attr-desc'>Determines whether to show the master view in portrait orientation.</td>
         </tr>
         
         <tr valign='top'>
@@ -1024,7 +1024,7 @@ constants defined in Titanium.UI.</td>
                 [Dimension]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The bounds of the view in system units. x and y properties are always 0.</td>
+            <td class='attr-desc'>The size of the view in system units. </td>
         </tr>
         
         <tr valign='top'>
@@ -1198,7 +1198,7 @@ contents in view.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Z index position relative to other sibling views.</td>
+            <td class='attr-desc'>Z-index stack order position, relative to other sibling views.</td>
         </tr>
         
     </table>
@@ -1367,7 +1367,7 @@ contents in view.</td>
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Split Window Example</div>
+	<div class="subsectiontitle">Split Window</div>
 	<div class="code"><p>This is an example of a Split Window.</p>
 <pre><code>var win = Ti.UI.createWindow();
 
@@ -1376,19 +1376,15 @@ var nav = Ti.UI.iPhone.createNavigationGroup({
 });
 
 var splitwin = Ti.UI.iPad.createSplitWindow({
-    detailView:nav,
-    masterView:masterView
+    detailView: nav,
+    masterView: masterView
 });
 
-splitwin.addEventListener('visible',function(e)
-{
-    if (e.view == 'detail')
-    {
+splitwin.addEventListener('visible',function(e){
+    if (e.view == 'detail'){
         e.button.title = "Master";
         win.leftNavButton = e.button;
-    }
-    else if (e.view == 'master')
-    {
+    } else if (e.view == 'master'){
         win.leftNavButton = null;
     }
 });
@@ -5450,7 +5446,8 @@ of the event in screen coordinates.</p>
               
               <span class="attr-rw">[Titanium.UI.Button]</span><br /> 
               
-              <p>For <code>detail</code> view type, the button that is automatically wired to control the master view popover</p>
+              <p>For <code>detail</code> view type, the button that is automatically wired to control the master 
+view popover.</p>
             </td>
           </tr>
           
