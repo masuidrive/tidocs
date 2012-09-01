@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -69,6 +81,10 @@ by setting <a href="Titanium.Media.audioSessionMode-property.html"><code>Titaniu
             </ul>
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
             </ul>
     
@@ -106,6 +122,10 @@ by setting <a href="Titanium.Media.audioSessionMode-property.html"><code>Titaniu
     
             <ul>
                 <li><a href="#getUrl-method">getUrl <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getVolume-method">getVolume <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -150,6 +170,10 @@ by setting <a href="Titanium.Media.audioSessionMode-property.html"><code>Titaniu
     
             <ul>
                 <li><a href="#setUrl-method">setUrl <span class="params">(url)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setVolume-method">setVolume <span class="params">(volume)</span></a></li>
             </ul>
     
             <ul>
@@ -334,6 +358,15 @@ Android Activity is paused.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="volume-property"></a>volume</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Volume of the audio, from 0.0 (muted) to 1.0 (loudest).</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="waiting-property"></a>waiting</td>
             <td class='attr-rw'>
                 [Boolean]
@@ -502,6 +535,36 @@ win.open();
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -637,6 +700,17 @@ win.open();
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Media.AudioPlayer.url-property.html">url</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getVolume-method">
+        <a name="getVolume-method"></a><b>getVolume</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.AudioPlayer.volume-property.html">volume</a> property.</p></div>
       
 
       
@@ -859,6 +933,36 @@ win.open();
                     
                       
                         [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setVolume-method">
+        <a name="setVolume-method"></a><b>setVolume</b> <span class="params">(volume)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Media.AudioPlayer.volume-property.html">volume</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>volume</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
                       
                     
                   </td>

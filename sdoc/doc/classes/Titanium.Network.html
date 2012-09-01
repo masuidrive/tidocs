@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -65,11 +77,11 @@ by the <a href="Titanium.Network.BonjourBrowser-object.html">BonjourBrowser</a> 
     <dl class="methods">
     
             <ul>
-                <li><a href="#addConnectivityListener-method">addConnectivityListener <span class="params">(callback)</span></a></li>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
             <ul>
-                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -130,10 +142,6 @@ by the <a href="Titanium.Network.BonjourBrowser-object.html">BonjourBrowser</a> 
     
             <ul>
                 <li><a href="#registerForPushNotifications-method">registerForPushNotifications <span class="params">(config)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#removeConnectivityListener-method">removeConnectivityListener <span class="params">(callback)</span></a></li>
             </ul>
     
             <ul>
@@ -439,36 +447,6 @@ registerForPushNotifications.</td>
     <div class="sectiontitle">Methods</div>
     
     <div class="method">
-      <div class="title" id="addConnectivityListener-method">
-        <a name="addConnectivityListener-method"></a><b>addConnectivityListener</b> <span class="params">(callback)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Use the <a href="Titanium.Network.change-event.html">change</a> event to monitor connectivity changes.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>callback</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Callback function to invoke upon network connectivity changes.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="addEventListener-method">
         <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -503,6 +481,36 @@ registerForPushNotifications.</td>
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -929,36 +937,6 @@ Titanium.Network.READ_WRITE_MODE.</td>
                     
                   </td>
                   <td class='attr-desc'>Dictionary specifying push-notification related options.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="removeConnectivityListener-method">
-        <a name="removeConnectivityListener-method"></a><b>removeConnectivityListener</b> <span class="params">(callback)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Use the <a href="Titanium.Network.change-event.html">change</a> event to monitor connectivity changes.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>callback</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Callback function to remove.</td>
                 </tr>
                 
       	</table>

@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -94,7 +106,7 @@ depending on the build type (development or production). </p>
 
 &lt;property name="acs-api-key" type="string"&gt;YOUR API KEY HERE&lt;/property&gt;
 &lt;property name="acs-oauth-key" type="string"&gt;YOUR OAUTH KEY HERE&lt;/property&gt;
-&lt;property name="acs-oauth-secret" type="string"&gt;YOUR OAUTH SECRET HERE&lt;/property&gt;&lt;property name="acs-base-url" type="string"&gt;API URL HERE&lt;/property&gt;
+&lt;property name="acs-oauth-secret" type="string"&gt;YOUR OAUTH SECRET HERE&lt;/property&gt;
 </code></pre>
 <p>The value for each setting that will be used is based on the following rules: </p>
 <ul>
@@ -109,6 +121,10 @@ generic: </p>
 <pre><code>&lt;property name="acs-base-url-development" type="string"&gt;DEVELOPMENT API URL HERE&lt;/property&gt;
 &lt;property name="acs-base-url-production" type="string"&gt;PRODUCTION API URL HERE&lt;/property&gt;
 &lt;property name="acs-base-url" type="string"&gt;API URL HERE&lt;/property&gt;
+
+&lt;property name="acs-authbase-url-development" type="string"&gt;AUTHENTICATION URL HERE&lt;/property&gt;
+&lt;property name="acs-authbase-url-production" type="string"&gt;AUTHENTICATION URL HERE&lt;/property&gt;
+&lt;property name="acs-authbase-url" type="string"&gt;AUTHENTICATION URL HERE&lt;/property&gt;
 </code></pre>
     </div>
     
@@ -119,7 +135,19 @@ generic: </p>
     <dl class="methods">
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAccessToken-method">getAccessToken <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getDebug-method">getDebug <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getExpiresIn-method">getExpiresIn <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -128,6 +156,10 @@ generic: </p>
     
             <ul>
                 <li><a href="#getOnsendstream-method">getOnsendstream <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSessionId-method">getSessionId <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -143,6 +175,10 @@ generic: </p>
             </ul>
     
             <ul>
+                <li><a href="#setAccessToken-method">setAccessToken <span class="params">(accessToken)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setDebug-method">setDebug <span class="params">(debug)</span></a></li>
             </ul>
     
@@ -152,6 +188,10 @@ generic: </p>
     
             <ul>
                 <li><a href="#setOnsendstream-method">setOnsendstream <span class="params">(onsendstream)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSessionId-method">setSessionId <span class="params">(sessionId)</span></a></li>
             </ul>
     
             <ul>
@@ -165,12 +205,30 @@ generic: </p>
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="accessToken-property"></a>accessToken</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Identifies the current access token when using 3-Legged OAuth</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="debug-property"></a>debug</td>
             <td class='attr-rw'>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Indicates whether internal debug logging should be output to the console.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="expiresIn-property"></a>expiresIn</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates the number of seconds before the access token expires</td>
         </tr>
         
         <tr valign='top'>
@@ -189,6 +247,15 @@ generic: </p>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Function to be called at regular intervals as the request data is being transmitted.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="sessionId-property"></a>sessionId</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Identifies the current session</td>
         </tr>
         
         <tr valign='top'>
@@ -214,11 +281,63 @@ generic: </p>
     <div class="sectiontitle">Methods</div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAccessToken-method">
+        <a name="getAccessToken-method"></a><b>getAccessToken</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.accessToken-property.html">accessToken</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getDebug-method">
         <a name="getDebug-method"></a><b>getDebug</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.debug-property.html">debug</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getExpiresIn-method">
+        <a name="getExpiresIn-method"></a><b>getExpiresIn</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.expiresIn-property.html">expiresIn</a> property.</p></div>
       
 
       
@@ -241,6 +360,17 @@ generic: </p>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.onsendstream-property.html">onsendstream</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSessionId-method">
+        <a name="getSessionId-method"></a><b>getSessionId</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Cloud.sessionId-property.html">sessionId</a> property.</p></div>
       
 
       
@@ -276,6 +406,36 @@ generic: </p>
       <div class="description"><p>Returns the stored user session identifier.</p></div>
       
 
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAccessToken-method">
+        <a name="setAccessToken-method"></a><b>setAccessToken</b> <span class="params">(accessToken)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Cloud.accessToken-property.html">accessToken</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>accessToken</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
       
     </div>
     
@@ -358,6 +518,36 @@ generic: </p>
                     
                       
                         <a href="CloudStreamProgress.html">[Callback&lt;CloudStreamProgress&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSessionId-method">
+        <a name="setSessionId-method"></a><b>setSessionId</b> <span class="params">(sessionId)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Cloud.sessionId-property.html">sessionId</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sessionId</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
                       
                     
                   </td>

@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -61,7 +73,7 @@ key contains either a <code>string</code> type value, an array of <code>string</
 containing key/value pairs with <code>string</code> type values.</li>
 </ul>
 <h4>Adding and Modifying Properties</h4>
-<p>Support for adding and modifying properties is currently only supported on iOS.</p>
+<p>Support for adding and modifying properties is currently supported on iOS and Android.</p>
 <h4>Keys as Address Book UI Labels</h4>
 <p>Keys act as labels in the address book user interface.</p>
 <p>Although there is limited support for custom, arbitrarily-named, keys when used with multi-value 
@@ -80,6 +92,10 @@ will exist as a key with the same name.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -228,10 +244,6 @@ will exist as a key with the same name.</p>
     
             <ul>
                 <li><a href="#setFirstPhonetic-method">setFirstPhonetic <span class="params">(firstPhonetic)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setId-method">setId <span class="params">(id)</span></a></li>
             </ul>
     
             <ul>
@@ -605,6 +617,36 @@ Read-only on Android.</td>
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -1203,36 +1245,6 @@ Read-only on Android.</td>
                     
                       
                         [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setId-method">
-        <a name="setId-method"></a><b>setId</b> <span class="params">(id)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Contacts.Person.id-property.html">id</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>id</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
                       
                     
                   </td>

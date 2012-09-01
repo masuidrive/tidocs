@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -36,7 +48,7 @@
             Titanium.UI.ScrollableView 
         </h1>
       	<ul class="files">
-      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
       	</ul>
     </div>
     <div id="bodyContent">
@@ -44,22 +56,25 @@
 <div id="content">
     
     <div class="description">
-        <p>A view that encapsulates a horizontally-scrolling set of sub-views, navigable using its built-in 
-horizontal swipe gestures.</p>
+        <p>A view that encapsulates a horizontally-scrolling set of child views, known as pages, navigable 
+using its built-in horizontal swipe gestures.</p>
     </div>
     
     
     
     <div class="description">
         <p>Use the <a href="Titanium.UI.createScrollableView-method.html"><code>Titanium.UI.createScrollableView</code></a> method to create a scrollable view.</p>
-<p>ScrollableView supports a visual paging control that may be enabled to indicate on-screen that 
-a view is visible.</p>
-<p>Only the <code>scroll</code> event exists on Android. To support those that are missing, event listeners 
-may be added to its child views.</p>
+<p>The <code>ScrollableView</code> supports an on-screen paging control to indicate whether a previous or next 
+page exists. When the paging control is enabled on iOS or Mobile Web, by default it appears as 
+small dots on the bottom of the screen, whereas Android displays arrows on the left and 
+right-hand sides. </p>
+<p>Only the <code>scroll</code> event exists for the <code>ScrollableView</code> on Android. To support others, child 
+views may be added to pages, and event listeners added to these views instead of the pages 
+themselves. </p>
 <p>In a previous Titanium version for iOS, the <code>maxZoomScale</code> and <code>minZoomScale</code> properties were 
 removed for performance and parity reasons. As they still remain in <a href="Titanium.UI.ScrollView-object.html"><code>Titanium.UI.ScrollView</code></a>, 
-the equivalent functionality may be obtained by adding a ScrollView to ScrollableView. See the 
-"Simple Scrollable View with 2 Zoomable Images" example for a demonstration.</p>
+the equivalent functionality may be obtained by adding a <code>ScrollView</code> to <code>ScrollableView</code>. See 
+the "Simple Scrollable View with 2 Zoomable Images" example for a demonstration.</p>
     </div>
     
 
@@ -81,7 +96,11 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </ul>
     
             <ul>
-                <li><a href="#animate-method">animate <span class="params">(obj, callback)</span></a></li>
+                <li><a href="#animate-method">animate <span class="params">(animation, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -101,7 +120,7 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </ul>
     
             <ul>
-                <li><a href="#getAnimatedCenterPoint-method">getAnimatedCenterPoint <span class="params">()</span></a></li>
+                <li><a href="#getAnimatedCenter-method">getAnimatedCenter <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -201,6 +220,14 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </ul>
     
             <ul>
+                <li><a href="#getHitRect-method">getHitRect <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHorizontalWrap-method">getHorizontalWrap <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getKeepScreenOn-method">getKeepScreenOn <span class="params">()</span></a></li>
             </ul>
     
@@ -217,11 +244,23 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </ul>
     
             <ul>
+                <li><a href="#getOverlayEnabled-method">getOverlayEnabled <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPagingControlAlpha-method">getPagingControlAlpha <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getPagingControlColor-method">getPagingControlColor <span class="params">()</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#getPagingControlHeight-method">getPagingControlHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPagingControlOnTop-method">getPagingControlOnTop <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -401,6 +440,14 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </ul>
     
             <ul>
+                <li><a href="#setHitRect-method">setHitRect <span class="params">(hitRect)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHorizontalWrap-method">setHorizontalWrap <span class="params">(horizontalWrap)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setKeepScreenOn-method">setKeepScreenOn <span class="params">(keepScreenOn)</span></a></li>
             </ul>
     
@@ -417,11 +464,23 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
             </ul>
     
             <ul>
+                <li><a href="#setOverlayEnabled-method">setOverlayEnabled <span class="params">(overlayEnabled)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPagingControlAlpha-method">setPagingControlAlpha <span class="params">(pagingControlAlpha)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setPagingControlColor-method">setPagingControlColor <span class="params">(pagingControlColor)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#setPagingControlHeight-method">setPagingControlHeight <span class="params">(pagingControlHeight)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPagingControlOnTop-method">setPagingControlOnTop <span class="params">(pagingControlOnTop)</span></a></li>
             </ul>
     
             <ul>
@@ -496,11 +555,11 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
                 [Point]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Anchor point where animation should occur, relative to the view's boundaries.</td>
+            <td class='attr-desc'>Coordinate of the view about which to pivot an animation.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
+            <td class='attr-name'><a name="animatedCenter-property"></a>animatedCenter</td>
             <td class='attr-rw'>
                 [Point]
             </td>
@@ -586,7 +645,7 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Toggle for whether or not to tile a background across a view.</td>
+            <td class='attr-desc'>Determines whether to tile a background across a view.</td>
         </tr>
         
         <tr valign='top'>
@@ -658,7 +717,7 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Number of views to cache (pre-render).</td>
+            <td class='attr-desc'>Number of pages to cache (pre-render).</td>
         </tr>
         
         <tr valign='top'>
@@ -685,8 +744,8 @@ the equivalent functionality may be obtained by adding a ScrollView to Scrollabl
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Determines whether the content which is being scrolled will be clipped to the
-bounding box of the view.</td>
+            <td class='attr-desc'>Determines whether the previous and next pages are clipped, so that they are not visible 
+adjacent to the current page.</td>
         </tr>
         
         <tr valign='top'>
@@ -704,7 +763,7 @@ bounding box of the view.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Determines whether view bouncing effect is disabled.</td>
+            <td class='attr-desc'>Determines whether page bouncing effect is disabled.</td>
         </tr>
         
         <tr valign='top'>
@@ -726,12 +785,30 @@ bounding box of the view.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="hitRect-property"></a>hitRect</td>
+            <td class='attr-rw'>
+                [Dimension]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Sets the region where this view responds to gestures.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="horizontalWrap-property"></a>horizontalWrap</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the layout has wrapping behavior.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="keepScreenOn-property"></a>keepScreenOn</td>
             <td class='attr-rw'>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether to keep the device screen on.</td>
+            <td class='attr-desc'>Determines whether to keep the device screen on.</td>
         </tr>
         
         <tr valign='top'>
@@ -763,6 +840,24 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="overlayEnabled-property"></a>overlayEnabled</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the paging control is added as an overlay to the view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="pagingControlAlpha-property"></a>pagingControlAlpha</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Alpha value of the paging control.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="pagingControlColor-property"></a>pagingControlColor</td>
             <td class='attr-rw'>
                 [String]
@@ -781,13 +876,21 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="pagingControlOnTop-property"></a>pagingControlOnTop</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the paging control is displayed at the top or bottom of the view.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="pagingControlTimeout-property"></a>pagingControlTimeout</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Number of milliseconds to wait before hiding the paging control. Less than or equal to 
-0 disables timeout, keeping controls displayed.</td>
+            <td class='attr-desc'>Number of milliseconds to wait before hiding the paging control.</td>
         </tr>
         
         <tr valign='top'>
@@ -814,8 +917,7 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Determines whether scrolling is enabled on the Scrollable view.
-If this property is not set, scrolling is enabled.</td>
+            <td class='attr-desc'>Determines whether scrolling is enabled for the view.</td>
         </tr>
         
         <tr valign='top'>
@@ -860,13 +962,13 @@ If this property is not set, scrolling is enabled.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether view should receive touch events.</td>
+            <td class='attr-desc'>Determines whether view should receive touch events.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Transformation matrix to apply to the view.</td>
@@ -878,7 +980,7 @@ If this property is not set, scrolling is enabled.</td>
                 [Array&lt;Titanium.UI.View&gt;]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Sets the views within this Scrollable View.</td>
+            <td class='attr-desc'>Sets the pages within this Scrollable View.</td>
         </tr>
         
         <tr valign='top'>
@@ -887,7 +989,7 @@ If this property is not set, scrolling is enabled.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean value indicating whether the view is visible.</td>
+            <td class='attr-desc'>Determines whether the view is visible.</td>
         </tr>
         
         <tr valign='top'>
@@ -924,7 +1026,31 @@ If this property is not set, scrolling is enabled.</td>
         <tr valign='top'>
             <td class='attr-name'><a href="#doubletap-event">doubletap</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired when the device detects a double tap against this view.</td>
+            <td class='attr-desc'>Fired when the device detects a double tap against this page.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#dragEnd-event">dragEnd</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the scrolling drag gesture on the view has been completed.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#dragStart-event">dragStart</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the scrollable region starts being dragged.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#dragend-event">dragend</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the scrolling drag gesture on the view has been completed.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#dragstart-event">dragstart</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the scrollable region starts being dragged.</td>
         </tr>
         
         <tr valign='top'>
@@ -942,7 +1068,19 @@ If this property is not set, scrolling is enabled.</td>
         <tr valign='top'>
             <td class='attr-name'><a href="#scroll-event">scroll</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired when the current view is changed.</td>
+            <td class='attr-desc'>Fired repeatedly as the view is being scrolled.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#scrollEnd-event">scrollEnd</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the view has stopped moving completely.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#scrollend-event">scrollend</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the view has stopped moving completely.</td>
         </tr>
         
         <tr valign='top'>
@@ -979,7 +1117,7 @@ If this property is not set, scrolling is enabled.</td>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Scrollable View with 3 Views</div>
-	<div class="code"><p>Create three views and place each into a scrollable view.</p>
+	<div class="code"><p>Create three views and assign them as pages to a scrollable view.</p>
 <pre><code>var win = Ti.UI.createWindow();
 
 var view1 = Ti.UI.createView({ backgroundColor:'#123' });
@@ -996,7 +1134,8 @@ win.open();
 </code></pre></div>
         
 	<div class="subsectiontitle">Simple Scrollable View with 2 Zoomable Images</div>
-	<div class="code"><p>Create two scroll views, each containing an image view, and place them in a scrollable view.</p>
+	<div class="code"><p>Create two scroll views, each containing an image view, and assign them as pages to a 
+scrollable view.</p>
 <pre><code>var img1 = Ti.UI.createImageView({
     image:'http://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/' +
     'Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/' +
@@ -1017,7 +1156,7 @@ var img2Wrapper = Ti.UI.createScrollView({
 img2Wrapper.add(img2);
 var photosView = Ti.UI.createScrollableView({
     showPagingControl:true,
-    views:[img1Wrapper,img2Wrapper]
+    views:[img1Wrapper, img2Wrapper]
 });
 win.add(photosView);
 </code></pre></div>
@@ -1106,7 +1245,7 @@ win.add(photosView);
         <a name="addView-method"></a><b>addView</b> <span class="params">(view)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Adds a new view to this Scrollable View.</p></div>
+      <div class="description"><p>Adds a new page to this Scrollable View.</p></div>
       
 
       
@@ -1119,11 +1258,11 @@ win.add(photosView);
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Titanium.UI.View]
                       
                     
                   </td>
-                  <td class='attr-desc'>The view to add.</td>
+                  <td class='attr-desc'>The page to add.</td>
                 </tr>
                 
       	</table>
@@ -1133,7 +1272,7 @@ win.add(photosView);
     
     <div class="method">
       <div class="title" id="animate-method">
-        <a name="animate-method"></a><b>animate</b> <span class="params">(obj, callback)</span>
+        <a name="animate-method"></a><b>animate</b> <span class="params">(animation, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Animates this view.</p></div>
@@ -1145,7 +1284,7 @@ win.add(photosView);
       	<table border='0' cellpadding='5'>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>obj</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -1175,12 +1314,41 @@ Animation object.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="convertPointToView-method">
         <a name="convertPointToView-method"></a><b>convertPointToView</b> <span class="params">(point, destinationView)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Translates a point from this view's coordinate system to another 
-view's coordinate system.</p></div>
+      <div class="description"><p>Translates a point from this view's coordinate system to another view's coordinate system.</p></div>
       
 
       
@@ -1197,9 +1365,9 @@ view's coordinate system.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>A point in this view's coordinate system.
-If this argument is missing an x or y property, or the properties can not 
-be converted into numbers, an exception will be raised.</td>
+                  <td class='attr-desc'>A point in this view's coordinate system. 
+If this argument is missing an x or y property, or the properties can not be 
+converted into numbers, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1211,8 +1379,8 @@ be converted into numbers, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to.
-If this argument is not a view, an exception will be raised.</td>
+                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to. If this argument 
+is not a view, an exception will be raised.</td>
                 </tr>
                 
       	</table>
@@ -1225,7 +1393,8 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="finishLayout-method"></a><b>finishLayout</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the view tree.</p></div>
+      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the 
+view tree.</p></div>
       
 
       
@@ -1285,11 +1454,11 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getAnimatedCenterPoint-method">
-        <a name="getAnimatedCenterPoint-method"></a><b>getAnimatedCenterPoint</b> <span class="params">()</span>
+      <div class="title" id="getAnimatedCenter-method">
+        <a name="getAnimatedCenter-method"></a><b>getAnimatedCenter</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.animatedCenterPoint-property.html">animatedCenterPoint</a> property.</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.animatedCenter-property.html">animatedCenter</a> property.</p></div>
       
 
       
@@ -1560,6 +1729,28 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="getHitRect-method">
+        <a name="getHitRect-method"></a><b>getHitRect</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.hitRect-property.html">hitRect</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHorizontalWrap-method">
+        <a name="getHorizontalWrap-method"></a><b>getHorizontalWrap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getKeepScreenOn-method">
         <a name="getKeepScreenOn-method"></a><b>getKeepScreenOn</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1604,6 +1795,28 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="getOverlayEnabled-method">
+        <a name="getOverlayEnabled-method"></a><b>getOverlayEnabled</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.overlayEnabled-property.html">overlayEnabled</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPagingControlAlpha-method">
+        <a name="getPagingControlAlpha-method"></a><b>getPagingControlAlpha</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.pagingControlAlpha-property.html">pagingControlAlpha</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getPagingControlColor-method">
         <a name="getPagingControlColor-method"></a><b>getPagingControlColor</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1620,6 +1833,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.pagingControlHeight-property.html">pagingControlHeight</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPagingControlOnTop-method">
+        <a name="getPagingControlOnTop-method"></a><b>getPagingControlOnTop</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ScrollableView.pagingControlOnTop-property.html">pagingControlOnTop</a> property.</p></div>
       
 
       
@@ -1795,7 +2019,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="moveNext-method"></a><b>moveNext</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the current page to the next consecutive view in <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p></div>
+      <div class="description"><p>Sets the current page to the next consecutive page in <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p></div>
       
 
       
@@ -1806,7 +2030,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="movePrevious-method"></a><b>movePrevious</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Sets the current page to the previous consecutive view in <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p></div>
+      <div class="description"><p>Sets the current page to the previous consecutive page in <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p></div>
       
 
       
@@ -1889,7 +2113,7 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="removeView-method"></a><b>removeView</b> <span class="params">(view)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Removes an existing view from this Scrollable View.</p></div>
+      <div class="description"><p>Removes an existing page from this Scrollable View.</p></div>
       
 
       
@@ -1907,7 +2131,7 @@ If this argument is not a view, an exception will be raised.</td>
                     
                   </td>
                   <td class='attr-desc'>A Titanium.UI.View object (all platforms) or integer index (iPhone, iPad only) of 
-a view to remove.</td>
+a page to remove.</td>
                 </tr>
                 
       	</table>
@@ -1920,7 +2144,7 @@ a view to remove.</td>
         <a name="scrollToView-method"></a><b>scrollToView</b> <span class="params">(view)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Scrolls to the specified view in <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p></div>
+      <div class="description"><p>Scrolls to the specified page in <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p></div>
       
 
       
@@ -1937,7 +2161,7 @@ a view to remove.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>An integer index or a Titanium.UI.View object of the view to set as the current page.</td>
+                  <td class='attr-desc'>An integer index or Titanium.UI.View object to set as the current page.</td>
                 </tr>
                 
       	</table>
@@ -2636,6 +2860,66 @@ a view to remove.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="setHitRect-method">
+        <a name="setHitRect-method"></a><b>setHitRect</b> <span class="params">(hitRect)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ScrollableView.hitRect-property.html">hitRect</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>hitRect</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dimension]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHorizontalWrap-method">
+        <a name="setHorizontalWrap-method"></a><b>setHorizontalWrap</b> <span class="params">(horizontalWrap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ScrollableView.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>horizontalWrap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setKeepScreenOn-method">
         <a name="setKeepScreenOn-method"></a><b>setKeepScreenOn</b> <span class="params">(keepScreenOn)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2756,6 +3040,66 @@ a view to remove.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="setOverlayEnabled-method">
+        <a name="setOverlayEnabled-method"></a><b>setOverlayEnabled</b> <span class="params">(overlayEnabled)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ScrollableView.overlayEnabled-property.html">overlayEnabled</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>overlayEnabled</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPagingControlAlpha-method">
+        <a name="setPagingControlAlpha-method"></a><b>setPagingControlAlpha</b> <span class="params">(pagingControlAlpha)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ScrollableView.pagingControlAlpha-property.html">pagingControlAlpha</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>pagingControlAlpha</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setPagingControlColor-method">
         <a name="setPagingControlColor-method"></a><b>setPagingControlColor</b> <span class="params">(pagingControlColor)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2804,6 +3148,36 @@ a view to remove.</td>
                     
                       
                         [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPagingControlOnTop-method">
+        <a name="setPagingControlOnTop-method"></a><b>setPagingControlOnTop</b> <span class="params">(pagingControlOnTop)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ScrollableView.pagingControlOnTop-property.html">pagingControlOnTop</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>pagingControlOnTop</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
                       
                     
                   </td>
@@ -3013,7 +3387,7 @@ a view to remove.</td>
                   <td class='attr-rw'>
                     
                       
-                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                        [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
                       
                     
                   </td>
@@ -3189,8 +3563,8 @@ a view to remove.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be 
-performed asynchronously. If null, it will be performed immediately.</td>
+                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be performed 
+asynchronously. If null, it will be performed immediately.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -3202,9 +3576,9 @@ performed asynchronously. If null, it will be performed immediately.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>When set to true, the image is scaled based on scale factor of main screen.
-When set to false the image in the blob has the same dimensions for retina and
-non-retina devices. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the image is scaled based on scale factor of main screen. (iOS only) 
+When set to true, image is scale factor is honored. When set to false, the image in the 
+blob has the same dimensions for retina and non-retina devices.</td>
                 </tr>
                 
       	</table>
@@ -3217,8 +3591,8 @@ non-retina devices. Only used on iOS.</td>
         <a name="updateLayout-method"></a><b>updateLayout</b> <span class="params">(params)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a
-layout pass after they have been updated.</p></div>
+      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a layout pass after 
+they have been updated.</p></div>
       
 
       
@@ -3231,11 +3605,11 @@ layout pass after they have been updated.</p></div>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>Dictionary of layout properties to be updated.</td>
+                  <td class='attr-desc'>Layout properties to be updated.</td>
                 </tr>
                 
       	</table>
@@ -3259,17 +3633,6 @@ layout pass after they have been updated.</p></div>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -3328,17 +3691,6 @@ coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3375,6 +3727,190 @@ coordinates.</p>
               <span class="attr-rw">[Number]</span><br /> 
               
               <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="dragEnd-event">
+        <a name="dragEnd-method"></a><b>dragEnd</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>currentPage</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the currently visible view of <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>view</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.UI.View]</span><br /> 
+              
+              <p>The currently visible view.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="dragStart-event">
+        <a name="dragStart-method"></a><b>dragStart</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="dragend-event">
+        <a name="dragend-method"></a><b>dragend</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>currentPage</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the currently visible view of <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>view</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.UI.View]</span><br /> 
+              
+              <p>The currently visible view.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="dragstart-event">
+        <a name="dragstart-method"></a><b>dragstart</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
             </td>
           </tr>
           
@@ -3492,18 +4028,19 @@ coordinates.</p>
               
               <span class="attr-rw">[Number]</span><br /> 
               
-              <p>Index of the current view of <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p>
+              <p>Index of the currently visible view of <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p>
             </td>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
+            <td class='attr-name'>currentPageAsFloat</td>
             <td class='attr-desc'>
               
-              <span class="attr-rw">[Dictionary]</span><br /> 
+              <span class="attr-rw">[Number]</span><br /> 
               
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
+              <p>Current page index that the view is scrolled to as a float. For
+example, if the user is holding the <code>ScrollableView</code> in between
+the first and second page, this will have a value of 0.5.</p>
             </td>
           </tr>
           
@@ -3531,9 +4068,121 @@ coordinates.</p>
             <td class='attr-name'>view</td>
             <td class='attr-desc'>
               
+              <span class="attr-rw">[Titanium.UI.View]</span><br /> 
+              
+              <p>The currently visible view.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="scrollEnd-event">
+        <a name="scrollEnd-method"></a><b>scrollEnd</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>currentPage</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the currently visible view of <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
               <span class="attr-rw">[Object]</span><br /> 
               
-              <p>The current view.</p>
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>view</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.UI.View]</span><br /> 
+              
+              <p>The currently visible view.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="scrollend-event">
+        <a name="scrollend-method"></a><b>scrollend</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>currentPage</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Index of the currently visible view of <a href="Titanium.UI.ScrollableView.views-property.html"><code>Titanium.UI.ScrollableView.views</code></a>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>view</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Titanium.UI.View]</span><br /> 
+              
+              <p>The currently visible view.</p>
             </td>
           </tr>
           
@@ -3552,17 +4201,6 @@ coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -3621,17 +4259,6 @@ coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3688,17 +4315,6 @@ coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3753,17 +4369,6 @@ coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

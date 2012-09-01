@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -66,8 +78,8 @@ starting one animation when the previous animation completes.</p>
 <p>iOS supports both 2D and 3D matrix transformations in animations.</p>
 <p>In iOS, you can also specify an animation curve or <em>easing function</em> to control the pace of the 
 animation. To use an easing function, set the animation's <code>curve</code> property to one of the 
-<code>ANIMATION_CURVE</code> constants defined in <a href="Titanium.UI.iOS.html"><code>Titanium.UI.iOS</code></a>. For example, 
-<a href="Titanium.UI.iOS.ANIMATION_CURVE_EASE_IN-property.html">ANIMATION_CURVE_EASE_IN</a> specifies an animation that 
+<code>ANIMATION_CURVE</code> constants defined in <a href="Titanium.UI.html"><code>Titanium.UI</code></a>. For example, 
+<a href="Titanium.UI.ANIMATION_CURVE_EASE_IN-property.html">ANIMATION_CURVE_EASE_IN</a> specifies an animation that 
 starts slowly and then speeds up.</p>
 <p>Finally, iOS also supports <em>transitions</em> between windows or views. You can create a transition 
 by creating an animation object and setting the <code>view</code> property to the view you want to 
@@ -81,6 +93,11 @@ existing rotation. Called with two arguments, it interprets the first argument a
 angle and the second argument as a "to" angle. </p>
 <p>Android doesn't support any animation curves or easing functions. Animations always interpolate 
 linearly between the start state and the end state.</p>
+<h4>Mobile Web Platform Notes</h4>
+<p>Mobile Web supports 2D matrix transformations and animation curves in animations.</p>
+<p>iOS 5.1 and older as well as Safari 5 have a bug where you cannot animate both a position and
+transform matrix at the same time. The matrix transform animation will override the position
+animation until the matrix transform animation is complete, then jumps to the animated position.</p>
     </div>
     
 
@@ -94,7 +111,15 @@ linearly between the start state and the end state.</p>
             </ul>
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getAnchorPoint-method">getAnchorPoint <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -182,6 +207,10 @@ linearly between the start state and the end state.</p>
             </ul>
     
             <ul>
+                <li><a href="#setAnchorPoint-method">setAnchorPoint <span class="params">(anchorPoint)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setAutoreverse-method">setAutoreverse <span class="params">(autoreverse)</span></a></li>
             </ul>
     
@@ -266,6 +295,15 @@ linearly between the start state and the end state.</p>
     
     <div class="sectiontitle">Properties</div>
     <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="anchorPoint-property"></a>anchorPoint</td>
+            <td class='attr-rw'>
+                [Point]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Coordinate of the view about which to pivot an animation.</td>
+        </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="autoreverse-property"></a>autoreverse</td>
@@ -406,7 +444,7 @@ or hex triplet.</td>
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Animate the view from its current tranform to the specified transform.</td>
@@ -520,6 +558,75 @@ box.addEventListener('click', function() {
 });
 </code></pre></div>
         
+	<div class="subsectiontitle">Using an anchorPoint (Android and iOS)</div>
+	<div class="code"><p>Create a button and a blue square view. For each click of the button, apply a 90 degree 
+rotation animation pivoted at one of a series of anchor points. In particular, note that 
+an anchor point is configured using the <a href="Titanium.UI.Animation.anchorPoint-property.html"><code>Titanium.UI.Animation.anchorPoint</code></a> property for 
+Android and the <a href="Titanium.UI.View.anchorPoint-property.html"><code>Titanium.UI.View.anchorPoint</code></a> property for iOS.</p>
+<pre><code>var animationType = [
+  { name: 'Top Left', anchorPoint: {x:0, y:0} },
+  { name: 'Top Right', anchorPoint: {x:1, y:0} },
+  { name: 'Bottom Left', anchorPoint: {x:0, y:1} },
+  { name: 'Bottom Right', anchorPoint: {x:1, y:1} },
+  { name: 'Center', anchorPoint: {x:0.5, y:0.5} }
+];
+var animationTypeLength = animationType.length;
+var animationCount = 0;
+var animationTypePointer = 0;
+
+var t = Ti.UI.create2DMatrix();
+t = t.rotate(90);
+
+// animation properties
+var a = {
+  transform: t,
+  duration: 2000,
+  autoreverse: true
+};
+
+Ti.UI.backgroundColor = 'white';
+var win = Ti.UI.createWindow();
+
+var view = Ti.UI.createView({
+  backgroundColor:'#336699',
+  width:100, height:100
+});
+win.add(view);
+
+var button = Ti.UI.createButton({
+  title:'Animate ' + animationType[animationTypePointer].name,
+  height: (Ti.UI.Android) ? 80 : 40,
+  width: (Ti.UI.Android) ? 300 : 200,
+  top:30
+});
+win.add(button);
+
+function updateButton(name){
+  button.title = 'Animate ' + name;
+}
+
+button.addEventListener('click', function(){
+  // set new anchorPoint on animation for Android
+  a.anchorPoint = animationType[animationTypePointer].anchorPoint;
+
+  // set new anchorPoint on view for iOS
+  view.anchorPoint = animationType[animationTypePointer].anchorPoint;
+
+  animationCount++;
+
+  // determine position of next object in animationType array or return to first item
+  // using modulus operator
+  animationTypePointer = animationCount % animationTypeLength;
+
+  // animate view, followed by callback to set next button title
+  view.animate(a, function(){
+    updateButton(animationType[animationTypePointer].name);
+  });
+});
+
+win.open();
+</code></pre></div>
+        
     </table>
     
 
@@ -570,6 +677,36 @@ box.addEventListener('click', function() {
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -608,6 +745,17 @@ box.addEventListener('click', function() {
                 
       	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getAnchorPoint-method">
+        <a name="getAnchorPoint-method"></a><b>getAnchorPoint</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Animation.anchorPoint-property.html">anchorPoint</a> property.</p></div>
+      
+
       
     </div>
     
@@ -866,6 +1014,36 @@ box.addEventListener('click', function() {
                     
                   </td>
                   <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setAnchorPoint-method">
+        <a name="setAnchorPoint-method"></a><b>setAnchorPoint</b> <span class="params">(anchorPoint)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Animation.anchorPoint-property.html">anchorPoint</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>anchorPoint</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Point]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
                 </tr>
                 
       	</table>
@@ -1341,7 +1519,7 @@ box.addEventListener('click', function() {
                   <td class='attr-rw'>
                     
                       
-                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                        [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
                       
                     
                   </td>

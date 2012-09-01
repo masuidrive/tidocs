@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -58,6 +70,10 @@ functionality.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -110,6 +126,10 @@ functionality.</p>
     
             <ul>
                 <li><a href="#getMacaddress-method">getMacaddress <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getManufacturer-method">getManufacturer <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -212,7 +232,7 @@ functionality.</p>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system's WIFI IP address. No other network types are supported.</td>
+            <td class='attr-desc'>System's WIFI IP address. No other network types are supported.</td>
         </tr>
         
         <tr valign='top'>
@@ -221,7 +241,7 @@ functionality.</p>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system's processor architecture.</td>
+            <td class='attr-desc'>System's processor architecture.</td>
         </tr>
         
         <tr valign='top'>
@@ -230,7 +250,7 @@ functionality.</p>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system's unused memory, measured in megabytes on iOS and bytes on Android.</td>
+            <td class='attr-desc'>System's unused memory, measured in megabytes on iOS and bytes on Android.</td>
         </tr>
         
         <tr valign='top'>
@@ -239,7 +259,7 @@ functionality.</p>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The battery level in percent, accessible only when batteryMonitoring is enabled. Measured 
+            <td class='attr-desc'>Battery level in percent, accessible only when batteryMonitoring is enabled. Measured 
 in 5% increments on iPhone/iPad.</td>
         </tr>
         
@@ -276,7 +296,7 @@ in 5% increments on iPhone/iPad.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The applications's globally-unique ID (UUID).</td>
+            <td class='attr-desc'>Applications's globally-unique ID (UUID).</td>
         </tr>
         
         <tr valign='top'>
@@ -285,7 +305,7 @@ in 5% increments on iPhone/iPad.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system's default language.</td>
+            <td class='attr-desc'>System's default language.</td>
         </tr>
         
         <tr valign='top'>
@@ -294,7 +314,16 @@ in 5% increments on iPhone/iPad.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system's network interface mac address, or app UUID.</td>
+            <td class='attr-desc'>System's network interface mac address, or app UUID.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="manufacturer-property"></a>manufacturer</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Manufacturer of the product/hardware</td>
         </tr>
         
         <tr valign='top'>
@@ -303,7 +332,7 @@ in 5% increments on iPhone/iPad.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The model of the device.</td>
+            <td class='attr-desc'>Model of the device.</td>
         </tr>
         
         <tr valign='top'>
@@ -312,7 +341,8 @@ in 5% increments on iPhone/iPad.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The name of the platform.</td>
+            <td class='attr-desc'>Name of the platform. Returns android for the Android platform, iPhone OS for the iOS
+platform (iPhone, iPad, or iPod Touch), and mobileweb for the Mobile Web platform.</td>
         </tr>
         
         <tr valign='top'>
@@ -321,7 +351,7 @@ in 5% increments on iPhone/iPad.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system's WIFI network mask. No other network types are supported.</td>
+            <td class='attr-desc'>System's WIFI network mask. No other network types are supported.</td>
         </tr>
         
         <tr valign='top'>
@@ -330,8 +360,9 @@ in 5% increments on iPhone/iPad.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The short name of the system's Operating System. For example, iPhone will return iphone, 
-iPad will return ipad, Android will return android and Mobile Web will return mobileweb.</td>
+            <td class='attr-desc'>Short name of the system's Operating System. Returns android for the Android platfrom,
+iphone for the iPhone or iPod Touch, ipad for the iPad, and mobileweb for the Mobile Web
+platform.</td>
         </tr>
         
         <tr valign='top'>
@@ -340,7 +371,7 @@ iPad will return ipad, Android will return android and Mobile Web will return mo
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The Operating System architecture. On Android, this is 32bit.</td>
+            <td class='attr-desc'>Operating System architecture. On Android, this is 32bit.</td>
         </tr>
         
         <tr valign='top'>
@@ -349,7 +380,7 @@ iPad will return ipad, Android will return android and Mobile Web will return mo
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The number of processing cores.</td>
+            <td class='attr-desc'>Number of processing cores.</td>
         </tr>
         
         <tr valign='top'>
@@ -358,7 +389,7 @@ iPad will return ipad, Android will return android and Mobile Web will return mo
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The short name of the JavaScript runtime in use.</td>
+            <td class='attr-desc'>Short name of the JavaScript runtime in use.</td>
         </tr>
         
         <tr valign='top'>
@@ -367,7 +398,7 @@ iPad will return ipad, Android will return android and Mobile Web will return mo
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system name, if set. On iOS, this can be found in Settings &gt; General &gt; About &gt; Name.</td>
+            <td class='attr-desc'>System name, if set. On iOS, this can be found in Settings &gt; General &gt; About &gt; Name.</td>
         </tr>
         
         <tr valign='top'>
@@ -376,7 +407,7 @@ iPad will return ipad, Android will return android and Mobile Web will return mo
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The system's OS version.</td>
+            <td class='attr-desc'>System's OS version.</td>
         </tr>
         
     </table>
@@ -453,6 +484,36 @@ iPad will return ipad, Android will return android and Mobile Web will return mo
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -648,6 +709,17 @@ iPad will return ipad, Android will return android and Mobile Web will return mo
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Platform.macaddress-property.html">macaddress</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getManufacturer-method">
+        <a name="getManufacturer-method"></a><b>getManufacturer</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.manufacturer-property.html">manufacturer</a> property.</p></div>
       
 
       

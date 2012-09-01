@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -50,19 +62,24 @@
     
     
     <div class="description">
-        <p>Use the <a href="Titanium.UI.createTableViewRow-method.html"><code>Titanium.UI.createTableViewRow</code></a> method to create a table view row.</p>
-<p>A table view row represents a single item in a <code>TableView</code>. The row's contents can be as simple 
-as a single line of text, or the row can be a completely customized with its own child views.</p>
-<p>A basic table view row includes properties for setting:</p>
+        <p>Use the <a href="Titanium.UI.createTableViewRow-method.html"><code>Titanium.UI.createTableViewRow</code></a> method to create a table view row. These may be 
+explicitly added to <a href="Titanium.UI.TableViewSection-object.html">TableViewSection</a> objects, which are applied 
+to a <a href="Titanium.UI.TableView-object.html">TableView</a>. If a table section is not specified, one will be 
+automatically created. </p>
+<p>A row's contents can be as simple as a single line of text, or comprised of a completely 
+customized layout of child views. </p>
+<h4>Creating Table View Rows</h4>
+<p>Rows may be created using the properties directly available on the <code>TableViewRow</code> object, to 
+achieve the following:</p>
 <ul>
-<li>Row title to display the text content on the row.</li>
-<li>Optional images on the left and right sides of the row.</li>
-<li>Optional system decorations, such as checkboxes.</li>
+<li>Row title to display the text content in the row.</li>
+<li>Background color and background image.</li>
+<li>Images on the left and right sides of the row.</li>
+<li>System decorations, such as checkboxes.</li>
 </ul>
-<p>The usual view properties may also be set, such as background color and background image.</p>
-<p>If a custom layout is needed, such as multiple lines of text, different fonts, or additional 
-images or controls, child views may be added to the row. In this case, row <code>title</code> property 
-should not be set.</p>
+<p>Alternatively, custom layouts of multiple lines of text, different fonts, and additional 
+images or controls can be created by adding child views to the row. In this case, the row's 
+<code>title</code> property should not be set.</p>
 <p>As events automatically bubble/propogate to parent views, a listener may be placed on the table 
 view to detect events fired from the rows. The benefit is that it is not necessary to 
 explicitly create a listener for every individual row.</p>
@@ -109,6 +126,10 @@ source for these events. Refer to the "Row Swipe Gestures" example for a demonst
             </ul>
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#convertPointToView-method">convertPointToView <span class="params">(point, destinationView)</span></a></li>
             </ul>
     
@@ -125,7 +146,7 @@ source for these events. Refer to the "Row Swipe Gestures" example for a demonst
             </ul>
     
             <ul>
-                <li><a href="#getAnimatedCenterPoint-method">getAnimatedCenterPoint <span class="params">()</span></a></li>
+                <li><a href="#getAnimatedCenter-method">getAnimatedCenter <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -234,6 +255,10 @@ source for these events. Refer to the "Row Swipe Gestures" example for a demonst
     
             <ul>
                 <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHorizontalWrap-method">getHorizontalWrap <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -449,6 +474,10 @@ source for these events. Refer to the "Row Swipe Gestures" example for a demonst
             </ul>
     
             <ul>
+                <li><a href="#setHorizontalWrap-method">setHorizontalWrap <span class="params">(horizontalWrap)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setIndentionLevel-method">setIndentionLevel <span class="params">(indentionLevel)</span></a></li>
             </ul>
     
@@ -560,11 +589,11 @@ source for these events. Refer to the "Row Swipe Gestures" example for a demonst
                 [Point]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Anchor point where animation should occur, relative to the view's boundaries.</td>
+            <td class='attr-desc'>Coordinate of the view about which to pivot an animation.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
+            <td class='attr-name'><a name="animatedCenter-property"></a>animatedCenter</td>
             <td class='attr-rw'>
                 [Point]
             </td>
@@ -650,7 +679,7 @@ source for these events. Refer to the "Row Swipe Gestures" example for a demonst
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Toggle for whether or not to tile a background across a view.</td>
+            <td class='attr-desc'>Determines whether to tile a background across a view.</td>
         </tr>
         
         <tr valign='top'>
@@ -819,6 +848,15 @@ side of the row.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="horizontalWrap-property"></a>horizontalWrap</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the layout has wrapping behavior.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="indentionLevel-property"></a>indentionLevel</td>
             <td class='attr-rw'>
                 [Number]
@@ -833,7 +871,7 @@ side of the row.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether to keep the device screen on.</td>
+            <td class='attr-desc'>Determines whether to keep the device screen on.</td>
         </tr>
         
         <tr valign='top'>
@@ -988,13 +1026,13 @@ the table is in editing or moving mode.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether view should receive touch events.</td>
+            <td class='attr-desc'>Determines whether view should receive touch events.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Transformation matrix to apply to the view.</td>
@@ -1006,7 +1044,7 @@ the table is in editing or moving mode.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean value indicating whether the view is visible.</td>
+            <td class='attr-desc'>Determines whether the view is visible.</td>
         </tr>
         
         <tr valign='top'>
@@ -1236,12 +1274,41 @@ win.open();
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="convertPointToView-method">
         <a name="convertPointToView-method"></a><b>convertPointToView</b> <span class="params">(point, destinationView)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Translates a point from this view's coordinate system to another 
-view's coordinate system.</p></div>
+      <div class="description"><p>Translates a point from this view's coordinate system to another view's coordinate system.</p></div>
       
 
       
@@ -1258,9 +1325,9 @@ view's coordinate system.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>A point in this view's coordinate system.
-If this argument is missing an x or y property, or the properties can not 
-be converted into numbers, an exception will be raised.</td>
+                  <td class='attr-desc'>A point in this view's coordinate system. 
+If this argument is missing an x or y property, or the properties can not be 
+converted into numbers, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1272,8 +1339,8 @@ be converted into numbers, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to.
-If this argument is not a view, an exception will be raised.</td>
+                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to. If this argument 
+is not a view, an exception will be raised.</td>
                 </tr>
                 
       	</table>
@@ -1286,7 +1353,8 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="finishLayout-method"></a><b>finishLayout</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the view tree.</p></div>
+      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the 
+view tree.</p></div>
       
 
       
@@ -1346,11 +1414,11 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getAnimatedCenterPoint-method">
-        <a name="getAnimatedCenterPoint-method"></a><b>getAnimatedCenterPoint</b> <span class="params">()</span>
+      <div class="title" id="getAnimatedCenter-method">
+        <a name="getAnimatedCenter-method"></a><b>getAnimatedCenter</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableViewRow.animatedCenterPoint-property.html">animatedCenterPoint</a> property.</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableViewRow.animatedCenter-property.html">animatedCenter</a> property.</p></div>
       
 
       
@@ -1648,6 +1716,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableViewRow.height-property.html">height</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHorizontalWrap-method">
+        <a name="getHorizontalWrap-method"></a><b>getHorizontalWrap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableViewRow.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
       
 
       
@@ -2800,6 +2879,36 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="setHorizontalWrap-method">
+        <a name="setHorizontalWrap-method"></a><b>setHorizontalWrap</b> <span class="params">(horizontalWrap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableViewRow.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>horizontalWrap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setIndentionLevel-method">
         <a name="setIndentionLevel-method"></a><b>setIndentionLevel</b> <span class="params">(indentionLevel)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -3327,7 +3436,7 @@ If this argument is not a view, an exception will be raised.</td>
                   <td class='attr-rw'>
                     
                       
-                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                        [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
                       
                     
                   </td>
@@ -3473,8 +3582,8 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be 
-performed asynchronously. If null, it will be performed immediately.</td>
+                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be performed 
+asynchronously. If null, it will be performed immediately.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -3486,9 +3595,9 @@ performed asynchronously. If null, it will be performed immediately.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>When set to true, the image is scaled based on scale factor of main screen.
-When set to false the image in the blob has the same dimensions for retina and
-non-retina devices. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the image is scaled based on scale factor of main screen. (iOS only) 
+When set to true, image is scale factor is honored. When set to false, the image in the 
+blob has the same dimensions for retina and non-retina devices.</td>
                 </tr>
                 
       	</table>
@@ -3501,8 +3610,8 @@ non-retina devices. Only used on iOS.</td>
         <a name="updateLayout-method"></a><b>updateLayout</b> <span class="params">(params)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a
-layout pass after they have been updated.</p></div>
+      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a layout pass after 
+they have been updated.</p></div>
       
 
       
@@ -3515,11 +3624,11 @@ layout pass after they have been updated.</p></div>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>Dictionary of layout properties to be updated.</td>
+                  <td class='attr-desc'>Layout properties to be updated.</td>
                 </tr>
                 
       	</table>
@@ -3552,17 +3661,6 @@ layout pass after they have been updated.</p></div>
               
               <p>Indicates whether the detail button was clicked. Only <code>true</code> if <code>row.hasDetail</code> is 
 <code>true</code> and the detail button was clicked.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
             </td>
           </tr>
           
@@ -3755,15 +3853,6 @@ coordinates.</p>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location of the event's endpoint 
-in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3818,17 +3907,6 @@ in screen coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -3887,17 +3965,6 @@ coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3952,17 +4019,6 @@ coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

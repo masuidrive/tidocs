@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -110,7 +122,7 @@
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Country code. Same as country_code.</td>
+            <td class='attr-desc'>Country code. Same as countryCode.</td>
         </tr>
         
         <tr valign='top'>
@@ -120,6 +132,15 @@
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Display address. Identical to address.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="error-property"></a>error</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error message when the request failed.</td>
         </tr>
         
         <tr valign='top'>

@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -61,7 +73,7 @@ only work on Apple iOS devices.</p>
             </ul>
     
             <ul>
-                <li><a href="#create3DMatrix-method">create3DMatrix <span class="params">(parameters)</span></a></li>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -70,6 +82,10 @@ only work on Apple iOS devices.</p>
     
             <ul>
                 <li><a href="#createCoverFlowView-method">createCoverFlowView <span class="params">(parameters)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#createDocumentViewer-method">createDocumentViewer <span class="params">(parameters)</span></a></li>
             </ul>
     
             <ul>
@@ -115,52 +131,12 @@ appropriate for portrait orientations.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_IN-property"></a>ANIMATION_CURVE_EASE_IN</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use with Animation.curve to specify an animation that starts 
-slowly and speeds up.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_IN_OUT-property"></a>ANIMATION_CURVE_EASE_IN_OUT</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use with Animation.curve to specify an animation that starts 
-slowly, and speeds up, then slows down at the end of the animation.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="ANIMATION_CURVE_EASE_OUT-property"></a>ANIMATION_CURVE_EASE_OUT</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use with Animation.curve to specify an animation that starts 
-quickly, then slows down at the end of the animation.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="ANIMATION_CURVE_LINEAR-property"></a>ANIMATION_CURVE_LINEAR</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use with Animation.curve to specify an animation that proceeds 
-at a constant rate.</td>
-        </tr>
-        
-        <tr valign='top'>
             <td class='attr-name'><a name="AUTODETECT_ADDRESS-property"></a>AUTODETECT_ADDRESS</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Convert strings formatted as addresses into clickable links.</td>
+            <td class='attr-desc'>Use Titanium.UI.AUTOLINK_MAP_ADDRESSES instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -169,7 +145,7 @@ at a constant rate.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Convert all detectable types of data into clickable links.</td>
+            <td class='attr-desc'>Use Titanium.UI.AUTOLINK_ALL instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -178,7 +154,7 @@ at a constant rate.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Convert strings formatted as calendar events into clickable links.</td>
+            <td class='attr-desc'>Use Titanium.UI.AUTOLINK_CALENDAR instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -187,7 +163,7 @@ at a constant rate.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Convert strings formatted as URLs into clickable links.</td>
+            <td class='attr-desc'>Use Titanium.UI.AUTOLINK_URLS instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -196,7 +172,7 @@ at a constant rate.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Disable converting strings into clickable links.</td>
+            <td class='attr-desc'>Use Titanium.UI.AUTOLINK_NONE instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -205,7 +181,7 @@ at a constant rate.</td>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Convert strings formatted as phone numbers into clickable links.</td>
+            <td class='attr-desc'>Use Titanium.UI.AUTOLINK_PHONE_NUMBERS instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -460,6 +436,42 @@ at a constant rate.</td>
             <td class='attr-desc'>Use with MaskedImage.mode to specify a blend mode.</td>
         </tr>
         
+        <tr valign='top'>
+            <td class='attr-name'><a name="COLOR_GROUP_TABLEVIEW_BACKGROUND-property"></a>COLOR_GROUP_TABLEVIEW_BACKGROUND</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Returns the iOS system texture used to render the background on a group table view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="COLOR_SCROLLVIEW_BACKGROUND-property"></a>COLOR_SCROLLVIEW_BACKGROUND</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Returns the iOS system texture used to render the area behind scrollable content.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="COLOR_UNDER_PAGE_BACKGROUND-property"></a>COLOR_UNDER_PAGE_BACKGROUND</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Returns the iOS system texture used to render the background of a page.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="COLOR_VIEW_FLIPSIDE_BACKGROUND-property"></a>COLOR_VIEW_FLIPSIDE_BACKGROUND</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Returns the iOS system texture used for the back side of a view while it is being flipped.</td>
+        </tr>
+        
     </table>
     
 
@@ -516,11 +528,11 @@ at a constant rate.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="create3DMatrix-method">
-        <a name="create3DMatrix-method"></a><b>create3DMatrix</b> <span class="params">(parameters)</span>
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iOS.3DMatrix-object.html"><code>Titanium.UI.iOS.3DMatrix</code></a>.</p></div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
       
 
       
@@ -529,15 +541,15 @@ at a constant rate.</td>
       	<table border='0' cellpadding='5'>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>parameters</td>
+                  <td class='attr-name'>props</td>
                   <td class='attr-rw'>
                     
                       
-                        [Dictionary&lt;Titanium.UI.iOS.3DMatrix&gt;]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.3DMatrix except those marked not-creation or read-only.</td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -598,6 +610,36 @@ at a constant rate.</td>
                     
                   </td>
                   <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.CoverFlowView except those marked not-creation or read-only.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="createDocumentViewer-method">
+        <a name="createDocumentViewer-method"></a><b>createDocumentViewer</b> <span class="params">(parameters)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.iOS.DocumentViewer-object.html"><code>Titanium.UI.iOS.DocumentViewer</code></a>.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;Titanium.UI.iOS.DocumentViewer&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.iOS.DocumentViewer except those marked not-creation or read-only.</td>
                 </tr>
                 
       	</table>

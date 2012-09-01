@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.UI.Android.ProgressIndicator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Object</span> 
+            Titanium.UI.Android.ProgressIndicator 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(2.2.0+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>A progress dialog or a horizontal progress bar in the title of the window.</p>
+    </div>
+    
+    
+    
+    <div class="description">
+        <p>A progress indicator can be used to show the progress of an operation in the UI to let the
+user know that some action is taking place. It is used to indicate an ongoing activity of
+determinate or indeterminate length.</p>
+<p>Use the <a href="Titanium.UI.Android.createProgressIndicator-method.html"><code>Titanium.UI.Android.createProgressIndicator</code></a> method to create a progress indicator.</p>
+<p>A progress indicator can be either a progress dialog or a horizontal progress bar in the title 
+of the window. The progress dialog is a modal dialog that blocks the UI. See also: 
+<a href="Titanium.UI.Android.PROGRESS_INDICATOR_DIALOG-property.html"><code>Titanium.UI.Android.PROGRESS_INDICATOR_DIALOG</code></a>,
+<a href="Titanium.UI.Android.PROGRESS_INDICATOR_STATUS_BAR-property.html"><code>Titanium.UI.Android.PROGRESS_INDICATOR_STATUS_BAR</code></a>.</p>
+<p>Calling <code>show</code> displays the indicator, and calling <code>hide</code> removes it.</p>
+    </div>
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getCancelable-method">getCancelable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getLocation-method">getLocation <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMax-method">getMax <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMessage-method">getMessage <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMessageid-method">getMessageid <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getMin-method">getMin <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getType-method">getType <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#hide-method">hide <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setCancelable-method">setCancelable <span class="params">(cancelable)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setLocation-method">setLocation <span class="params">(location)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMax-method">setMax <span class="params">(max)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMessage-method">setMessage <span class="params">(message)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMessageid-method">setMessageid <span class="params">(messageid)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setMin-method">setMin <span class="params">(min)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setType-method">setType <span class="params">(type)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#show-method">show <span class="params">()</span></a></li>
+            </ul>
+    
+    
+
+    
+    <div class="sectiontitle">Properties</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="cancelable-property"></a>cancelable</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>When true allows the user to cancel the progress dialog by pressing the BACK button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="location-property"></a>location</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Location for the progress indicator.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="max-property"></a>max</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Maximum value of the progress bar.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="message-property"></a>message</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Message text.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="messageid-property"></a>messageid</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Key identifying a string in the locale file to use for the message text.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="min-property"></a>min</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Minimum value of the progress bar.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="type-property"></a>type</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Type for the progress indicator.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#cancel-event">cancel</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the user has canceled the progress indicator dialog.</td>
+        </tr>
+        
+    </table>
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Simple Progress Indicator</div>
+	<div class="code"><p>Open a yellow window immediately after a blue window. Show an progress indicator while
+some code executes and hide it on completion. Then close the yellow window.</p>
+<pre><code>Ti.UI.backgroundColor = 'white';
+
+var win1 = Ti.UI.createWindow({
+  backgroundColor: 'blue'
+});
+
+var win2 = Ti.UI.createWindow({
+  backgroundColor: 'yellow',
+  fullscreen: true
+});
+
+var progressIndicator = Ti.UI.Android.createProgressIndicator({
+  message: 'Loading...',
+  location: Ti.UI.Android.PROGRESS_INDICATOR_DIALOG,
+  type: Ti.UI.Android.PROGRESS_INDICATOR_DETERMINANT,
+  cancelable: true,
+  min: 0,
+  max: 10
+});
+
+// eventListeners must always be loaded before the event is likely to fire
+// hence, the open() method must be positioned before the window is opened
+win2.addEventListener('open', function (e) {
+  progressIndicator.show();
+  var value = 0;
+  setInterval(function(){
+    if (value &gt; 10) {
+        return;
+    }
+    progressIndicator.value = value;
+    value ++;
+  }, 200);
+  // do some work that takes 3 seconds
+  // ie. replace the following setTimeout block with your code
+  setTimeout(function(){
+    e.source.close();
+    progressIndicator.hide();
+  }, 3000);
+});
+
+win1.open();
+win2.open();
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addEventListener-method">
+        <a name="addEventListener-method"></a><b>addEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="fireEvent-method">
+        <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Fires a synthesized event to any registered listeners.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>event</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of keys and values to add to the Titanium.Event object sent to the listeners.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getCancelable-method">
+        <a name="getCancelable-method"></a><b>getCancelable</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Android.ProgressIndicator.cancelable-property.html">cancelable</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getLocation-method">
+        <a name="getLocation-method"></a><b>getLocation</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Android.ProgressIndicator.location-property.html">location</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMax-method">
+        <a name="getMax-method"></a><b>getMax</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Android.ProgressIndicator.max-property.html">max</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMessage-method">
+        <a name="getMessage-method"></a><b>getMessage</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Android.ProgressIndicator.message-property.html">message</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMessageid-method">
+        <a name="getMessageid-method"></a><b>getMessageid</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Android.ProgressIndicator.messageid-property.html">messageid</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getMin-method">
+        <a name="getMin-method"></a><b>getMin</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Android.ProgressIndicator.min-property.html">min</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getType-method">
+        <a name="getType-method"></a><b>getType</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.Android.ProgressIndicator.type-property.html">type</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="hide-method">
+        <a name="hide-method"></a><b>hide</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Hides the progress indicator and stops the animation.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeEventListener-method">
+        <a name="removeEventListener-method"></a><b>removeEventListener</b> <span class="params">(name, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes the specified callback as an event listener for the named event.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>name</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of the event.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="Object.html">[Callback&lt;Object&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setCancelable-method">
+        <a name="setCancelable-method"></a><b>setCancelable</b> <span class="params">(cancelable)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Android.ProgressIndicator.cancelable-property.html">cancelable</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>cancelable</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setLocation-method">
+        <a name="setLocation-method"></a><b>setLocation</b> <span class="params">(location)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Android.ProgressIndicator.location-property.html">location</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>location</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMax-method">
+        <a name="setMax-method"></a><b>setMax</b> <span class="params">(max)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Android.ProgressIndicator.max-property.html">max</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>max</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMessage-method">
+        <a name="setMessage-method"></a><b>setMessage</b> <span class="params">(message)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Android.ProgressIndicator.message-property.html">message</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>message</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMessageid-method">
+        <a name="setMessageid-method"></a><b>setMessageid</b> <span class="params">(messageid)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Android.ProgressIndicator.messageid-property.html">messageid</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>messageid</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setMin-method">
+        <a name="setMin-method"></a><b>setMin</b> <span class="params">(min)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Android.ProgressIndicator.min-property.html">min</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>min</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setType-method">
+        <a name="setType-method"></a><b>setType</b> <span class="params">(type)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.Android.ProgressIndicator.type-property.html">type</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>type</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="show-method">
+        <a name="show-method"></a><b>show</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Shows the progress indicator and starts the animation.</p></div>
+      
+
+      
+    </div>
+    
+    
+
+
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="cancel-event">
+        <a name="cancel-method"></a><b>cancel</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

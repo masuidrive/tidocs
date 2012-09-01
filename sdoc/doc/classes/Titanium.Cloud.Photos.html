@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -36,7 +48,7 @@
             Titanium.Cloud.Photos 
         </h1>
       	<ul class="files">
-      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	  <li>Android(2.0+), iPhone(2.0+), iPad(2.0+)</li>
       	</ul>
     </div>
     <div id="bodyContent">
@@ -54,6 +66,10 @@
     
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
     
             <ul>
                 <li><a href="#create-method">create <span class="params">(parameters, callback)</span></a></li>
@@ -219,6 +235,36 @@
 
     
     <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
     
     <div class="method">
       <div class="title" id="create-method">

@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -61,6 +73,10 @@ that persist beyond application sessions and device power cycles.</p>
             </ul>
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
             </ul>
     
@@ -78,6 +94,10 @@ that persist beyond application sessions and device power cycles.</p>
     
             <ul>
                 <li><a href="#getList-method">getList <span class="params">(property, default)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getObject-method">getObject <span class="params">(property, default)</span></a></li>
             </ul>
     
             <ul>
@@ -117,6 +137,10 @@ that persist beyond application sessions and device power cycles.</p>
             </ul>
     
             <ul>
+                <li><a href="#setObject-method">setObject <span class="params">(property, value)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setString-method">setString <span class="params">(property, value)</span></a></li>
             </ul>
     
@@ -124,6 +148,17 @@ that persist beyond application sessions and device power cycles.</p>
 
     
 
+    
+    <div class="sectiontitle">Events</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#change-event">change</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when a property is changed.</td>
+        </tr>
+        
+    </table>
     
 
     
@@ -190,6 +225,36 @@ for (var i=0, ilen=props.length; i&lt;ilen; i++){
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -396,6 +461,48 @@ for (var i=0, ilen=props.length; i&lt;ilen; i++){
                     
                       
                         [Array&lt;Object&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Default value to return if property does not exist.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getObject-method">
+        <a name="getObject-method"></a><b>getObject</b> <span class="params">(property, default)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Returns the value of a property as an object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>property</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of property.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>default</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
                       
                     
                   </td>
@@ -735,6 +842,49 @@ does not exist.</p></div>
     </div>
     
     <div class="method">
+      <div class="title" id="setObject-method">
+        <a name="setObject-method"></a><b>setObject</b> <span class="params">(property, value)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of a property as an object data type. The property will be created if it 
+does not exist.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>property</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Name of property.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>value</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Object]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Property value.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setString-method">
         <a name="setString-method"></a><b>setString</b> <span class="params">(property, value)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -780,6 +930,45 @@ does not exist.</p></div>
     
 
 
+    
+    <div class="sectiontitle">Events</div>
+    
+    <div class="method">
+      <div class="title" id="change-event">
+        <a name="change-method"></a><b>change</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
     
 
 

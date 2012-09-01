@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -165,6 +177,36 @@ Using <a href="Titanium.Geolocation.ACCURACY_LOW-property.html">ACCURACY_LOW</a>
 updates with lower power consumption.</p>
 <p>In addition to the accuracy setting, there are several Mobile Web-specific settings.
 See <a href="Titanium.Geolocation.MobileWeb.html"><code>Titanium.Geolocation.MobileWeb</code></a> for details.</p>
+<h4>Using the Compass</h4>
+<p>Both iOS and Android support a receiving heading updates from a hardware compass, if available.
+On Mobile Web, heading updates are supported if the browser supports this feature.
+Currently, this support is only available on Mobile Safari.</p>
+<p>Check the <a href="Titanium.Geolocation.hasCompass-property.html">hasCompass</a> property to see if the current
+device supports a compass.</p>
+<p>To retrieve compass readings, you can either use
+<a href="Titanium.Geolocation.getCurrentHeading-method.html">getCurrentHeading</a> as shown in the
+previous example, or add a listener for the
+<a href="Titanium.Geolocation.heading-event.html">heading</a> event, as shown below:</p>
+<pre><code>var compassHandler = function(e) {
+  if (e.success === undefined || e.success) {
+    Ti.API.info("Heading: " + e.heading.magneticHeading);
+  }
+}
+Ti.Geolocation.addEventListener("heading", compassHandler);
+</code></pre>
+<p>Note that Android does not include a <code>success</code> property in the <code>heading</code> event.
+Heading events are only generated on Android when heading data is available. So if
+<code>success</code> is undefined, we assume that the event contains valid compass data.</p>
+<p>To obtain true heading data for the compass (as opposed to magnetic heading data),
+a current location fix is required. See the notes on
+<a href="HeadingData.trueHeading-property.html">trueHeading</a> for more information.</p>
+<p>As with location updates, the application should unregister for heading updates
+when it is no longer being used, or when it goes into the background. Use
+<code>removeEventListener</code> to stop heading updates:</p>
+<pre><code>Ti.Geolocation.removeEventListener('heading', compassHandler);
+</code></pre>
+<p>Finally, note that neither the Android emulator nor the iOS simulator provide
+compass support. Compass code must be tested on physical devices.</p>
     </div>
     
 
@@ -175,6 +217,10 @@ See <a href="Titanium.Geolocation.MobileWeb.html"><code>Titanium.Geolocation.Mob
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -206,6 +252,10 @@ See <a href="Titanium.Geolocation.MobileWeb.html"><code>Titanium.Geolocation.Mob
             </ul>
     
             <ul>
+                <li><a href="#getHasCompass-method">getHasCompass <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getHeadingFilter-method">getHeadingFilter <span class="params">()</span></a></li>
             </ul>
     
@@ -227,6 +277,10 @@ See <a href="Titanium.Geolocation.MobileWeb.html"><code>Titanium.Geolocation.Mob
     
             <ul>
                 <li><a href="#getShowCalibration-method">getShowCalibration <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getTrackSignificantLocationChange-method">getTrackSignificantLocationChange <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -267,6 +321,10 @@ See <a href="Titanium.Geolocation.MobileWeb.html"><code>Titanium.Geolocation.Mob
     
             <ul>
                 <li><a href="#setShowCalibration-method">setShowCalibration <span class="params">(showCalibration)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setTrackSignificantLocationChange-method">setTrackSignificantLocationChange <span class="params">(trackSignificantLocationChange)</span></a></li>
             </ul>
     
     
@@ -514,6 +572,15 @@ indicating that the authorization state is unknown.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="hasCompass-property"></a>hasCompass</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates whether the current device supports a compass.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="headingFilter-property"></a>headingFilter</td>
             <td class='attr-rw'>
                 [Number]
@@ -569,6 +636,16 @@ services.</td>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Determines whether the compass calibration UI is shown if needed.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="trackSignificantLocationChange-property"></a>trackSignificantLocationChange</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Indicates if the location changes should be updated only when a significant change 
+in location occurs.</td>
         </tr>
         
     </table>
@@ -642,6 +719,36 @@ services.</td>
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -827,6 +934,17 @@ services.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="getHasCompass-method">
+        <a name="getHasCompass-method"></a><b>getHasCompass</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.hasCompass-property.html">hasCompass</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getHeadingFilter-method">
         <a name="getHeadingFilter-method"></a><b>getHeadingFilter</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -887,6 +1005,17 @@ services.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.showCalibration-property.html">showCalibration</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getTrackSignificantLocationChange-method">
+        <a name="getTrackSignificantLocationChange-method"></a><b>getTrackSignificantLocationChange</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Geolocation.trackSignificantLocationChange-property.html">trackSignificantLocationChange</a> property.</p></div>
       
 
       
@@ -1228,6 +1357,36 @@ services.</td>
       
     </div>
     
+    <div class="method">
+      <div class="title" id="setTrackSignificantLocationChange-method">
+        <a name="setTrackSignificantLocationChange-method"></a><b>setTrackSignificantLocationChange</b> <span class="params">(trackSignificantLocationChange)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Geolocation.trackSignificantLocationChange-property.html">trackSignificantLocationChange</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>trackSignificantLocationChange</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
     
 
 
@@ -1292,6 +1451,8 @@ services.</td>
           <tr valign='top'>
             <td class='attr-name'>error</td>
             <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
               
               <p>If <code>success</code> is false, a string describing the error.</p>
             </td>
@@ -1369,7 +1530,7 @@ services.</td>
               
               <span class="attr-rw">[LocationCoordinates]</span><br /> 
               
-              <p>Location data for this update.</p>
+              <p>If <code>success</code> is true, actual location data for this update.</p>
             </td>
           </tr>
           
@@ -1389,7 +1550,7 @@ services.</td>
               
               <span class="attr-rw">[LocationProviderDict]</span><br /> 
               
-              <p>Object describing the location provider generating this update.</p>
+              <p>If <code>success</code> is true, object describing the location provider generating this update.</p>
             </td>
           </tr>
           

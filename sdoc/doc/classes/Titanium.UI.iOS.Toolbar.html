@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -36,7 +48,7 @@
             Titanium.UI.iOS.Toolbar 
         </h1>
       	<ul class="files">
-      	  <li>iPhone(0.8+), iPad(0.8+)</li>
+      	  <li>iPhone(1.4+), iPad(1.4+)</li>
       	</ul>
     </div>
     <div id="bodyContent">
@@ -60,6 +72,16 @@ labels. </p>
 for example), but the iOS Human Interface Guidelines have specific requirements for placing 
 toolbars: on iPhone, a toolbar should be at the bottom of the window. On the iPad, a toolbar 
 should appear at the top or bottom of a window.</p>
+<p>You can specify that a border be drawn on the top or bottom of the toolbar, using the
+<a href="Titanium.UI.iOS.Toolbar.borderTop-property.html">borderTop</a> and
+<a href="Titanium.UI.iOS.Toolbar.borderBottom-property.html">borderBottom</a> properties. While the standard
+<code>borderColor</code>, <code>borderWidth</code>, and <code>borderRadius</code> properties are supported on toolbars,
+using these properties adds a border on all four sides of the control, which may be
+undesirable.</p>
+<p>See also:</p>
+<ul>
+<li><a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/MobileHIG/UIElementGuidelines/UIElementGuidelines.html#//apple_ref/doc/uid/TP40006556-CH13-SW10">Toolbar in the iOS Human Interface Guidelines.</a></li>
+</ul>
     </div>
     
 
@@ -77,7 +99,11 @@ should appear at the top or bottom of a window.</p>
             </ul>
     
             <ul>
-                <li><a href="#animate-method">animate <span class="params">(obj, callback)</span></a></li>
+                <li><a href="#animate-method">animate <span class="params">(animation, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -97,27 +123,7 @@ should appear at the top or bottom of a window.</p>
             </ul>
     
             <ul>
-                <li><a href="#getAnimatedCenterPoint-method">getAnimatedCenterPoint <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundColor-method">getBackgroundColor <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundDisabledColor-method">getBackgroundDisabledColor <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundDisabledImage-method">getBackgroundDisabledImage <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundFocusedColor-method">getBackgroundFocusedColor <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundFocusedImage-method">getBackgroundFocusedImage <span class="params">()</span></a></li>
+                <li><a href="#getAnimatedCenter-method">getAnimatedCenter <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -126,26 +132,6 @@ should appear at the top or bottom of a window.</p>
     
             <ul>
                 <li><a href="#getBackgroundImage-method">getBackgroundImage <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundLeftCap-method">getBackgroundLeftCap <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundRepeat-method">getBackgroundRepeat <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundSelectedColor-method">getBackgroundSelectedColor <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundSelectedImage-method">getBackgroundSelectedImage <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getBackgroundTopCap-method">getBackgroundTopCap <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -193,15 +179,15 @@ should appear at the top or bottom of a window.</p>
             </ul>
     
             <ul>
+                <li><a href="#getHorizontalWrap-method">getHorizontalWrap <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getItems-method">getItems <span class="params">()</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#getKeepScreenOn-method">getKeepScreenOn <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getLayout-method">getLayout <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -222,10 +208,6 @@ should appear at the top or bottom of a window.</p>
     
             <ul>
                 <li><a href="#getSize-method">getSize <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getSoftKeyboardOnFocus-method">getSoftKeyboardOnFocus <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -273,51 +255,11 @@ should appear at the top or bottom of a window.</p>
             </ul>
     
             <ul>
-                <li><a href="#setBackgroundColor-method">setBackgroundColor <span class="params">(backgroundColor)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundDisabledColor-method">setBackgroundDisabledColor <span class="params">(backgroundDisabledColor)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundDisabledImage-method">setBackgroundDisabledImage <span class="params">(backgroundDisabledImage)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundFocusedColor-method">setBackgroundFocusedColor <span class="params">(backgroundFocusedColor)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundFocusedImage-method">setBackgroundFocusedImage <span class="params">(backgroundFocusedImage)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#setBackgroundGradient-method">setBackgroundGradient <span class="params">(backgroundGradient)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#setBackgroundImage-method">setBackgroundImage <span class="params">(backgroundImage)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundLeftCap-method">setBackgroundLeftCap <span class="params">(backgroundLeftCap)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundRepeat-method">setBackgroundRepeat <span class="params">(backgroundRepeat)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundSelectedColor-method">setBackgroundSelectedColor <span class="params">(backgroundSelectedColor)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundSelectedImage-method">setBackgroundSelectedImage <span class="params">(backgroundSelectedImage)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setBackgroundTopCap-method">setBackgroundTopCap <span class="params">(backgroundTopCap)</span></a></li>
             </ul>
     
             <ul>
@@ -361,15 +303,15 @@ should appear at the top or bottom of a window.</p>
             </ul>
     
             <ul>
+                <li><a href="#setHorizontalWrap-method">setHorizontalWrap <span class="params">(horizontalWrap)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setItems-method">setItems <span class="params">(items)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#setKeepScreenOn-method">setKeepScreenOn <span class="params">(keepScreenOn)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setLayout-method">setLayout <span class="params">(layout)</span></a></li>
             </ul>
     
             <ul>
@@ -382,10 +324,6 @@ should appear at the top or bottom of a window.</p>
     
             <ul>
                 <li><a href="#setRight-method">setRight <span class="params">(right)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setSoftKeyboardOnFocus-method">setSoftKeyboardOnFocus <span class="params">(softKeyboardOnFocus)</span></a></li>
             </ul>
     
             <ul>
@@ -444,61 +382,16 @@ should appear at the top or bottom of a window.</p>
                 [Point]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Anchor point where animation should occur, relative to the view's boundaries.</td>
+            <td class='attr-desc'>Coordinate of the view about which to pivot an animation.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
+            <td class='attr-name'><a name="animatedCenter-property"></a>animatedCenter</td>
             <td class='attr-rw'>
                 [Point]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Current position of the view during an animation.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundColor-property"></a>backgroundColor</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Background color of the view, as a color name or hex triplet.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundDisabledColor-property"></a>backgroundDisabledColor</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Disabled background color of the view, as a color name or hex triplet.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundDisabledImage-property"></a>backgroundDisabledImage</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Disabled background image for the view, specified as a local file path or URL.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundFocusedColor-property"></a>backgroundFocusedColor</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Focused background color of the view, as a color name or hex triplet.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundFocusedImage-property"></a>backgroundFocusedImage</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Focused background image for the view, specified as a local file path or URL.</td>
         </tr>
         
         <tr valign='top'>
@@ -517,51 +410,6 @@ should appear at the top or bottom of a window.</p>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Background image for the view, specified as a local file path or URL.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundLeftCap-property"></a>backgroundLeftCap</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Size of the left end cap.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundRepeat-property"></a>backgroundRepeat</td>
-            <td class='attr-rw'>
-                [Boolean]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Toggle for whether or not to tile a background across a view.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundSelectedColor-property"></a>backgroundSelectedColor</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Selected background color of the view, as a color name or hex triplet.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundSelectedImage-property"></a>backgroundSelectedImage</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Selected background image url for the view, specified as a local file path or URL.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="backgroundTopCap-property"></a>backgroundTopCap</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Size of the top end cap.</td>
         </tr>
         
         <tr valign='top'>
@@ -664,6 +512,15 @@ should appear at the top or bottom of a window.</p>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="horizontalWrap-property"></a>horizontalWrap</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the layout has wrapping behavior.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="items-property"></a>items</td>
             <td class='attr-rw'>
                 [Array&lt;Titanium.UI.View&gt;]
@@ -678,17 +535,7 @@ should appear at the top or bottom of a window.</p>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether to keep the device screen on.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="layout-property"></a>layout</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Specifies how the view positions its children. 
-One of: 'composite', 'vertical', or 'horizontal'.</td>
+            <td class='attr-desc'>Determines whether to keep the device screen on.</td>
         </tr>
         
         <tr valign='top'>
@@ -737,15 +584,6 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="softKeyboardOnFocus-property"></a>softKeyboardOnFocus</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Determines keyboard behavior when this view is focused.</td>
-        </tr>
-        
-        <tr valign='top'>
             <td class='attr-name'><a name="top-property"></a>top</td>
             <td class='attr-rw'>
                 [NumberString]
@@ -760,13 +598,13 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether view should receive touch events.</td>
+            <td class='attr-desc'>Determines whether view should receive touch events.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Transformation matrix to apply to the view.</td>
@@ -787,7 +625,7 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean value indicating whether the view is visible.</td>
+            <td class='attr-desc'>Determines whether the view is visible.</td>
         </tr>
         
         <tr valign='top'>
@@ -831,12 +669,6 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
             <td class='attr-name'><a href="#doubletap-event">doubletap</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the device detects a double tap against the view.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a href="#longclick-event">longclick</a></td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired when the device detects a long click.</td>
         </tr>
         
         <tr valign='top'>
@@ -893,12 +725,6 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
             <td class='attr-desc'>Fired as soon as the device detects a touch gesture.</td>
         </tr>
         
-        <tr valign='top'>
-            <td class='attr-name'><a href="#twofingertap-event">twofingertap</a></td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Fired when the device detects a two-finger tap against the view.</td>
-        </tr>
-        
     </table>
     
 
@@ -927,7 +753,7 @@ flexSpace = Titanium.UI.createButton({
     systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
 });
 
-var toolbar = Titanium.UI.createToolbar({
+var toolbar = Titanium.UI.iOS.createToolbar({
     items:[send, flexSpace, camera, flexSpace, cancel],
     bottom:0,
     borderTop:true,
@@ -1022,7 +848,7 @@ the toolbar buttons would be grouped tightly together on the left side of the to
     
     <div class="method">
       <div class="title" id="animate-method">
-        <a name="animate-method"></a><b>animate</b> <span class="params">(obj, callback)</span>
+        <a name="animate-method"></a><b>animate</b> <span class="params">(animation, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Animates this view.</p></div>
@@ -1034,7 +860,7 @@ the toolbar buttons would be grouped tightly together on the left side of the to
       	<table border='0' cellpadding='5'>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>obj</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -1064,12 +890,41 @@ Animation object.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="convertPointToView-method">
         <a name="convertPointToView-method"></a><b>convertPointToView</b> <span class="params">(point, destinationView)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Translates a point from this view's coordinate system to another 
-view's coordinate system.</p></div>
+      <div class="description"><p>Translates a point from this view's coordinate system to another view's coordinate system.</p></div>
       
 
       
@@ -1086,9 +941,9 @@ view's coordinate system.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>A point in this view's coordinate system.
-If this argument is missing an x or y property, or the properties can not 
-be converted into numbers, an exception will be raised.</td>
+                  <td class='attr-desc'>A point in this view's coordinate system. 
+If this argument is missing an x or y property, or the properties can not be 
+converted into numbers, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1100,8 +955,8 @@ be converted into numbers, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to.
-If this argument is not a view, an exception will be raised.</td>
+                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to. If this argument 
+is not a view, an exception will be raised.</td>
                 </tr>
                 
       	</table>
@@ -1114,7 +969,8 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="finishLayout-method"></a><b>finishLayout</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the view tree.</p></div>
+      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the 
+view tree.</p></div>
       
 
       
@@ -1174,66 +1030,11 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getAnimatedCenterPoint-method">
-        <a name="getAnimatedCenterPoint-method"></a><b>getAnimatedCenterPoint</b> <span class="params">()</span>
+      <div class="title" id="getAnimatedCenter-method">
+        <a name="getAnimatedCenter-method"></a><b>getAnimatedCenter</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.animatedCenterPoint-property.html">animatedCenterPoint</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundColor-method">
-        <a name="getBackgroundColor-method"></a><b>getBackgroundColor</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundColor-property.html">backgroundColor</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundDisabledColor-method">
-        <a name="getBackgroundDisabledColor-method"></a><b>getBackgroundDisabledColor</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundDisabledColor-property.html">backgroundDisabledColor</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundDisabledImage-method">
-        <a name="getBackgroundDisabledImage-method"></a><b>getBackgroundDisabledImage</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundDisabledImage-property.html">backgroundDisabledImage</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundFocusedColor-method">
-        <a name="getBackgroundFocusedColor-method"></a><b>getBackgroundFocusedColor</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundFocusedColor-property.html">backgroundFocusedColor</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundFocusedImage-method">
-        <a name="getBackgroundFocusedImage-method"></a><b>getBackgroundFocusedImage</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundFocusedImage-property.html">backgroundFocusedImage</a> property.</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.animatedCenter-property.html">animatedCenter</a> property.</p></div>
       
 
       
@@ -1256,61 +1057,6 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundImage-property.html">backgroundImage</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundLeftCap-method">
-        <a name="getBackgroundLeftCap-method"></a><b>getBackgroundLeftCap</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundLeftCap-property.html">backgroundLeftCap</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundRepeat-method">
-        <a name="getBackgroundRepeat-method"></a><b>getBackgroundRepeat</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundRepeat-property.html">backgroundRepeat</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundSelectedColor-method">
-        <a name="getBackgroundSelectedColor-method"></a><b>getBackgroundSelectedColor</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundSelectedColor-property.html">backgroundSelectedColor</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundSelectedImage-method">
-        <a name="getBackgroundSelectedImage-method"></a><b>getBackgroundSelectedImage</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundSelectedImage-property.html">backgroundSelectedImage</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getBackgroundTopCap-method">
-        <a name="getBackgroundTopCap-method"></a><b>getBackgroundTopCap</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundTopCap-property.html">backgroundTopCap</a> property.</p></div>
       
 
       
@@ -1438,6 +1184,17 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="getHorizontalWrap-method">
+        <a name="getHorizontalWrap-method"></a><b>getHorizontalWrap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getItems-method">
         <a name="getItems-method"></a><b>getItems</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1454,17 +1211,6 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.keepScreenOn-property.html">keepScreenOn</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getLayout-method">
-        <a name="getLayout-method"></a><b>getLayout</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.layout-property.html">layout</a> property.</p></div>
       
 
       
@@ -1520,17 +1266,6 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.size-property.html">size</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getSoftKeyboardOnFocus-method">
-        <a name="getSoftKeyboardOnFocus-method"></a><b>getSoftKeyboardOnFocus</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iOS.Toolbar.softKeyboardOnFocus-property.html">softKeyboardOnFocus</a> property.</p></div>
       
 
       
@@ -1727,156 +1462,6 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="setBackgroundColor-method">
-        <a name="setBackgroundColor-method"></a><b>setBackgroundColor</b> <span class="params">(backgroundColor)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundColor-property.html">backgroundColor</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundColor</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundDisabledColor-method">
-        <a name="setBackgroundDisabledColor-method"></a><b>setBackgroundDisabledColor</b> <span class="params">(backgroundDisabledColor)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundDisabledColor-property.html">backgroundDisabledColor</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundDisabledColor</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundDisabledImage-method">
-        <a name="setBackgroundDisabledImage-method"></a><b>setBackgroundDisabledImage</b> <span class="params">(backgroundDisabledImage)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundDisabledImage-property.html">backgroundDisabledImage</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundDisabledImage</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundFocusedColor-method">
-        <a name="setBackgroundFocusedColor-method"></a><b>setBackgroundFocusedColor</b> <span class="params">(backgroundFocusedColor)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundFocusedColor-property.html">backgroundFocusedColor</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundFocusedColor</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundFocusedImage-method">
-        <a name="setBackgroundFocusedImage-method"></a><b>setBackgroundFocusedImage</b> <span class="params">(backgroundFocusedImage)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundFocusedImage-property.html">backgroundFocusedImage</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundFocusedImage</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="setBackgroundGradient-method">
         <a name="setBackgroundGradient-method"></a><b>setBackgroundGradient</b> <span class="params">(backgroundGradient)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1925,156 +1510,6 @@ If this argument is not a view, an exception will be raised.</td>
                     
                       
                         [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundLeftCap-method">
-        <a name="setBackgroundLeftCap-method"></a><b>setBackgroundLeftCap</b> <span class="params">(backgroundLeftCap)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundLeftCap-property.html">backgroundLeftCap</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundLeftCap</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundRepeat-method">
-        <a name="setBackgroundRepeat-method"></a><b>setBackgroundRepeat</b> <span class="params">(backgroundRepeat)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundRepeat-property.html">backgroundRepeat</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundRepeat</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Boolean]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundSelectedColor-method">
-        <a name="setBackgroundSelectedColor-method"></a><b>setBackgroundSelectedColor</b> <span class="params">(backgroundSelectedColor)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundSelectedColor-property.html">backgroundSelectedColor</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundSelectedColor</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundSelectedImage-method">
-        <a name="setBackgroundSelectedImage-method"></a><b>setBackgroundSelectedImage</b> <span class="params">(backgroundSelectedImage)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundSelectedImage-property.html">backgroundSelectedImage</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundSelectedImage</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setBackgroundTopCap-method">
-        <a name="setBackgroundTopCap-method"></a><b>setBackgroundTopCap</b> <span class="params">(backgroundTopCap)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.backgroundTopCap-property.html">backgroundTopCap</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>backgroundTopCap</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
                       
                     
                   </td>
@@ -2387,6 +1822,36 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="setHorizontalWrap-method">
+        <a name="setHorizontalWrap-method"></a><b>setHorizontalWrap</b> <span class="params">(horizontalWrap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>horizontalWrap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setItems-method">
         <a name="setItems-method"></a><b>setItems</b> <span class="params">(items)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2435,36 +1900,6 @@ If this argument is not a view, an exception will be raised.</td>
                     
                       
                         [Boolean]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setLayout-method">
-        <a name="setLayout-method"></a><b>setLayout</b> <span class="params">(layout)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.layout-property.html">layout</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>layout</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
                       
                     
                   </td>
@@ -2567,36 +2002,6 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="setSoftKeyboardOnFocus-method">
-        <a name="setSoftKeyboardOnFocus-method"></a><b>setSoftKeyboardOnFocus</b> <span class="params">(softKeyboardOnFocus)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iOS.Toolbar.softKeyboardOnFocus-property.html">softKeyboardOnFocus</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>softKeyboardOnFocus</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="setTop-method">
         <a name="setTop-method"></a><b>setTop</b> <span class="params">(top)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2674,7 +2079,7 @@ If this argument is not a view, an exception will be raised.</td>
                   <td class='attr-rw'>
                     
                       
-                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                        [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
                       
                     
                   </td>
@@ -2850,8 +2255,8 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be 
-performed asynchronously. If null, it will be performed immediately.</td>
+                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be performed 
+asynchronously. If null, it will be performed immediately.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -2863,9 +2268,9 @@ performed asynchronously. If null, it will be performed immediately.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>When set to true, the image is scaled based on scale factor of main screen.
-When set to false the image in the blob has the same dimensions for retina and
-non-retina devices. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the image is scaled based on scale factor of main screen. (iOS only) 
+When set to true, image is scale factor is honored. When set to false, the image in the 
+blob has the same dimensions for retina and non-retina devices.</td>
                 </tr>
                 
       	</table>
@@ -2878,8 +2283,8 @@ non-retina devices. Only used on iOS.</td>
         <a name="updateLayout-method"></a><b>updateLayout</b> <span class="params">(params)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a
-layout pass after they have been updated.</p></div>
+      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a layout pass after 
+they have been updated.</p></div>
       
 
       
@@ -2892,11 +2297,11 @@ layout pass after they have been updated.</p></div>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>Dictionary of layout properties to be updated.</td>
+                  <td class='attr-desc'>Layout properties to be updated.</td>
                 </tr>
                 
       	</table>
@@ -2920,15 +2325,6 @@ layout pass after they have been updated.</p></div>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -2987,15 +2383,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3052,15 +2439,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3097,42 +2475,6 @@ of the event in screen coordinates.</p>
               <span class="attr-rw">[Number]</span><br /> 
               
               <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
-            </td>
-          </tr>
-          
-	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="longclick-event">
-        <a name="longclick-method"></a><b>longclick</b>
-      </div>
-      
-      
-      
-      <div class="description">
-	<h4>Event properties</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Object]</span><br /> 
-              
-              <p>Source object that fired the event.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[String]</span><br /> 
-              
-              <p>Name of the event fired.</p>
             </td>
           </tr>
           
@@ -3301,15 +2643,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3371,16 +2704,7 @@ of the event in screen coordinates.</p>
               
               <span class="attr-rw">[String]</span><br /> 
               
-              <p>Direction of the swipe--either 'left' or 'right'. Android also supports 'up' and 'down'.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event's endpoint in screen coordinates.</p>
+              <p>Direction of the swipe--either 'left', 'right', 'up', or 'down'.</p>
             </td>
           </tr>
           
@@ -3441,15 +2765,6 @@ of the event's endpoint in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3504,15 +2819,6 @@ of the event in screen coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -3571,15 +2877,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -3634,80 +2931,6 @@ of the event in screen coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>source</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Object]</span><br /> 
-              
-              <p>Source object that fired the event.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>type</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[String]</span><br /> 
-              
-              <p>Name of the event fired.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>x</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Number]</span><br /> 
-              
-              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>y</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Number]</span><br /> 
-              
-              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
-            </td>
-          </tr>
-          
-	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="twofingertap-event">
-        <a name="twofingertap-method"></a><b>twofingertap</b>
-      </div>
-      
-      
-      
-      <div class="description">
-	<h4>Event properties</h4>
-	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

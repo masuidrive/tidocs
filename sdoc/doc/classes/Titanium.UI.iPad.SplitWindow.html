@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -81,7 +93,11 @@ changed once set. </p>
             </ul>
     
             <ul>
-                <li><a href="#animate-method">animate <span class="params">(obj, callback)</span></a></li>
+                <li><a href="#animate-method">animate <span class="params">(animation, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -109,7 +125,7 @@ changed once set. </p>
             </ul>
     
             <ul>
-                <li><a href="#getAnimatedCenterPoint-method">getAnimatedCenterPoint <span class="params">()</span></a></li>
+                <li><a href="#getAnimatedCenter-method">getAnimatedCenter <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -218,6 +234,10 @@ changed once set. </p>
     
             <ul>
                 <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHorizontalWrap-method">getHorizontalWrap <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -481,6 +501,10 @@ changed once set. </p>
             </ul>
     
             <ul>
+                <li><a href="#setHorizontalWrap-method">setHorizontalWrap <span class="params">(horizontalWrap)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setKeepScreenOn-method">setKeepScreenOn <span class="params">(keepScreenOn)</span></a></li>
             </ul>
     
@@ -634,11 +658,11 @@ Android Activity object associated with this window.</td>
                 [Point]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Anchor point where animation should occur, relative to the view's boundaries.</td>
+            <td class='attr-desc'>Coordinate of the view about which to pivot an animation.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
+            <td class='attr-name'><a name="animatedCenter-property"></a>animatedCenter</td>
             <td class='attr-rw'>
                 [Point]
             </td>
@@ -742,7 +766,7 @@ Android Activity object associated with this window.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Toggle for whether or not to tile a background across a view.</td>
+            <td class='attr-desc'>Determines whether to tile a background across a view.</td>
         </tr>
         
         <tr valign='top'>
@@ -891,12 +915,21 @@ Back button is pressed while the window is being shown.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="horizontalWrap-property"></a>horizontalWrap</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the layout has wrapping behavior.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="keepScreenOn-property"></a>keepScreenOn</td>
             <td class='attr-rw'>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether to keep the device screen on.</td>
+            <td class='attr-desc'>Determines whether to keep the device screen on.</td>
         </tr>
         
         <tr valign='top'>
@@ -1124,13 +1157,13 @@ the window is the child of a tab.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether view should receive touch events.</td>
+            <td class='attr-desc'>Determines whether view should receive touch events.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Transformation matrix to apply to the view.</td>
@@ -1160,7 +1193,7 @@ the window is the child of a tab.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean value indicating whether the view is visible.</td>
+            <td class='attr-desc'>Determines whether the view is visible.</td>
         </tr>
         
         <tr valign='top'>
@@ -1240,6 +1273,42 @@ contents in view.</td>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#android:volup-event">android:volup</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the volume up button is released.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#androidback-event">androidback</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the Back button is released.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#androidcamera-event">androidcamera</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the Camera button is released.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#androidfocus-event">androidfocus</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the Camera button is half-pressed then released.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#androidsearch-event">androidsearch</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the Search button is released.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#androidvoldown-event">androidvoldown</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the volume down button is released.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#androidvolup-event">androidvolup</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the volume up button is released.</td>
         </tr>
@@ -1473,7 +1542,7 @@ splitwin.open();
     
     <div class="method">
       <div class="title" id="animate-method">
-        <a name="animate-method"></a><b>animate</b> <span class="params">(obj, callback)</span>
+        <a name="animate-method"></a><b>animate</b> <span class="params">(animation, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Animates this view.</p></div>
@@ -1485,7 +1554,7 @@ splitwin.open();
       	<table border='0' cellpadding='5'>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>obj</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -1507,6 +1576,36 @@ Animation object.</td>
                     
                   </td>
                   <td class='attr-desc'>Function to be invoked upon completion of the animation.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -1549,8 +1648,7 @@ Animation object.</td>
         <a name="convertPointToView-method"></a><b>convertPointToView</b> <span class="params">(point, destinationView)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Translates a point from this view's coordinate system to another 
-view's coordinate system.</p></div>
+      <div class="description"><p>Translates a point from this view's coordinate system to another view's coordinate system.</p></div>
       
 
       
@@ -1567,9 +1665,9 @@ view's coordinate system.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>A point in this view's coordinate system.
-If this argument is missing an x or y property, or the properties can not 
-be converted into numbers, an exception will be raised.</td>
+                  <td class='attr-desc'>A point in this view's coordinate system. 
+If this argument is missing an x or y property, or the properties can not be 
+converted into numbers, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1581,8 +1679,8 @@ be converted into numbers, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to.
-If this argument is not a view, an exception will be raised.</td>
+                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to. If this argument 
+is not a view, an exception will be raised.</td>
                 </tr>
                 
       	</table>
@@ -1595,7 +1693,8 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="finishLayout-method"></a><b>finishLayout</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the view tree.</p></div>
+      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the 
+view tree.</p></div>
       
 
       
@@ -1666,11 +1765,11 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getAnimatedCenterPoint-method">
-        <a name="getAnimatedCenterPoint-method"></a><b>getAnimatedCenterPoint</b> <span class="params">()</span>
+      <div class="title" id="getAnimatedCenter-method">
+        <a name="getAnimatedCenter-method"></a><b>getAnimatedCenter</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iPad.SplitWindow.animatedCenterPoint-property.html">animatedCenterPoint</a> property.</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iPad.SplitWindow.animatedCenter-property.html">animatedCenter</a> property.</p></div>
       
 
       
@@ -1968,6 +2067,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.iPad.SplitWindow.height-property.html">height</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHorizontalWrap-method">
+        <a name="getHorizontalWrap-method"></a><b>getHorizontalWrap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.iPad.SplitWindow.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
       
 
       
@@ -3252,6 +3362,36 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="setHorizontalWrap-method">
+        <a name="setHorizontalWrap-method"></a><b>setHorizontalWrap</b> <span class="params">(horizontalWrap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.iPad.SplitWindow.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>horizontalWrap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setKeepScreenOn-method">
         <a name="setKeepScreenOn-method"></a><b>setKeepScreenOn</b> <span class="params">(keepScreenOn)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -3959,7 +4099,7 @@ If this argument is not a view, an exception will be raised.</td>
                   <td class='attr-rw'>
                     
                       
-                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                        [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
                       
                     
                   </td>
@@ -4165,8 +4305,8 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be 
-performed asynchronously. If null, it will be performed immediately.</td>
+                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be performed 
+asynchronously. If null, it will be performed immediately.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -4178,9 +4318,9 @@ performed asynchronously. If null, it will be performed immediately.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>When set to true, the image is scaled based on scale factor of main screen.
-When set to false the image in the blob has the same dimensions for retina and
-non-retina devices. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the image is scaled based on scale factor of main screen. (iOS only) 
+When set to true, image is scale factor is honored. When set to false, the image in the 
+blob has the same dimensions for retina and non-retina devices.</td>
                 </tr>
                 
       	</table>
@@ -4193,8 +4333,8 @@ non-retina devices. Only used on iOS.</td>
         <a name="updateLayout-method"></a><b>updateLayout</b> <span class="params">(params)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a
-layout pass after they have been updated.</p></div>
+      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a layout pass after 
+they have been updated.</p></div>
       
 
       
@@ -4207,11 +4347,11 @@ layout pass after they have been updated.</p></div>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>Dictionary of layout properties to be updated.</td>
+                  <td class='attr-desc'>Layout properties to be updated.</td>
                 </tr>
                 
       	</table>
@@ -4442,6 +4582,222 @@ layout pass after they have been updated.</p></div>
     </div>
     
     <div class="method">
+      <div class="title" id="androidback-event">
+        <a name="androidback-method"></a><b>androidback</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="androidcamera-event">
+        <a name="androidcamera-method"></a><b>androidcamera</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="androidfocus-event">
+        <a name="androidfocus-method"></a><b>androidfocus</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="androidsearch-event">
+        <a name="androidsearch-method"></a><b>androidsearch</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="androidvoldown-event">
+        <a name="androidvoldown-method"></a><b>androidvoldown</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="androidvolup-event">
+        <a name="androidvolup-method"></a><b>androidvolup</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="blur-event">
         <a name="blur-method"></a><b>blur</b>
       </div>
@@ -4487,15 +4843,6 @@ layout pass after they have been updated.</p></div>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -4590,15 +4937,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -4653,15 +4991,6 @@ of the event in screen coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -4976,15 +5305,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -5046,16 +5366,7 @@ of the event in screen coordinates.</p>
               
               <span class="attr-rw">[String]</span><br /> 
               
-              <p>Direction of the swipe--either 'left' or 'right'. Android also supports 'up' and 'down'.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event's endpoint in screen coordinates.</p>
+              <p>Direction of the swipe--either 'left', 'right', 'up', or 'down'.</p>
             </td>
           </tr>
           
@@ -5116,15 +5427,6 @@ of the event's endpoint in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -5179,15 +5481,6 @@ of the event in screen coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -5246,15 +5539,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -5311,15 +5595,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -5374,15 +5649,6 @@ of the event in screen coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

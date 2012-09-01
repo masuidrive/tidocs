@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -70,6 +82,8 @@ represented as vertical buttons. </p>
 <h5>iPad</h5>
 <p>On iPad, this dialog is shown in the middle of the display, or as a popover-like dialog if 
 another view or control is specified via an argument.</p>
+<p>Note that on iPad, the cancel button is not displayed -- users can cancel the dialog
+by clicking outside of the dialog.</p>
 <h4>Caveats</h4>
 <p>Care should be taken not to define any properties that are not documented, as this may produce 
 unexpected results. For example, setting a <code>message</code> property will prevent the picker of option 
@@ -84,6 +98,10 @@ items from being displayed on Android.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -167,7 +185,7 @@ items from being displayed on Android.</p>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Index to define the cancel option, returned by the click event.</td>
+            <td class='attr-desc'>Index to define the cancel option.</td>
         </tr>
         
         <tr valign='top'>
@@ -247,9 +265,9 @@ var win = Ti.UI.createWindow({
   fullscreen: false
 });</p>
 <p>var opts = {
-  cancel: 1,
-  options: ['Confirm', 'Cancel', 'Help'],
-  selectedIndex: 1,
+  cancel: 2,
+  options: ['Confirm', 'Help', 'Cancel'],
+  selectedIndex: 2,
   destructive: 0,
   title: 'Delete File?'
 };</p>
@@ -274,7 +292,7 @@ win.open();</p></div>
   opts.options = ['Confirm', 'Cancel'];
   opts.buttonNames = ['Confirm'];
 } else {
-  opts.options = ['Confirm', 'Cancel', 'Help'];
+  opts.options = ['Confirm', 'Help', 'Cancel'];
 }</p>
 <p>win.addEventListener('click', function(e){
   var dialog = Ti.UI.createOptionDialog(opts).show();
@@ -323,6 +341,36 @@ win.open();</p></div>
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>

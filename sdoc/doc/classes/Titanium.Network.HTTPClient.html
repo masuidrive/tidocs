@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -85,6 +97,8 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
 <li>Use <a href="Titanium.Network.httpURLFormatter-property.html">Ti.Network.httpURLFormatter</a> in conjunction 
   with a proxy on the server hosting the application.</li>
 </ul>
+<p>If you use a proxy, be sure to properly configure how cookies are passed through. You
+may not want cookies proxied to third parties that could identify a user.</p>
 <p>More information about Cross-Origin Resource Sharing can be found on the 
 <a href="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a> specification page.</p>
     </div>
@@ -101,6 +115,10 @@ foo.example.com, then requests to any domain other than *.example.com will fail.
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -645,6 +663,36 @@ not yet been sent.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="clearCookies-method">
         <a name="clearCookies-method"></a><b>clearCookies</b> <span class="params">(host)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1056,7 +1104,7 @@ not yet been sent.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Determines whether the request should be made asynchronously. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the request should be made asynchronously. Only used on iOS and Mobile Web.</td>
                 </tr>
                 
       	</table>

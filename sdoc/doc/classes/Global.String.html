@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -128,8 +140,9 @@ The target locale is configured by the user in the device's system Settings.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>Comma-separated list of one or more values to substitute into the formatString. 
-Optional on Android.</td>
+                  <td class='attr-desc'>Values to substitute into the formatString.  The method expects a variable number
+of value arugments, one for each % conversion specification in the format
+string. Optional on Android.</td>
                 </tr>
                 
       	</table>

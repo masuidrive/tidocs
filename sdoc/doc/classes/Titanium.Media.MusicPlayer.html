@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -44,10 +56,18 @@
 <div id="content">
     
     <div class="description">
-        <p>The MusicPlayer instance returned from <a href="Titanium.Media.createMusicPlayer-method.html"><code>Titanium.Media.createMusicPlayer</code></a>.  This object represents a music controller.</p>
+        <p>This object represents a music controller.</p>
     </div>
     
     
+    
+    <div class="description">
+        <p>A <code>MusicPlayer</code> lets you manage and playback a queue of media <a href="Titanium.Media.Item-object.html">Item</a> objects.</p>
+<p>Use the <a href="Titanium.Media.createMusicPlayer-method.html"><code>Titanium.Media.createMusicPlayer</code></a> method to create a music palyer.</p>
+<p>Use the <a href="Titanium.Media.html">Media</a> module's <a href="Titanium.Media.openMusicLibrary-method.html">openMusicLibrary</a> and
+<a href="Titanium.Media.queryMusicLibrary-method.html">queryMusicLibrary</a> methods to access the media items in the
+device's media library.</p>
+    </div>
     
 
     
@@ -57,6 +77,10 @@
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -112,14 +136,6 @@
             </ul>
     
             <ul>
-                <li><a href="#setNowPlaying-method">setNowPlaying <span class="params">(nowPlaying)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setPlaybackState-method">setPlaybackState <span class="params">(playbackState)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#setQueue-method">setQueue <span class="params">(queue)</span></a></li>
             </ul>
     
@@ -167,16 +183,16 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the current point in song playback</td>
+            <td class='attr-desc'>Current point in song playback, in seconds.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="nowPlaying-property"></a>nowPlaying</td>
             <td class='attr-rw'>
-                [Object]
+                [Titanium.Media.Item]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>an Item object which indicates the currently playing media</td>
+            <td class='attr-desc'>An Item object representing the currently playing media item.</td>
         </tr>
         
         <tr valign='top'>
@@ -185,7 +201,14 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the playback state; one of Titanium.Media.MUSIC_PLAYER_STATE_STOPPED, Titanium.Media.MUSIC_PLAYER_STATE_PLAYING, Titanium.Media.MUSIC_PLAYER_STATE_PAUSED, Titanium.Media.MUSIC_PLAYER_STATE_INTERRUPTED, Titanium.Media.MUSIC_PLAYER_STATE_SEEK_FORWARD, Titanium.Media.MUSIC_PLAYER_STATE_SEEK_BACKWARD</td>
+            <td class='attr-desc'>Playback state: one of
+MUSIC_PLAYER_STATE_STOPPED,
+MUSIC_PLAYER_STATE_PLAYING,
+MUSIC_PLAYER_STATE_PAUSED,
+MUSIC_PLAYER_STATE_INTERRUPTED,
+MUSIC_PLAYER_STATE_SEEK_FORWARD,
+or
+MUSIC_PLAYER_STATE_SEEK_BACKWARD.</td>
         </tr>
         
         <tr valign='top'>
@@ -194,7 +217,11 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the repeat setting; one of Titanium.Media.MUSIC_PLAYER_REPEAT_DEFAULT, Titanium.Media.MUSIC_PLAYER_REPEAT_NONE, Titanium.Media.MUSIC_PLAYER_REPEAT_ONE, Titanium.Media.MUSIC_PLAYER_REPEAT_ALL</td>
+            <td class='attr-desc'>Repeat setting: one of
+MUSIC_PLAYER_REPEAT_DEFAULT,
+MUSIC_PLAYER_REPEAT_NONE,
+MUSIC_PLAYER_REPEAT_ONE, or
+MUSIC_PLAYER_REPEAT_ALL.</td>
         </tr>
         
         <tr valign='top'>
@@ -203,7 +230,11 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the shuffle setting; one of Titanium.Media.MUSIC_PLAYER_SHUFFLE_DEFAULT, Titanium.Media.MUSIC_PLAYER_SHUFFLE_NONE, Titanium.Media.MUSIC_PLAYER_SHUFFLE_SONGS, Titanium.Media.MUSIC_PLAYER_SHUFFLE_ALBUMS</td>
+            <td class='attr-desc'>Shuffle setting: one of
+MUSIC_PLAYER_SHUFFLE_DEFAULT,
+MUSIC_PLAYER_SHUFFLE_NONE,
+MUSIC_PLAYER_SHUFFLE_SONGS, or
+MUSIC_PLAYER_SHUFFLE_ALBUMS.</td>
         </tr>
         
         <tr valign='top'>
@@ -212,7 +243,7 @@
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>a value between 0.0 and 1.0 indicating the volume level for the music player</td>
+            <td class='attr-desc'>Volume level for the music player, from 0.0 (muted) to 1.0 (loudest).</td>
         </tr>
         
     </table>
@@ -225,19 +256,37 @@
         <tr valign='top'>
             <td class='attr-name'><a href="#playingChange-event">playingChange</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the currently playing media changed</td>
+            <td class='attr-desc'>Fired when the currently playing media item changes.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#playingchange-event">playingchange</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the currently playing media item changes.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#stateChange-event">stateChange</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the playback state changed</td>
+            <td class='attr-desc'>Fired when the music player's playback state changes.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#statechange-event">statechange</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the music player's playback state changes.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#volumeChange-event">volumeChange</a></td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>the volume changed</td>
+            <td class='attr-desc'>Fired when the volume changes.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#volumechange-event">volumechange</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the volume changes.</td>
         </tr>
         
     </table>
@@ -286,6 +335,36 @@
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -406,7 +485,7 @@
         <a name="pause-method"></a><b>pause</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>pause playback</p></div>
+      <div class="description"><p>Pauses playback of the current media item.</p></div>
       
 
       
@@ -417,7 +496,7 @@
         <a name="play-method"></a><b>play</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>begin playback</p></div>
+      <div class="description"><p>Begins playback of the current media item.</p></div>
       
 
       
@@ -470,7 +549,7 @@
         <a name="seekBackward-method"></a><b>seekBackward</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>seek backward in the currently playing media</p></div>
+      <div class="description"><p>Begins seeking backward in the currently playing media.</p></div>
       
 
       
@@ -481,7 +560,7 @@
         <a name="seekForward-method"></a><b>seekForward</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>seek forward in the currently playing media</p></div>
+      <div class="description"><p>Begins seeking forward in the currently playing media item.</p></div>
       
 
       
@@ -518,71 +597,11 @@
     </div>
     
     <div class="method">
-      <div class="title" id="setNowPlaying-method">
-        <a name="setNowPlaying-method"></a><b>setNowPlaying</b> <span class="params">(nowPlaying)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.MusicPlayer.nowPlaying-property.html">nowPlaying</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>nowPlaying</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Object]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setPlaybackState-method">
-        <a name="setPlaybackState-method"></a><b>setPlaybackState</b> <span class="params">(playbackState)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.MusicPlayer.playbackState-property.html">playbackState</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>playbackState</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="setQueue-method">
         <a name="setQueue-method"></a><b>setQueue</b> <span class="params">(queue)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>set the media queue</p></div>
+      <div class="description"><p>Sets the media queue.</p></div>
       
 
       
@@ -595,11 +614,11 @@
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Titanium.Media.ItemArray&lt;Titanium.Media.Item&gt;PlayerQueue]
                       
                     
                   </td>
-                  <td class='attr-desc'>a queue representation to set the player queue to.  Can be any of: A dictionary with an items key that is an array of Titanium.Media.Item objects, an array of Titanium.Media.Item objects, or a single Titanium.Media.Item object.</td>
+                  <td class='attr-desc'>One or more media items.</td>
                 </tr>
                 
       	</table>
@@ -702,7 +721,7 @@
         <a name="skipToBeginning-method"></a><b>skipToBeginning</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>skip to the beginning of the currently playing media</p></div>
+      <div class="description"><p>Skips to the beginning of the currently playing media item.</p></div>
       
 
       
@@ -713,7 +732,7 @@
         <a name="skipToNext-method"></a><b>skipToNext</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>skip to the next media in the queue</p></div>
+      <div class="description"><p>Skips to the next media item in the queue.</p></div>
       
 
       
@@ -724,7 +743,7 @@
         <a name="skipToPrevious-method"></a><b>skipToPrevious</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>skip to the previous media in the queue</p></div>
+      <div class="description"><p>Skips to the previous media item in the queue.</p></div>
       
 
       
@@ -735,7 +754,7 @@
         <a name="stop-method"></a><b>stop</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>stop playback</p></div>
+      <div class="description"><p>Stops playback of the current media queue.</p></div>
       
 
       
@@ -746,7 +765,9 @@
         <a name="stopSeeking-method"></a><b>stopSeeking</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>end a seek operation</p></div>
+      <div class="description"><p>Ends a seek operation and returns to the previous playback state.</p>
+<p>See also: <a href="Titanium.Media.MusicPlayer.seekForward-method.html">seekForward</a> and
+<a href="Titanium.Media.MusicPlayer.seekBackward-method.html">seekBackward</a>.</p></div>
       
 
       
@@ -761,6 +782,42 @@
     <div class="method">
       <div class="title" id="playingChange-event">
         <a name="playingChange-method"></a><b>playingChange</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="playingchange-event">
+        <a name="playingchange-method"></a><b>playingchange</b>
       </div>
       
       
@@ -831,8 +888,80 @@
     </div>
     
     <div class="method">
+      <div class="title" id="statechange-event">
+        <a name="statechange-method"></a><b>statechange</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="volumeChange-event">
         <a name="volumeChange-method"></a><b>volumeChange</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="volumechange-event">
+        <a name="volumechange-method"></a><b>volumechange</b>
       </div>
       
       

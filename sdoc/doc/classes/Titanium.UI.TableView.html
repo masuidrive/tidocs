@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -142,11 +154,19 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
             </ul>
     
             <ul>
-                <li><a href="#animate-method">animate <span class="params">(obj, callback)</span></a></li>
+                <li><a href="#animate-method">animate <span class="params">(animation, callback)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#appendRow-method">appendRow <span class="params">(row, animation)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#appendSection-method">appendSection <span class="params">(section, animation)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -155,6 +175,10 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
     
             <ul>
                 <li><a href="#deleteRow-method">deleteRow <span class="params">(row, animation)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#deleteSection-method">deleteSection <span class="params">(section, animation)</span></a></li>
             </ul>
     
             <ul>
@@ -182,7 +206,7 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
             </ul>
     
             <ul>
-                <li><a href="#getAnimatedCenterPoint-method">getAnimatedCenterPoint <span class="params">()</span></a></li>
+                <li><a href="#getAnimatedCenter-method">getAnimatedCenter <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -302,6 +326,10 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
             </ul>
     
             <ul>
+                <li><a href="#getHorizontalWrap-method">getHorizontalWrap <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getIndex-method">getIndex <span class="params">()</span></a></li>
             </ul>
     
@@ -350,7 +378,15 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
             </ul>
     
             <ul>
+                <li><a href="#getScrollIndicatorStyle-method">getScrollIndicatorStyle <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getScrollable-method">getScrollable <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getScrollsToTop-method">getScrollsToTop <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -359,6 +395,14 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
     
             <ul>
                 <li><a href="#getSearchHidden-method">getSearchHidden <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSectionCount-method">getSectionCount <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getSections-method">getSections <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -419,6 +463,14 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
     
             <ul>
                 <li><a href="#insertRowBefore-method">insertRowBefore <span class="params">(index, row, animation)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#insertSectionAfter-method">insertSectionAfter <span class="params">(index, section, animation)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#insertSectionBefore-method">insertSectionBefore <span class="params">(index, section, animation)</span></a></li>
             </ul>
     
             <ul>
@@ -570,6 +622,10 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
             </ul>
     
             <ul>
+                <li><a href="#setHorizontalWrap-method">setHorizontalWrap <span class="params">(horizontalWrap)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setIndex-method">setIndex <span class="params">(index)</span></a></li>
             </ul>
     
@@ -614,7 +670,15 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
             </ul>
     
             <ul>
+                <li><a href="#setScrollIndicatorStyle-method">setScrollIndicatorStyle <span class="params">(scrollIndicatorStyle)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setScrollable-method">setScrollable <span class="params">(scrollable)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setScrollsToTop-method">setScrollsToTop <span class="params">(scrollsToTop)</span></a></li>
             </ul>
     
             <ul>
@@ -623,6 +687,10 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
     
             <ul>
                 <li><a href="#setSearchHidden-method">setSearchHidden <span class="params">(searchHidden)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setSections-method">setSections <span class="params">(sections)</span></a></li>
             </ul>
     
             <ul>
@@ -689,6 +757,10 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
                 <li><a href="#updateRow-method">updateRow <span class="params">(index, row, animation)</span></a></li>
             </ul>
     
+            <ul>
+                <li><a href="#updateSection-method">updateSection <span class="params">(index, section, animation)</span></a></li>
+            </ul>
+    
     
 
     
@@ -719,11 +791,11 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
                 [Point]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Anchor point where animation should occur, relative to the view's boundaries.</td>
+            <td class='attr-desc'>Coordinate of the view about which to pivot an animation.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
+            <td class='attr-name'><a name="animatedCenter-property"></a>animatedCenter</td>
             <td class='attr-rw'>
                 [Point]
             </td>
@@ -809,7 +881,7 @@ swipe delete, inherited and explicit <code>editable</code> properties may be set
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Toggle for whether or not to tile a background across a view.</td>
+            <td class='attr-desc'>Determines whether to tile a background across a view.</td>
         </tr>
         
         <tr valign='top'>
@@ -995,6 +1067,15 @@ contents down.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="horizontalWrap-property"></a>horizontalWrap</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the layout has wrapping behavior.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="index-property"></a>index</td>
             <td class='attr-rw'>
                 [Array&lt;TableViewIndexEntry&gt;]
@@ -1009,7 +1090,7 @@ contents down.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether to keep the device screen on.</td>
+            <td class='attr-desc'>Determines whether to keep the device screen on.</td>
         </tr>
         
         <tr valign='top'>
@@ -1105,12 +1186,31 @@ user when the table is in editing or moving mode.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="scrollIndicatorStyle-property"></a>scrollIndicatorStyle</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Style of the scrollbar, specified using one of the constants from 
+Titanium.UI.iPhone.ScrollIndicatorStyle.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="scrollable-property"></a>scrollable</td>
             <td class='attr-rw'>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>If true, the tableview can be scrolled.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="scrollsToTop-property"></a>scrollsToTop</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Controls whether the scroll-to-top gesture is effective.</td>
         </tr>
         
         <tr valign='top'>
@@ -1132,12 +1232,30 @@ user when the table is in editing or moving mode.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="sectionCount-property"></a>sectionCount</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Number of sections in this table view.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="sections-property"></a>sections</td>
+            <td class='attr-rw'>
+                [Array&lt;Titanium.UI.TableViewSection&gt;]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Sections of this table.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="separatorColor-property"></a>separatorColor</td>
             <td class='attr-rw'>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Separator color between rows, as a color name or hex triplet.</td>
+            <td class='attr-desc'>Separator line color between rows, as a color name or hex triplet.</td>
         </tr>
         
         <tr valign='top'>
@@ -1201,13 +1319,13 @@ Titanium.UI.iPhone.TableViewStyle.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether view should receive touch events.</td>
+            <td class='attr-desc'>Determines whether view should receive touch events.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Transformation matrix to apply to the view.</td>
@@ -1219,7 +1337,7 @@ Titanium.UI.iPhone.TableViewStyle.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean value indicating whether the view is visible.</td>
+            <td class='attr-desc'>Determines whether the view is visible.</td>
         </tr>
         
         <tr valign='top'>
@@ -1284,6 +1402,18 @@ Titanium.UI.iPhone.TableViewStyle.</td>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a href="#dragend-event">dragend</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the scrollable region stops being dragged.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#dragstart-event">dragstart</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the scrollable region starts being dragged.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a href="#longclick-event">longclick</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the device detects a long click.</td>
@@ -1321,6 +1451,12 @@ Titanium.UI.iPhone.TableViewStyle.</td>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#scrollEnd-event">scrollEnd</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>fired when the table view stops scrolling</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#scrollend-event">scrollend</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>fired when the table view stops scrolling</td>
         </tr>
@@ -1377,7 +1513,7 @@ Titanium.UI.iPhone.TableViewStyle.</td>
     <table border='0' cellpadding='5'>
         
 	<div class="subsectiontitle">Simple Table View</div>
-	<div class="code"><p>A basic table view.</p>
+	<div class="code"><p>Create a basic table view.</p>
 <pre><code>Ti.UI.backgroundColor = 'white';
 var win = Ti.UI.createWindow();
 
@@ -1391,31 +1527,35 @@ win.open();
 </code></pre></div>
         
 	<div class="subsectiontitle">Table View Sections</div>
-	<div class="code"><p>A table containing two sections with header titles, each with two rows.</p>
+	<div class="code"><p>Create a table with three sections, each with two rows. Add two sections to the table 
+before and one after it is rendered. </p>
 <pre><code>Ti.UI.backgroundColor = 'white';
 var win = Ti.UI.createWindow();
 
 var sectionFruit = Ti.UI.createTableViewSection({ headerTitle: 'Fruit' });
-var row1 = Ti.UI.createTableViewRow({ title: 'Apples' });
-var row2 = Ti.UI.createTableViewRow({ title: 'Bananas' });
-sectionFruit.add(row1);
-sectionFruit.add(row2);
+sectionFruit.add(Ti.UI.createTableViewRow({ title: 'Apples' }));
+sectionFruit.add(Ti.UI.createTableViewRow({ title: 'Bananas' }));
 
 var sectionVeg = Ti.UI.createTableViewSection({ headerTitle: 'Vegetables' });
-var row3 = Ti.UI.createTableViewRow({ title: 'Carrots' });
-var row4 = Ti.UI.createTableViewRow({ title: 'Potatoes' });
-sectionVeg.add(row3);
-sectionVeg.add(row4);
+sectionVeg.add(Ti.UI.createTableViewRow({ title: 'Carrots' }));
+sectionVeg.add(Ti.UI.createTableViewRow({ title: 'Potatoes' }));
 
 var table = Ti.UI.createTableView({
   data: [sectionFruit, sectionVeg]
 });
+
 win.add(table);
 win.open();
+
+var sectionFish = Ti.UI.createTableViewSection({ headerTitle: 'Fish' });
+sectionFish.add(Ti.UI.createTableViewRow({ title: 'Cod' }));
+sectionFish.add(Ti.UI.createTableViewRow({ title: 'Haddock' }));
+
+table.setData([ sectionFish, sectionFruit, sectionVeg ]);
 </code></pre></div>
         
 	<div class="subsectiontitle">Table View with Composite Layout</div>
-	<div class="code"><p>A table created using rows that contain a custom child-view layout.</p>
+	<div class="code"><p>Create a table of rows that contain a custom child-view layout.</p>
 <pre><code>Ti.UI.setBackgroundColor('#000');
 var win = Ti.UI.createWindow({
   backgroundColor: 'black',
@@ -1576,7 +1716,7 @@ win.open();
     
     <div class="method">
       <div class="title" id="animate-method">
-        <a name="animate-method"></a><b>animate</b> <span class="params">(obj, callback)</span>
+        <a name="animate-method"></a><b>animate</b> <span class="params">(animation, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Animates this view.</p></div>
@@ -1588,7 +1728,7 @@ win.open();
       	<table border='0' cellpadding='5'>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>obj</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -1660,12 +1800,83 @@ Animation object.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="appendSection-method">
+        <a name="appendSection-method"></a><b>appendSection</b> <span class="params">(section, animation)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Appends one or more sections to the table.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>section</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.TableViewSectionDictionary&lt;Titanium.UI.TableViewSection&gt;Array&lt;Titanium.UI.TableViewSection&gt;Array&lt;Dictionary&lt;Titanium.UI.TableViewSection&gt;&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Section or section to add to the table.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>animation</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [TableViewAnimationProperties]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="convertPointToView-method">
         <a name="convertPointToView-method"></a><b>convertPointToView</b> <span class="params">(point, destinationView)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Translates a point from this view's coordinate system to another 
-view's coordinate system.</p></div>
+      <div class="description"><p>Translates a point from this view's coordinate system to another view's coordinate system.</p></div>
       
 
       
@@ -1682,9 +1893,9 @@ view's coordinate system.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>A point in this view's coordinate system.
-If this argument is missing an x or y property, or the properties can not 
-be converted into numbers, an exception will be raised.</td>
+                  <td class='attr-desc'>A point in this view's coordinate system. 
+If this argument is missing an x or y property, or the properties can not be 
+converted into numbers, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1696,8 +1907,8 @@ be converted into numbers, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to.
-If this argument is not a view, an exception will be raised.</td>
+                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to. If this argument 
+is not a view, an exception will be raised.</td>
                 </tr>
                 
       	</table>
@@ -1728,6 +1939,48 @@ If this argument is not a view, an exception will be raised.</td>
                     
                   </td>
                   <td class='attr-desc'>Index of the row to delete.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>animation</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [TableViewAnimationProperties]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="deleteSection-method">
+        <a name="deleteSection-method"></a><b>deleteSection</b> <span class="params">(section, animation)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Deletes an existing section.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>section</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Index of the section to delete.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1782,7 +2035,8 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="finishLayout-method"></a><b>finishLayout</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the view tree.</p></div>
+      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the 
+view tree.</p></div>
       
 
       
@@ -1864,11 +2118,11 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getAnimatedCenterPoint-method">
-        <a name="getAnimatedCenterPoint-method"></a><b>getAnimatedCenterPoint</b> <span class="params">()</span>
+      <div class="title" id="getAnimatedCenter-method">
+        <a name="getAnimatedCenter-method"></a><b>getAnimatedCenter</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.animatedCenterPoint-property.html">animatedCenterPoint</a> property.</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.animatedCenter-property.html">animatedCenter</a> property.</p></div>
       
 
       
@@ -2194,6 +2448,17 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="getHorizontalWrap-method">
+        <a name="getHorizontalWrap-method"></a><b>getHorizontalWrap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getIndex-method">
         <a name="getIndex-method"></a><b>getIndex</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2326,11 +2591,33 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="getScrollIndicatorStyle-method">
+        <a name="getScrollIndicatorStyle-method"></a><b>getScrollIndicatorStyle</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.scrollIndicatorStyle-property.html">scrollIndicatorStyle</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getScrollable-method">
         <a name="getScrollable-method"></a><b>getScrollable</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.scrollable-property.html">scrollable</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getScrollsToTop-method">
+        <a name="getScrollsToTop-method"></a><b>getScrollsToTop</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.scrollsToTop-property.html">scrollsToTop</a> property.</p></div>
       
 
       
@@ -2353,6 +2640,28 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.searchHidden-property.html">searchHidden</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSectionCount-method">
+        <a name="getSectionCount-method"></a><b>getSectionCount</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.sectionCount-property.html">sectionCount</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getSections-method">
+        <a name="getSections-method"></a><b>getSections</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.TableView.sections-property.html">sections</a> property.</p></div>
       
 
       
@@ -2610,6 +2919,114 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="insertSectionAfter-method">
+        <a name="insertSectionAfter-method"></a><b>insertSectionAfter</b> <span class="params">(index, section, animation)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Inserts a section after another section.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>index</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Index of the section to insert after.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>section</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.TableViewSectionDictionary&lt;Titanium.UI.TableViewSection&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>section to insert.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>animation</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [TableViewAnimationProperties]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="insertSectionBefore-method">
+        <a name="insertSectionBefore-method"></a><b>insertSectionBefore</b> <span class="params">(index, section, animation)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Inserts a section before another section.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>index</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Index of the section to insert before.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>section</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.TableViewSectionDictionary&lt;Titanium.UI.TableViewSection&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>section to insert.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>animation</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [TableViewAnimationProperties]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="remove-method">
         <a name="remove-method"></a><b>remove</b> <span class="params">(view)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2715,7 +3132,7 @@ If this argument is not a view, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties. Only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -2771,7 +3188,9 @@ table view.</p></div>
         <a name="selectRow-method"></a><b>selectRow</b> <span class="params">(row)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Programmatically selects a row.</p></div>
+      <div class="description"><p>Programmatically selects a row. In Android, it sets the currently selected item. If in touch mode,
+the item will not be selected but it will still be positioned appropriately. If the specified 
+selection position is less than 0, then the item at position 0 will be selected.</p></div>
       
 
       
@@ -3781,6 +4200,36 @@ table view.</p></div>
     </div>
     
     <div class="method">
+      <div class="title" id="setHorizontalWrap-method">
+        <a name="setHorizontalWrap-method"></a><b>setHorizontalWrap</b> <span class="params">(horizontalWrap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableView.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>horizontalWrap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setIndex-method">
         <a name="setIndex-method"></a><b>setIndex</b> <span class="params">(index)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -4111,6 +4560,36 @@ table view.</p></div>
     </div>
     
     <div class="method">
+      <div class="title" id="setScrollIndicatorStyle-method">
+        <a name="setScrollIndicatorStyle-method"></a><b>setScrollIndicatorStyle</b> <span class="params">(scrollIndicatorStyle)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableView.scrollIndicatorStyle-property.html">scrollIndicatorStyle</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>scrollIndicatorStyle</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setScrollable-method">
         <a name="setScrollable-method"></a><b>setScrollable</b> <span class="params">(scrollable)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -4125,6 +4604,36 @@ table view.</p></div>
                 
                 <tr valign='top'>
                   <td class='attr-name'>scrollable</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setScrollsToTop-method">
+        <a name="setScrollsToTop-method"></a><b>setScrollsToTop</b> <span class="params">(scrollsToTop)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableView.scrollsToTop-property.html">scrollsToTop</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>scrollsToTop</td>
                   <td class='attr-rw'>
                     
                       
@@ -4189,6 +4698,36 @@ table view.</p></div>
                     
                       
                         [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setSections-method">
+        <a name="setSections-method"></a><b>setSections</b> <span class="params">(sections)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.TableView.sections-property.html">sections</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>sections</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Array&lt;Titanium.UI.TableViewSection&gt;]
                       
                     
                   </td>
@@ -4428,7 +4967,7 @@ table view.</p></div>
                   <td class='attr-rw'>
                     
                       
-                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                        [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
                       
                     
                   </td>
@@ -4574,8 +5113,8 @@ table view.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be 
-performed asynchronously. If null, it will be performed immediately.</td>
+                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be performed 
+asynchronously. If null, it will be performed immediately.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -4587,9 +5126,9 @@ performed asynchronously. If null, it will be performed immediately.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>When set to true, the image is scaled based on scale factor of main screen.
-When set to false the image in the blob has the same dimensions for retina and
-non-retina devices. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the image is scaled based on scale factor of main screen. (iOS only) 
+When set to true, image is scale factor is honored. When set to false, the image in the 
+blob has the same dimensions for retina and non-retina devices.</td>
                 </tr>
                 
       	</table>
@@ -4602,8 +5141,8 @@ non-retina devices. Only used on iOS.</td>
         <a name="updateLayout-method"></a><b>updateLayout</b> <span class="params">(params)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a
-layout pass after they have been updated.</p></div>
+      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a layout pass after 
+they have been updated.</p></div>
       
 
       
@@ -4616,11 +5155,11 @@ layout pass after they have been updated.</p></div>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>Dictionary of layout properties to be updated.</td>
+                  <td class='attr-desc'>Layout properties to be updated.</td>
                 </tr>
                 
       	</table>
@@ -4674,7 +5213,61 @@ layout pass after they have been updated.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>Animation properties. Only used on iOS.</td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="updateSection-method">
+        <a name="updateSection-method"></a><b>updateSection</b> <span class="params">(index, section, animation)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Updates an existing section, optionally with animation</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>index</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Index of the section to update.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>section</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.TableViewSection]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>section data to update.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>animation</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [TableViewAnimationProperties]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Animation properties. (iOS only.)</td>
                 </tr>
                 
       	</table>
@@ -4707,17 +5300,6 @@ layout pass after they have been updated.</p></div>
               
               <p>Indicates whether the detail button was clicked. Only <code>true</code> if <code>row.hasDetail</code> is 
 <code>true</code> and the detail button was clicked.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
             </td>
           </tr>
           
@@ -4829,17 +5411,6 @@ properties.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -4902,17 +5473,6 @@ coordinates.</p>
               <span class="attr-rw">[Boolean]</span><br /> 
               
               <p>Indicates whether the delete button was clicked. Always <code>false</code> for this event.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
             </td>
           </tr>
           
@@ -5024,17 +5584,6 @@ properties.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -5129,6 +5678,89 @@ been released by the touch. If <code>false</code>, scrolling will stop immediate
     <div class="method">
       <div class="title" id="dragStart-event">
         <a name="dragStart-method"></a><b>dragStart</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="dragend-event">
+        <a name="dragend-method"></a><b>dragend</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>decelerate</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Boolean]</span><br /> 
+              
+              <p>Indicates whether scrolling will continue but decelerate, now that the drag gesture has 
+been released by the touch. If <code>false</code>, scrolling will stop immediately.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="dragstart-event">
+        <a name="dragstart-method"></a><b>dragstart</b>
       </div>
       
       
@@ -5272,17 +5904,6 @@ been released by the touch. If <code>false</code>, scrolling will stop immediate
               <span class="attr-rw">[Boolean]</span><br /> 
               
               <p>Boolean to indicate if the right area was clicked. Always <code>false</code> for this event.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
             </td>
           </tr>
           
@@ -5517,17 +6138,6 @@ properties.</p>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>size</td>
             <td class='attr-desc'>
               
@@ -5606,6 +6216,94 @@ table view</p>
     <div class="method">
       <div class="title" id="scrollEnd-event">
         <a name="scrollEnd-method"></a><b>scrollEnd</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>contentOffset</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Point]</span><br /> 
+              
+              <p>Dictionary with <code>x</code> and <code>y</code> properties containing the content offset.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>contentSize</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Dictionary]</span><br /> 
+              
+              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the content 
+(regardless of the display size in the case of scrolling).</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>size</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Dictionary]</span><br /> 
+              
+              <p>Dictionary with <code>width</code> and <code>height</code> properties containing the size of the visible 
+table view.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>x</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>X coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>y</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Y coordinate of the event from the <code>source</code> view's coordinate system.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="scrollend-event">
+        <a name="scrollend-method"></a><b>scrollend</b>
       </div>
       
       
@@ -5780,17 +6478,6 @@ table view.</p>
           </tr>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -5847,17 +6534,6 @@ coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -5912,17 +6588,6 @@ coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>
@@ -6037,17 +6702,6 @@ coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -6102,17 +6756,6 @@ coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <span class="attr-rw">[Dictionary]</span><br /> 
-              
-              <p>Coordinates <code>x</code> and <code>y</code> describing the location of the event in terms of screen 
-coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

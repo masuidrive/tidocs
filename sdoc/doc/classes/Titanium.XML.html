@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -53,9 +65,10 @@
         <p>The API for this module is based on the W3C DOM specification.</p>
 <p>Android and iOS implement the <a href="http://www.w3.org/TR/DOM-Level-2-Core/core.html">DOM Level 2</a> specification
 with some non-standard extensions, which are documented in the appropriate places.</p>
-<p>Mobile Web directly exposes the <a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html">DOM Level 3</a> implementation 
-in the browser. New features introduced in DOM Level 3 are not documented here for brevity. For information on
-these features, please use the W3C documentation.</p>
+<p>Both iOS and Android lack DTD support.</p>
+<p>Mobile Web directly exposes the <a href="http://www.w3.org/TR/DOM-Level-3-Core/core.html">DOM Level 3</a> 
+implementation in the browser. New features introduced in DOM Level 3 are not documented here 
+for brevity. For information on these features, please use the W3C documentation.</p>
     </div>
     
 
@@ -66,6 +79,10 @@ these features, please use the W3C documentation.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -141,6 +158,36 @@ these features, please use the W3C documentation.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -187,9 +234,7 @@ these features, please use the W3C documentation.</p>
         <a name="parseString-method"></a><b>parseString</b> <span class="params">(xml)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Parses an XML string into a <a href="Titanium.XML.Document-object.html"><code>Titanium.XML.Document</code></a> object.
-Throws an exception if the string is unable to be parsed into a valid
-document.</p></div>
+      <div class="description"><p>Parses an XML string into a <a href="Titanium.XML.Document-object.html"><code>Titanium.XML.Document</code></a> object.</p></div>
       
 
       
@@ -206,7 +251,7 @@ document.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>the XML content as a string</td>
+                  <td class='attr-desc'>XML content as a string.</td>
                 </tr>
                 
       	</table>
@@ -261,7 +306,7 @@ document.</p></div>
         <a name="serializeToString-method"></a><b>serializeToString</b> <span class="params">(node)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Serializes a <a href="Titanium.XML.Document-object.html"><code>Titanium.XML.Document</code></a> object into a string.</p></div>
+      <div class="description"><p>Serializes a <a href="Titanium.XML.Node-object.html">Node</a> object into a string.</p></div>
       
 
       
@@ -278,7 +323,7 @@ document.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>The XML DOMNode or DOMDocument to serialize</td>
+                  <td class='attr-desc'>XML Node to serialize.</td>
                 </tr>
                 
       	</table>
