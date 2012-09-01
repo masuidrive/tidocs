@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -49,6 +61,26 @@
     
     
     
+    <div class="description">
+        <p>The Clipboard is a temporary data store, used to save a single item of data that may then 
+be accessed by the user using UI copy and paste interactions within an app or between apps.</p>
+<p>On iOS and Mobile Web, the module's <code>*Data()</code> methods enable multiple representations of the 
+same data item to be stored together with their respective 
+<a href="http://en.wikipedia.org/wiki/Internet_media_type">MIME type</a> to describe their format. For 
+example, <code>'text'</code> and <code>'text/plain'</code> for text, and <code>'image/jpg'</code> and <code>'image/png'</code> for an image.</p>
+<p>When working with text, either the <code>*Data()</code> methods may be used with a <code>'text/plain'</code> type, or 
+the <code>*Text()</code> methods without the need to specify the type.</p>
+<p>Android currently only supports text type of data to be stored. </p>
+<h4>Clipboard Data Types</h4>
+<p>The <code>*Text()</code> methods are equivalent to calling <code>*Data()</code> with a <code>'text'</code> or <code>'text/plain'</code> 
+type. These work with plain Unicode strings. </p>
+<p>An image is stored using the <code>'image'</code> type, or an explicit image MIME type, and is returned as 
+a <a href="Titanium.Blob-object.html"><code>Titanium.Blob</code></a> (binary) type. </p>
+<p>A URL is stored with the <code>'url'</code> or <code>'text/uri-list'</code> type, and is returned as a string. </p>
+<p>Any data type that is specified but not correctly mapped to a clipboard type by the system is 
+retrieved as a <a href="Titanium.Blob-object.html"><code>Titanium.Blob</code></a> type. </p>
+    </div>
+    
 
     
     
@@ -57,6 +89,10 @@
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -111,22 +147,18 @@
     <div class="sectiontitle">Code Examples</div>
     <table border='0' cellpadding='5'>
         
-	<div class="subsectiontitle">Copying text to the clipboard</div>
-	<div class="code"><p>copyButton.addEventListener('click', function() {
-    Ti.UI.Clipboard.setText(data.url);
-});</p></div>
-        
-	<div class="subsectiontitle">Pasting text from the clipboard</div>
-	<div class="code"><p>if (Ti.UI.Clipboard.hasText()) {
-    doSomethingWith(Ti.UI.Clipboard.getText());
-} else {
-    alert('Hey there was no text.');
-}</p></div>
-        
-	<div class="subsectiontitle">Clipboard data types</div>
-	<div class="code"><p>The <em>Text() functions are equivalent to calling </em>Data() with 'text' or 'text/plain' types, and work with plain Unicode strings.</p>
-<p>On Android, only plain text is supported; other MIME types will be ignored.</p>
-<p>On iOS, images will be returned as a <a href="Titanium.Blob-object.html"><code>Titanium.Blob</code></a>; the special type 'image' or an explicit MIME type may be specified. URLs can be fetched with the special 'URL' or 'text/uri-list' types, and will return strings. Other data types may or may not be correctly mapped to clipboard types by the system, and will be retrieved as binary data in a <a href="Titanium.Blob-object.html"><code>Titanium.Blob</code></a>.</p></div>
+	<div class="subsectiontitle">Copy Text to the Clipboard</div>
+	<div class="code"><p>Clear the clipboard and output the resulting empty clipboard to console. </p>
+<p>Then, store the string, "hello", to the clipboard and output it from the clipboard to the 
+console. </p>
+<pre><code>Ti.API.log('Deleting all text in Clipboard');
+Ti.UI.Clipboard.clearText();
+Ti.API.log('Clipboard.getText(): ' + Ti.UI.Clipboard.getText()); // returns empty string on Android and undefined on iOS
+Ti.API.log('Set text Clipboard to hello');
+Ti.UI.Clipboard.setText('hello');
+Ti.API.log('Clipboard.hasText(), should be true: ' + Ti.UI.Clipboard.hasText()); // returns true on Android and 1 on iOS
+Ti.API.log('Clipboard.getText(), should be hello: ' + Ti.UI.Clipboard.getText());
+</code></pre></div>
         
     </table>
     
@@ -178,11 +210,42 @@
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="clearData-method">
         <a name="clearData-method"></a><b>clearData</b> <span class="params">(type)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Clear data of the given mime-type from the clipboard. If no mime-type is given, clear all data from the clipboard.</p></div>
+      <div class="description"><p>Deletes data of the specified MIME type stored in the clipboard. If MIME type omitted, all 
+data is deleted.</p></div>
       
 
       
@@ -199,7 +262,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>(optional) The mime-type of the data to clear.</td>
+                  <td class='attr-desc'>MIME type. Ignored on Android.</td>
                 </tr>
                 
       	</table>
@@ -212,7 +275,7 @@
         <a name="clearText-method"></a><b>clearText</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Clear the text portion of the clipboard.</p></div>
+      <div class="description"><p>Deletes all text data stored in the clipboard.</p></div>
       
 
       
@@ -265,7 +328,7 @@
         <a name="getData-method"></a><b>getData</b> <span class="params">(type)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get the data on the clipboard from the portion which contains data of the given mime-type.</p></div>
+      <div class="description"><p>Gets data of the specified MIME type stored in the clipboard.</p></div>
       
 
       
@@ -282,7 +345,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The mime-type of the data to get.</td>
+                  <td class='attr-desc'>MIME type. Must be text type on Android.</td>
                 </tr>
                 
       	</table>
@@ -295,7 +358,7 @@
         <a name="getText-method"></a><b>getText</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Get the current text on the clipboard.</p></div>
+      <div class="description"><p>Gets text data stored in the clipboard.</p></div>
       
 
       
@@ -306,7 +369,7 @@
         <a name="hasData-method"></a><b>hasData</b> <span class="params">(type)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Return true if there is any content of the given mime-type on the clipboard.</p></div>
+      <div class="description"><p>Indicates whether any data of the specified MIME type is stored in the clipboard.</p></div>
       
 
       
@@ -323,7 +386,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>(optional) The mime-type of the data to check.</td>
+                  <td class='attr-desc'>MIME type. Must be text type on Android.</td>
                 </tr>
                 
       	</table>
@@ -336,7 +399,7 @@
         <a name="hasText-method"></a><b>hasText</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Return true if there is any content in the text portion of the clipboard.</p></div>
+      <div class="description"><p>Indicates whether any text data is stored in the clipboard.</p></div>
       
 
       
@@ -389,7 +452,7 @@
         <a name="setData-method"></a><b>setData</b> <span class="params">(type, data)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Set the data on the clipboard given a mime-type and the new data. This method will set data on the appropriate portion of the clipboard for the given mime-type.</p></div>
+      <div class="description"><p>Stores data of the specified MIME type in the clipboard.</p></div>
       
 
       
@@ -406,7 +469,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The mime-type of the data to set.</td>
+                  <td class='attr-desc'>MIME type. Must be text type on Android.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -418,7 +481,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The new clipboard text.</td>
+                  <td class='attr-desc'>New item of data.</td>
                 </tr>
                 
       	</table>
@@ -431,7 +494,7 @@
         <a name="setText-method"></a><b>setText</b> <span class="params">(text)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Set the text on the clipboard. This will overwrite the current contents of the clipboard.</p></div>
+      <div class="description"><p>Stores text data in the clipboard.</p></div>
       
 
       
@@ -448,7 +511,7 @@
                       
                     
                   </td>
-                  <td class='attr-desc'>The new clipboard text. If the text is an empty string</td>
+                  <td class='attr-desc'>New item of data.</td>
                 </tr>
                 
       	</table>

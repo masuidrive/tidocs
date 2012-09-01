@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -36,7 +48,7 @@
             Titanium.Cloud.Users 
         </h1>
       	<ul class="files">
-      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+)</li>
+      	  <li>Android(2.0+), iPhone(2.0+), iPad(2.0+)</li>
       	</ul>
     </div>
     <div id="bodyContent">
@@ -54,6 +66,10 @@
     
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
     
             <ul>
                 <li><a href="#create-method">create <span class="params">(parameters, callback)</span></a></li>
@@ -81,6 +97,18 @@
     
             <ul>
                 <li><a href="#search-method">search <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#secureCreate-method">secureCreate <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#secureLogin-method">secureLogin <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#secureStatus-method">secureStatus <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -292,12 +320,74 @@
 });
 </code></pre></div>
         
+	<div class="subsectiontitle">Create User Using 3-Legged OAuth</div>
+	<div class="code"><p>This example creates a new user using 3-Legged OAuth and checks the response.</p>
+<pre><code>Cloud.Users.secureCreate({
+    title: 'Sign Up Here'
+}, function (e) {
+    if (e.success) {
+        alert('Success:\\n' +
+            'accessToken: ' + e.accessToken + '\\n' +
+            'expiresIn: ' + e.expiresIn);
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Log in User Using 3-Legged OAuth</div>
+	<div class="code"><p>This example logs a user in using 3-Legged OAuth and checks the response.</p>
+<pre><code>Cloud.Users.secureLogin({
+    title: 'Log In Here'
+}, function (e) {
+    if (e.success) {
+        alert('Success:\\n' +
+            'accessToken: ' + e.accessToken + '\\n' +
+            'expiresIn: ' + e.expiresIn);
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
     </table>
     
 
 
     
     <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
     
     <div class="method">
       <div class="title" id="create-method">
@@ -578,6 +668,101 @@
                 
       	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="secureCreate-method">
+        <a name="secureCreate-method"></a><b>secureCreate</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Create a new user using 3-Legged OAuth.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;CloudUsersSecureDialog&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties for the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudUsersSecureResponse.html">[Callback&lt;CloudUsersSecureResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="secureLogin-method">
+        <a name="secureLogin-method"></a><b>secureLogin</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Log in a user using 3-Legged OAuth.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary&lt;CloudUsersSecureDialog&gt;]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties for the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudUsersSecureResponse.html">[Callback&lt;CloudUsersSecureResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="secureStatus-method">
+        <a name="secureStatus-method"></a><b>secureStatus</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Checks if the user is authenticated with 3-Legged OAuth.</p></div>
+      
+
       
     </div>
     

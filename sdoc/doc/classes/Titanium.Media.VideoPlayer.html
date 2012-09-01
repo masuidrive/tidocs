@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -103,7 +115,11 @@ a sample using the fullscreen player on Android.</p>
             </ul>
     
             <ul>
-                <li><a href="#animate-method">animate <span class="params">(obj, callback)</span></a></li>
+                <li><a href="#animate-method">animate <span class="params">(animation, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -131,7 +147,7 @@ a sample using the fullscreen player on Android.</p>
             </ul>
     
             <ul>
-                <li><a href="#getAnimatedCenterPoint-method">getAnimatedCenterPoint <span class="params">()</span></a></li>
+                <li><a href="#getAnimatedCenter-method">getAnimatedCenter <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -211,10 +227,6 @@ a sample using the fullscreen player on Android.</p>
             </ul>
     
             <ul>
-                <li><a href="#getContentURL-method">getContentURL <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#getCurrentPlaybackTime-method">getCurrentPlaybackTime <span class="params">()</span></a></li>
             </ul>
     
@@ -236,6 +248,10 @@ a sample using the fullscreen player on Android.</p>
     
             <ul>
                 <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getHorizontalWrap-method">getHorizontalWrap <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -264,10 +280,6 @@ a sample using the fullscreen player on Android.</p>
     
             <ul>
                 <li><a href="#getMediaTypes-method">getMediaTypes <span class="params">()</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#getMovieControlMode-method">getMovieControlMode <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -340,6 +352,10 @@ a sample using the fullscreen player on Android.</p>
     
             <ul>
                 <li><a href="#getVisible-method">getVisible <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getVolume-method">getVolume <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -463,10 +479,6 @@ a sample using the fullscreen player on Android.</p>
             </ul>
     
             <ul>
-                <li><a href="#setContentURL-method">setContentURL <span class="params">(contentURL)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#setDuration-method">setDuration <span class="params">(duration)</span></a></li>
             </ul>
     
@@ -484,6 +496,10 @@ a sample using the fullscreen player on Android.</p>
     
             <ul>
                 <li><a href="#setHeight-method">setHeight <span class="params">(height)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setHorizontalWrap-method">setHorizontalWrap <span class="params">(horizontalWrap)</span></a></li>
             </ul>
     
             <ul>
@@ -512,10 +528,6 @@ a sample using the fullscreen player on Android.</p>
     
             <ul>
                 <li><a href="#setMediaTypes-method">setMediaTypes <span class="params">(mediaTypes)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#setMovieControlMode-method">setMovieControlMode <span class="params">(movieControlMode)</span></a></li>
             </ul>
     
             <ul>
@@ -571,6 +583,10 @@ a sample using the fullscreen player on Android.</p>
             </ul>
     
             <ul>
+                <li><a href="#setVolume-method">setVolume <span class="params">(volume)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setWidth-method">setWidth <span class="params">(width)</span></a></li>
             </ul>
     
@@ -623,11 +639,11 @@ a sample using the fullscreen player on Android.</p>
                 [Point]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Anchor point where animation should occur, relative to the view's boundaries.</td>
+            <td class='attr-desc'>Coordinate of the view about which to pivot an animation.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="animatedCenterPoint-property"></a>animatedCenterPoint</td>
+            <td class='attr-name'><a name="animatedCenter-property"></a>animatedCenter</td>
             <td class='attr-rw'>
                 [Point]
             </td>
@@ -722,7 +738,7 @@ a sample using the fullscreen player on Android.</p>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Toggle for whether or not to tile a background across a view.</td>
+            <td class='attr-desc'>Determines whether to tile a background across a view.</td>
         </tr>
         
         <tr valign='top'>
@@ -807,15 +823,6 @@ a sample using the fullscreen player on Android.</p>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="contentURL-property"></a>contentURL</td>
-            <td class='attr-rw'>
-                [String]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the url property instead.</td>
-        </tr>
-        
-        <tr valign='top'>
             <td class='attr-name'><a name="currentPlaybackTime-property"></a>currentPlaybackTime</td>
             <td class='attr-rw'>
                 [Number]
@@ -870,6 +877,15 @@ a sample using the fullscreen player on Android.</p>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="horizontalWrap-property"></a>horizontalWrap</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Determines whether the layout has wrapping behavior.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="initialPlaybackTime-property"></a>initialPlaybackTime</td>
             <td class='attr-rw'>
                 [Number]
@@ -884,7 +900,7 @@ a sample using the fullscreen player on Android.</p>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether to keep the device screen on.</td>
+            <td class='attr-desc'>Determines whether to keep the device screen on.</td>
         </tr>
         
         <tr valign='top'>
@@ -940,15 +956,6 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>The types of media in the movie, or Titanium.Media.VIDEO_MEDIA_TYPE_NONE if not known.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="movieControlMode-property"></a>movieControlMode</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use mediaControlStyle instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -1074,13 +1081,13 @@ One of: 'composite', 'vertical', or 'horizontal'.</td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Whether view should receive touch events.</td>
+            <td class='attr-desc'>Determines whether view should receive touch events.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="transform-property"></a>transform</td>
             <td class='attr-rw'>
-                [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Transformation matrix to apply to the view.</td>
@@ -1111,7 +1118,16 @@ instead of creating a new session. </td>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Boolean value indicating whether the view is visible.</td>
+            <td class='attr-desc'>Determines whether the view is visible.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="volume-property"></a>volume</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Volume of the audio portion of the video. </td>
         </tr>
         
         <tr valign='top'>
@@ -1166,6 +1182,13 @@ instead of creating a new session. </td>
         <tr valign='top'>
             <td class='attr-name'><a href="#durationAvailable-event">durationAvailable</a></td>
             <td class='attr-desc'></td>
+            <td class='attr-desc'>This event has been deprecated and renamed durationavailable (lower case).
+Fired when the video duration is available.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#durationavailable-event">durationavailable</a></td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the video duration is available.</td>
         </tr>
         
@@ -1202,17 +1225,38 @@ instead of creating a new session. </td>
         <tr valign='top'>
             <td class='attr-name'><a href="#mediaTypesAvailable-event">mediaTypesAvailable</a></td>
             <td class='attr-desc'></td>
+            <td class='attr-desc'>This event has been deprecated and renamed mediatypesavailable (lower case).
+Fired when the media types in the current movie are determined.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#mediatypesavailable-event">mediatypesavailable</a></td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the media types in the current movie are determined.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#naturalSizeAvailable-event">naturalSizeAvailable</a></td>
             <td class='attr-desc'></td>
+            <td class='attr-desc'>This event has been deprecated and renamed naturalsizeavailable (lower case).
+Fired when the natural size of the current movie is determined.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#naturalsizeavailable-event">naturalsizeavailable</a></td>
+            <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the natural size of the current movie is determined.</td>
         </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#playbackState-event">playbackState</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This event has been deprecated and renamed playbackstate (lower case).
+Fired when the playbackState changes.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#playbackstate-event">playbackstate</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the playbackState changes.</td>
         </tr>
@@ -1249,6 +1293,14 @@ instead of creating a new session. </td>
         
         <tr valign='top'>
             <td class='attr-name'><a href="#sourceChange-event">sourceChange</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>This event has been deprecated and renamed sourcechanged (lower case).
+Fired when the sourceType property
+changes.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#sourcechange-event">sourcechange</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the sourceType property
 changes.</td>
@@ -1452,7 +1504,7 @@ win.open();
     
     <div class="method">
       <div class="title" id="animate-method">
-        <a name="animate-method"></a><b>animate</b> <span class="params">(obj, callback)</span>
+        <a name="animate-method"></a><b>animate</b> <span class="params">(animation, callback)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Animates this view.</p></div>
@@ -1464,7 +1516,7 @@ win.open();
       	<table border='0' cellpadding='5'>
                 
                 <tr valign='top'>
-                  <td class='attr-name'>obj</td>
+                  <td class='attr-name'>animation</td>
                   <td class='attr-rw'>
                     
                       
@@ -1494,6 +1546,36 @@ Animation object.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="cancelAllThumbnailImageRequests-method">
         <a name="cancelAllThumbnailImageRequests-method"></a><b>cancelAllThumbnailImageRequests</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1509,8 +1591,7 @@ Animation object.</td>
         <a name="convertPointToView-method"></a><b>convertPointToView</b> <span class="params">(point, destinationView)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Translates a point from this view's coordinate system to another 
-view's coordinate system.</p></div>
+      <div class="description"><p>Translates a point from this view's coordinate system to another view's coordinate system.</p></div>
       
 
       
@@ -1527,9 +1608,9 @@ view's coordinate system.</p></div>
                       
                     
                   </td>
-                  <td class='attr-desc'>A point in this view's coordinate system.
-If this argument is missing an x or y property, or the properties can not 
-be converted into numbers, an exception will be raised.</td>
+                  <td class='attr-desc'>A point in this view's coordinate system. 
+If this argument is missing an x or y property, or the properties can not be 
+converted into numbers, an exception will be raised.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1541,8 +1622,8 @@ be converted into numbers, an exception will be raised.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to.
-If this argument is not a view, an exception will be raised.</td>
+                  <td class='attr-desc'>View that specifies the destination coordinate system to convert to. If this argument 
+is not a view, an exception will be raised.</td>
                 </tr>
                 
       	</table>
@@ -1555,7 +1636,8 @@ If this argument is not a view, an exception will be raised.</td>
         <a name="finishLayout-method"></a><b>finishLayout</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the view tree.</p></div>
+      <div class="description"><p>Finishes a batch update of the View's layout properties and schedules a layout pass of the 
+view tree.</p></div>
       
 
       
@@ -1626,11 +1708,11 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getAnimatedCenterPoint-method">
-        <a name="getAnimatedCenterPoint-method"></a><b>getAnimatedCenterPoint</b> <span class="params">()</span>
+      <div class="title" id="getAnimatedCenter-method">
+        <a name="getAnimatedCenter-method"></a><b>getAnimatedCenter</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.animatedCenterPoint-property.html">animatedCenterPoint</a> property.</p></div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.animatedCenter-property.html">animatedCenter</a> property.</p></div>
       
 
       
@@ -1846,17 +1928,6 @@ If this argument is not a view, an exception will be raised.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="getContentURL-method">
-        <a name="getContentURL-method"></a><b>getContentURL</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.contentURL-property.html">contentURL</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="getCurrentPlaybackTime-method">
         <a name="getCurrentPlaybackTime-method"></a><b>getCurrentPlaybackTime</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -1917,6 +1988,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.height-property.html">height</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getHorizontalWrap-method">
+        <a name="getHorizontalWrap-method"></a><b>getHorizontalWrap</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
       
 
       
@@ -1994,17 +2076,6 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.mediaTypes-property.html">mediaTypes</a> property.</p></div>
-      
-
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="getMovieControlMode-method">
-        <a name="getMovieControlMode-method"></a><b>getMovieControlMode</b> <span class="params">()</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.movieControlMode-property.html">movieControlMode</a> property.</p></div>
       
 
       
@@ -2203,6 +2274,17 @@ If this argument is not a view, an exception will be raised.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.visible-property.html">visible</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getVolume-method">
+        <a name="getVolume-method"></a><b>getVolume</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Media.VideoPlayer.volume-property.html">volume</a> property.</p></div>
       
 
       
@@ -3032,36 +3114,6 @@ Titanium.Media.VIDEO_TIME_OPTION_EXACT.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="setContentURL-method">
-        <a name="setContentURL-method"></a><b>setContentURL</b> <span class="params">(contentURL)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.VideoPlayer.contentURL-property.html">contentURL</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>contentURL</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="setDuration-method">
         <a name="setDuration-method"></a><b>setDuration</b> <span class="params">(duration)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -3200,6 +3252,36 @@ Titanium.Media.VIDEO_TIME_OPTION_EXACT.</td>
                     
                       
                         [NumberString]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setHorizontalWrap-method">
+        <a name="setHorizontalWrap-method"></a><b>setHorizontalWrap</b> <span class="params">(horizontalWrap)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Media.VideoPlayer.horizontalWrap-property.html">horizontalWrap</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>horizontalWrap</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
                       
                     
                   </td>
@@ -3406,36 +3488,6 @@ Titanium.Media.VIDEO_TIME_OPTION_EXACT.</td>
                 
                 <tr valign='top'>
                   <td class='attr-name'>mediaTypes</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>New value for the property.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="setMovieControlMode-method">
-        <a name="setMovieControlMode-method"></a><b>setMovieControlMode</b> <span class="params">(movieControlMode)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sets the value of the <a href="Titanium.Media.VideoPlayer.movieControlMode-property.html">movieControlMode</a> property.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>movieControlMode</td>
                   <td class='attr-rw'>
                     
                       
@@ -3739,7 +3791,7 @@ Titanium.Media.VIDEO_TIME_OPTION_EXACT.</td>
                   <td class='attr-rw'>
                     
                       
-                        [Titanium.UI.2DMatrixTitanium.UI.iOS.3DMatrix]
+                        [Titanium.UI.2DMatrixTitanium.UI.3DMatrix]
                       
                     
                   </td>
@@ -3830,6 +3882,36 @@ Titanium.Media.VIDEO_TIME_OPTION_EXACT.</td>
                     
                       
                         [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setVolume-method">
+        <a name="setVolume-method"></a><b>setVolume</b> <span class="params">(volume)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Media.VideoPlayer.volume-property.html">volume</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>volume</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
                       
                     
                   </td>
@@ -3999,8 +4081,8 @@ Titanium.Media.VIDEO_TIME_OPTION_EXACT.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be 
-performed asynchronously. If null, it will be performed immediately.</td>
+                  <td class='attr-desc'>Function to be invoked upon completion. If non-null, this method will be performed 
+asynchronously. If null, it will be performed immediately.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -4012,9 +4094,9 @@ performed asynchronously. If null, it will be performed immediately.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>When set to true, the image is scaled based on scale factor of main screen.
-When set to false the image in the blob has the same dimensions for retina and
-non-retina devices. Only used on iOS.</td>
+                  <td class='attr-desc'>Determines whether the image is scaled based on scale factor of main screen. (iOS only) 
+When set to true, image is scale factor is honored. When set to false, the image in the 
+blob has the same dimensions for retina and non-retina devices.</td>
                 </tr>
                 
       	</table>
@@ -4027,8 +4109,8 @@ non-retina devices. Only used on iOS.</td>
         <a name="updateLayout-method"></a><b>updateLayout</b> <span class="params">(params)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a
-layout pass after they have been updated.</p></div>
+      <div class="description"><p>Performs a batch update of all supplied layout properties and schedules a layout pass after 
+they have been updated.</p></div>
       
 
       
@@ -4041,11 +4123,11 @@ layout pass after they have been updated.</p></div>
                   <td class='attr-rw'>
                     
                       
-                        [Object]
+                        [Dictionary]
                       
                     
                   </td>
-                  <td class='attr-desc'>Dictionary of layout properties to be updated.</td>
+                  <td class='attr-desc'>Layout properties to be updated.</td>
                 </tr>
                 
       	</table>
@@ -4176,15 +4258,6 @@ layout pass after they have been updated.</p></div>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -4241,15 +4314,6 @@ of the event in screen coordinates.</p>
 	<table border='0' cellpadding='5'>
           
           <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
             <td class='attr-name'>source</td>
             <td class='attr-desc'>
               
@@ -4297,6 +4361,52 @@ of the event in screen coordinates.</p>
     <div class="method">
       <div class="title" id="durationAvailable-event">
         <a name="durationAvailable-method"></a><b>durationAvailable</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>duration</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Video duration, in milliseconds.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="durationavailable-event">
+        <a name="durationavailable-method"></a><b>durationavailable</b>
       </div>
       
       
@@ -4628,6 +4738,52 @@ fullscreen mode.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="mediatypesavailable-event">
+        <a name="mediatypesavailable-method"></a><b>mediatypesavailable</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>mediaTypes</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Current value of the <a href="Titanium.Media.VideoPlayer.mediaTypes-property.html">mediaTypes</a> property.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="naturalSizeAvailable-event">
         <a name="naturalSizeAvailable-method"></a><b>naturalSizeAvailable</b>
       </div>
@@ -4674,8 +4830,101 @@ fullscreen mode.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="naturalsizeavailable-event">
+        <a name="naturalsizeavailable-method"></a><b>naturalsizeavailable</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>naturalSize</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Current value of the <a href="Titanium.Media.VideoPlayer.naturalSize-property.html">naturalSize</a> property.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="playbackState-event">
         <a name="playbackState-method"></a><b>playbackState</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>playbackState</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Number]</span><br /> 
+              
+              <p>Current value of the <a href="Titanium.Media.VideoPlayer.playbackState-property.html">playbackState</a> property, 
+such as <a href="Titanium.Media.VIDEO_PLAYBACK_STATE_PLAYING-property.html"><code>Titanium.Media.VIDEO_PLAYBACK_STATE_PLAYING</code></a>.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="playbackstate-event">
+        <a name="playbackstate-method"></a><b>playbackstate</b>
       </div>
       
       
@@ -4975,6 +5224,50 @@ such as <a href="Titanium.Media.VIDEO_PLAYBACK_STATE_PLAYING-property.html"><cod
     </div>
     
     <div class="method">
+      <div class="title" id="sourcechange-event">
+        <a name="sourcechange-method"></a><b>sourcechange</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>sourceType</td>
+            <td class='attr-desc'>
+              
+              <p>New <code>sourceType</code> value.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="swipe-event">
         <a name="swipe-method"></a><b>swipe</b>
       </div>
@@ -4991,16 +5284,7 @@ such as <a href="Titanium.Media.VIDEO_PLAYBACK_STATE_PLAYING-property.html"><cod
               
               <span class="attr-rw">[String]</span><br /> 
               
-              <p>Direction of the swipe--either 'left' or 'right'. Android also supports 'up' and 'down'.</p>
-            </td>
-          </tr>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event's endpoint in screen coordinates.</p>
+              <p>Direction of the swipe--either 'left', 'right', 'up', or 'down'.</p>
             </td>
           </tr>
           
@@ -5227,15 +5511,6 @@ of the event's endpoint in screen coordinates.</p>
       <div class="description">
 	<h4>Event properties</h4>
 	<table border='0' cellpadding='5'>
-          
-          <tr valign='top'>
-            <td class='attr-name'>globalPoint</td>
-            <td class='attr-desc'>
-              
-              <p>Dictionary with properties <code>x</code> and <code>y</code> describing the location 
-of the event in screen coordinates.</p>
-            </td>
-          </tr>
           
           <tr valign='top'>
             <td class='attr-name'>source</td>

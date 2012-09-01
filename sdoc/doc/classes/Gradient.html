@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -36,7 +48,7 @@
             Gradient 
         </h1>
       	<ul class="files">
-      	  <li>iPhone(1.8.0+), iPad(1.8.0+)</li>
+      	  <li>iPhone(1.8.0+), iPad(1.8.0+), Mobile Web(1.8.0+)</li>
       	</ul>
     </div>
     <div id="bodyContent">

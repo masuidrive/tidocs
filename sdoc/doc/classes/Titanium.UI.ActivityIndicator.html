@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -55,18 +67,9 @@ user know that some action is taking place. An activity indicator consists of a 
 animation and an optional text message, and is used to indicate an ongoing activity of 
 indeterminate length. To show progress, use <a href="Titanium.UI.ProgressBar-object.html"><code>Titanium.UI.ProgressBar</code></a> instead.</p>
 <p>Use the <a href="Titanium.UI.createActivityIndicator-method.html"><code>Titanium.UI.createActivityIndicator</code></a> method to create an Activity Indicator. </p>
-<p>Activity indicators must be used differently on Android and iOS:</p>
-<ul>
-<li>
-<p>On Android, the activity indicator is a modal dialog that blocks the UI. Calling <code>show</code> 
-displays the indicator, and calling <code>hide</code> removes it. </p>
-</li>
-<li>
-<p>On iOS and Mobile Web, the activity indicator is a view like any other view, and must be 
+<p>The activity indicator is a view like any other view, and must be
 added to a window or other top-level view before it can be shown. Note that, unlike most views, 
 the activity indicator is hidden by default and must be shown explicitly.</p>
-</li>
-</ul>
     </div>
     
 
@@ -76,7 +79,15 @@ the activity indicator is hidden by default and must be shown explicitly.</p>
     <dl class="methods">
     
             <ul>
+                <li><a href="#add-method">add <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -97,6 +108,14 @@ the activity indicator is hidden by default and must be shown explicitly.</p>
     
             <ul>
                 <li><a href="#getHeight-method">getHeight <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getIndicatorColor-method">getIndicatorColor <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getIndicatorDiameter-method">getIndicatorDiameter <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -132,6 +151,10 @@ the activity indicator is hidden by default and must be shown explicitly.</p>
             </ul>
     
             <ul>
+                <li><a href="#remove-method">remove <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
             </ul>
     
@@ -149,6 +172,14 @@ the activity indicator is hidden by default and must be shown explicitly.</p>
     
             <ul>
                 <li><a href="#setHeight-method">setHeight <span class="params">(height)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setIndicatorColor-method">setIndicatorColor <span class="params">(indicatorColor)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setIndicatorDiameter-method">setIndicatorDiameter <span class="params">(indicatorDiameter)</span></a></li>
             </ul>
     
             <ul>
@@ -222,8 +253,26 @@ the activity indicator is hidden by default and must be shown explicitly.</p>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Width of the view. Only accepts value of auto, which must be explicitly set in order to 
+            <td class='attr-desc'>Width of the view. Only accepts value of Titanium.UI.SIZE, which must be explicitly set in order to
 display the message and to position the view correctly.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="indicatorColor-property"></a>indicatorColor</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Color of the animated indicator.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="indicatorDiameter-property"></a>indicatorDiameter</td>
+            <td class='attr-rw'>
+                [String]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Diameter of the indicator.</td>
         </tr>
         
         <tr valign='top'>
@@ -286,7 +335,7 @@ display the message and to position the view correctly.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Width of the view. Only accepts value of auto, which must be explicitly set in order to 
+            <td class='attr-desc'>Width of the view. Only accepts value of Titanium.UI.SIZE, which must be explicitly set in order to
 display the message and to position the view correctly.</td>
         </tr>
         
@@ -315,21 +364,23 @@ var win2 = Ti.UI.createWindow({
   fullscreen: true
 });
 
+var style = Ti.UI.ActivityIndicatorStyle.DARK;
+if (Ti.Platform.name === 'iPhone OS'){
+  style = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
+}
 var activityIndicator = Ti.UI.createActivityIndicator({
   color: 'green',
   font: {fontFamily:'Helvetica Neue', fontSize:26, fontWeight:'bold'},
   message: 'Loading...',
-  style:Ti.UI.iPhone.ActivityIndicatorStyle.DARK,
+  style:style,
   top:10,
   left:10,
-  height:'auto',
-  width:'auto'
+  height:Ti.UI.SIZE,
+  width:Ti.UI.SIZE
 });
 
-// On iOS, the activity indicator must be added to a window or view for it to appear
-if (Ti.Platform.name === 'iPhone OS'){
-  win2.add(activityIndicator);
-}
+// The activity indicator must be added to a window or view for it to appear
+win2.add(activityIndicator);
 
 // eventListeners must always be loaded before the event is likely to fire
 // hence, the open() method must be positioned before the window is opened
@@ -353,6 +404,17 @@ win2.open();
 
     
     <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="add-method">
+        <a name="add-method"></a><b>add</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds a child to this activity indicator's hierarchy.</p></div>
+      
+
+      
+    </div>
     
     <div class="method">
       <div class="title" id="addEventListener-method">
@@ -389,6 +451,36 @@ win2.open();
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -483,6 +575,28 @@ win2.open();
     </div>
     
     <div class="method">
+      <div class="title" id="getIndicatorColor-method">
+        <a name="getIndicatorColor-method"></a><b>getIndicatorColor</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.indicatorColor-property.html">indicatorColor</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getIndicatorDiameter-method">
+        <a name="getIndicatorDiameter-method"></a><b>getIndicatorDiameter</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.UI.ActivityIndicator.indicatorDiameter-property.html">indicatorDiameter</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getLeft-method">
         <a name="getLeft-method"></a><b>getLeft</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -565,6 +679,17 @@ win2.open();
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Hides the activity indicator and stops the animation.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="remove-method">
+        <a name="remove-method"></a><b>remove</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes a child from this activity indicator's hierarchy.</p></div>
       
 
       
@@ -717,6 +842,66 @@ win2.open();
                 
                 <tr valign='top'>
                   <td class='attr-name'>height</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setIndicatorColor-method">
+        <a name="setIndicatorColor-method"></a><b>setIndicatorColor</b> <span class="params">(indicatorColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.indicatorColor-property.html">indicatorColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>indicatorColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setIndicatorDiameter-method">
+        <a name="setIndicatorDiameter-method"></a><b>setIndicatorDiameter</b> <span class="params">(indicatorDiameter)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.ActivityIndicator.indicatorDiameter-property.html">indicatorDiameter</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>indicatorDiameter</td>
                   <td class='attr-rw'>
                     
                       

@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -72,7 +84,7 @@
                 [LocationCoordinates]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Location data for this update.</td>
+            <td class='attr-desc'>If success is true, actual location data for this update.</td>
         </tr>
         
         <tr valign='top'>
@@ -90,7 +102,7 @@
                 [LocationProviderDict]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Object describing the location provider generating this update.</td>
+            <td class='attr-desc'>If success is true, object describing the location provider generating this update.</td>
         </tr>
         
         <tr valign='top'>

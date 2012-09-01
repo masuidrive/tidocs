@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -60,7 +72,15 @@
             </ul>
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPhysicalSizeCategory-method">getPhysicalSizeCategory <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -80,6 +100,60 @@
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Android API level identifier of the Operating System.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PHYSICAL_SIZE_CATEGORY_LARGE-property"></a>PHYSICAL_SIZE_CATEGORY_LARGE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant to indicate that the physical size category of the current device/emulator is large</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PHYSICAL_SIZE_CATEGORY_NORMAL-property"></a>PHYSICAL_SIZE_CATEGORY_NORMAL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant to indicate that the physical size category of the current device/emulator is normal</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PHYSICAL_SIZE_CATEGORY_SMALL-property"></a>PHYSICAL_SIZE_CATEGORY_SMALL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant to indicate that the physical size category of the current device/emulator is small</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PHYSICAL_SIZE_CATEGORY_UNDEFINED-property"></a>PHYSICAL_SIZE_CATEGORY_UNDEFINED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant to indicate that the physical size category of the current device/emulator is undefined</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="PHYSICAL_SIZE_CATEGORY_XLARGE-property"></a>PHYSICAL_SIZE_CATEGORY_XLARGE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Constant to indicate that the physical size category of the current device/emulator is extra large</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="physicalSizeCategory-property"></a>physicalSizeCategory</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>The physical size category of the Android device or emulator. </td>
         </tr>
         
     </table>
@@ -138,6 +212,36 @@
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -176,6 +280,17 @@
                 
       	</table>
       </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getPhysicalSizeCategory-method">
+        <a name="getPhysicalSizeCategory-method"></a><b>getPhysicalSizeCategory</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Platform.Android.physicalSizeCategory-property.html">physicalSizeCategory</a> property.</p></div>
+      
+
       
     </div>
     

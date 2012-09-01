@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Titanium.Cloud.ACLs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-257489-10']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Module</span> 
+            Titanium.Cloud.ACLs 
+        </h1>
+      	<ul class="files">
+      	  <li>Android(2.0+), iPhone(2.0+), iPad(2.0+)</li>
+      	</ul>
+    </div>
+    <div id="bodyContent">
+
+<div id="content">
+    
+    <div class="description">
+        <p>Provides methods for accessing ACS access control lists (ACLs).</p>
+    </div>
+    
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+            <ul>
+                <li><a href="#addUser-method">addUser <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#checkUser-method">checkUser <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#create-method">create <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#remove-method">remove <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#removeUser-method">removeUser <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#show-method">show <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#update-method">update <span class="params">(parameters, callback)</span></a></li>
+            </ul>
+    
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Create an ACL</div>
+	<div class="code"><p>This example creates an ACL object and checks the response.</p>
+<pre><code>Cloud.ACLs.create({
+    name: 'testACL',
+    reader_ids: readers.ids.join(','),
+    writer_ids: writers.ids.join(','),
+    public_read: false,
+    public_write: false
+}, function (e) {
+    if (e.success) {
+        alert('Created!');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Update an ACL</div>
+	<div class="code"><p>This example updates an ACL object and checks the response.</p>
+<pre><code>Cloud.ACLs.update({
+    name: 'testACL',
+    reader_ids: '',
+    writer_ids: '',
+    public_read: true,
+    public_write: true
+}, function (e) {
+    if (e.success) {
+        alert('Updated!');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Show an ACL</div>
+	<div class="code"><p>This example requests an ACL object and checks the response.</p>
+<pre><code>Cloud.ACLs.show({
+    name: 'testACL'
+}, function (e) {
+    if (e.success) {
+        alert('Shown!');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Remove an ACL</div>
+	<div class="code"><p>This example deletes an ACL object and checks the response.</p>
+<pre><code>Cloud.ACLs.remove({
+    name: 'testACL'
+}, function (e) {
+    if (e.success) {
+        alert('Removed!');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Add user to an ACL</div>
+	<div class="code"><p>This example adds a user to an ACL object and checks the response.</p>
+<pre><code>Cloud.ACLs.addUser({
+    name: 'testACL',
+    reader_ids: readers.ids.join(','),
+    writer_ids: writers.ids.join(',')
+}, function (e) {
+    if (e.success) {
+        alert('Added!');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Remove user from an ACL</div>
+	<div class="code"><p>This example removes a user from an ACL object and checks the response.</p>
+<pre><code>Cloud.ACLs.removeUser({
+    name: 'testACL',
+    reader_ids: readers.ids.join(','),
+    writer_ids: writers.ids.join(',')
+}, function (e) {
+    if (e.success) {
+        alert('Removed!');
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+	<div class="subsectiontitle">Check user permissions</div>
+	<div class="code"><p>This example checks a user's permissions in an ACL and checks the response.</p>
+<pre><code>Cloud.ACLs.checkUser({
+    name: 'testACL',
+    user_id: userID
+}, function (e) {
+    if (e.success) {
+        alert('Read Permission: ' + e.permission['read permission'] +
+              '\nWrite Permission: ' + e.permission['write permission']);
+    } else {
+        alert('Error:\\n' +
+            ((e.error &amp;&amp; e.message) || JSON.stringify(e)));
+    }
+});
+</code></pre></div>
+        
+    </table>
+    
+
+
+    
+    <div class="sectiontitle">Methods</div>
+    
+    <div class="method">
+      <div class="title" id="addUser-method">
+        <a name="addUser-method"></a><b>addUser</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Adds one or more users to an ACL object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudACLsResponse.html">[Callback&lt;CloudACLsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="checkUser-method">
+        <a name="checkUser-method"></a><b>checkUser</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Checks a user's permission in an ACL object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudACLsCheckResponse.html">[Callback&lt;CloudACLsCheckResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="create-method">
+        <a name="create-method"></a><b>create</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Creates an ACL object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudACLsResponse.html">[Callback&lt;CloudACLsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="remove-method">
+        <a name="remove-method"></a><b>remove</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Deletes an ACL object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudACLsResponse.html">[Callback&lt;CloudACLsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="removeUser-method">
+        <a name="removeUser-method"></a><b>removeUser</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Removes one or more users from an ACL object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudACLsResponse.html">[Callback&lt;CloudACLsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="show-method">
+        <a name="show-method"></a><b>show</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Shows an ACL object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudACLsResponse.html">[Callback&lt;CloudACLsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="update-method">
+        <a name="update-method"></a><b>update</b> <span class="params">(parameters, callback)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Updates an ACL object.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>parameters</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Parameters to send in the request.</td>
+                </tr>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>callback</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        <a href="CloudACLsResponse.html">[Callback&lt;CloudACLsResponse&gt;]</a>
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>Callback function to execute when the method completes.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    
+
+
+    
+
+
+</div>
+    </div>
+  </body>
+</html>    

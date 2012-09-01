@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -68,7 +80,27 @@ Android Developer Reference.</p>
             </ul>
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#collapseActionView-method">collapseActionView <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#expandActionView-method">expandActionView <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getActionView-method">getActionView <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getActionViewExpanded-method">getActionViewExpanded <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -85,6 +117,10 @@ Android Developer Reference.</p>
     
             <ul>
                 <li><a href="#getOrder-method">getOrder <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getShowAsAction-method">getShowAsAction <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -116,6 +152,14 @@ Android Developer Reference.</p>
             </ul>
     
             <ul>
+                <li><a href="#setActionView-method">setActionView <span class="params">(actionView)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setActionViewExpanded-method">setActionViewExpanded <span class="params">(actionViewExpanded)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setCheckable-method">setCheckable <span class="params">(checkable)</span></a></li>
             </ul>
     
@@ -129,6 +173,10 @@ Android Developer Reference.</p>
     
             <ul>
                 <li><a href="#setIcon-method">setIcon <span class="params">(icon)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setShowAsAction-method">setShowAsAction <span class="params">(showAsAction)</span></a></li>
             </ul>
     
             <ul>
@@ -148,6 +196,24 @@ Android Developer Reference.</p>
     
     <div class="sectiontitle">Properties</div>
     <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="actionView-property"></a>actionView</td>
+            <td class='attr-rw'>
+                [Titanium.UI.View]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A custom view that replaces the default menu item button.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="actionViewExpanded-property"></a>actionViewExpanded</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>True if this menu item's action view has been expanded.</td>
+        </tr>
         
         <tr valign='top'>
             <td class='attr-name'><a name="checkable-property"></a>checkable</td>
@@ -213,6 +279,15 @@ Android Developer Reference.</p>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="showAsAction-property"></a>showAsAction</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>A set of flags that controls how this item appears in the action bar.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="title-property"></a>title</td>
             <td class='attr-rw'>
                 [String]
@@ -250,6 +325,18 @@ Android Developer Reference.</p>
             <td class='attr-name'><a href="#click-event">click</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the user clicks the menu item.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#collapse-event">collapse</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the action view has been collapsed.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#expand-event">expand</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the action view has been expanded.</td>
         </tr>
         
     </table>
@@ -306,6 +393,58 @@ Android Developer Reference.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="collapseActionView-method">
+        <a name="collapseActionView-method"></a><b>collapseActionView</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Collapse the action view associated with this menu item.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="expandActionView-method">
+        <a name="expandActionView-method"></a><b>expandActionView</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Expand the action view associated with this menu item.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -348,6 +487,28 @@ Android Developer Reference.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="getActionView-method">
+        <a name="getActionView-method"></a><b>getActionView</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.actionView-property.html">actionView</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getActionViewExpanded-method">
+        <a name="getActionViewExpanded-method"></a><b>getActionViewExpanded</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.actionViewExpanded-property.html">actionViewExpanded</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getGroupId-method">
         <a name="getGroupId-method"></a><b>getGroupId</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -386,6 +547,17 @@ Android Developer Reference.</p>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.order-property.html">order</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getShowAsAction-method">
+        <a name="getShowAsAction-method"></a><b>getShowAsAction</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Android.MenuItem.showAsAction-property.html">showAsAction</a> property.</p></div>
       
 
       
@@ -492,6 +664,66 @@ Android Developer Reference.</p>
                     
                   </td>
                   <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setActionView-method">
+        <a name="setActionView-method"></a><b>setActionView</b> <span class="params">(actionView)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.actionView-property.html">actionView</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>actionView</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Titanium.UI.View]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setActionViewExpanded-method">
+        <a name="setActionViewExpanded-method"></a><b>setActionViewExpanded</b> <span class="params">(actionViewExpanded)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.actionViewExpanded-property.html">actionViewExpanded</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>actionViewExpanded</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
                 </tr>
                 
       	</table>
@@ -620,6 +852,36 @@ Android Developer Reference.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="setShowAsAction-method">
+        <a name="setShowAsAction-method"></a><b>setShowAsAction</b> <span class="params">(showAsAction)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.Android.MenuItem.showAsAction-property.html">showAsAction</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>showAsAction</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Number]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setTitle-method">
         <a name="setTitle-method"></a><b>setTitle</b> <span class="params">(title)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -718,6 +980,78 @@ Android Developer Reference.</p>
     <div class="method">
       <div class="title" id="click-event">
         <a name="click-method"></a><b>click</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="collapse-event">
+        <a name="collapse-method"></a><b>collapse</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="expand-event">
+        <a name="expand-method"></a><b>expand</b>
       </div>
       
       

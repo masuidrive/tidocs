@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -55,11 +67,23 @@ information which can then be accessed during analysis using Analytics.</p>
 <p>Use the <a href="Titanium.Analytics.featureEvent-method.html">featureEvent</a> method to generate custom
 events that you can view through the Analytics product. You can specify a name for 
 the feature event which is visible through Analytics.</p>
-<p><strong>NOTE</strong> Although the analytics module allows you to transmit other types of 
-events, such as navigation events and timed events, <em>data regarding these events 
-is <strong>not</strong> accessible through the Analytics UI.</em> </p>
-<p>Navigation events will be supported in a future version of the Analytics product. 
-There is no plan to support the other event types, and they and should not be used.</p>
+<p><strong>NOTE</strong> The analytics module lets you transmit some data that is stored, but 
+not made accessible through the Analytics UI. To access this data, you must
+sign up for the optional raw data export service. </p>
+<p><em>The following types of data are stored but not made available through the Analytics UI:</em></p>
+<ul>
+<li>
+<p>Navigation events.</p>
+</li>
+<li>
+<p>Extra data added to feature events (the <code>data</code> parameter).</p>
+</li>
+</ul>
+<p>Viewing navigation events in the Analytics UI will be supported in a future version 
+of the Analytics product. </p>
+<p>See also <a href="http://docs.appcelerator.com/titanium/2.1/index.html#!/guide/Ti_Analytics">Ti
+Analytics</a>
+in the Titanium Mobile Guides.</p>
     </div>
     
 
@@ -69,27 +93,11 @@ There is no plan to support the other event types, and they and should not be us
     <dl class="methods">
     
             <ul>
-                <li><a href="#addEvent-method">addEvent <span class="params">(type, name, data)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#featureEvent-method">featureEvent <span class="params">(name, data)</span></a></li>
             </ul>
     
             <ul>
                 <li><a href="#navEvent-method">navEvent <span class="params">(from, to, name, data)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#settingsEvent-method">settingsEvent <span class="params">(name, data)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#timedEvent-method">timedEvent <span class="params">(name, start, stop, duration, data)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#userEvent-method">userEvent <span class="params">(name, data)</span></a></li>
             </ul>
     
     
@@ -118,61 +126,6 @@ some feature that you would like to track was used.</p>
 
     
     <div class="sectiontitle">Methods</div>
-    
-    <div class="method">
-      <div class="title" id="addEvent-method">
-        <a name="addEvent-method"></a><b>addEvent</b> <span class="params">(type, name, data)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sends a generic event for this application session.
-<strong>Not displayed in Analytics UI</strong>.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>type</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event type.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>name</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event name.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>data</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Object]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
     
     <div class="method">
       <div class="title" id="featureEvent-method">
@@ -277,170 +230,6 @@ The object must be serializable as JSON.</td>
                     
                   </td>
                   <td class='attr-desc'>Extra data related to the event. The object must be serializable as JSON.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="settingsEvent-method">
-        <a name="settingsEvent-method"></a><b>settingsEvent</b> <span class="params">(name, data)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sends a settings event for this application session.
-<strong>Not displayed in Analytics UI</strong>.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>name</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event name.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>data</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Object]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="timedEvent-method">
-        <a name="timedEvent-method"></a><b>timedEvent</b> <span class="params">(name, start, stop, duration, data)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Send a timed event for this application session.
-<strong>Not displayed in Analytics UI</strong>.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>name</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event name.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>start</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Date]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event start as a Date object.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>stop</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Date]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event end as a Date object.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>duration</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Number]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event duration.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>data</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Object]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="userEvent-method">
-        <a name="userEvent-method"></a><b>userEvent</b> <span class="params">(name, data)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Sends a user event for this application session. <strong>Not displayed in Analytics UI</strong>.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>name</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [String]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Event name.</td>
-                </tr>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>data</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Object]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Extra data related to the event. Must be serializable as JSON.</td>
                 </tr>
                 
       	</table>

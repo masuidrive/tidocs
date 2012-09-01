@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -90,6 +102,10 @@ Android only, you can change the <code>message</code> property while the alert d
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -182,7 +198,7 @@ Android only, you can change the <code>message</code> property while the alert d
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Index to define the button cancel button, returned by the click event.</td>
+            <td class='attr-desc'>Index to define the cancel button.</td>
         </tr>
         
         <tr valign='top'>
@@ -299,8 +315,8 @@ win.open();
 </code></pre></div>
         
 	<div class="subsectiontitle">Three-button Alert Dialog</div>
-	<div class="code"><p>Create a three-button alert dialog, which is invoked when the app window is clicked.      <br />
-</p>
+	<div class="code"><p>Create a three-button alert dialog, which is invoked when the app window is clicked. 
+Output a message to the log when the cancel button is clicked.</p>
 <pre><code>Ti.UI.setBackgroundColor('white');
 var win = Ti.UI.createWindow({  
   title: 'Click window to test',
@@ -308,14 +324,22 @@ var win = Ti.UI.createWindow({
   exitOnClose: true,
   fullscreen: false
 });
-
 win.addEventListener('click', function(e){
   var dialog = Ti.UI.createAlertDialog({
     cancel: 1,
     buttonNames: ['Confirm', 'Cancel', 'Help'],
     message: 'Would you like to delete the file?',
     title: 'Delete'
-  }).show();
+  });
+  dialog.addEventListener('click', function(e){
+    if (e.index === e.source.cancel){
+      Ti.API.info('The cancel button was clicked');
+    }
+    Ti.API.info('e.cancel: ' + e.cancel);
+    Ti.API.info('e.source.cancel: ' + e.source.cancel);
+    Ti.API.info('e.index: ' + e.index);
+  });
+  dialog.show();
 });
 win.open();
 </code></pre></div>
@@ -362,6 +386,36 @@ win.open();
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -730,7 +784,7 @@ parity issue.</p>
               
               <span class="attr-rw">[Number]</span><br /> 
               
-              <p>Index of the button that was pressed.</p>
+              <p>Index of the button that was clicked.</p>
             </td>
           </tr>
           

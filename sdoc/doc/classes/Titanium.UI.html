@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -63,7 +75,7 @@ controls or other views.  Views can have their properties customized, such as th
 and radius, can fire events such as swipe events or touches, and can optionally contain a 
 hierarchy or other views as children. In Titanium, most views are specialized to perform both a 
 visual function and set of interaction behaviors such as <a href="Titanium.UI.TableView-object.html">Table View</a> or
-<a href="Titanium.UI.CoverFlowView-object.html">Coverflow View</a>.  Views are always named with the suffix <code>View</code>.</p>
+<a href="Titanium.UI.iOS.CoverFlowView-object.html">Coverflow View</a>.  Views are always named with the suffix <code>View</code>.</p>
 </li>
 <li>
 <p><strong>Controls</strong> - controls, or sometimes referred as widgets, are visual elements such as 
@@ -154,6 +166,15 @@ prefix is omitted, this is not officially supported and thus not recommended.</p
 <p>If a color property is undefined, the default color of the particular UI element is applied. 
 If a color value is not valid on iOS, the default color is applied, whereas, on Android, the 
 color yellow is applied.</p>
+<p>Besides the above mentioned colors, the following constants can be used to specify iOS
+system textures. These constants can be used wherever a color value is required:</p>
+<ul>
+<li><strong><a href="Titanium.UI.iOS.COLOR_SCROLLVIEW_BACKGROUND-property.html">COLOR_SCROLLVIEW_BACKGROUND</a></strong> </li>
+<li><strong><a href="Titanium.UI.iOS.COLOR_VIEW_FLIPSIDE_BACKGROUND-property.html">COLOR_VIEW_FLIPSIDE_BACKGROUND</a></strong> </li>
+<li><strong><a href="Titanium.UI.iOS.COLOR_GROUP_TABLEVIEW_BACKGROUND-property.html">COLOR_GROUP_TABLEVIEW_BACKGROUND</a></strong> </li>
+<li><strong><a href="Titanium.UI.iOS.COLOR_UNDER_PAGE_BACKGROUND-property.html">COLOR_UNDER_PAGE_BACKGROUND</a></strong> (Only 
+available on iOS SDK 5.0 and above.)</li>
+</ul>
     </div>
     
 
@@ -164,6 +185,10 @@ color yellow is applied.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -196,10 +221,6 @@ color yellow is applied.</p>
     
             <ul>
                 <li><a href="#createButtonBar-method">createButtonBar <span class="params">(parameters)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#createCoverFlowView-method">createCoverFlowView <span class="params">(parameters)</span></a></li>
             </ul>
     
             <ul>
@@ -279,10 +300,6 @@ color yellow is applied.</p>
             </ul>
     
             <ul>
-                <li><a href="#createTabbedBar-method">createTabbedBar <span class="params">(parameters)</span></a></li>
-            </ul>
-    
-            <ul>
                 <li><a href="#createTableView-method">createTableView <span class="params">(parameters)</span></a></li>
             </ul>
     
@@ -300,10 +317,6 @@ color yellow is applied.</p>
     
             <ul>
                 <li><a href="#createTextField-method">createTextField <span class="params">(parameters)</span></a></li>
-            </ul>
-    
-            <ul>
-                <li><a href="#createToolbar-method">createToolbar <span class="params">(parameters)</span></a></li>
             </ul>
     
             <ul>
@@ -344,6 +357,10 @@ color yellow is applied.</p>
     
             <ul>
                 <li><a href="#removeEventListener-method">removeEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setBackgroundColor-method">setBackgroundColor <span class="params">(backgroundColor)</span></a></li>
             </ul>
     
             <ul>
@@ -401,309 +418,66 @@ color yellow is applied.</p>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="AUTODETECT_ADDRESS-property"></a>AUTODETECT_ADDRESS</td>
+            <td class='attr-name'><a name="AUTOLINK_ALL-property"></a>AUTOLINK_ALL</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the text auto-detection constants in Titanium.UI.iOS instead.</td>
+            <td class='attr-desc'>Convert all detectable types of data into clickable links.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="AUTODETECT_ALL-property"></a>AUTODETECT_ALL</td>
+            <td class='attr-name'><a name="AUTOLINK_CALENDAR-property"></a>AUTOLINK_CALENDAR</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the text auto-detection constants in Titanium.UI.iOS instead.</td>
+            <td class='attr-desc'>Convert strings formatted as calendar events into clickable links.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="AUTODETECT_CALENDAR-property"></a>AUTODETECT_CALENDAR</td>
+            <td class='attr-name'><a name="AUTOLINK_EMAIL_ADDRESSES-property"></a>AUTOLINK_EMAIL_ADDRESSES</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the text auto-detection constants in Titanium.UI.iOS instead.</td>
+            <td class='attr-desc'>Convert strings formatted as email addresses into clickable links.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="AUTODETECT_LINK-property"></a>AUTODETECT_LINK</td>
+            <td class='attr-name'><a name="AUTOLINK_MAP_ADDRESSES-property"></a>AUTOLINK_MAP_ADDRESSES</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the text auto-detection constants in Titanium.UI.iOS instead.</td>
+            <td class='attr-desc'>Convert strings formatted as addresses into clickable links.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="AUTODETECT_NONE-property"></a>AUTODETECT_NONE</td>
+            <td class='attr-name'><a name="AUTOLINK_NONE-property"></a>AUTOLINK_NONE</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the text auto-detection constants in Titanium.UI.iOS instead.</td>
+            <td class='attr-desc'>Disable converting strings into clickable links.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="AUTODETECT_PHONE-property"></a>AUTODETECT_PHONE</td>
+            <td class='attr-name'><a name="AUTOLINK_PHONE_NUMBERS-property"></a>AUTOLINK_PHONE_NUMBERS</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the text auto-detection constants in Titanium.UI.iOS instead.</td>
+            <td class='attr-desc'>Convert strings formatted as phone numbers into clickable links.</td>
         </tr>
         
         <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_CLEAR-property"></a>BLEND_MODE_CLEAR</td>
+            <td class='attr-name'><a name="AUTOLINK_URLS-property"></a>AUTOLINK_URLS</td>
             <td class='attr-rw'>
                 [Number]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_COLOR-property"></a>BLEND_MODE_COLOR</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_COLOR_BURN-property"></a>BLEND_MODE_COLOR_BURN</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_COLOR_DODGE-property"></a>BLEND_MODE_COLOR_DODGE</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_COPY-property"></a>BLEND_MODE_COPY</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_DARKEN-property"></a>BLEND_MODE_DARKEN</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_ATOP-property"></a>BLEND_MODE_DESTINATION_ATOP</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_IN-property"></a>BLEND_MODE_DESTINATION_IN</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_OUT-property"></a>BLEND_MODE_DESTINATION_OUT</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_DESTINATION_OVER-property"></a>BLEND_MODE_DESTINATION_OVER</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_DIFFERENCE-property"></a>BLEND_MODE_DIFFERENCE</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_EXCLUSION-property"></a>BLEND_MODE_EXCLUSION</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_HARD_LIGHT-property"></a>BLEND_MODE_HARD_LIGHT</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_HUE-property"></a>BLEND_MODE_HUE</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_LIGHTEN-property"></a>BLEND_MODE_LIGHTEN</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_LUMINOSITY-property"></a>BLEND_MODE_LUMINOSITY</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_MULTIPLY-property"></a>BLEND_MODE_MULTIPLY</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_NORMAL-property"></a>BLEND_MODE_NORMAL</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_OVERLAY-property"></a>BLEND_MODE_OVERLAY</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_PLUS_DARKER-property"></a>BLEND_MODE_PLUS_DARKER</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_PLUS_LIGHTER-property"></a>BLEND_MODE_PLUS_LIGHTER</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_SATURATION-property"></a>BLEND_MODE_SATURATION</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_SCREEN-property"></a>BLEND_MODE_SCREEN</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_SOFT_LIGHT-property"></a>BLEND_MODE_SOFT_LIGHT</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_SOURCE_ATOP-property"></a>BLEND_MODE_SOURCE_ATOP</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_SOURCE_IN-property"></a>BLEND_MODE_SOURCE_IN</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_SOURCE_OUT-property"></a>BLEND_MODE_SOURCE_OUT</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
-        </tr>
-        
-        <tr valign='top'>
-            <td class='attr-name'><a name="BLEND_MODE_XOR-property"></a>BLEND_MODE_XOR</td>
-            <td class='attr-rw'>
-                [Number]
-            </td>
-            <td class='attr-desc'></td>
-            <td class='attr-desc'>Use the blend mode constants in Titanium.UI.iOS instead.</td>
+            <td class='attr-desc'>Convert strings formatted as URLs into clickable links.</td>
         </tr>
         
         <tr valign='top'>
@@ -1265,6 +1039,105 @@ color yellow is applied.</p>
         </tr>
         
         <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_AUTHENTICATION-property"></a>URL_ERROR_AUTHENTICATION</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Authentication error code reported via Titanium.UI.WebView.error.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_BAD_URL-property"></a>URL_ERROR_BAD_URL</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Bad url error code reported via Titanium.UI.WebView.error.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_CONNECT-property"></a>URL_ERROR_CONNECT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error for a failure to connect to host.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_FILE-property"></a>URL_ERROR_FILE</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error for a failure to access a file resource on a host, except "file not found", which has its own constant.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_FILE_NOT_FOUND-property"></a>URL_ERROR_FILE_NOT_FOUND</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error when a requested file does not exist on the host.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_HOST_LOOKUP-property"></a>URL_ERROR_HOST_LOOKUP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error when a host name cannot be resolved, such as via a DNS lookup error.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_REDIRECT_LOOP-property"></a>URL_ERROR_REDIRECT_LOOP</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error when a redirect loop is detected.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_SSL_FAILED-property"></a>URL_ERROR_SSL_FAILED</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error for an SSL failure.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_TIMEOUT-property"></a>URL_ERROR_TIMEOUT</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error when a timeout occurs.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_UNKNOWN-property"></a>URL_ERROR_UNKNOWN</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error when an unknown error occurs.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="URL_ERROR_UNSUPPORTED_SCHEME-property"></a>URL_ERROR_UNSUPPORTED_SCHEME</td>
+            <td class='attr-rw'>
+                [Number]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Error code reported via Titanium.UI.WebView.error when a url contains an unsupported scheme.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a name="backgroundColor-property"></a>backgroundColor</td>
             <td class='attr-rw'>
                 [String]
@@ -1328,8 +1201,9 @@ to be supported by Titanium. See the <a href="Titanium.UI.html">description</a> 
 <pre><code>var colorArray = [
   '#ff00ff', '#f0f', 'rgb(255,0,255)',
   'transparent', '#55ff00ff', '#5f0f', 'rgba(255,0,255,0.3)',
-  'aqua', 'black', 'blue', 'brown', 'cyan', 'darkgray', 'fuchsia', 'gray', 'green', 'lightgray', 'lime',
-  'magenta', 'maroon', 'navy', 'olive', 'orange', 'pink', 'purple', 'red', 'silver', 'teal', 'white', 'yellow',
+  'aqua', 'black', 'blue', 'brown', 'cyan', 'darkgray', 'fuchsia', 'gray', 'green', 
+  'lightgray', 'lime', 'magenta', 'maroon', 'navy', 'olive', 'orange', 'pink', 
+  'purple', 'red', 'silver', 'teal', 'white', 'yellow',
 ];
 var win = Ti.UI.createWindow({
   backgroundColor: 'black',
@@ -1407,11 +1281,41 @@ win.open();
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="convertUnits-method">
         <a name="convertUnits-method"></a><b>convertUnits</b> <span class="params">(convertFromValue, convertToUnits)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Converts one type of unit to another using the metrics of the main Display.</p></div>
+      <div class="description"><p>Converts one type of unit to another using the metrics of the main display.</p></div>
       
 
       
@@ -1428,8 +1332,8 @@ win.open();
                       
                     
                   </td>
-                  <td class='attr-desc'>A measurement and optional unit to convert from, i.e. 160, "120dip".  Percentages are 
-not allowed.</td>
+                  <td class='attr-desc'>Measurement and optional unit to convert from, i.e. 160, "120dip".  Percentages are 
+not accepted.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1441,7 +1345,7 @@ not allowed.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The desired unit for the conversion result. Use one of the unit constants in Titanium.UI.</td>
+                  <td class='attr-desc'>Desired unit for the conversion result. Use one of the unit constants in Titanium.UI.</td>
                 </tr>
                 
       	</table>
@@ -1454,7 +1358,7 @@ not allowed.</td>
         <a name="create2DMatrix-method"></a><b>create2DMatrix</b> <span class="params">(parameters)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Creates are returns an instance of <a href="Titanium.UI.2DMatrix-object.html"><code>Titanium.UI.2DMatrix</code></a>.</p></div>
+      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.2DMatrix-object.html"><code>Titanium.UI.2DMatrix</code></a>.</p></div>
       
 
       
@@ -1471,7 +1375,7 @@ not allowed.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>A dictionary object specifying the initial transformation of the object.</td>
+                  <td class='attr-desc'>Initial transformation of the matrix.</td>
                 </tr>
                 
       	</table>
@@ -1652,36 +1556,6 @@ not allowed.</td>
                     
                   </td>
                   <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.ButtonBar except those marked not-creation or read-only.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="createCoverFlowView-method">
-        <a name="createCoverFlowView-method"></a><b>createCoverFlowView</b> <span class="params">(parameters)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.CoverFlowView-object.html"><code>Titanium.UI.CoverFlowView</code></a>.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>parameters</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Dictionary&lt;Titanium.UI.CoverFlowView&gt;]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.CoverFlowView except those marked not-creation or read-only.</td>
                 </tr>
                 
       	</table>
@@ -2260,36 +2134,6 @@ not allowed.</td>
     </div>
     
     <div class="method">
-      <div class="title" id="createTabbedBar-method">
-        <a name="createTabbedBar-method"></a><b>createTabbedBar</b> <span class="params">(parameters)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.TabbedBar-object.html"><code>Titanium.UI.TabbedBar</code></a>.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>parameters</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Dictionary&lt;Titanium.UI.TabbedBar&gt;]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.TabbedBar except those marked not-creation or read-only.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
       <div class="title" id="createTableView-method">
         <a name="createTableView-method"></a><b>createTableView</b> <span class="params">(parameters)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -2432,36 +2276,6 @@ not allowed.</td>
                     
                   </td>
                   <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.TextField except those marked not-creation or read-only.</td>
-                </tr>
-                
-      	</table>
-      </div>
-      
-    </div>
-    
-    <div class="method">
-      <div class="title" id="createToolbar-method">
-        <a name="createToolbar-method"></a><b>createToolbar</b> <span class="params">(parameters)</span>
-        <span class="attr-rw" style="font-size:small">: void</span>
-      </div>
-      <div class="description"><p>Creates and returns an instance of <a href="Titanium.UI.Toolbar-object.html"><code>Titanium.UI.Toolbar</code></a>.</p></div>
-      
-
-      
-      <div class="description">
-      	<h4>Arguments</h4>
-      	<table border='0' cellpadding='5'>
-                
-                <tr valign='top'>
-                  <td class='attr-name'>parameters</td>
-                  <td class='attr-rw'>
-                    
-                      
-                        [Dictionary&lt;Titanium.UI.Toolbar&gt;]
-                      
-                    
-                  </td>
-                  <td class='attr-desc'>Properties to set on a new object, including any defined by Titanium.UI.Toolbar except those marked not-creation or read-only.</td>
                 </tr>
                 
       	</table>
@@ -2691,6 +2505,36 @@ not allowed.</td>
                     
                   </td>
                   <td class='attr-desc'>Callback function to remove. Must be the same function passed to addEventListener.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setBackgroundColor-method">
+        <a name="setBackgroundColor-method"></a><b>setBackgroundColor</b> <span class="params">(backgroundColor)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.UI.backgroundColor-property.html">backgroundColor</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>backgroundColor</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
                 </tr>
                 
       	</table>

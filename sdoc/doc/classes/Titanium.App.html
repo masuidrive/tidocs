@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -58,6 +70,25 @@ application is created.<br />
 </p>
 <p>While most values may be changed by editing the <code>tiapp.xml</code> file after creating the project, 
 the GUID is automatically generated and should not be changed.</p>
+<h4>Application Level Events</h4>
+<p>Application-level events are custom events that are defined globally for your
+application. By convention, application-level events are set on the <code>Titanium.App</code>
+module, like this:</p>
+<pre><code>Ti.App.addEventListener('app:myCustomEvent', myHandlerFunction);
+</code></pre>
+<p>Adding a prefix (like 'app:' in this example) is optional, but can help ensure that
+your custom event names don't conflict with any future Titanium events.</p>
+<p>Application-level event listeners can be added and fired from any context, including from inside
+a web view, so they are ideal for communicating between separate parts of your
+application.</p>
+<p>When you add an event listener on a Titanium module (such as <code>Ti.App</code> or
+<a href="Titanium.Geolocation.html">Ti.Geolocation</a>), the event listener function is referenced from
+the global context. This means the event listener function and any objecst it references
+can't be garbage collected until the event listener is removed.</p>
+<p>This can lead to memory leaks if application-level event listeners are added and not
+removed.</p>
+<p>See also: <a href="http://docs.appcelerator.com/titanium/2.0/index.html#!/guide/Event_Handling">Event Handling</a>
+in the Titanium Mobile Guides.</p>
     </div>
     
 
@@ -68,6 +99,10 @@ the GUID is automatically generated and should not be changed.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -92,6 +127,10 @@ the GUID is automatically generated and should not be changed.</p>
     
             <ul>
                 <li><a href="#getDescription-method">getDescription <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getDisableNetworkActivityIndicator-method">getDisableNetworkActivityIndicator <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -147,6 +186,10 @@ the GUID is automatically generated and should not be changed.</p>
             </ul>
     
             <ul>
+                <li><a href="#setDisableNetworkActivityIndicator-method">setDisableNetworkActivityIndicator <span class="params">(disableNetworkActivityIndicator)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#setIdleTimerDisabled-method">setIdleTimerDisabled <span class="params">(idleTimerDisabled)</span></a></li>
             </ul>
     
@@ -195,6 +238,15 @@ production.</td>
             </td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Application description, determined by tiapp.xml.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a name="disableNetworkActivityIndicator-property"></a>disableNetworkActivityIndicator</td>
+            <td class='attr-rw'>
+                [Boolean]
+            </td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Prevents network activity indicator from being displayed.</td>
         </tr>
         
         <tr valign='top'>
@@ -314,7 +366,25 @@ Titanium.App.proximity event.</td>
     <table border='0' cellpadding='5'>
         
         <tr valign='top'>
+            <td class='attr-name'><a href="#keyboardFrameChanged-event">keyboardFrameChanged</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the soft keyboard is presented, on and off the screen.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#keyboardframechanged-event">keyboardframechanged</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the soft keyboard is presented, on and off the screen.</td>
+        </tr>
+        
+        <tr valign='top'>
             <td class='attr-name'><a href="#pause-event">pause</a></td>
+            <td class='attr-desc'></td>
+            <td class='attr-desc'>Fired when the application transitions from active to inactive state on a multitasked system.</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-name'><a href="#paused-event">paused</a></td>
             <td class='attr-desc'></td>
             <td class='attr-desc'>Fired when the application transitions to the background on a multitasked system.</td>
         </tr>
@@ -383,6 +453,36 @@ Titanium.App.proximity event.</td>
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -482,6 +582,17 @@ Titanium.App.proximity event.</td>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
       <div class="description"><p>Gets the value of the <a href="Titanium.App.description-property.html">description</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="getDisableNetworkActivityIndicator-method">
+        <a name="getDisableNetworkActivityIndicator-method"></a><b>getDisableNetworkActivityIndicator</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.App.disableNetworkActivityIndicator-property.html">disableNetworkActivityIndicator</a> property.</p></div>
       
 
       
@@ -662,6 +773,36 @@ Titanium.App.proximity event.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="setDisableNetworkActivityIndicator-method">
+        <a name="setDisableNetworkActivityIndicator-method"></a><b>setDisableNetworkActivityIndicator</b> <span class="params">(disableNetworkActivityIndicator)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.App.disableNetworkActivityIndicator-property.html">disableNetworkActivityIndicator</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>disableNetworkActivityIndicator</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Boolean]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="setIdleTimerDisabled-method">
         <a name="setIdleTimerDisabled-method"></a><b>setIdleTimerDisabled</b> <span class="params">(idleTimerDisabled)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -728,8 +869,116 @@ Titanium.App.proximity event.</td>
     <div class="sectiontitle">Events</div>
     
     <div class="method">
+      <div class="title" id="keyboardFrameChanged-event">
+        <a name="keyboardFrameChanged-method"></a><b>keyboardFrameChanged</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="keyboardframechanged-event">
+        <a name="keyboardframechanged-method"></a><b>keyboardframechanged</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="pause-event">
         <a name="pause-method"></a><b>pause</b>
+      </div>
+      
+      
+      
+      <div class="description">
+	<h4>Event properties</h4>
+	<table border='0' cellpadding='5'>
+          
+          <tr valign='top'>
+            <td class='attr-name'>source</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[Object]</span><br /> 
+              
+              <p>Source object that fired the event.</p>
+            </td>
+          </tr>
+          
+          <tr valign='top'>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'>
+              
+              <span class="attr-rw">[String]</span><br /> 
+              
+              <p>Name of the event fired.</p>
+            </td>
+          </tr>
+          
+	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="paused-event">
+        <a name="paused-method"></a><b>paused</b>
       </div>
       
       

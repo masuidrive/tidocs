@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -44,8 +56,8 @@
 <div id="content">
     
     <div class="description">
-        <p>The Gesture module is responsible for high-level device gestures such as
-orientation changes and shake gestures.</p>
+        <p>The Gesture module is responsible for high-level device gestures such as orientation changes 
+and shake gestures.</p>
     </div>
     
     
@@ -61,11 +73,23 @@ orientation changes and shake gestures.</p>
             </ul>
     
             <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#fireEvent-method">fireEvent <span class="params">(name, event)</span></a></li>
             </ul>
     
             <ul>
+                <li><a href="#getLandscape-method">getLandscape <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#getOrientation-method">getOrientation <span class="params">()</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#getPortrait-method">getPortrait <span class="params">()</span></a></li>
             </ul>
     
             <ul>
@@ -92,7 +116,7 @@ orientation changes and shake gestures.</p>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>True if current window is considered landscape by the device, false otherwise.</td>
+            <td class='attr-desc'>Indicates whether current window is considered landscape by the device.</td>
         </tr>
         
         <tr valign='top'>
@@ -110,7 +134,7 @@ orientation changes and shake gestures.</p>
                 [Boolean]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>True if current window is considered portrait by the device, false otherwise.</td>
+            <td class='attr-desc'>Indicates whether current window is considered portrait by the device.</td>
         </tr>
         
     </table>
@@ -186,6 +210,36 @@ orientation changes and shake gestures.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="fireEvent-method">
         <a name="fireEvent-method"></a><b>fireEvent</b> <span class="params">(name, event)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -228,6 +282,17 @@ orientation changes and shake gestures.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="getLandscape-method">
+        <a name="getLandscape-method"></a><b>getLandscape</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Gesture.landscape-property.html">landscape</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="getOrientation-method">
         <a name="getOrientation-method"></a><b>getOrientation</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
@@ -239,12 +304,22 @@ orientation changes and shake gestures.</p>
     </div>
     
     <div class="method">
+      <div class="title" id="getPortrait-method">
+        <a name="getPortrait-method"></a><b>getPortrait</b> <span class="params">()</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Gets the value of the <a href="Titanium.Gesture.portrait-property.html">portrait</a> property.</p></div>
+      
+
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="isLandscape-method">
         <a name="isLandscape-method"></a><b>isLandscape</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns true if current window is considered lanscape by the device, false
-otherwise.</p></div>
+      <div class="description"><p>Returns whether current window is considered landscape by the device.</p></div>
       
 
       
@@ -255,8 +330,7 @@ otherwise.</p></div>
         <a name="isPortrait-method"></a><b>isPortrait</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns true if current window is considered portrait by the device, false
-otherwise.</p></div>
+      <div class="description"><p>Returns whether current window is considered portrait by the device.</p></div>
       
 
       
@@ -327,9 +401,15 @@ otherwise.</p></div>
               
               <span class="attr-rw">[Number]</span><br /> 
               
-              <p>Orientation of the current window.  Value is one of the following: 
-<a href="Titanium.UI.PORTRAIT-property.html"><code>Titanium.UI.PORTRAIT</code></a>, <a href="Titanium.UI.UPSIDE_PORTRAIT-property.html"><code>Titanium.UI.UPSIDE_PORTRAIT</code></a>, <a href="Titanium.UI.LANDSCAPE_LEFT-property.html"><code>Titanium.UI.LANDSCAPE_LEFT</code></a>, 
-<a href="Titanium.UI.LANDSCAPE_RIGHT-property.html"><code>Titanium.UI.LANDSCAPE_RIGHT</code></a> or <a href="Titanium.UI.UNKNOWN-property.html"><code>Titanium.UI.UNKNOWN</code></a>.</p>
+              <p>Orientation of the current window.<br />
+Value will be one of the group of <a href="Titanium.UI.html"><code>Titanium.UI</code></a> orientation constants, 
+<a href="Titanium.UI.PORTRAIT-property.html"><code>Titanium.UI.PORTRAIT</code></a>, 
+<a href="Titanium.UI.UPSIDE_PORTRAIT-property.html"><code>Titanium.UI.UPSIDE_PORTRAIT</code></a>, 
+<a href="Titanium.UI.LANDSCAPE_LEFT-property.html"><code>Titanium.UI.LANDSCAPE_LEFT</code></a>, 
+<a href="Titanium.UI.LANDSCAPE_RIGHT-property.html"><code>Titanium.UI.LANDSCAPE_RIGHT</code></a>, 
+<a href="Titanium.UI.FACE_UP-property.html"><code>Titanium.UI.FACE_UP</code></a>, 
+<a href="Titanium.UI.FACE_DOWN-property.html"><code>Titanium.UI.FACE_DOWN</code></a>, 
+or <a href="Titanium.UI.UNKNOWN-property.html"><code>Titanium.UI.UNKNOWN</code></a>.</p>
             </td>
           </tr>
           
@@ -385,8 +465,8 @@ otherwise.</p></div>
               
               <span class="attr-rw">[Number]</span><br /> 
               
-              <p>Time interval since previous shake event. On iOS, this value is 0 for the first
-shake event in a series.</p>
+              <p>Time interval since previous shake event. On iOS, this value is 0 for the first shake 
+event in a series.</p>
             </td>
           </tr>
           

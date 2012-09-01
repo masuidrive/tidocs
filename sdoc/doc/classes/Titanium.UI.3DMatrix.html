@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -44,24 +56,15 @@
 <div id="content">
     
     <div class="description">
-        <p>Use <a href="Titanium.UI.iOS.3DMatrix-object.html"><code>Titanium.UI.iOS.3DMatrix</code></a> instead.</p>
+        <p>The 3D Matrix is an object for holding values for a 3D affine transform.</p>
     </div>
     
     
-    <div class="description">
-        <p style="border: 2px #f99 solid; padding:4px;">
-          <span style="background-color:red; color:white;padding:2px">Deprecated</span>
-        since 1.8.0
-        
-        </p>
-    </div>
-    
     
     <div class="description">
-        <p>The 3D Matrix is an object for holding values for an affine transformation matrix. </p>
-<p>The 3DMatrix is created by <a href="Titanium.UI.create3DMatrix-method.html"><code>Titanium.UI.create3DMatrix</code></a>. A 3D matrix is
-used to rotate, scale, translate, or skew the objects in a three-dimensional
-space. A 3D matrix is represented by a 4 by 4 matrix. </p>
+        <p>The 3DMatrix is created by <a href="Titanium.UI.create3DMatrix-method.html"><code>Titanium.UI.create3DMatrix</code></a>. A 3D transform is
+used to rotate, scale, translate, or skew the objects in three-dimensional
+space. A 3D transform  is represented by a 4 by 4 matrix.</p>
 <p>You create an <code>identity matrix</code> by creating a 3D Matrix with an empty
 constructor.</p>
     </div>
@@ -74,6 +77,10 @@ constructor.</p>
     
             <ul>
                 <li><a href="#addEventListener-method">addEventListener <span class="params">(name, callback)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -390,6 +397,45 @@ constructor.</p>
     
 
     
+    <div class="sectiontitle">Code Examples</div>
+    <table border='0' cellpadding='5'>
+        
+	<div class="subsectiontitle">Apply a 3D Matrix to a Label</div>
+	<div class="code"><p>Move a label through a translation that repositions it from 100px to 200px from the top of
+the display.</p>
+<pre><code>var win = Ti.UI.createWindow({
+  backgroundColor: 'white'
+});
+
+var label = Ti.UI.createLabel({
+  font:{fontSize:50},
+  text:'Titanium',
+  textAlign:'center',
+  top: 100
+});
+win.add(label);
+
+var button = Ti.UI.createButton({
+  title:'Animate',
+  bottom:20,
+  width:200, height:40
+});
+win.add(button);
+
+button.addEventListener('click', function(){
+  var t1 = Ti.UI.create3DMatrix();
+  t1 = t1.translate(0, 100, 200);
+  t1.m34 = 1.0/-90;
+  var a1 = Ti.UI.createAnimation();
+  a1.transform = t1;
+  a1.duration = 800;
+  label.animate(a1);
+});
+win.open();
+</code></pre></div>
+        
+    </table>
+    
 
 
     
@@ -430,6 +476,36 @@ constructor.</p>
                     
                   </td>
                   <td class='attr-desc'>Callback function to invoke when the event is fired.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
                 </tr>
                 
       	</table>
@@ -660,7 +736,7 @@ constructor.</p>
         <a name="invert-method"></a><b>invert</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns a matrix constructed by inverting an existing matrix</p></div>
+      <div class="description"><p>Returns a matrix constructed by inverting this matrix.</p></div>
       
 
       
@@ -688,7 +764,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The second matrix. This matrix is concatenated to the matrix instance against which the function is invoked.  The result of this function is the first matrix multiplied by the second matrix. You might perform several multiplications in order to create a single matrix that contains the cumulative effects of several transformations. Note that matrix operations are not commutative - the order in which you concatenate matrices is important. That is, the result of multiplying matrix t1 by matrix t2 does not necessarily equal the result of multiplying matrix t2 by matrix t1.</td>
+                  <td class='attr-desc'>Matrix to concatenate to this matrix.</td>
                 </tr>
                 
       	</table>
@@ -743,7 +819,7 @@ constructor.</p>
         <a name="rotate-method"></a><b>rotate</b> <span class="params">(angle, x, y, z)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns a matrix constructed by rotating an existing matrix</p></div>
+      <div class="description"><p>Returns a matrix constructed by rotating this matrix.</p></div>
       
 
       
@@ -772,7 +848,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The x part of the vector about which to rotate</td>
+                  <td class='attr-desc'>The x part of the vector about which to rotate.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -784,7 +860,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The y part of the vector about which to rotate</td>
+                  <td class='attr-desc'>The y part of the vector about which to rotate.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -796,7 +872,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The z part of the vector about which to rotate</td>
+                  <td class='attr-desc'>The z part of the vector about which to rotate.</td>
                 </tr>
                 
       	</table>
@@ -809,7 +885,7 @@ constructor.</p>
         <a name="scale-method"></a><b>scale</b> <span class="params">(sx, sy, sz)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns a matrix constructed by scaling an existing matrix</p></div>
+      <div class="description"><p>Returns a matrix constructed by scaling this matrix.</p></div>
       
 
       
@@ -826,7 +902,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The value by which to scale x values of the matrix</td>
+                  <td class='attr-desc'>The value by which to scale x values of the matrix.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -838,7 +914,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The value by which to scale y values of the matrix</td>
+                  <td class='attr-desc'>The value by which to scale y values of the matrix.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -850,7 +926,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The value by which to scale z values of the matrix</td>
+                  <td class='attr-desc'>The value by which to scale z values of the matrix.</td>
                 </tr>
                 
       	</table>
@@ -1343,7 +1419,7 @@ constructor.</p>
         <a name="translate-method"></a><b>translate</b> <span class="params">(tx, ty, tz)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns a matrix constructed by translating an existing matrix</p></div>
+      <div class="description"><p>Returns a matrix constructed by translating an existing matrix.</p></div>
       
 
       
@@ -1360,7 +1436,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The value by which to move x values with the matrix</td>
+                  <td class='attr-desc'>The value by which to move x values with the matrix.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1372,7 +1448,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The value by which to move y values with the matrix</td>
+                  <td class='attr-desc'>The value by which to move y values with the matrix.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1384,7 +1460,7 @@ constructor.</p>
                       
                     
                   </td>
-                  <td class='attr-desc'>The value by which to move z values with the matrix</td>
+                  <td class='attr-desc'>The value by which to move z values with the matrix.</td>
                 </tr>
                 
       	</table>

@@ -26,6 +26,18 @@
   })();
 
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("a").each(function() { 
+    if($(this).attr('href')){
+      var href =$(this).attr('href'); 
+      href = href.replace(/^(.+?)(\-(object|module))\.html$/, "$1.html");
+      href = href.replace(/^(.+?)\.([A-z_]+\-(method|property|event))\.html$/, "$1.html#$2");
+      $(this).attr('href', href);
+    }
+  });
+});
+</script>
 
 </head>
 
@@ -36,7 +48,7 @@
             Titanium.XML.Comment 
         </h1>
       	<ul class="files">
-      	  <li>Android(0.8+), iPhone(0.8+), iPad(0.8+), Mobile Web(1.8+)</li>
+      	  <li>Android(0.9+), iPhone(0.9+), iPad(0.9+), Mobile Web(1.8+)</li>
       	</ul>
     </div>
     <div id="bodyContent">
@@ -71,6 +83,10 @@ Android and iOS with some non-standard extensions. Exposes the
     
             <ul>
                 <li><a href="#appendData-method">appendData <span class="params">(arg)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#applyProperties-method">applyProperties <span class="params">(props)</span></a></li>
             </ul>
     
             <ul>
@@ -206,6 +222,14 @@ Android and iOS with some non-standard extensions. Exposes the
             </ul>
     
             <ul>
+                <li><a href="#setNodeValue-method">setNodeValue <span class="params">(nodeValue)</span></a></li>
+            </ul>
+    
+            <ul>
+                <li><a href="#setPrefix-method">setPrefix <span class="params">(prefix)</span></a></li>
+            </ul>
+    
+            <ul>
                 <li><a href="#substringData-method">substringData <span class="params">(offset, count)</span></a></li>
             </ul>
     
@@ -221,7 +245,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>2</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Attr</td>
+            <td class='attr-desc'>Used with nodeType to identify an
+Attr node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -230,7 +256,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>4</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.CDATASection (a type of Titanium.XML.Text)</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+CDATASection node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -239,7 +267,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>8</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Comment</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+Comment node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -248,7 +278,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>11</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.DocumentFragment</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+DocumentFragment node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -257,7 +289,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>9</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Document</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+Document node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -266,7 +300,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>10</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.DocumentType</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+DocumentType node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -275,7 +311,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>1</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Element</td>
+            <td class='attr-desc'>Used with nodeType to identify an
+Element node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -284,7 +322,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>6</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Entity</td>
+            <td class='attr-desc'>Used with nodeType to identify an
+Entity node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -293,7 +333,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>5</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.EntityReference (a type of Titanium.XML.Node)</td>
+            <td class='attr-desc'>Used with nodeType to identify an
+EntityReference node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -302,7 +344,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>12</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Notation</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+Notation node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -311,7 +355,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>7</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.ProcessingInstruction</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+ProcessingInstruction node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -320,7 +366,9 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Number]
             </td>
             <td class='attr-desc'>3</td>
-            <td class='attr-desc'>The value of nodeType when this node is a Titanium.XML.Text</td>
+            <td class='attr-desc'>Used with nodeType to identify a
+Text node.
+</td>
         </tr>
         
         <tr valign='top'>
@@ -329,7 +377,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Titanium.XML.NamedNodeMap]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>A map of this node's attributes</td>
+            <td class='attr-desc'>A map of this node's attributes.</td>
         </tr>
         
         <tr valign='top'>
@@ -338,7 +386,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Titanium.XML.NodeList]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>A Titanium.XML.NodeList of this node's children</td>
+            <td class='attr-desc'>A Titanium.XML.NodeList of this node's children.</td>
         </tr>
         
         <tr valign='top'>
@@ -356,7 +404,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Titanium.XML.Node]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>This node's first child</td>
+            <td class='attr-desc'>This node's first child.</td>
         </tr>
         
         <tr valign='top'>
@@ -365,7 +413,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Titanium.XML.Node]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>This node's last child</td>
+            <td class='attr-desc'>This node's last child.</td>
         </tr>
         
         <tr valign='top'>
@@ -383,7 +431,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The local part of the qualified name of this node</td>
+            <td class='attr-desc'>Local part of the qualified name of this node.</td>
         </tr>
         
         <tr valign='top'>
@@ -392,7 +440,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The namespace URI of this node</td>
+            <td class='attr-desc'>Namespace URI of this node.</td>
         </tr>
         
         <tr valign='top'>
@@ -401,7 +449,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [Titanium.XML.Node]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>This node's next sibling</td>
+            <td class='attr-desc'>This node's next sibling.</td>
         </tr>
         
         <tr valign='top'>
@@ -410,7 +458,7 @@ Android and iOS with some non-standard extensions. Exposes the
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The name of this node</td>
+            <td class='attr-desc'>Name of this node.</td>
         </tr>
         
         <tr valign='top'>
@@ -430,7 +478,7 @@ DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The content (value) of this node</td>
+            <td class='attr-desc'>Content (value) of this node.</td>
         </tr>
         
         <tr valign='top'>
@@ -439,7 +487,7 @@ DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE.</td>
                 [Titanium.XML.Document]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>This node's owning Document</td>
+            <td class='attr-desc'>This node's owning document.</td>
         </tr>
         
         <tr valign='top'>
@@ -448,7 +496,7 @@ DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE.</td>
                 [Titanium.XML.Node]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>This node's parent node</td>
+            <td class='attr-desc'>This node's parent node.</td>
         </tr>
         
         <tr valign='top'>
@@ -457,7 +505,7 @@ DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The namespace prefix of this node</td>
+            <td class='attr-desc'>Namespace prefix of this node.</td>
         </tr>
         
         <tr valign='top'>
@@ -466,7 +514,7 @@ DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE.</td>
                 [Titanium.XML.Node]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>This node's previous sibling</td>
+            <td class='attr-desc'>This node's previous sibling.</td>
         </tr>
         
         <tr valign='top'>
@@ -475,8 +523,7 @@ DOCUMENT_NODE, DOCUMENT_TYPE_NODE, DOCUMENT_FRAGMENT_NODE, NOTATION_NODE.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The content (value) of all text nodes within this node.
-Use textContent instead.</td>
+            <td class='attr-desc'>Use textContent instead.</td>
         </tr>
         
         <tr valign='top'>
@@ -485,7 +532,7 @@ Use textContent instead.</td>
                 [String]
             </td>
             <td class='attr-desc'></td>
-            <td class='attr-desc'>The content (value) of all text nodes within this node</td>
+            <td class='attr-desc'>Content (value) of all text nodes within this node.</td>
         </tr>
         
     </table>
@@ -548,7 +595,7 @@ Use textContent instead.</td>
         <a name="appendChild-method"></a><b>appendChild</b> <span class="params">(newChild)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Appends the node <code>newChild</code> as a child of this node</p></div>
+      <div class="description"><p>Appends the node <code>newChild</code> as a child of this node.</p></div>
       
 
       
@@ -565,7 +612,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The new node to append</td>
+                  <td class='attr-desc'>New node to append.</td>
                 </tr>
                 
       	</table>
@@ -604,11 +651,41 @@ Use textContent instead.</td>
     </div>
     
     <div class="method">
+      <div class="title" id="applyProperties-method">
+        <a name="applyProperties-method"></a><b>applyProperties</b> <span class="params">(props)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Applies the properties to the proxy.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>props</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [Dictionary]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>A dictionary of properties to apply.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
       <div class="title" id="cloneNode-method">
         <a name="cloneNode-method"></a><b>cloneNode</b> <span class="params">(deep)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Returns a duplicate of this node</p></div>
+      <div class="description"><p>Returns a duplicate of this node.</p></div>
       
 
       
@@ -625,7 +702,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>Whether or not to perform a deep copy of this node</td>
+                  <td class='attr-desc'>Whether or not to perform a deep copy of this node.</td>
                 </tr>
                 
       	</table>
@@ -920,7 +997,7 @@ Use textContent instead.</td>
         <a name="hasAttributes-method"></a><b>hasAttributes</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Whether or not this node has attributes</p></div>
+      <div class="description"><p>Returns <code>true</code> if this node has attributes.</p></div>
       
 
       
@@ -931,7 +1008,7 @@ Use textContent instead.</td>
         <a name="hasChildNodes-method"></a><b>hasChildNodes</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Whether or not this node has child nodes</p></div>
+      <div class="description"><p>Returns <code>true</code> if this node has child nodes.</p></div>
       
 
       
@@ -959,7 +1036,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The node to insert</td>
+                  <td class='attr-desc'>Node to insert.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -971,7 +1048,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The node to insert newChild before</td>
+                  <td class='attr-desc'>Node to insert newChild before.</td>
                 </tr>
                 
       	</table>
@@ -1026,7 +1103,7 @@ Use textContent instead.</td>
         <a name="isSupported-method"></a><b>isSupported</b> <span class="params">(feature, version)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Tests whether the DOM implementation supports a specific feature</p></div>
+      <div class="description"><p>Tests whether the DOM implementation supports a specific feature.</p></div>
       
 
       
@@ -1043,7 +1120,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The name of the feature</td>
+                  <td class='attr-desc'>Name of the feature.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1055,7 +1132,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The version number of the feature</td>
+                  <td class='attr-desc'>Version number of the feature.</td>
                 </tr>
                 
       	</table>
@@ -1068,7 +1145,7 @@ Use textContent instead.</td>
         <a name="normalize-method"></a><b>normalize</b> <span class="params">()</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Normalizes text and attribute nodes in this node's child hierarchy</p></div>
+      <div class="description"><p>Normalizes text and attribute nodes in this node's child hierarchy.</p></div>
       
 
       
@@ -1079,7 +1156,7 @@ Use textContent instead.</td>
         <a name="removeChild-method"></a><b>removeChild</b> <span class="params">(oldChild)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Removes a child node from this node</p></div>
+      <div class="description"><p>Removes a child node from this node.</p></div>
       
 
       
@@ -1096,7 +1173,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The node to remove</td>
+                  <td class='attr-desc'>Node to remove.</td>
                 </tr>
                 
       	</table>
@@ -1151,7 +1228,7 @@ Use textContent instead.</td>
         <a name="replaceChild-method"></a><b>replaceChild</b> <span class="params">(newChild, oldChild)</span>
         <span class="attr-rw" style="font-size:small">: void</span>
       </div>
-      <div class="description"><p>Replaces the node <code>oldChild</code> with the node <code>newChild</code></p></div>
+      <div class="description"><p>Replaces the node <code>oldChild</code> with the node <code>newChild</code>.</p></div>
       
 
       
@@ -1168,7 +1245,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The new node</td>
+                  <td class='attr-desc'>New node.</td>
                 </tr>
                 
                 <tr valign='top'>
@@ -1180,7 +1257,7 @@ Use textContent instead.</td>
                       
                     
                   </td>
-                  <td class='attr-desc'>The node being replaced</td>
+                  <td class='attr-desc'>Node being replaced.</td>
                 </tr>
                 
       	</table>
@@ -1287,6 +1364,66 @@ Use textContent instead.</td>
                 
                 <tr valign='top'>
                   <td class='attr-name'>localName</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setNodeValue-method">
+        <a name="setNodeValue-method"></a><b>setNodeValue</b> <span class="params">(nodeValue)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.XML.Comment.nodeValue-property.html">nodeValue</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>nodeValue</td>
+                  <td class='attr-rw'>
+                    
+                      
+                        [String]
+                      
+                    
+                  </td>
+                  <td class='attr-desc'>New value for the property.</td>
+                </tr>
+                
+      	</table>
+      </div>
+      
+    </div>
+    
+    <div class="method">
+      <div class="title" id="setPrefix-method">
+        <a name="setPrefix-method"></a><b>setPrefix</b> <span class="params">(prefix)</span>
+        <span class="attr-rw" style="font-size:small">: void</span>
+      </div>
+      <div class="description"><p>Sets the value of the <a href="Titanium.XML.Comment.prefix-property.html">prefix</a> property.</p></div>
+      
+
+      
+      <div class="description">
+      	<h4>Arguments</h4>
+      	<table border='0' cellpadding='5'>
+                
+                <tr valign='top'>
+                  <td class='attr-name'>prefix</td>
                   <td class='attr-rw'>
                     
                       
